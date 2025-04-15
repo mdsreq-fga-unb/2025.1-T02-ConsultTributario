@@ -1,4 +1,4 @@
-# 📌 Visão do Produto e Projeto
+# Visão do Produto e Projeto
 
 | Versão | Data | Autor | Alterações |
 |--------|------|-------|------------|
@@ -10,7 +10,7 @@ Bem-vindo à seção de Visão do Produto e Projeto do **ConsultTributario - Gru
 
 Nesta seção estão detalhadas as informações essenciais sobre o contexto atual do cliente, desafios, objetivos e principais características do produto proposto, além de estratégias adotadas para o desenvolvimento e entrega do projeto.
 
-## 📑 Conteúdos abordados:
+## Conteúdos abordados:
 
 - [Cenário Atual](cenario-atual/introducao-negocio.md)
 - [Solução Proposta](solucao-proposta/objetivos-produto.md)
