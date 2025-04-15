@@ -75,5 +75,5 @@ nav:
     # - Product Backlog: visao-produto/product-backlog.md
     # - Lições Aprendidas: visao-produto/licoes-aprendidas.md
   - Guia de Contribuição: 
-    - Política de Commits: guia-contribuicao/politica-de-commits.md
     - Política de Branches: guia-contribuicao/politica-de-branches.md
+    - Política de Commits: guia-contribuicao/politica-de-commits.md

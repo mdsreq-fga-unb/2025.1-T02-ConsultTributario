@@ -25,7 +25,7 @@ Navegue pela documentação do projeto:
 
 ### Guia de Contribuição
 
-- [Política de Commits](visao-produto/guia-contribuicao/politica-de-commits.md)
-- [Política de Branches](visao-produto/guia-contribuicao/politica-de-branches.md)
+- [Política de Commits](guia-contribuicao/politica-de-commits.md)
+- [Política de Branches](guia-contribuicao/politica-de-branches.md)
 
 ---
