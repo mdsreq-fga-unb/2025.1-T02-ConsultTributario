@@ -1,0 +1,68 @@
+site_name: ConsultTributário - Grupo 07
+site_description: Documentação oficial do projeto ConsultTributário (Grupo 07 - UnB)
+site_url: https://mdsreq-fga-unb.github.io/2025.1-T02-ConsultTributario
+site_author: Grupo 07 - Engenharia de Requisitos - UnB
+repo_name: ConsultTributario
+repo_url: https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario
+edit_uri: edit/docs/docs/
+
+theme:
+  name: material
+  language: pt-BR
+  logo: assets/logo/logo.png
+  favicon: assets/logo/logo.png
+  features:
+    - navigation.tabs
+    - navigation.expand
+    - navigation.sections
+    - toc.integrate
+    - search.highlight
+    - search.suggest
+    - content.code.annotate
+    - navigation.top
+  palette:
+    # Modo claro
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo escuro
+    # Modo escuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.tabbed
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - Sobre:
+      - Equipe: sobre/equipe.md
+  - Visão Geral:
+      - Introdução: visao-geral/introducao.md
+      - Objetivos: visao-geral/objetivos.md
+  - Requisitos:
+      - Requisitos Funcionais: requisitos/requisitos-funcionais.md
+      - Requisitos Não-Funcionais: requisitos/requisitos-nao-funcionais.md
+  - Arquitetura:
+      - Arquitetura Geral: arquitetura/arquitetura-geral.md
+      - Tecnologias: arquitetura/tecnologias.md
+  - Guia do Usuário:
+      - Uso Básico: guia-do-usuario/uso-basico.md
