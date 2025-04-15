@@ -76,7 +76,7 @@ Para contribuir com a documentação:
 2. Faça suas alterações e commit:
    ```bash
    git add .
-   git commit -m "doc: descrição da alteração"
+   git commit -m "docs: descrição da alteração"
    git push origin doc/sua-alteracao
    ```
 
