@@ -3,12 +3,16 @@ name: Deploy Documentação
 on:
   push:
     branches:
-      - main
-      - master
+      - docs
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
-  # Permite executar manualmente a partir da aba Actions
+  pull_request:
+    branches:
+      - docs
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
   workflow_dispatch:
 
 permissions:
