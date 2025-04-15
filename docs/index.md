@@ -1,18 +1,31 @@
 # 📘 ConsultTributário - Grupo 07
 
-Bem-vindo à documentação oficial do projeto **ConsultTributário**, desenvolvido pelo **Grupo 07 - UnB** para disciplina de Métodos de Desenvolvimento de Software.
+Bem-vindo à documentação oficial do projeto **ConsultTributário**, desenvolvido pelo **Grupo 07 - UnB** para a disciplina de Métodos de Desenvolvimento de Software.
+
+> O **ConsultTributário** é uma aplicação web que visa facilitar a consulta de informações tributárias e fiscais, proporcionando uma experiência simplificada para contribuintes e profissionais da área.
 
 ---
 
-## 📌 Primeiros Passos
+## 📌 Seções Principais
 
-Confira rapidamente as principais seções:
+Navegue pela documentação do projeto:
 
-- [👥 Conheça nossa Equipe](sobre/equipe.md)
-- [📑 Introdução ao projeto](visao-geral/introducao.md)
-- [⚙️ Arquitetura do sistema](arquitetura/arquitetura-geral.md)
-- [📚 Guia do Usuário](guia-do-usuario/uso-basico.md)
-- [📝 Requisitos Funcionais](requisitos/requisitos-funcionais.md)
-- [📝 Requisitos Não-Funcionais](requisitos/requisitos-nao-funcionais.md)
+### 🔍 Visão do Produto
+
+- [📊 Introdução ao Negócio](visao-produto/cenario-atual/introducao-negocio.md)
+- [💡 Identificação da Oportunidade](visao-produto/cenario-atual/oportunidade.md)
+- [🚧 Desafios do Projeto](visao-produto/cenario-atual/desafios.md)
+- [👥 Segmentação de Clientes](visao-produto/cenario-atual/segmentacao-clientes.md)
+
+### 🛠️ Solução Proposta
+
+- [⚙️ Características da Solução](visao-produto/solucao-proposta/caracteristicas-solucao.md)
+- [💻 Tecnologias](visao-produto/solucao-proposta/tecnologias.md)
+- [📈 Análise de Viabilidade](visao-produto/solucao-proposta/analise-viabilidade.md)
+
+### 👨‍💻 Guia de Contribuição
+
+- [📝 Política de Commits](visao-produto/guia-contribuicao/politica-de-commits.md)
+- [🌿 Política de Branches](visao-produto/guia-contribuicao/politica-de-branches.md)
 
 ---
