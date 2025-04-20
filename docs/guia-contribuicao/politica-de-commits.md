@@ -83,16 +83,3 @@ This reverts commit <hash_do_commit>.
 3. Use **prefixos** de commit adequados (ex.: `fix:`, `docs:`).
 4. Para commits grandes, descreva com clareza no corpo, o que e por que foi mudado.
 5. Utilize `closes #xx` no rodapé para fechar automaticamente *issues* correlatas.
-
----
-
-### Como Utilizar Esses Arquivos
-
-1. Crie/Atualize cada arquivo no caminho designado dentro do seu projeto:
-   - `guia-contribuicao/politica-de-branches.md`
-   - `guia-contribuicao/politica-de-commits.md`
-2. Ajuste datas, autores e links conforme as necessidades do seu time.
-3. Referencie esses arquivos no `mkdocs.yml` para disponibilizá-los na documentação.
-4. Oriente todos os membros da equipe a seguir essas políticas para manter a consistência no histórico do projeto.
-
-Pronto! Com esses dois arquivos, você terá um **Guia de Contribuição** claro e organizado para **Politica de Branches** e **Política de Commits** no projeto **ConsultTributario - Grupo 07**.
