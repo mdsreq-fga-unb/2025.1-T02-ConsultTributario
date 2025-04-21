@@ -6,17 +6,8 @@
 
 ---
 
-O principal desafio técnico deste projeto é o **mapeamento de oportunidades tributárias de forma eficiente e confiável**, apoiando empresas na recuperação de créditos tributários ou na otimização de sua carga tributária. Para isso, será necessário desenvolver mecanismos capazes de interpretar dados fiscais e contábeis, aplicando corretamente uma legislação tributária complexa e constantemente atualizada.
+O principal desafio do projeto é o cruzamento de informações com base em um CNPJ mapeando oportunidades tributárias de forma eficiente e confiável. Para isso, será necessário desenvolver mecanismos capazes de interpretar dados fiscais e contábeis, aplicando corretamente a legislação tributária vigente que está em constante mudança.
 
-Outros desafios importantes incluem:
+Outro ponto importante é que a equipe possui conhecimento limitado à área do direito tributário, o que exigirá um período de aprendizado e capacitação, além do auxílio do cliente, que é especialista na área.
 
-- **Conhecimento limitado na área do direito tributário pela equipe**, exigindo um período inicial de aprendizado intensivo e capacitação contínua, além do suporte constante do cliente especialista.
-- **Uso do framework NestJS**, tecnologia nova para a equipe, exigindo adaptação e aprendizado de boas práticas rapidamente.
-- **Necessidade de organização rigorosa no GitHub**, incluindo controle eficaz de versões e aplicação dos princípios de arquitetura limpa desde o início, visando escalabilidade e manutenção simplificada do projeto.
-
-### ⚠️ Riscos Principais:
-
-- Equipe com baixo domínio sobre o negócio específico (Direito Tributário).
-- Inexperiência com as tecnologias escolhidas (NestJS).
-
-Esses riscos serão gerenciados por meio de treinamento especializado, consultoria direta do cliente e documentação detalhada do processo de desenvolvimento.
+O projeto apresenta também desafios técnicos, como o principal sendo o uso do framework NestJS, já que a equipe não possui experiência prévia com essa tecnologia, o que exigirá um período de aprendizado e adaptação às suas particularidades e boas práticas. Além disso, a equipe precisará manter uma boa organização no uso do GitHub para controle de versão, além de planejar desde o início a escalabilidade e qualidade do código, aplicando princípios de arquitetura limpa a fim de facilitar a manutenção e possível crescimento do projeto.

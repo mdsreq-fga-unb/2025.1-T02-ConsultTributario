@@ -6,16 +6,6 @@
 
 ---
 
-O software **ConsultTributario** atende essencialmente dois grupos principais de usuários, com necessidades semelhantes, porém usos distintos da ferramenta:
+O software atende principalmente advogados tributaristas, tanto autônomos quanto integrantes de escritórios especializados em Direito Tributário. Também é voltado para empresas que desejam identificar oportunidades de recuperação de tributos. Embora os perfis dos usuários sejam distintos, o serviço oferecido é o mesmo para todos — uma plataforma única que realiza a análise fiscal automatizada, mapeamento de oportunidades tributárias e geração de relatórios com base em teses aplicáveis.
 
-- **Advogados Tributaristas**:
-  - Autônomos ou integrantes de escritórios especializados em Direito Tributário;
-  - Usam a plataforma como suporte técnico-jurídico na fundamentação de teses tributárias, objetivando maior eficiência e assertividade no processo.
-
-- **Empresas (Clientes Finais)**:
-  - Geralmente de médio e grande porte, operando sob regimes tributários complexos;
-  - Procuram identificar oportunidades de recuperação tributária ou otimizar sua carga tributária de forma prática e acessível, reduzindo riscos e custos operacionais.
-
-Apesar das diferenças de uso, o serviço oferecido pela plataforma permanece o mesmo para ambos os grupos: análise fiscal automatizada, mapeamento de oportunidades tributárias e geração de relatórios com base nas teses tributárias aplicáveis.
-
-Essa segmentação possibilita ao ConsultTributario atender com eficácia as necessidades específicas de cada perfil de cliente, ampliando a eficiência operacional e estratégica no contexto tributário empresarial.
+O que muda é a forma como cada público utiliza a ferramenta: advogados a utilizam como suporte técnico-jurídico para fundamentar teses, enquanto empresas buscam encontrar créditos tributários de forma prática e acessível. O sistema se aplica especialmente a empresas de médio e grande porte, que operam sob regimes tributários complexos e estão mais sujeitas a inconsistências e oportunidades de recuperação.
