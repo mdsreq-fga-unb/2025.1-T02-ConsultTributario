@@ -1,0 +1,79 @@
+site_name: ConsultTributário - Grupo 07
+site_description: Documentação oficial do projeto ConsultTributário (Grupo 07 - UnB)
+site_url: https://mdsreq-fga-unb.github.io/2025.1-T02-ConsultTributario
+site_author: Grupo 07 - Engenharia de Requisitos - UnB
+repo_name: ConsultTributario
+repo_url: https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario
+edit_uri: edit/docs/docs/
+
+theme:
+  name: material
+  language: pt-BR
+  logo: assets/logo/logo.png
+  favicon: assets/logo/logo.png
+  features:
+    - navigation.tabs
+    - navigation.expand
+    - navigation.sections
+    - toc.integrate
+    - search.highlight
+    - search.suggest
+    - content.code.annotate
+    - navigation.top
+  palette:
+    # Modo claro
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo escuro
+    # Modo escuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.tabbed
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+
+nav:
+  - Início: index.md
+  - Visão do Produto:
+    - Cenário Atual: 
+        - Introdução ao Negócio: visao-produto/cenario-atual/introducao-negocio.md
+        - Identificação da Oportunidade: visao-produto/cenario-atual/oportunidade.md
+        - Desafios do Projeto: visao-produto/cenario-atual/desafios.md
+        - Segmentação de Clientes: visao-produto/cenario-atual/segmentacao-clientes.md
+    # - Solução Proposta:
+    #     - Objetivos do Produto: visao-produto/solucao-proposta/objetivos-produto.md
+    #     - Características da Solução: visao-produto/solucao-proposta/caracteristicas-solucao.md
+    #     - Tecnologias: visao-produto/solucao-proposta/tecnologias.md
+    #     - Pesquisa de Mercado: visao-produto/solucao-proposta/pesquisa-mercado.md
+    #     - Análise de Viabilidade: visao-produto/solucao-proposta/analise-viabilidade.md
+    #     - Impacto da Solução: visao-produto/solucao-proposta/impacto-solucao.md
+    # - Estratégias de Engenharia de Software: visao-produto/estrategias-engenharia-software.md
+    # - Cronograma de Entregas: visao-produto/cronograma-entregas.md
+    # - Interação Equipe e Cliente: visao-produto/interacao-equipe-cliente.md
+    # - Engenharia de Requisitos: visao-produto/engenharia-requisitos.md
+    # - Requisitos de Software: visao-produto/requisitos-software.md
+    # - DoR e DoD: visao-produto/dor-dod.md
+    # - Product Backlog: visao-produto/product-backlog.md
+    # - Lições Aprendidas: visao-produto/licoes-aprendidas.md
+  - Guia de Contribuição: 
+    - Política de Branches: guia-contribuicao/politica-de-branches.md
+    - Política de Commits: guia-contribuicao/politica-de-commits.md
