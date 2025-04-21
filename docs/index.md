@@ -11,20 +11,18 @@ Bem-vindo à documentação oficial do projeto **ConsultTributário**, desenvolv
 Navegue pela documentação do projeto:
 
 ### Visão do Produto
-
 - [Introdução ao Negócio](visao-produto/cenario-atual/introducao-negocio.md)
 - [Identificação da Oportunidade](visao-produto/cenario-atual/oportunidade.md)
 - [Desafios do Projeto](visao-produto/cenario-atual/desafios.md)
 - [Segmentação de Clientes](visao-produto/cenario-atual/segmentacao-clientes.md)
 
 ### Solução Proposta
-
 - [Características da Solução](visao-produto/solucao-proposta/caracteristicas-solucao.md)
 - [Tecnologias](visao-produto/solucao-proposta/tecnologias.md)
 - [Análise de Viabilidade](visao-produto/solucao-proposta/analise-viabilidade.md)
+- [Cronograma de Entregas](visao-produto/solucao-proposta/cronograma-entrega.md)
 
 ### Guia de Contribuição
-
 - [Política de Commits](guia-contribuicao/politica-de-commits.md)
 - [Política de Branches](guia-contribuicao/politica-de-branches.md)
 
