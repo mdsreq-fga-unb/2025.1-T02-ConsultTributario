@@ -16,6 +16,7 @@ Navegue pela documentação do projeto:
 - [Desafios do Projeto](visao-produto/cenario-atual/desafios.md)
 - [Segmentação de Clientes](visao-produto/cenario-atual/segmentacao-clientes.md)
 - [Estratégias de Engenharia de Software](visao-produto/estrategias-engenharia-software.md)
+- [Lições aprendidas](visao-produto/cenario-atual/licoes-aprendidas.md)
 
 ### Solução Proposta
 - [Características da Solução](visao-produto/solucao-proposta/caracteristicas-solucao.md)
