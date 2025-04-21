@@ -6,27 +6,14 @@
 
 ---
 
-Atualmente, o cliente, um advogado tributarista, utiliza um software especializado para facilitar a identificação e gestão de oportunidades de recuperação tributária, prática comum no contexto tributário empresarial. O sistema oferece funcionalidades como um questionário que analisa as informações fiscais e gera relatórios com teses tributárias aplicáveis.
+Apesar de sua utilidade, o software que é utilizado pelo cliente apresenta algumas limitações. A falta de personalização no cruzamento das informações fiscais e na sugestão das teses mais adequadas faz com que o profissional ainda precise realizar análises manuais complementares. Isso evidencia uma oportunidade de evolução para soluções mais inteligentes e flexíveis, capazes de integrar dados automaticamente, adaptar-se às características específicas de cada empresa e fornecer recomendações mais precisas e personalizadas.
 
-Contudo, o software apresenta limitações significativas:
+O ConsultTributario surge como uma alternativa viável, oferecendo uma solução com custo mais acessível, ao mesmo tempo em que replica as principais funcionalidades do software atual. O grande diferencial do ConsultTributario é sua capacidade de responder parcialmente o questionário com base no CNPJ da empresa. Toda empresa no Brasil possui um CNPJ e, com ele, é possível acessar diversas informações sobre ela, como porte, natureza jurídica, CNAE, situação cadastral, localização, entre outros dados públicos e relevantes para análises fiscais. Utilizando essas informações de forma automatizada, o ConsultTributario consegue antecipar parte das respostas do questionário, otimizando o tempo do advogado e reduzindo o risco de erros.
 
-- Mensalidades elevadas;
-- Flexibilidade restrita para personalização da plataforma às necessidades específicas do cliente;
-- Funcionalidades valiosas como feed de notícias diárias e kits de testes não são plenamente adaptáveis, reduzindo a eficiência em casos específicos.
-
-O **ConsultTributario** surge como alternativa viável e mais acessível, mantendo as principais funcionalidades do software atual, porém com um diferencial significativo: alta capacidade de personalização. A plataforma pode ser facilmente ajustada às necessidades específicas de cada cliente, sem complexidade excessiva ou altos custos.
-
-Essa personalização, aliada ao custo reduzido, proporciona uma solução mais eficiente, alinhada com a prática cotidiana do advogado tributarista.
+Essa maior otimização no seu uso, aliada ao custo reduzido, não apenas torna o ConsultTributario uma opção mais atrativa financeiramente, mas também proporciona ao advogado uma solução mais eficiente e alinhada com a sua prática cotidiana.
 
 ## Diagrama de Ishikawa
 
-O diagrama a seguir representa os principais fatores que contribuem para o problema enfrentado pelo advogado tributarista: a ferramenta atual não atende plenamente às necessidades específicas.
+O principal desafio do projeto é o cruzamento de informações com base em um CNPJ mapeando oportunidades tributárias de forma eficiente e confiável. Para isso, será necessário desenvolver mecanismos capazes de interpretar dados fiscais e contábeis, aplicando corretamente a legislação tributária vigente que está em constante mudança.
 
-![Diagrama de Ishikawa](../../assets/images/diagrama-ishikawa.webp)
-
-Os principais fatores analisados foram:
-
-- Custo
-- Funcionalidade
-- Personalização
-- Informação
+![Diagrama de Ishikawa](../../assets/images/image.png)
