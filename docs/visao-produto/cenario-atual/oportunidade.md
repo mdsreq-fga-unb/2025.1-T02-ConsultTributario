@@ -14,6 +14,6 @@ Essa maior otimização no seu uso, aliada ao custo reduzido, não apenas torna 
 
 ## Diagrama de Ishikawa
 
-O diagrama representa os principais fatores que contribuem para o problema enfrentado pelo advogado tributarista: a ferramenta atual não atende às suas necessidades específicas. Os principais pontos analisados foram: custo, funcionalidade, personalização e informação.
+O principal desafio do projeto é o cruzamento de informações com base em um CNPJ mapeando oportunidades tributárias de forma eficiente e confiável. Para isso, será necessário desenvolver mecanismos capazes de interpretar dados fiscais e contábeis, aplicando corretamente a legislação tributária vigente que está em constante mudança.
 
 ![Diagrama de Ishikawa](../../assets/images/image.png)
