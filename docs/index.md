@@ -16,6 +16,7 @@ Navegue pela documentação do projeto:
 - [Identificação da Oportunidade](visao-produto/cenario-atual/oportunidade.md)
 - [Desafios do Projeto](visao-produto/cenario-atual/desafios.md)
 - [Segmentação de Clientes](visao-produto/cenario-atual/segmentacao-clientes.md)
+- [Estratégias de Engenharia de Software](visao-produto/estrategias-engenharia-software.md)
 
 ### Solução Proposta
 
