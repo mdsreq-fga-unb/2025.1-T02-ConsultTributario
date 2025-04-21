@@ -22,6 +22,8 @@ Navegue pela documentação do projeto:
 - [Características da Solução](visao-produto/solucao-proposta/caracteristicas-solucao.md)
 - [Tecnologias](visao-produto/solucao-proposta/tecnologias.md)
 - [Análise de Viabilidade](visao-produto/solucao-proposta/analise-viabilidade.md)
+
+### Cronograma de Entregas
 - [Cronograma de Entregas](visao-produto/solucao-proposta/cronograma-entrega.md)
 
 ### Guia de Contribuição

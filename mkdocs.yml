@@ -60,27 +60,16 @@ nav:
         - Desafios do Projeto: visao-produto/cenario-atual/desafios.md
         - Segmentação de Clientes: visao-produto/cenario-atual/segmentacao-clientes.md
     - Solução Proposta:
-    #     - Objetivos do Produto: visao-produto/solucao-proposta/objetivos-produto.md
-    #     - Características da Solução: visao-produto/solucao-proposta/caracteristicas-solucao.md
-    #     - Tecnologias: visao-produto/solucao-proposta/tecnologias.md
-    #     - Pesquisa de Mercado: visao-produto/solucao-proposta/pesquisa-mercado.md
-    #     - Análise de Viabilidade: visao-produto/solucao-proposta/analise-viabilidade.md
-    #     - Impacto da Solução: visao-produto/solucao-proposta/impacto-solucao.md
-<<<<<<< HEAD
+        - Objetivos do Produto: visao-produto/solucao-proposta/objetivos-produto.md
+        - Características da Solução: visao-produto/solucao-proposta/caracteristicas-solucao.md
+        - Tecnologias: visao-produto/solucao-proposta/tecnologias.md
+        - Pesquisa de Mercado: visao-produto/solucao-proposta/pesquisa-mercado.md
+        - Análise de Viabilidade: visao-produto/solucao-proposta/analise-viabilidade.md
+        - Impacto da Solução: visao-produto/solucao-proposta/impacto-solucao.md
     - Estratégias de Engenharia de Software: visao-produto/estrategias-engenharia-software.md
-    - Cronograma de Entregas: visao-produto/cronograma-entregas.md
+    - Cronograma de Entregas: visao-produto/cronograma-entrega.md
     - Interação Equipe e Cliente: visao-produto/interacao-equipe-cliente.md
-=======
-          - Cronograma de Entregas: visao-produto/solucao-proposta/cronograma-entrega.md
-          - Estratégias de Engenharia de Software: visao-produto/estrategias-engenharia-software.md
-    # - Cronograma de Entregas: visao-produto/cronograma-entregas.md
-    # - Interação Equipe e Cliente: visao-produto/interacao-equipe-cliente.md
->>>>>>> de4070de917c9c44cace7924dd31e4ee1a4687a2
-    # - Engenharia de Requisitos: visao-produto/engenharia-requisitos.md
-    # - Requisitos de Software: visao-produto/requisitos-software.md
-    # - DoR e DoD: visao-produto/dor-dod.md
-    # - Product Backlog: visao-produto/product-backlog.md
-          - Lições Aprendidas: visao-produto/licoes-aprendidas.md
+    - Lições Aprendidas: visao-produto/licoes-aprendidas.md
   - Guia de Contribuição: 
     - Política de Branches: guia-contribuicao/politica-de-branches.md
     - Política de Commits: guia-contribuicao/politica-de-commits.md
