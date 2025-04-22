@@ -2,7 +2,7 @@
 
 | Versão | Data       | Descrição                         | Autor                               |
 |------- |----------- | --------------------------------- | ----------------------------------- |
-| 1.0    | dd/mm/yyyy | Versão inicial do documento       | Equipe ConsultTributario - Grupo 07 |
+| 1.0    | 21/04/2025 | Versão inicial do documento       | Equipe ConsultTributario - Grupo 07 |
 
 O mercado de soluções tributárias no Brasil ainda é bastante restrito, sendo o ClickFiscal uma das únicas plataformas disponíveis voltadas à análise fiscal. No entanto, essa ferramenta apresenta limitações significativas, como uma mensalidade de 550 reais e uma resposta de questionário muito manual, que não faz o uso de dados públicos para uma consulta mais rápida das teses aplicáveis.
 

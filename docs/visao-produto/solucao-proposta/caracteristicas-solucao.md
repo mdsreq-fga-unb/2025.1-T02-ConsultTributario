@@ -2,7 +2,7 @@
 
 | Versão | Data       | Descrição                         | Autor                               |
 |------- |----------- | --------------------------------- | ----------------------------------- |
-| 1.0    | dd/mm/yyyy | Versão inicial do documento       | Equipe ConsultTributario - Grupo 07 |
+| 1.0    | 21/04/2025 | Versão inicial do documento       | Equipe ConsultTributario - Grupo 07 |
 
 Esse é um conjunto inicial das principais características que a solução deve possuir:
 

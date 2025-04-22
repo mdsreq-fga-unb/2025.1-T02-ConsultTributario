@@ -2,7 +2,7 @@
 
 | Versão | Data       | Descrição                         | Autor                               |
 |------- |----------- | --------------------------------- | ----------------------------------- |
-| 1.0    | dd/mm/yyyy | Versão inicial do documento       | Equipe ConsultTributario - Grupo 07 |
+| 1.0    | 21/04/2025 | Versão inicial do documento       | Equipe ConsultTributario - Grupo 07 |
 
 A implementação da plataforma *ConsultTributario* trará benefícios significativos para o cliente, otimizando tanto a atuação profissional quanto a gestão do negócio:
 

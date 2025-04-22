@@ -2,7 +2,7 @@
 
 | Versão | Data       | Descrição                         | Autor                               |
 |------- |----------- | --------------------------------- | ----------------------------------- |
-| 1.0    | dd/mm/yyyy | Versão inicial do documento       | Equipe ConsultTributario - Grupo 07 |
+| 1.0    | 21/04/2025 | Versão inicial do documento       | Equipe ConsultTributario - Grupo 07 |
 
 A viabilidade do projeto é considerada media, uma vez que parte da equipe ainda não possui experiência comprovada em todas as tecnologias que serão utilizadas, como Next.js, Nest.js e MongoDB. No entanto, a equipe já possui familiaridade com desenvolvimento fullstack, incluindo a criação e o consumo de APIs, além da integração entre frontend e backend. 
 

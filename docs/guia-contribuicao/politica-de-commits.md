@@ -2,8 +2,8 @@
 
 | Versão | Data       | Descrição                             | Autor                               |
 |------- |----------- | ------------------------------------- | ----------------------------------- |
-| 1.0    | dd/mm/yyyy | Versão inicial do documento (commits) | Equipe ConsultTributario - Grupo 07 |
-| 1.1    | dd/mm/yyyy | Revisões e melhorias gerais           | Equipe ConsultTributario - Grupo 07 |
+| 1.0    | 21/04/2025 | Versão inicial do documento (commits) | Equipe ConsultTributario - Grupo 07 |
+| 1.1    | 21/04/2025 | Revisões e melhorias gerais           | Equipe ConsultTributario - Grupo 07 |
 
 ---
 

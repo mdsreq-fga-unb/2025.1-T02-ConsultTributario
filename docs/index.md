@@ -15,16 +15,27 @@ Navegue pela documentação do projeto:
 - [Identificação da Oportunidade](visao-produto/cenario-atual/oportunidade.md)
 - [Desafios do Projeto](visao-produto/cenario-atual/desafios.md)
 - [Segmentação de Clientes](visao-produto/cenario-atual/segmentacao-clientes.md)
-- [Estratégias de Engenharia de Software](visao-produto/estrategias-engenharia-software.md)
 - [Lições aprendidas](visao-produto/licoes-aprendidas.md)
 
 ### Solução Proposta
+- [Objetivos do Produto](visao-produto/solucao-proposta/objetivos-produto.md)
 - [Características da Solução](visao-produto/solucao-proposta/caracteristicas-solucao.md)
 - [Tecnologias](visao-produto/solucao-proposta/tecnologias.md)
+- [Pesquisa de Mercado](visao-produto/solucao-proposta/pesquisa-mercado.md)
 - [Análise de Viabilidade](visao-produto/solucao-proposta/analise-viabilidade.md)
+- [Impacto da Solução](visao-produto/solucao-proposta/impacto-solucao.md)
 
 ### Cronograma de Entregas
 - [Cronograma de Entregas](visao-produto/solucao-proposta/cronograma-entrega.md)
+
+### Estratégias de Engenharia de Software
+- [Estratégias de Engenharia de Software](visao-produto/estrategias-engenharia-software.md)
+
+### Interação Equipe e Cliente
+- [Interação Equipe e Cliente](visao-produto/interacao-equipe-cliente.md)
+
+### Lições aprendidas
+- [Lições aprendidas](visao-produto/licoes-aprendidas.md)
 
 ### Guia de Contribuição
 - [Política de Commits](guia-contribuicao/politica-de-commits.md)
