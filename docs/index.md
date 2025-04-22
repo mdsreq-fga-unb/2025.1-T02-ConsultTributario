@@ -26,7 +26,7 @@ Navegue pela documentação do projeto:
 - [Impacto da Solução](visao-produto/solucao-proposta/impacto-solucao.md)
 
 ### Cronograma de Entregas
-- [Cronograma de Entregas](visao-produto/solucao-proposta/cronograma-entrega.md)
+- [Cronograma de Entregas](visao-produto/cronograma-entrega.md)
 
 ### Estratégias de Engenharia de Software
 - [Estratégias de Engenharia de Software](visao-produto/estrategias-engenharia-software.md)
