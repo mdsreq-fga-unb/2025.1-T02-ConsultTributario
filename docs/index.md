@@ -37,6 +37,9 @@ Navegue pela documentação do projeto:
 ### Lições aprendidas
 - [Lições aprendidas](visao-produto/licoes-aprendidas.md)
 
+### Apresentações
+- [Apresentação 1](apresentacoes/apresentacao-1.md)
+
 ### Guia de Contribuição
 - [Política de Commits](guia-contribuicao/politica-de-commits.md)
 - [Política de Branches](guia-contribuicao/politica-de-branches.md)

@@ -73,3 +73,5 @@ nav:
   - Guia de Contribuição: 
     - Política de Branches: guia-contribuicao/politica-de-branches.md
     - Política de Commits: guia-contribuicao/politica-de-commits.md
+  - Apresentações:
+    - Apresentação 1: apresentacoes/apresentacao-1.md
