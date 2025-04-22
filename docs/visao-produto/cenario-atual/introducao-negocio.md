@@ -6,7 +6,7 @@
 
 ---
 
-No exercício diário de sua profissão, um advogado tributarista recorre a diversas consultas a diferentes sites governamentais para obter todos os dados referentes a um CNPJ, como consultar se existe alguma dívida, verificar o porte da empresa, consultar o setor de atuação e várias outras consultas. Após isso o advogado precisa analisar todos esses dados de diferentes fontes e verificar quais das suas teses se aplicam e poderiam ser utilizadas para um possível ação judicial que caso seja ganha resulta em economia financeira para a empresa cliente.
+No exercício diário de sua profissão, nosso cliente, um advogado tributarista, com 6 anos de experiência na área recorre a diversas consultas a diferentes sites governamentais para obter todos os dados referentes a um CNPJ, como consultar se existe alguma dívida, verificar o porte da empresa, consultar o setor de atuação e várias outras consultas. Após isso o advogado precisa analisar todos esses dados de diferentes fontes e verificar quais das suas teses se aplicam e poderiam ser utilizadas para um possível ação judicial que caso seja ganha resulta em economia financeira para a empresa cliente.
 
 Para minimizar o tempo gasto na etapa de identificação de teses nosso cliente faz uso de um sistema web pago, que reduz um trabalho que duraria semanas em dias. Esse software é especializado em recuperação tributária e é utilizado para identificar teses que se aplicam a uma empresa.
 

@@ -19,20 +19,29 @@ A equipe de desenvolvimento será composta dessa maneira:
 
 **Ferramentas de Comunicação.**
 
-- **Discord/Whatsapp:** Serão utilizados para a comunicação diária da equipe, troca de mensagens breves, compartilhamento de arquivos relevantes ao projeto e contato imediato com o cliente. Essas ferramentas garantem agilidade e acessibilidade na comunicação entre os membros da equipe.
-- **Google Meet:** Ferramenta utilizada para a realização de reuniões de planejamento de sprints, revisões de produto e validações com o cliente. Sua funcionalidade de videoconferência permite uma comunicação clara, mesmo em ambientes remotos, promovendo alinhamento entre os envolvidos.
-- **Trello:** Plataforma adotada para o gerenciamento das tarefas e acompanhamento do progresso do projeto, utilizando a metodologia ágil. Cada membro da equipe poderá visualizar suas responsabilidades, prazos e atividades em andamento, promovendo maior organização e colaboração.
+* **Discord/Whatsapp:** Serão utilizados para a comunicação diária da equipe, troca de mensagens breves, compartilhamento de arquivos relevantes ao projeto e contato imediato com o cliente. Essas ferramentas garantem agilidade e acessibilidade na comunicação entre os membros da equipe.
+
+* **Google Meet:** Ferramenta utilizada para a realização de reuniões de planejamento de sprints, revisões de produto e validações com o cliente. Sua funcionalidade de videoconferência permite uma comunicação clara, mesmo em ambientes remotos, promovendo alinhamento entre os envolvidos.
+
+* **Trello:** Plataforma adotada para o gerenciamento das tarefas e acompanhamento do progresso do projeto, utilizando a metodologia ágil. Cada membro da equipe poderá visualizar suas responsabilidades, prazos e atividades em andamento, promovendo maior organização e colaboração.
 
 **Métodos e Frequência de Reuniões.**
 
-- **Revisão de Sprint (quinzenal):** Ao término de cada sprint, a cada duas semanas, será realizada uma reunião de revisão com a presença do cliente. Nesse encontro, a equipe apresentará as funcionalidades implementadas, possibilitando que o cliente as experimente e forneça feedbacks valiosos. Com base nessas observações, o backlog poderá ser ajustado para refletir novas necessidades ou correções identificadas.
-- **Planejamento de Sprint:** Logo após a revisão, será conduzida uma reunião de planejamento com o cliente e a equipe, onde serão definidas as metas do próximo sprint. Nessa ocasião, o backlog será analisado, priorizado e atualizado conforme os comentários e sugestões obtidas durante a revisão anterior.
-- **Retrospectiva de Sprint:** No encerramento de cada sprint, a equipe realizará uma reunião interna de retrospectiva. O objetivo é discutir os pontos positivos do ciclo, identificar aspectos a serem aprimorados e registrar os aprendizados obtidos. Essa prática visa fortalecer o trabalho em equipe e promover a melhoria contínua do processo de desenvolvimento.
+	
+
+* **Daily Meeting (reunião diária):** Serão realizadas as reuniões diariamente de forma assíncrona pelo Discord, utilizando um canal de texto para cada membro da equipe realizar as anotações do dia (O que fez, Impedimentos, etc..). O objetivo dessas reuniões é promover o alinhamento diário entre os membros, permitindo que cada integrante compartilhe o que fez no dia anterior, o que pretende fazer no dia atual e se há algum impedimento ou dificuldade em seu progresso.
+
+* **Revisão de Sprint (quinzenal):** Ao término de cada sprint, a cada duas semanas, será realizada uma reunião de revisão com a presença do cliente. Nesse encontro, a equipe apresentará as funcionalidades implementadas, possibilitando que o cliente as experimente e forneça feedbacks valiosos. Com base nessas observações, o backlog poderá ser ajustado para refletir novas necessidades ou correções identificadas.
+
+* **Planejamento de Sprint:** Logo após a revisão, será conduzida uma reunião de planejamento com o cliente e a equipe, onde serão definidas as metas do próximo sprint. Nessa ocasião, o backlog será analisado, priorizado e atualizado conforme os comentários e sugestões obtidas durante a revisão anterior.
+
+* **Retrospectiva de Sprint:** No encerramento de cada sprint, a equipe realizará uma reunião interna de retrospectiva. O objetivo é discutir os pontos positivos do ciclo, identificar aspectos a serem aprimorados e registrar os aprendizados obtidos. Essa prática visa fortalecer o trabalho em equipe e promover a melhoria contínua do processo de desenvolvimento.
 
 **Frequência de Interações com o Cliente.**
 
-- **Revisões de Sprint:** O cliente irá participar ativamente das reuniões de revisão de sprint, contribuindo com feedbacks sobre as funcionalidades desenvolvidas, validando entregas parciais e colaborando com direcionamentos para as próximas etapas do projeto.
-- **Interações extras via Whatsapp:** Além das reuniões formais, o cliente utilizará o WhatsApp para manter contato direto com os membros da equipe. Essa ferramenta será utilizada para comunicações rápidas, esclarecimento de dúvidas pontuais e resolução de questões imediatas que possam surgir durante o desenvolvimento.
+* **Revisões de Sprint:** O cliente irá participar ativamente das reuniões de revisão de sprint, contribuindo com feedbacks sobre as funcionalidades desenvolvidas, validando entregas parciais e colaborando com direcionamentos para as próximas etapas do projeto.
+
+* **Interações extras via Whatsapp:** Além das reuniões formais, o cliente utilizará o WhatsApp para manter contato direto com os membros da equipe. Essa ferramenta será utilizada para comunicações rápidas, esclarecimento de dúvidas pontuais e resolução de questões imediatas que possam surgir durante o desenvolvimento.
 
 **5.3 Processo de Validação**
 
