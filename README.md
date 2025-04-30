@@ -91,5 +91,6 @@ Para contribuir com a documentação:
     <td align="center"><a href="https://github.com/fdiogo1"><img style="border-radius: 50%;" src="https://github.com/fdiogo1.png" width="100px;" alt=""/><br/><sub><b>Diogo Ferreira</b></sub></a><br/>
     <td align="center"><a href="https://github.com/"><img style="border-radius: 50%;" src="https://github.com/ " width="100px;" alt=""/><br/><sub><b>Artur Krauspenhar</b></sub></a><br/>
     <td align="center"><a href="https://github.com/Mach1r0"><img style="border-radius: 50%;" src="https://github.com/Mach1r0.png" width="100px;" alt=""/><br/><sub><b>Daniel Ferreira</b></sub></a><br/>
+    <td align="center"><a href="https://github.com/Arturhk05"><img style="border-radius: 50%;" src="https://github.com/Arturhk05.png" width="100px;" alt=""/><br/><sub><b>Artur H. Krauspenhar</b></sub></a><br/>
   </tr>
   </tr>
