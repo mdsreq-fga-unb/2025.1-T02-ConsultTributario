@@ -12,13 +12,9 @@
         <meta name="author" content="Grupo 07 - Engenharia de Requisitos - UnB">
       
       
-        <link rel="canonical" href="https://mdsreq-fga-unb.github.io/2025.1-T02-ConsultTributario/guia-contribuicao/politica-de-branches/">
+        <link rel="canonical" href="https://mdsreq-fga-unb.github.io/2025.1-T02-ConsultTributario/guia-contribuicao/processo-verificacao-validacao/">
       
       
-        <link rel="prev" href="../../visao-produto/licoes-aprendidas/">
-      
-      
-        <link rel="next" href="../politica-de-commits/">
       
       
       <link rel="icon" href="../../assets/logo/logo.png">
@@ -26,7 +22,7 @@
     
     
       
-        <title>Política de Branches - ConsultTributário - Grupo 07</title>
+        <title>Processo de Verificação e Validação (V&V) - ConsultTributário - Grupo 07</title>
       
     
     
@@ -78,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#politica-de-branches" class="md-skip">
+        <a href="#processo-de-verificacao-e-validacao-vv" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Política de Branches
+              Processo de Verificação e Validação (V&amp;V)
             
           </span>
         </div>
@@ -271,13 +267,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../politica-de-branches/" class="md-tabs__link">
           
   
   
@@ -861,31 +855,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -898,7 +889,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Guia de Contribuição
@@ -909,32 +900,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Política de Branches
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../politica-de-branches/" class="md-nav__link">
         
   
   
@@ -945,296 +914,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Índice">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-estrutura-principal-de-branches" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Estrutura Principal de Branches
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Estrutura Principal de Branches">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-branch-main" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.1 Branch main
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-branch-docs" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.2 Branch docs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-branch-gh-pages" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3 Branch gh-pages
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-branch-backend" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.4 Branch backend
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15-branch-frontend" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.5 Branch frontend
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-branches-de-desenvolvimento" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Branches de Desenvolvimento
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Branches de Desenvolvimento">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-branches-de-documentacao" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.1 Branches de Documentação
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-branches-de-backend" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.2 Branches de Backend
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-branches-de-frontend" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.3 Branches de Frontend
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24-branches-de-bugfix" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.4 Branches de Bugfix
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#25-branches-de-hotfix" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.5 Branches de Hotfix
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-processo-de-pull-request-e-revisao-de-codigo" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Processo de Pull Request e Revisão de Código
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Processo de Pull Request e Revisão de Código">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-criacao-do-pull-request" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 Criação do Pull Request
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-processo-de-revisao-de-codigo" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2 Processo de Revisão de Código
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-resolucao-de-conflitos" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.3 Resolução de Conflitos
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-verificacao-e-validacao-vv" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Verificação e Validação (V&amp;V)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Verificação e Validação (V&amp;V)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-verificacao" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.1 Verificação
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-validacao" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.2 Validação
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-criterios-para-aprovacao-de-vv" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.3 Critérios para aprovação de V&amp;V
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-matriz-de-rastreabilidade" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Matriz de Rastreabilidade
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Matriz de Rastreabilidade">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-elementos-da-matriz" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.1 Elementos da Matriz
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-atualizacao-da-matriz" class="md-nav__link">
-    <span class="md-ellipsis">
-      5.2 Atualização da Matriz
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-fluxo-completo-de-trabalho" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Fluxo Completo de Trabalho
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Fluxo Completo de Trabalho">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#61-diagrama-do-fluxo-de-trabalho" class="md-nav__link">
-    <span class="md-ellipsis">
-      6.1 Diagrama do Fluxo de Trabalho
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    <span class="md-ellipsis">
-      Referências
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1364,7 +1043,7 @@
   
 
 
-<h1 id="politica-de-branches">Política de Branches<a class="headerlink" href="#politica-de-branches" title="Permanent link">&para;</a></h1>
+<h1 id="processo-de-verificacao-e-validacao-vv">Processo de Verificação e Validação (V&amp;V)<a class="headerlink" href="#processo-de-verificacao-e-validacao-vv" title="Permanent link">&para;</a></h1>
 <table>
 <thead>
 <tr>
@@ -1377,276 +1056,305 @@
 <tbody>
 <tr>
 <td>1.0</td>
-<td>-</td>
-<td><a href="https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario">Equipe ConsultTributário</a></td>
-<td>Versão inicial, documentação base herdada.</td>
-</tr>
-<tr>
-<td>2.0</td>
-<td>05/05/2025</td>
+<td>27/04/2025</td>
+<td>Versão inicial do documento</td>
 <td><a href="https://github.com/viniciusvieira00">Vinicius Vieira</a></td>
-<td>Atualizações da política, baseada nas novas ISSUES e padronizações para o projeto.</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="1-estrutura-principal-de-branches">1. Estrutura Principal de Branches<a class="headerlink" href="#1-estrutura-principal-de-branches" title="Permanent link">&para;</a></h2>
-<p>O projeto <strong>ConsultTributario</strong> utiliza uma estrutura de branches específica para organizar o desenvolvimento e a documentação.</p>
-<h3 id="11-branch-main">1.1 Branch <strong>main</strong><a class="headerlink" href="#11-branch-main" title="Permanent link">&para;</a></h3>
-<p>Branch principal do repositório, utilizada <strong>apenas</strong> para o README.md com instruções de acesso à documentação e informações gerais do projeto.</p>
-<p><strong>Regras:</strong>
-- Só existe uma <code>main</code> no projeto
-- <strong>Commits não são permitidos diretamente</strong> nessa branch
-- Alterações no README ou arquivos essenciais devem ser feitas via Pull Requests</p>
-<h3 id="12-branch-docs">1.2 Branch <strong>docs</strong><a class="headerlink" href="#12-branch-docs" title="Permanent link">&para;</a></h3>
-<p>Branch onde é desenvolvida toda a documentação do projeto utilizando o framework MkDocs.</p>
-<p><strong>Regras:</strong>
-- Utilizada para a escrita e manutenção da documentação
-- <strong>Não é</strong> a branch de deploy da documentação (que é a <code>gh-pages</code>)
-- Alterações complexas devem ser feitas em branches específicas (ex: <code>doc/X-nome_documento</code>) e depois integradas via PR</p>
-<h3 id="13-branch-gh-pages">1.3 Branch <strong>gh-pages</strong><a class="headerlink" href="#13-branch-gh-pages" title="Permanent link">&para;</a></h3>
-<p>Branch utilizada exclusivamente para o deploy automático da documentação.</p>
-<p><strong>Regras:</strong>
-- Gerada automaticamente pelo workflow do GitHub Actions ou via CLI do MkDocs
-- <strong>Não deve receber commits manuais</strong>
-- Contém apenas os arquivos HTML, CSS e JS gerados pelo MkDocs</p>
-<h3 id="14-branch-backend">1.4 Branch <strong>backend</strong><a class="headerlink" href="#14-branch-backend" title="Permanent link">&para;</a></h3>
-<p>Branch principal para o desenvolvimento do backend da aplicação.</p>
-<p><strong>Regras:</strong>
-- Contém o código-fonte da API e serviços (NestJS)
-- Novas funcionalidades devem ser desenvolvidas em branches específicas (ex: <code>backend/X-nome_funcionalidade</code>)
-- Integrações ocorrem via Pull Requests após revisão</p>
-<h3 id="15-branch-frontend">1.5 Branch <strong>frontend</strong><a class="headerlink" href="#15-branch-frontend" title="Permanent link">&para;</a></h3>
-<p>Branch principal para o desenvolvimento do frontend da aplicação.</p>
-<p><strong>Regras:</strong>
-- Contém o código-fonte da interface de usuário (Next.js)
-- Novas funcionalidades devem ser desenvolvidas em branches específicas (ex: <code>frontend/X-nome_funcionalidade</code>)
-- Integrações ocorrem via Pull Requests após revisão</p>
+<h2 id="1-introducao">1. Introdução<a class="headerlink" href="#1-introducao" title="Permanent link">&para;</a></h2>
+<p>O Processo de Verificação e Validação (V&amp;V) do projeto <strong>ConsultTributario</strong> estabelece práticas e procedimentos sistemáticos para garantir que o software desenvolvido esteja em conformidade com os requisitos especificados e atenda às necessidades dos usuários. Este documento detalha as atividades, responsabilidades e critérios relacionados ao V&amp;V, servindo como referência para toda a equipe de desenvolvimento.</p>
+<h2 id="2-definicoes-fundamentais">2. Definições Fundamentais<a class="headerlink" href="#2-definicoes-fundamentais" title="Permanent link">&para;</a></h2>
+<h3 id="21-verificacao">2.1 Verificação<a class="headerlink" href="#21-verificacao" title="Permanent link">&para;</a></h3>
+<p>A <strong>verificação</strong> responde à pergunta: "<strong>Estamos construindo o produto corretamente?</strong>"</p>
+<p>Refere-se ao conjunto de atividades que garantem que o software implementa uma função específica corretamente. É o processo de avaliação de artefatos (documentos, código, testes) para determinar se atendem às especificações.</p>
+<h3 id="22-validacao">2.2 Validação<a class="headerlink" href="#22-validacao" title="Permanent link">&para;</a></h3>
+<p>A <strong>validação</strong> responde à pergunta: "<strong>Estamos construindo o produto correto?</strong>"</p>
+<p>Refere-se ao conjunto de atividades que garantem que o software construído atende aos requisitos do usuário. É o processo de avaliar o sistema para determinar se ele satisfaz as necessidades e expectativas das partes interessadas.</p>
+<h2 id="3-processo-de-vv-no-ciclo-de-desenvolvimento">3. Processo de V&amp;V no Ciclo de Desenvolvimento<a class="headerlink" href="#3-processo-de-vv-no-ciclo-de-desenvolvimento" title="Permanent link">&para;</a></h2>
+<h3 id="31-diagrama-do-processo">3.1 Diagrama do Processo<a class="headerlink" href="#31-diagrama-do-processo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>Requisitos → Projeto → Implementação → Testes → Implantação
+    ↑         ↑          ↑              ↑           ↑
+    |         |          |              |           |
+Verificação Verificação Verificação  Verificação Verificação
+Validação   Validação   Validação    Validação   Validação
+</code></pre></div>
+<h3 id="32-atividades-por-fase">3.2 Atividades por Fase<a class="headerlink" href="#32-atividades-por-fase" title="Permanent link">&para;</a></h3>
+<h4 id="321-fase-de-requisitos">3.2.1 Fase de Requisitos<a class="headerlink" href="#321-fase-de-requisitos" title="Permanent link">&para;</a></h4>
+<p><strong>Verificação</strong>:
+- Revisão de requisitos para consistência e completude
+- Análise de rastreabilidade
+- Verificação de conformidade com padrões e regulamentações tributárias</p>
+<p><strong>Validação</strong>:
+- Validação com partes interessadas
+- Prototipagem para validação de requisitos
+- Revisão de requisitos por especialistas do domínio tributário</p>
+<h4 id="322-fase-de-projeto">3.2.2 Fase de Projeto<a class="headerlink" href="#322-fase-de-projeto" title="Permanent link">&para;</a></h4>
+<p><strong>Verificação</strong>:
+- Revisão de design
+- Análise estática da arquitetura
+- Verificação de conformidade com padrões de projeto</p>
+<p><strong>Validação</strong>:
+- Avaliação da arquitetura em relação aos requisitos não-funcionais
+- Revisões técnicas com especialistas
+- Prototipagem de interface</p>
+<h4 id="323-fase-de-implementacao">3.2.3 Fase de Implementação<a class="headerlink" href="#323-fase-de-implementacao" title="Permanent link">&para;</a></h4>
+<p><strong>Verificação</strong>:
+- Análise estática de código
+- Revisão de código por pares
+- Verificação de conformidade com padrões de codificação</p>
+<p><strong>Validação</strong>:
+- Testes unitários
+- Testes de integração
+- Verificação de cobertura de código</p>
+<h4 id="324-fase-de-testes">3.2.4 Fase de Testes<a class="headerlink" href="#324-fase-de-testes" title="Permanent link">&para;</a></h4>
+<p><strong>Verificação</strong>:
+- Verificação dos casos de teste
+- Revisão dos resultados dos testes
+- Análise de cobertura de requisitos</p>
+<p><strong>Validação</strong>:
+- Testes de sistema
+- Testes de aceitação
+- Testes de usuário
+- Testes de regressão</p>
+<h4 id="325-fase-de-implantacao">3.2.5 Fase de Implantação<a class="headerlink" href="#325-fase-de-implantacao" title="Permanent link">&para;</a></h4>
+<p><strong>Verificação</strong>:
+- Verificação da integridade do build
+- Verificação da configuração do ambiente
+- Análise de segurança</p>
+<p><strong>Validação</strong>:
+- Testes em ambiente de homologação
+- Validação final com usuários
+- Testes de aceitação operacional</p>
+<h2 id="4-tecnicas-e-metodos-de-vv">4. Técnicas e Métodos de V&amp;V<a class="headerlink" href="#4-tecnicas-e-metodos-de-vv" title="Permanent link">&para;</a></h2>
+<h3 id="41-tecnicas-de-verificacao">4.1 Técnicas de Verificação<a class="headerlink" href="#41-tecnicas-de-verificacao" title="Permanent link">&para;</a></h3>
+<h4 id="411-analise-estatica">4.1.1 Análise Estática<a class="headerlink" href="#411-analise-estatica" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Revisões</strong>: Inspeções formais, walkthrough, revisão técnica</li>
+<li><strong>Análise de Código</strong>: Linters, análise de complexidade, detecção de vulnerabilidades</li>
+<li><strong>Verificação Formal</strong>: Para componentes críticos relacionados a cálculos tributários</li>
+</ul>
+<h4 id="412-analise-dinamica">4.1.2 Análise Dinâmica<a class="headerlink" href="#412-analise-dinamica" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Testes Unitários</strong>: Verificação de componentes isolados</li>
+<li><strong>Testes de Integração</strong>: Verificação da interação entre componentes</li>
+<li><strong>Testes de Desempenho</strong>: Análise de tempos de resposta e recursos</li>
+<li><strong>Testes de Segurança</strong>: Identificação de vulnerabilidades</li>
+</ul>
+<h3 id="42-tecnicas-de-validacao">4.2 Técnicas de Validação<a class="headerlink" href="#42-tecnicas-de-validacao" title="Permanent link">&para;</a></h3>
+<h4 id="421-validacao-de-requisitos">4.2.1 Validação de Requisitos<a class="headerlink" href="#421-validacao-de-requisitos" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Prototipagem</strong>: Avaliação de interfaces e fluxos de trabalho</li>
+<li><strong>Revisão por Stakeholders</strong>: Feedback dos usuários e especialistas em tributação</li>
+<li><strong>Análise de Casos de Uso</strong>: Simulação de cenários reais</li>
+</ul>
+<h4 id="422-validacao-de-sistema">4.2.2 Validação de Sistema<a class="headerlink" href="#422-validacao-de-sistema" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Testes Funcionais</strong>: Verificação do comportamento do sistema</li>
+<li><strong>Testes de Aceitação</strong>: Validação dos critérios de aceitação</li>
+<li><strong>Testes de Usabilidade</strong>: Avaliação da experiência do usuário</li>
+<li><strong>Testes de Conformidade</strong>: Validação contra regulamentações tributárias</li>
+</ul>
+<h2 id="5-metricas-e-criterios-de-vv">5. Métricas e Critérios de V&amp;V<a class="headerlink" href="#5-metricas-e-criterios-de-vv" title="Permanent link">&para;</a></h2>
+<h3 id="51-metricas-de-verificacao">5.1 Métricas de Verificação<a class="headerlink" href="#51-metricas-de-verificacao" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Descrição</th>
+<th>Meta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cobertura de Código</td>
+<td>Percentual de código executado durante testes</td>
+<td>≥ 80%</td>
+</tr>
+<tr>
+<td>Densidade de Defeitos</td>
+<td>Número de defeitos por KLOC</td>
+<td>&lt; 5</td>
+</tr>
+<tr>
+<td>Complexidade Ciclomática</td>
+<td>Complexidade do código</td>
+<td>≤ 10</td>
+</tr>
+<tr>
+<td>Violações de Padrão</td>
+<td>Número de violações de padrão de código</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Dívida Técnica</td>
+<td>Tempo estimado para corrigir problemas</td>
+<td>&lt; 5%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-metricas-de-validacao">5.2 Métricas de Validação<a class="headerlink" href="#52-metricas-de-validacao" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Descrição</th>
+<th>Meta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Satisfação do Usuário</td>
+<td>Avaliação do usuário (1-5)</td>
+<td>≥ 4</td>
+</tr>
+<tr>
+<td>Cobertura de Requisitos</td>
+<td>Percentual de requisitos validados</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Taxa de Sucesso</td>
+<td>Percentual de operações concluídas com sucesso</td>
+<td>≥ 95%</td>
+</tr>
+<tr>
+<td>Precisão</td>
+<td>Exatidão dos cálculos tributários</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Tempo de Resposta</td>
+<td>Tempo médio de resposta do sistema</td>
+<td>≤ 2s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-criterios-de-aceitacao">5.3 Critérios de Aceitação<a class="headerlink" href="#53-criterios-de-aceitacao" title="Permanent link">&para;</a></h3>
+<p>Para que uma alteração seja considerada verificada e validada, os seguintes critérios devem ser atendidos:</p>
+<ol>
+<li><strong>Critérios de Verificação</strong>:</li>
+<li>Todos os testes automatizados passam</li>
+<li>Cobertura de código ≥ 80%</li>
+<li>Sem violações críticas nos linters</li>
+<li>
+<p>Revisão de código aprovada por pelo menos 2 revisores</p>
+</li>
+<li>
+<p><strong>Critérios de Validação</strong>:</p>
+</li>
+<li>Todos os critérios de aceitação atendidos</li>
+<li>Testes de aceitação aprovados</li>
+<li>Sem desvios em relação à legislação tributária aplicável</li>
+<li>Validação pelo Product Owner/stakeholders</li>
+</ol>
+<h2 id="6-integracao-com-o-processo-de-pull-request">6. Integração com o Processo de Pull Request<a class="headerlink" href="#6-integracao-com-o-processo-de-pull-request" title="Permanent link">&para;</a></h2>
+<p>O processo de V&amp;V está diretamente integrado ao fluxo de trabalho de Pull Requests, conforme indicado no template PR. </p>
+<h3 id="61-checklist-de-vv-no-pr-template">6.1 Checklist de V&amp;V no PR Template<a class="headerlink" href="#61-checklist-de-vv-no-pr-template" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">- [ ]</span> O código segue os padrões de estilo definidos no projeto.
+<span class="k">- [ ]</span> Foram adicionados testes unitários e/ou de integração relevantes.
+<span class="k">- [ ]</span> A cobertura de testes permanece acima de 80%.
+<span class="k">- [ ]</span> Documentação atualizada conforme necessário.
+<span class="k">- [ ]</span> Todos os requisitos afetados foram atualizados na matriz de rastreabilidade.
+<span class="k">- [ ]</span> As alterações foram validadas conforme o plano de Verificação &amp; Validação (V&amp;V).
+</code></pre></div>
+<h3 id="62-responsabilidades">6.2 Responsabilidades<a class="headerlink" href="#62-responsabilidades" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Autor do PR</strong>: Executar verificações iniciais e validações</li>
+<li><strong>Revisores</strong>: Verificar a conformidade com os critérios de V&amp;V</li>
+<li><strong>QA</strong>: Validar requisitos funcionais e não-funcionais</li>
+<li><strong>Product Owner</strong>: Validar atendimento às necessidades do negócio</li>
+</ul>
+<h3 id="63-evidencias-de-vv">6.3 Evidências de V&amp;V<a class="headerlink" href="#63-evidencias-de-vv" title="Permanent link">&para;</a></h3>
+<p>Para cada PR, o desenvolvedor deve fornecer evidências de que o processo de V&amp;V foi seguido:</p>
+<ol>
+<li><strong>Resultados dos Testes</strong>: Capturas de tela ou logs dos testes executados</li>
+<li><strong>Relatório de Cobertura</strong>: Evidência da cobertura de código</li>
+<li><strong>Checklist Completo</strong>: Todos os itens do checklist de V&amp;V marcados</li>
+<li><strong>Documentação Atualizada</strong>: Referências à documentação atualizada</li>
+</ol>
+<h2 id="7-ferramentas-de-suporte-ao-vv">7. Ferramentas de Suporte ao V&amp;V<a class="headerlink" href="#7-ferramentas-de-suporte-ao-vv" title="Permanent link">&para;</a></h2>
+<h3 id="71-ferramentas-de-verificacao">7.1 Ferramentas de Verificação<a class="headerlink" href="#71-ferramentas-de-verificacao" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Ferramentas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Análise Estática</td>
+<td>ESLint, TypeScript</td>
+</tr>
+<tr>
+<td>Testes Unitários</td>
+<td>Jest</td>
+</tr>
+<tr>
+<td>Testes de Integração</td>
+<td>Supertest, Cypress</td>
+</tr>
+<tr>
+<td>Cobertura de Código</td>
+<td>Jest Coverage</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>GitHub Actions</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-ferramentas-de-validacao">7.2 Ferramentas de Validação<a class="headerlink" href="#72-ferramentas-de-validacao" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Ferramentas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Testes de Aceitação</td>
+<td>Cucumber</td>
+</tr>
+<tr>
+<td>Testes de UI</td>
+<td>Cypress</td>
+</tr>
+<tr>
+<td>Testes de Desempenho</td>
+<td>JMeter</td>
+</tr>
+<tr>
+<td>Gestão de Requisitos</td>
+<td>GitHub Issues, Matriz de Rastreabilidade</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-tratamento-de-nao-conformidades">8. Tratamento de Não-Conformidades<a class="headerlink" href="#8-tratamento-de-nao-conformidades" title="Permanent link">&para;</a></h2>
+<p>Quando problemas são identificados durante o processo de V&amp;V:</p>
+<ol>
+<li><strong>Registro</strong>: Documentar o problema no sistema de rastreamento (GitHub Issues)</li>
+<li><strong>Classificação</strong>: Categorizar por severidade e impacto</li>
+<li><strong>Análise</strong>: Determinar causa raiz e impacto</li>
+<li><strong>Correção</strong>: Implementar solução seguindo o processo normal de desenvolvimento</li>
+<li><strong>Verificação</strong>: Retestar para confirmar que o problema foi resolvido</li>
+<li><strong>Prevenção</strong>: Atualizar processos para evitar problemas similares no futuro</li>
+</ol>
 <hr />
-<h2 id="2-branches-de-desenvolvimento">2. Branches de Desenvolvimento<a class="headerlink" href="#2-branches-de-desenvolvimento" title="Permanent link">&para;</a></h2>
-<p>Para o desenvolvimento de novas funcionalidades ou correção de bugs, devem ser criadas branches específicas a partir das branches principais.</p>
-<h3 id="21-branches-de-documentacao">2.1 Branches de Documentação<a class="headerlink" href="#21-branches-de-documentacao" title="Permanent link">&para;</a></h3>
-<p>Branches para desenvolvimento de documentação específica são criadas a partir de <code>docs</code>.</p>
-<p><strong>Padrão de nomenclatura</strong>:
-<div class="highlight"><pre><span></span><code>doc/X-nome_documento
-</code></pre></div>
-<strong>Exemplo</strong>:
-<div class="highlight"><pre><span></span><code>doc/12-guia_contribuicao
-</code></pre></div>
-<strong>Onde</strong>:
-- <strong>X</strong>: número da <em>issue</em> associada (se houver)
-- <strong>nome_documento</strong>: título descritivo do artefato</p>
-<p><strong>Observação importante</strong>: Para evitar conflitos, as branches de documentação <strong>devem sempre</strong> utilizar o prefixo <code>doc/</code> (e não <code>docs/</code>).</p>
-<h3 id="22-branches-de-backend">2.2 Branches de Backend<a class="headerlink" href="#22-branches-de-backend" title="Permanent link">&para;</a></h3>
-<p>Branches para desenvolvimento de funcionalidades no backend são criadas a partir de <code>backend</code>.</p>
-<p><strong>Padrão de nomenclatura</strong>:
-<div class="highlight"><pre><span></span><code>backend/X-nome_da_funcionalidade
-</code></pre></div>
-<strong>Exemplo</strong>:
-<div class="highlight"><pre><span></span><code>backend/8-criar-crud-clientes
-</code></pre></div>
-<strong>Onde</strong>:
-- <strong>X</strong>: número da <em>issue</em> associada
-- <strong>nome_da_funcionalidade</strong>: título descritivo da funcionalidade</p>
-<h3 id="23-branches-de-frontend">2.3 Branches de Frontend<a class="headerlink" href="#23-branches-de-frontend" title="Permanent link">&para;</a></h3>
-<p>Branches para desenvolvimento de funcionalidades no frontend são criadas a partir de <code>frontend</code>.</p>
-<p><strong>Padrão de nomenclatura</strong>:
-<div class="highlight"><pre><span></span><code>frontend/X-nome_da_funcionalidade
-</code></pre></div>
-<strong>Exemplo</strong>:
-<div class="highlight"><pre><span></span><code>frontend/15-implementar-tela-calculo-icms
-</code></pre></div>
-<strong>Onde</strong>:
-- <strong>X</strong>: número da <em>issue</em> associada
-- <strong>nome_da_funcionalidade</strong>: título descritivo da funcionalidade</p>
-<h3 id="24-branches-de-bugfix">2.4 Branches de Bugfix<a class="headerlink" href="#24-branches-de-bugfix" title="Permanent link">&para;</a></h3>
-<p>Branches para correção de bugs são criadas a partir da branch onde o problema foi identificado.</p>
-<p><strong>Padrão de nomenclatura</strong>:
-<div class="highlight"><pre><span></span><code>bugfix/X-descricao_do_bug
-</code></pre></div>
-<strong>Exemplo</strong>:
-<div class="highlight"><pre><span></span><code>bugfix/23-corrigir-calculo-icms-interestadual
-</code></pre></div></p>
-<p><strong>Onde</strong>:
-- <strong>X</strong>: número da <em>issue</em> associada
-- <strong>descricao_do_bug</strong>: descrição breve do problema</p>
-<h3 id="25-branches-de-hotfix">2.5 Branches de Hotfix<a class="headerlink" href="#25-branches-de-hotfix" title="Permanent link">&para;</a></h3>
-<p>Branches para correções urgentes em produção são criadas a partir de <code>main</code>, <code>backend</code> ou <code>frontend</code>, dependendo do componente afetado.</p>
-<p><strong>Padrão de nomenclatura</strong>:
-<div class="highlight"><pre><span></span><code>hotfix/X-descricao_da_correcao
-</code></pre></div>
-<strong>Exemplo</strong>:
-<div class="highlight"><pre><span></span><code>hotfix/35-corrigir-erro-autenticacao
-</code></pre></div></p>
-<p><strong>Onde</strong>:
-- <strong>X</strong>: número da <em>issue</em> associada
-- <strong>descricao_da_correcao</strong>: descrição breve da correção</p>
-<h2 id="3-processo-de-pull-request-e-revisao-de-codigo">3. Processo de Pull Request e Revisão de Código<a class="headerlink" href="#3-processo-de-pull-request-e-revisao-de-codigo" title="Permanent link">&para;</a></h2>
-<h3 id="31-criacao-do-pull-request">3.1 Criação do Pull Request<a class="headerlink" href="#31-criacao-do-pull-request" title="Permanent link">&para;</a></h3>
-<p>Ao finalizar o trabalho em uma branch, o desenvolvedor deve criar um Pull Request seguindo o template fornecido:</p>
-<ol>
-<li>Utilizando o template <code>PULL_REQUEST_TEMPLATE.md</code></li>
-<li>Preenchendo todos os campos obrigatórios:</li>
-<li>Descrição clara e objetiva do PR</li>
-<li>Checklist de requisitos completo</li>
-<li>Issues relacionadas</li>
-<li>Instruções para teste</li>
-<li>Capturas de tela (se aplicável)</li>
-</ol>
-<h3 id="32-processo-de-revisao-de-codigo">3.2 Processo de Revisão de Código<a class="headerlink" href="#32-processo-de-revisao-de-codigo" title="Permanent link">&para;</a></h3>
-<p>Cada Pull Request deve passar pelo seguinte processo de revisão:</p>
-<ol>
-<li><strong>Revisão Automatizada</strong>:</li>
-<li>CI/CD executando testes automatizados</li>
-<li>Verificação de cobertura de código (mínimo 80%)</li>
-<li>
-<p>Análise estática de código (linting)</p>
-</li>
-<li>
-<p><strong>Revisão por Pares</strong>:</p>
-</li>
-<li>No mínimo 2 aprovações de revisores</li>
-<li>Verificação do checklist completo do PR</li>
-<li>Análise da qualidade do código</li>
-<li>
-<p>Validação da documentação</p>
-</li>
-<li>
-<p><strong>Critérios de Aprovação</strong>:</p>
-</li>
-<li>Código segue os padrões de estilo do projeto</li>
-<li>Testes adequados implementados e passando</li>
-<li>Funcionalidade validada conforme definido no plano de V&amp;V</li>
-<li>Não há débitos técnicos relevantes</li>
-<li>Matriz de rastreabilidade atualizada</li>
-</ol>
-<h3 id="33-resolucao-de-conflitos">3.3 Resolução de Conflitos<a class="headerlink" href="#33-resolucao-de-conflitos" title="Permanent link">&para;</a></h3>
-<p>Em caso de conflitos durante a mesclagem:</p>
-<ol>
-<li>É responsabilidade do autor do PR resolver os conflitos</li>
-<li>A resolução de conflitos deve preservar a integridade do código</li>
-<li>Após resolução, nova revisão é necessária</li>
-</ol>
-<h2 id="4-verificacao-e-validacao-vv">4. Verificação e Validação (V&amp;V)<a class="headerlink" href="#4-verificacao-e-validacao-vv" title="Permanent link">&para;</a></h2>
-<p>Cada alteração deve passar por procedimentos de V&amp;V para garantir a qualidade do sistema. Estes procedimentos estão alinhados com o checklist do PR Template.</p>
-<h3 id="41-verificacao">4.1 Verificação<a class="headerlink" href="#41-verificacao" title="Permanent link">&para;</a></h3>
-<p>A verificação confirma que o produto foi construído corretamente, seguindo as especificações:</p>
-<ul>
-<li><strong>Verificação estática</strong>: análise de código, inspeções e revisões de pares</li>
-<li><strong>Verificação dinâmica</strong>: testes unitários, de integração e sistema</li>
-</ul>
-<h3 id="42-validacao">4.2 Validação<a class="headerlink" href="#42-validacao" title="Permanent link">&para;</a></h3>
-<p>A validação confirma que o produto atende às necessidades do usuário:</p>
-<ul>
-<li><strong>Testes de aceitação</strong>: validação com cenários de uso real</li>
-<li><strong>Testes de usabilidade</strong>: avaliação da experiência do usuário</li>
-<li><strong>Validação de requisitos</strong>: confirmação de que os requisitos foram atendidos</li>
-</ul>
-<h3 id="43-criterios-para-aprovacao-de-vv">4.3 Critérios para aprovação de V&amp;V<a class="headerlink" href="#43-criterios-para-aprovacao-de-vv" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Cobertura de testes acima de 80%</li>
-<li>Todos os casos de teste passando</li>
-<li>Requisitos funcionais e não-funcionais validados</li>
-<li>Sem problemas críticos ou bloqueadores</li>
-<li>Documentação técnica e de usuário atualizada</li>
-</ul>
-<h2 id="5-matriz-de-rastreabilidade">5. Matriz de Rastreabilidade<a class="headerlink" href="#5-matriz-de-rastreabilidade" title="Permanent link">&para;</a></h2>
-<p>A matriz de rastreabilidade é um documento que estabelece a relação entre requisitos, código-fonte e testes. O PR template exige sua atualização a cada alteração.</p>
-<h3 id="51-elementos-da-matriz">5.1 Elementos da Matriz<a class="headerlink" href="#51-elementos-da-matriz" title="Permanent link">&para;</a></h3>
-<p>A matriz deve rastrear as seguintes relações:</p>
-<ul>
-<li>Requisitos → Código-fonte</li>
-<li>Requisitos → Casos de teste</li>
-<li>Código-fonte → Testes</li>
-<li>Issues → Commits → Pull Requests</li>
-</ul>
-<h3 id="52-atualizacao-da-matriz">5.2 Atualização da Matriz<a class="headerlink" href="#52-atualizacao-da-matriz" title="Permanent link">&para;</a></h3>
-<p>A atualização da matriz deve:</p>
-<ol>
-<li>Identificar os requisitos afetados pelo PR</li>
-<li>Atualizar as referências de código implementado</li>
-<li>Registrar os testes que validam os requisitos</li>
-<li>Manter referências cruzadas entre documentação e código</li>
-</ol>
-<h2 id="6-fluxo-completo-de-trabalho">6. Fluxo Completo de Trabalho<a class="headerlink" href="#6-fluxo-completo-de-trabalho" title="Permanent link">&para;</a></h2>
-<p>O fluxo de trabalho completo no projeto ConsultTributario, desde a criação da issue até a integração do código, segue as seguintes etapas:</p>
-<ol>
-<li><strong>Criação da Issue</strong></li>
-<li>Utilizar o template apropriado (<code>bug_report.md</code> ou <code>feature_request.md</code>)</li>
-<li>Definir labels e prioridade</li>
-<li>
-<p>Atribuir responsável (ou deixar aberto para voluntários)</p>
-</li>
-<li>
-<p><strong>Desenvolvimento</strong></p>
-</li>
-<li>Criar branch específica a partir da branch base adequada:<ul>
-<li><code>doc/X-nome</code> para documentação (a partir de <code>docs</code>)</li>
-<li><code>backend/X-nome</code> para backend (a partir de <code>backend</code>)</li>
-<li><code>frontend/X-nome</code> para frontend (a partir de <code>frontend</code>)</li>
-</ul>
-</li>
-<li>Implementar a solução seguindo os padrões do projeto</li>
-<li>
-<p>Realizar commits atômicos e significativos conforme a Política de Commits</p>
-</li>
-<li>
-<p><strong>Testes e Validação Local</strong></p>
-</li>
-<li>Implementar testes automatizados</li>
-<li>Validar funcionalidade localmente</li>
-<li>
-<p>Verificar cobertura de código</p>
-</li>
-<li>
-<p><strong>Criação do Pull Request</strong></p>
-</li>
-<li>Utilizar o template PR</li>
-<li>Referenciar a issue relacionada</li>
-<li>
-<p>Fornecer instruções completas para testes</p>
-</li>
-<li>
-<p><strong>Revisão e Aprovação</strong></p>
-</li>
-<li>Revisão automatizada (CI/CD)</li>
-<li>Revisão por pares</li>
-<li>
-<p>Ajustes conforme feedback (se necessário)</p>
-</li>
-<li>
-<p><strong>Integração</strong></p>
-</li>
-<li>Merge para a branch destino</li>
-<li>Verificação final após integração</li>
-<li>Atualização da matriz de rastreabilidade</li>
-<li>
-<p>Fechamento da issue relacionada</p>
-</li>
-<li>
-<p><strong>Deploy da Documentação</strong> (quando aplicável)</p>
-</li>
-<li>Via workflow do GitHub Actions</li>
-<li>Verificação da publicação em <code>gh-pages</code></li>
-</ol>
-<h3 id="61-diagrama-do-fluxo-de-trabalho">6.1 Diagrama do Fluxo de Trabalho<a class="headerlink" href="#61-diagrama-do-fluxo-de-trabalho" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>Issue → Branch Específica → Desenvolvimento → Testes Locais → PR → Revisão → CI/CD → Merge → Integração/Deploy
-   ^                                                           |
-   |                                                           v
-   +-----------------------------Ajustes-----------------------+
-</code></pre></div>
-<hr />
-<h2 id="referencias">Referências<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<h2 id="9-referencias">9. Referências<a class="headerlink" href="#9-referencias" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p>[1] DRIESSEN, Vincent. A successful Git branching model. [S. l.], 5 jan. 2010.<br />
-Disponível em: <a href="https://nvie.com/posts/a-successful-git-branching-model/">https://nvie.com/posts/a-successful-git-branching-model/</a><br />
-Acesso em: 14/04/2025</p>
-<p>[2] Atlassian Gitflow Workflow<br />
-Disponível em: <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow</a><br />
-Acesso em: 14/04/2025</p>
-<p>[3] ISO/IEC/IEEE 29119-2:2021 - Software and systems engineering — Software testing<br />
-Disponível em: <a href="https://www.iso.org/standard/79428.html">https://www.iso.org/standard/79428.html</a>
+<p>[1] ISO/IEC/IEEE 29119 - Software and Systems Engineering - Software Testing<br />
+Disponível em: <a href="https://www.iso.org/standard/79428.html">https://www.iso.org/standard/79428.html</a><br />
 Acesso em: 27/04/2025</p>
+<p>[2] IEEE Standard 1012-2016 - IEEE Standard for System, Software, and Hardware Verification and Validation<br />
+Disponível em: <a href="https://standards.ieee.org/standard/1012-2016.html">https://standards.ieee.org/standard/1012-2016.html</a><br />
+Acesso em: 27/04/2025</p>
+<p>[3] SWEBOK v3.0 - Guide to the Software Engineering Body of Knowledge<br />
+Disponível em: <a href="https://www.computer.org/education/bodies-of-knowledge/software-engineering">https://www.computer.org/education/bodies-of-knowledge/software-engineering</a><br />
+Acesso em: 27/04/2025 </p>
 </blockquote>
 
 
