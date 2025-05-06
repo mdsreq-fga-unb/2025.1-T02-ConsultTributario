@@ -2,7 +2,7 @@
 
 | Versão | Data       | Descrição                         | Autor                               |
 |------- |----------- | --------------------------------- | ----------------------------------- |
-| 1.0    | 21/04/2025 | Versão inicial do documento       | Equipe ConsultTributario - Grupo 07 |
+| 1.0    | 21/04/2025 | Versão inicial do documento       | [Equipe ConsultTributário](https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario) |
 
 A implementação da plataforma *ConsultTributario* trará benefícios significativos para o cliente, otimizando tanto a atuação profissional quanto a gestão do negócio:
 
