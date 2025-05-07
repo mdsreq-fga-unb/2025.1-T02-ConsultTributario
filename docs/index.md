@@ -45,6 +45,6 @@ Navegue pela documentação do projeto:
 - [Política de Branches](guia-contribuicao/politica-de-branches.md)
 
 ### Prototipos
-- [Versão 1](Prototipo/versao1.md)
+- [Versão 1](prototipo/versao1.md)
 
 ---
