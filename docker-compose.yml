@@ -1,12 +1,8 @@
 services:
-  postgres:
-    image: "postgres:15"
-    restart: "always"
+  mongo:
+    image: mongo:8.0.5
+    restart: always
     volumes:
-      - ./.psql/:/var/lib/postgresql/data/
+      - ./data:/data/db
     ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_PASSWORD: "password"
-      POSTGRES_USER: "user"
-      POSTGRES_DB: "test"
+      - "27017:27017"
