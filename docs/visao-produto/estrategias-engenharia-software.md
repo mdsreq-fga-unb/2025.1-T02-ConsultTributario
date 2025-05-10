@@ -1,43 +1,33 @@
-# **3\.  ESTRATÉGIAS DE ENGENHARIA DE SOFTWARE**
+# **ESTRATÉGIAS DE ENGENHARIA DE SOFTWARE**
 
-**3.1  Estratégia Priorizada**
+| Versão | Data       | Autor                                                                                      | Alterações                                 |
+| ------ | ---------- | ------------------------------------------------------------------------------------------ | ------------------------------------------ |
+| 0.0    | -          | [Equipe ConsultTributário](https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario) | Versão inicial, documentação base herdada. |
+| 1.0    | 05/05/2025 | [Vinicius Vieira](https://github.com/viniciusvieira00)                                     | Versão inicial, documentação base herdada. |
 
-1. **Abordagem:** Ágil  
-2. **Ciclo de vida:** Iterativo Incremental   
-3. **Processo:** ScrumXP
 
-**3.2  Quadro Comparativo**
+---
 
-| Critério | ScrumXP | Espiral (adaptado) |
-| :---- | :---- | :---- |
-| **Abordagem  Geral** | Ágil, baseada em iterações curtas e feedbacks contínuos. | Dirigida por riscos, com ciclos que integram análise, design e construção. |
-| **Foco em  Arquitetura** | Evolui conforme o projeto avança. | Planejada antecipadamente, com refinamento por ciclo. |
-| **Estrutura de Processos** | Baseado em sprints, backlog, reuniões periódicas, entregas incrementais. | Dividido em ciclos espirais com etapas bem definidas. |
-| **Flexibilidade de Requisitos** | Alta \- requisitos podem mudar a cada sprint. | Moderada \- mudanças aceitas entre os ciclos, mas requerem nova análise. |
-| **Colaboração com o Cliente** | Intensa e constante; o cliente faz parte do time \- Product Owner. | Colaboração pontual, geralmente ao fim de cada ciclo para validação. |
-| **Complexidade do Processo** | Baixa a média \- fácil de adotar com treinamento básico. | Alta \- exige conhecimento prévio e maior planejamento. |
-| **Qualidade Técnica** | Alta \- práticas como TDD, integração contínua, refatoração constante. | Variável \- depende da disciplina e práticas aplicadas em cada espiral. |
-| **Práticas de Desenvolvimento** | Programação em par,  TDD, design simples, refatoração… | Foca mais em modelagem, análise de riscos, prototipagem… |
-| **Controle de  Qualidade** | Automatizado e contínuo durante os sprints. | Formal e planejado por etapa, com validações e revisões em cada ciclo. |
-| **Escalabilidade** | Escala com frameworks como SAFe, LeSS, Nexus (requer adaptação) | Escala melhor para projetos grandes e críticos com múltiplos stakeholders |
-| **Suporte a  Equipes** | Times pequenos, altamente colaborativos. | Suporta múltiplas equipes e grandes organizações com gestão formal de ciclos. |
+## Estratégia Priorizada
 
-**3.3 Justificativa**
+- **Abordagem:** Ágil  
+- **Ciclo de vida:** Iterativo Incremental  
+- **Processo:** ScrumXP
 
-A escolha do processo ScrumXP para o projeto ConsultTributário se baseia em quatro pilares principais:
+## Quadro Comparativo
 
-#### 1. **Requisitos em constante evolução** 
+| Critério                         | ScrumXP                                                                    | Espiral (adaptado)                                               |
+| -------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| **Modelo de Ciclo de Vida**      | Iterativo-Incremental com sprints de 1–2 semanas                           | Iterativo cíclico dirigido por análise de risco                  |
+| **Tempo Médio de Feedback**      | ≤ 10 dias (revisões por sprint + integrações automatizadas)                | ≥ 30 dias (feedback consolidado por ciclo completo)              |
+| **Gerenciamento de Requisitos**  | Refinamento contínuo no backlog; alterações aceitas entre sprints          | Mudanças analisadas por impacto entre os ciclos                  |
+| **Colaboração com Stakeholders** | Presença ativa via Product Owner e reviews a cada entrega                  | Participação pontual em checkpoints definidos                    |
+| **Validação Arquitetural**       | Spikes, DoD com protótipos e CI com testes ≥ 80%                           | Planejamento arquitetural por ciclo; validação formal por etapa  |
+| **Escalabilidade**               | Times pequenos (≤ 9 pessoas); uso opcional de frameworks de escala         | Naturalmente estruturado para grandes times e múltiplos domínios |
+| **Risco Técnico com APIs**       | Mocks + testes de contrato automatizados garantem robustez nas integrações | Gerência de risco antecipada e simulações formais                |
 
-O ScrumXP é ideal para ambientes onde os requisitos estão em constante mudança, como é o caso do ConsultTributário. A abordagem iterativa e incremental permite que funcionalidades sejam ajustadas ou redefinidas a cada sprint, sem comprometer o andamento geral do projeto.
+## Justificativa
 
-#### 2. **Proximidade e feedback contínuo do cliente**
+A adoção do ScrumXP no projeto ConsultTributário é motivada pela natureza dinâmica do domínio tributário. A legislação fiscal brasileira está em constante atualização, e decisões judiciais podem alterar a aplicabilidade de teses tributárias com frequência. O ScrumXP permite responder a essas mudanças com ciclos curtos (sprints de até 2 semanas), backlog refinado continuamente e atuação ativa do Product Owner, garantindo alinhamento contínuo com as novas oportunidades jurídicas e as necessidades dos usuários finais.
 
-A metodologia ScrumXP valoriza a colaboração constante com o cliente, por meio do papel do Product Owner, que participa ativamente das definições de prioridade e validação de entregas. Essa proximidade facilita o alinhamento do produto às reais necessidades do cliente, garantindo maior valor agregado a cada iteração.
-
-#### 3. **Equipe com nível e conhecimento técnico de baixo a intermediário**
-
-O ScrumXP combina a leveza do Scrum com as práticas técnicas do Extreme Programming (XP), como programação em par, testes automatizados e refatoração contínua. Essas práticas ajudam a elevar gradualmente a qualidade do código e o conhecimento técnico da equipe, sem exigir um domínio avançado prévio das tecnologias envolvidas. Isso o torna adequado ao perfil atual da equipe do projeto.
-
-#### 4. **Adaptação a mudanças e entregas frequentes**
-
-Com ciclos curtos e entregas incrementais, o ScrumXP possibilita a entrega contínua de valor ao cliente. Isso é essencial para o ConsultTributário, permitindo que o sistema seja construído com base no uso real, nos feedbacks rápidos e nas prioridades que emergem ao longo do desenvolvimento.
+Apesar do foco em entregas incrementais, o ScrumXP não descarta a validação arquitetural. O projeto adota **spikes de arquitetura** para investigar soluções técnicas críticas (ex.: comunicação com APIs públicas como a BrasilAPI), bem como critérios claros na **Definition of Done**: testes automatizados, prova de conceito funcional para integrações e cobertura mínima de testes ≥ 80%. A **integração contínua** (CI) é aplicada desde os primeiros ciclos, assegurando builds estáveis e feedback rápido. Para mitigar riscos com APIs externas, o projeto incorpora **mocks de terceiros e testes de contrato automatizados**, permitindo isolar falhas e validar a aderência a esquemas esperados, mesmo na ausência de resposta real.
