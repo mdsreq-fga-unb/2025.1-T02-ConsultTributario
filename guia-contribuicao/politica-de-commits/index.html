@@ -1082,6 +1082,96 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#exemplos-contextualizados-para-o-consulttributario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemplos Contextualizados para o ConsultTributario
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemplos Contextualizados para o ConsultTributario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementacao-de-funcionalidade-tributaria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementação de Funcionalidade Tributária
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcao-de-bug-em-relatorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correção de Bug em Relatórios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#melhoria-na-documentacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Melhoria na Documentação
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integracao-com-pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integração com Pull Requests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integração com Pull Requests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-de-alinhamento-commit-pr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemplo de Alinhamento Commit-PR
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rastreabilidade-entre-commits-e-matriz-de-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rastreabilidade entre Commits e Matriz de Requisitos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rastreabilidade entre Commits e Matriz de Requisitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identificadores-de-rastreabilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identificadores de Rastreabilidade
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1279,19 +1369,15 @@
 </thead>
 <tbody>
 <tr>
-<td>1.0</td>
-<td>21/04/2025</td>
-<td>Versão inicial do documento (commits)</td>
-<td>Equipe ConsultTributario - Grupo 07</td>
-</tr>
-<tr>
-<td>1.1</td>
-<td>21/04/2025</td>
-<td>Revisões e melhorias gerais</td>
-<td>Equipe ConsultTributario - Grupo 07</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<p>| 1.0    | -          | <a href="https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario">Equipe ConsultTributário</a> | Versão inicial, documentação base herdada. |
+| 2.0    | 05/05/2025 | <a href="https://github.com/viniciusvieira00">Vinicius Vieira</a>                                     | Atualizações da política, baseada nas novas ISSUES e padronizações para o projeto. |</p>
 <hr />
 <p>Este projeto segue as recomendações de <a href="https://www.conventionalcommits.org/">Conventional Commits</a> para manter um histórico de mudanças claro e padronizado.</p>
 <h2 id="estrutura-do-commit">Estrutura do Commit<a class="headerlink" href="#estrutura-do-commit" title="Permanent link">&para;</a></h2>
@@ -1359,6 +1445,69 @@ This reverts commit &lt;hash_do_commit&gt;.
 <li>Para commits grandes, descreva com clareza no corpo, o que e por que foi mudado.</li>
 <li>Utilize <code>closes #xx</code> no rodapé para fechar automaticamente <em>issues</em> correlatas.</li>
 </ol>
+<h2 id="exemplos-contextualizados-para-o-consulttributario">Exemplos Contextualizados para o ConsultTributario<a class="headerlink" href="#exemplos-contextualizados-para-o-consulttributario" title="Permanent link">&para;</a></h2>
+<h3 id="implementacao-de-funcionalidade-tributaria">Implementação de Funcionalidade Tributária<a class="headerlink" href="#implementacao-de-funcionalidade-tributaria" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>feat<span class="o">(</span>api<span class="o">)</span>:<span class="w"> </span>add<span class="w"> </span>cálculo<span class="w"> </span>de<span class="w"> </span>imposto<span class="w"> </span>ICMS<span class="w"> </span>para<span class="w"> </span>operações<span class="w"> </span>interestaduais
+
+-<span class="w"> </span>implementa<span class="w"> </span>regras<span class="w"> </span>de<span class="w"> </span>cálculo<span class="w"> </span>conforme<span class="w"> </span>Lei<span class="w"> </span>Complementar<span class="w"> </span><span class="m">87</span>/96
+-<span class="w"> </span>integra<span class="w"> </span>com<span class="w"> </span>base<span class="w"> </span>de<span class="w"> </span>dados<span class="w"> </span>de<span class="w"> </span>alíquotas<span class="w"> </span>por<span class="w"> </span>estado
+-<span class="w"> </span>adiciona<span class="w"> </span>validações<span class="w"> </span>para<span class="w"> </span>itens<span class="w"> </span>isentos
+
+closes<span class="w"> </span><span class="c1">#45</span>
+</code></pre></div>
+<h3 id="correcao-de-bug-em-relatorios">Correção de Bug em Relatórios<a class="headerlink" href="#correcao-de-bug-em-relatorios" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>fix<span class="o">(</span>frontend<span class="o">)</span>:<span class="w"> </span>corrige<span class="w"> </span>cálculo<span class="w"> </span>incorreto<span class="w"> </span>no<span class="w"> </span>relatório<span class="w"> </span>de<span class="w"> </span>impostos<span class="w"> </span>retidos
+
+-<span class="w"> </span>corrige<span class="w"> </span>fórmula<span class="w"> </span>de<span class="w"> </span>cálculo<span class="w"> </span>de<span class="w"> </span>IRRF<span class="w"> </span>em<span class="w"> </span>serviços
+-<span class="w"> </span>ajusta<span class="w"> </span>exibição<span class="w"> </span>de<span class="w"> </span>valores<span class="w"> </span>negativos
+-<span class="w"> </span>adiciona<span class="w"> </span>tooltips<span class="w"> </span>explicativos
+
+fixes<span class="w"> </span><span class="c1">#78</span>
+</code></pre></div>
+<h3 id="melhoria-na-documentacao">Melhoria na Documentação<a class="headerlink" href="#melhoria-na-documentacao" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>doc<span class="o">(</span>api<span class="o">)</span>:<span class="w"> </span>adiciona<span class="w"> </span>documentação<span class="w"> </span>para<span class="w"> </span>endpoints<span class="w"> </span>de<span class="w"> </span>consulta<span class="w"> </span>tributária
+
+-<span class="w"> </span>adiciona<span class="w"> </span>exemplos<span class="w"> </span>de<span class="w"> </span>requisição/resposta<span class="w"> </span>para<span class="w"> </span>cada<span class="w"> </span>endpoint
+-<span class="w"> </span>atualiza<span class="w"> </span>diagrama<span class="w"> </span>de<span class="w"> </span>fluxo<span class="w"> </span><span class="k">do</span><span class="w"> </span>processo<span class="w"> </span>de<span class="w"> </span>consulta
+-<span class="w"> </span>inclui<span class="w"> </span>informações<span class="w"> </span>sobre<span class="w"> </span>limitações<span class="w"> </span>e<span class="w"> </span>regras<span class="w"> </span>de<span class="w"> </span>negócio
+
+part<span class="w"> </span>of<span class="w"> </span><span class="c1">#92</span>
+</code></pre></div>
+<h2 id="integracao-com-pull-requests">Integração com Pull Requests<a class="headerlink" href="#integracao-com-pull-requests" title="Permanent link">&para;</a></h2>
+<p>Ao criar um Pull Request, a mensagem de commit deve estar alinhada com as informações do PR template:</p>
+<ol>
+<li>O <strong>título do PR</strong> deve refletir o escopo e finalidade dos commits incluídos</li>
+<li>Na seção <strong>Descrição do PR</strong>, inclua um resumo dos commits principais</li>
+<li>Em <strong>Issues Relacionadas</strong>, referencie as mesmas issues mencionadas nos rodapés dos commits</li>
+<li>O histórico de commits deve demonstrar as etapas lógicas de implementação da funcionalidade ou correção</li>
+</ol>
+<h3 id="exemplo-de-alinhamento-commit-pr">Exemplo de Alinhamento Commit-PR<a class="headerlink" href="#exemplo-de-alinhamento-commit-pr" title="Permanent link">&para;</a></h3>
+<p><strong>Commits no Branch:</strong>
+<div class="highlight"><pre><span></span><code>feat<span class="o">(</span>frontend<span class="o">)</span>:<span class="w"> </span>adiciona<span class="w"> </span>tela<span class="w"> </span>de<span class="w"> </span>configuração<span class="w"> </span>fiscal
+feat<span class="o">(</span>frontend<span class="o">)</span>:<span class="w"> </span>implementa<span class="w"> </span>seleção<span class="w"> </span>de<span class="w"> </span>regime<span class="w"> </span>tributário
+feat<span class="o">(</span>api<span class="o">)</span>:<span class="w"> </span>cria<span class="w"> </span>endpoint<span class="w"> </span>para<span class="w"> </span>salvar<span class="w"> </span>configurações<span class="w"> </span>fiscais<span class="w"> </span><span class="k">do</span><span class="w"> </span>usuário
+test<span class="o">(</span>api<span class="o">)</span>:<span class="w"> </span>adiciona<span class="w"> </span>testes<span class="w"> </span>para<span class="w"> </span>validação<span class="w"> </span>de<span class="w"> </span>configurações<span class="w"> </span>fiscais
+</code></pre></div></p>
+<p><strong>Título do PR:</strong>
+<div class="highlight"><pre><span></span><code>[FEATURE] Implementação de Configurações Fiscais do Usuário
+</code></pre></div></p>
+<p><strong>Descrição do PR:</strong>
+Implementa a funcionalidade completa de configurações fiscais, permitindo ao usuário selecionar seu regime tributário e preferências para cálculos.</p>
+<h2 id="rastreabilidade-entre-commits-e-matriz-de-requisitos">Rastreabilidade entre Commits e Matriz de Requisitos<a class="headerlink" href="#rastreabilidade-entre-commits-e-matriz-de-requisitos" title="Permanent link">&para;</a></h2>
+<p>Para manter a rastreabilidade entre código e requisitos:</p>
+<ol>
+<li>Sempre referencie o número da issue nos commits (<code>closes #XX</code>, <code>fixes #XX</code>, <code>implements #XX</code>)</li>
+<li>Para funcionalidades que implementam parcialmente um requisito, use <code>part of #XX</code></li>
+<li>Para commits que afetam múltiplos requisitos, liste-os separadamente (<code>closes #XX, relates to #YY</code>)</li>
+<li>Ao finalizar uma funcionalidade, atualize a matriz de rastreabilidade conforme indicado no PR template</li>
+</ol>
+<h3 id="identificadores-de-rastreabilidade">Identificadores de Rastreabilidade<a class="headerlink" href="#identificadores-de-rastreabilidade" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>closes #XX</code> ou <code>fixes #XX</code>: Fecha a issue automaticamente após o merge do PR</li>
+<li><code>implements #XX</code>: Indica implementação de requisito sem fechar automaticamente</li>
+<li><code>part of #XX</code>: Indica contribuição parcial para um requisito maior</li>
+<li><code>relates to #XX</code>: Indica relação sem implicar em implementação ou fechamento</li>
+</ul>
 
 
 
