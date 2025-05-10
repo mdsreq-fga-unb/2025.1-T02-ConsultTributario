@@ -2,7 +2,7 @@
 
 | Versão | Data       | Descrição                         | Autor                               |
 |------- |----------- | --------------------------------- | ----------------------------------- |
-| 1.0    | 21/04/2025 | Versão inicial do documento       | Equipe ConsultTributario - Grupo 07 |
+| 1.0    | 21/04/2025 | Versão inicial do documento       | [Equipe ConsultTributário](https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario) |
 | 1.1    | 01/05/2025 | Especifica o impacto das características no produto      | Artur Krauspenhar |
 
 Esse é um conjunto inicial das principais características que a solução deve possuir e o impacto delas no produto:
