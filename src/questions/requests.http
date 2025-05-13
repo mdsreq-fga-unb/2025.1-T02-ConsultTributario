@@ -1,0 +1,21 @@
+### Create question
+POST http://localhost:8000/questions
+Content-Type: application/json
+
+{
+  "description": "Pergunta 4",
+  "relatedQuestions": ["68232ca96661be9465f65b98", "68232cc76661be9465f65b99"]
+}
+
+### Find all questions
+GET http://localhost:8000/questions
+
+### Find question by id
+GET http://localhost:8000/questions/68233381210fa9fdc963f7bc
+
+### Find question by id related
+GET http://localhost:8000/questions/68233381210fa9fdc963f7bc/related
+
+### Delete question
+DELETE http://localhost:8000/questions/68233331210fa9fdc963f7ad
+
