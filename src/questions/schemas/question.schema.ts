@@ -4,7 +4,10 @@ import { Document, Schema as MongooseSchema } from 'mongoose';
 @Schema({ timestamps: true })
 export class Question extends Document {
   @Prop({ required: true })
-  description: string;
+  label: string;
+
+  @Prop()
+  toolTip: string;
 
   @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Question' }] })
   relatedQuestions: Question[];

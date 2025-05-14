@@ -6,7 +6,7 @@ export class RelatedQuestionDto {
   _id: string;
 
   @Expose()
-  description: string;
+  label: string;
 }
 
 export class QuestionDto {
@@ -15,7 +15,10 @@ export class QuestionDto {
   _id: string;
 
   @Expose()
-  description: string;
+  label: string;
+
+  @Expose()
+  toolTip: string;
 
   @Expose()
   @Type(() => RelatedQuestionDto)
