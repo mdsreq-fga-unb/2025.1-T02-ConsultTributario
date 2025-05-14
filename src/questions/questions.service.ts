@@ -35,14 +35,14 @@ export class QuestionsService {
   findAll() {
     return this.questionModel
       .find()
-      .populate('relatedQuestions', 'description _id')
+      .populate('relatedQuestions')
       .exec();
   }
 
   async findOne(id: string) {
     const question = await this.questionModel
       .findById(id)
-      .populate('relatedQuestions', 'description _id')
+      .populate('relatedQuestions')
       .exec();
 
     if (!question) {
@@ -70,7 +70,7 @@ export class QuestionsService {
 
     const updatedQuestion = await this.questionModel
       .findByIdAndUpdate(id, updateQuestionDto, { new: true })
-      .populate('relatedQuestions', 'description _id')
+      .populate('relatedQuestions')
       .exec();
 
     if (!updatedQuestion) {

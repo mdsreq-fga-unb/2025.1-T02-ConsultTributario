@@ -3,7 +3,10 @@ import { QuestionsService } from './questions.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
 import { Types } from 'mongoose';
+import { Serialize } from 'src/interceptors/serialize.interceptor';
+import { QuestionDto } from './dto/question.dto';
 
+@Serialize(QuestionDto)
 @Controller('questions')
 export class QuestionsController {
   constructor(private readonly questionsService: QuestionsService) {}
