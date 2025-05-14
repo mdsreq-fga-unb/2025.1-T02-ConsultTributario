@@ -1,8 +1,8 @@
-import { Expose, Type } from 'class-transformer';
-import { Question } from '../schemas/question.schema';
+import { Expose, Transform, Type } from 'class-transformer';
 
 export class RelatedQuestionDto {
   @Expose()
+  @Transform(({ obj }) => obj._id.toString())
   _id: string;
 
   @Expose()
@@ -10,6 +10,7 @@ export class RelatedQuestionDto {
 }
 
 export class QuestionDto {
+  @Transform(({ obj }) => obj._id.toString())
   @Expose()
   _id: string;
 
