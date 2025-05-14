@@ -1,11 +1,11 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
-import { Question } from '../entities/question.entity';
+import { IsString, IsNotEmpty, IsArray, IsMongoId } from 'class-validator';
 
 export class CreateQuestionDto {
   @IsString()
   @IsNotEmpty()
   description: string;
 
-  @IsString({ each: true })
-  relatedQuestions: String[];
+  @IsArray()
+  @IsMongoId({ each: true })
+  relatedQuestions: string[];
 }

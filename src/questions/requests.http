@@ -4,18 +4,23 @@ Content-Type: application/json
 
 {
   "description": "Pergunta 4",
-  "relatedQuestions": ["68232ca96661be9465f65b98", "68232cc76661be9465f65b99"]
+  "relatedQuestions": []
 }
 
 ### Find all questions
 GET http://localhost:8000/questions
 
 ### Find question by id
-GET http://localhost:8000/questions/68233381210fa9fdc963f7bc
-
-### Find question by id related
-GET http://localhost:8000/questions/68233381210fa9fdc963f7bc/related
+GET http://localhost:8000/questions/6823ff61444b1ea419f75748
 
 ### Delete question
-DELETE http://localhost:8000/questions/68233331210fa9fdc963f7ad
+DELETE http://localhost:8000/questions/6823ff61444b1ea419f75748
+
+### Update question
+PATCH http://localhost:8000/questions/6823ff61444b1ea419f75748
+Content-Type: application/json
+
+{
+  "description": "Pergunta 11"
+}
 

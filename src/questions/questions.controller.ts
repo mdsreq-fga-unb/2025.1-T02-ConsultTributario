@@ -1,10 +1,17 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, BadRequestException } from '@nestjs/common';
 import { QuestionsService } from './questions.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
+import { UpdateQuestionDto } from './dto/update-question.dto';
+import { Types } from 'mongoose';
 
 @Controller('questions')
 export class QuestionsController {
   constructor(private readonly questionsService: QuestionsService) {}
+
+  @Post()
+  create(@Body() createQuestionDto: CreateQuestionDto) {
+    return this.questionsService.create(createQuestionDto);
+  }
 
   @Get()
   findAll() {
@@ -13,21 +20,25 @@ export class QuestionsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.questionsService.findById(id);
+    if (!Types.ObjectId.isValid(id)) {
+      throw new BadRequestException('invalid id');
+    }
+    return this.questionsService.findOne(id);
   }
 
-  @Get(':id/related')
-  findOneRelated(@Param('id') id: string) {
-    return this.questionsService.findByIdRelated(id);
-  }
-
-  @Post()
-  create(@Body() createQuestionDto: CreateQuestionDto) {
-    return this.questionsService.create(createQuestionDto);
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateQuestionDto: UpdateQuestionDto) {
+    if (!Types.ObjectId.isValid(id)) {
+      throw new BadRequestException('invalid id');
+    }
+    return this.questionsService.update(id, updateQuestionDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.questionsService.delete(id);
+    if (!Types.ObjectId.isValid(id)) {
+      throw new BadRequestException('invalid id');
+    }
+    return this.questionsService.remove(id);
   }
 }
