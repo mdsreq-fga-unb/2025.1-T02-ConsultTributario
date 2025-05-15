@@ -3,7 +3,7 @@ POST http://localhost:8000/questions
 Content-Type: application/json
 
 {
-  "description": "Pergunta 4",
+  "label": "Pergunta 1",
   "relatedQuestions": []
 }
 
@@ -11,16 +11,18 @@ Content-Type: application/json
 GET http://localhost:8000/questions
 
 ### Find question by id
-GET http://localhost:8000/questions/6823ff61444b1ea419f75748
+GET http://localhost:8000/questions/6824b6bc22d33d13503750b8
 
 ### Delete question
-DELETE http://localhost:8000/questions/6823ff61444b1ea419f75748
+DELETE http://localhost:8000/questions/6824b6bc22d33d13503750b8
 
 ### Update question
-PATCH http://localhost:8000/questions/6823ff61444b1ea419f75748
+PATCH http://localhost:8000/questions/6825232492ed9ec904b84e87
 Content-Type: application/json
 
 {
-  "description": "Pergunta 11"
+  "relatedQuestions": [
+    "6824b6bc22d33d13503750b8"
+  ]
 }
 
