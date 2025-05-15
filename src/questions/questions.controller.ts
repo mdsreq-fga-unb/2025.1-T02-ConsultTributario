@@ -14,7 +14,7 @@ import { QuestionsService } from './questions.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
 import { Types } from 'mongoose';
-import { Serialize } from 'src/interceptors/serialize.interceptor';
+import { Serialize } from '../interceptors/serialize.interceptor';
 import { QuestionDto } from './dto/question.dto';
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
