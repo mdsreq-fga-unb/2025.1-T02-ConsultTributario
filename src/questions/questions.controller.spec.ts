@@ -3,6 +3,7 @@ import { QuestionsController } from './questions.controller';
 import { QuestionsService } from './questions.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { Question } from './schemas/question.schema';
+import { BadRequestException } from '@nestjs/common';
 
 const questionServiceMock = {
   create: jest.fn(),
@@ -82,4 +83,30 @@ describe('QuestionsController', () => {
     });
   });
 
+  describe('findOne', () => {
+    it('should return a question by id', async () => {
+      const validId = '6824b6bc22d33d13503750b8';
+      const result: any = { _id: validId, label: 'Test Question', relatedQuestions: [] };
+
+      jest.spyOn(service, 'findOne').mockResolvedValue(result);
+
+      expect(await controller.findOne(validId)).toEqual(result);
+      expect(service.findOne).toHaveBeenCalledWith(validId);
+    });
+
+    it('should throw BadRequestException if invalid id is provided', async () => {
+      const invalidId = 'invalid-id';
+
+      await expect(controller.findOne(invalidId)).rejects.toThrow(BadRequestException);
+      expect(service.findOne).not.toHaveBeenCalled();
+    });
+
+    it('should throw an error if fetching question by id fails', async () => {
+      const validId = '6824b6bc22d33d13503750b8';
+      jest.spyOn(service, 'findOne').mockRejectedValue(new Error());
+
+      await expect(controller.findOne(validId)).rejects.toThrow(new Error());
+      expect(service.findOne).toHaveBeenCalledWith(validId);
+    });
+  });
 });
