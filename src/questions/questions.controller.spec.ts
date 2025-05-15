@@ -60,4 +60,26 @@ describe('QuestionsController', () => {
       expect(service.create).toHaveBeenCalledWith(createQuestionDto);
     });
   });
+
+  describe('findAll', () => {
+    it('should return an array of questions', async () => {
+      const result: any = [
+        { _id: '1', label: 'Test Question 1', relatedQuestions: [] },
+        { _id: '2', label: 'Test Question 2', relatedQuestions: [] },
+      ];
+
+      jest.spyOn(service, 'findAll').mockResolvedValue(result);
+
+      expect(await controller.findAll()).toEqual(result);
+      expect(service.findAll).toHaveBeenCalled();
+    });
+
+    it('should throw an error if fetching questions fails', async () => {
+      jest.spyOn(service, 'findAll').mockRejectedValue(new Error());
+
+      await expect(controller.findAll()).rejects.toThrow(new Error());
+      expect(service.findAll).toHaveBeenCalled();
+    });
+  });
+
 });
