@@ -50,5 +50,14 @@ describe('QuestionsController', () => {
       expect(await controller.create(createQuestionDto)).toEqual(result);
       expect(service.create).toHaveBeenCalledWith(createQuestionDto);
     });
+
+    it('should throw an error if question creation fails', async () => {
+      const createQuestionDto: CreateQuestionDto = { label: 'Test Question', relatedQuestions: [] };
+
+      jest.spyOn(service, 'create').mockRejectedValue(new Error());
+
+      await expect(controller.create(createQuestionDto)).rejects.toThrow(new Error());
+      expect(service.create).toHaveBeenCalledWith(createQuestionDto);
+    });
   });
 });
