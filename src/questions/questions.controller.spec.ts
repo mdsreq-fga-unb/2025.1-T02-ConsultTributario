@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { QuestionsController } from './questions.controller';
 import { QuestionsService } from './questions.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
-import { Question } from './schemas/question.schema';
 import { BadRequestException } from '@nestjs/common';
 
 const questionServiceMock = {
@@ -107,6 +106,37 @@ describe('QuestionsController', () => {
 
       await expect(controller.findOne(validId)).rejects.toThrow(new Error());
       expect(service.findOne).toHaveBeenCalledWith(validId);
+    });
+  });
+
+  describe('update', () => {
+    it('should update a question', async () => {
+      const validId = '6824b6bc22d33d13503750b8';
+      const updateQuestionDto: CreateQuestionDto = { label: 'Updated Question', relatedQuestions: [] };
+      const result: any = { _id: validId, ...updateQuestionDto };
+
+      jest.spyOn(service, 'update').mockResolvedValue(result);
+
+      expect(await controller.update(validId, updateQuestionDto)).toEqual(result);
+      expect(service.update).toHaveBeenCalledWith(validId, updateQuestionDto);
+    });
+
+    it('should throw BadRequestException if invalid id is provided', async () => {
+      const invalidId = 'invalid-id';
+      const updateQuestionDto: CreateQuestionDto = { label: 'Updated Question', relatedQuestions: [] };
+
+      await expect(controller.update(invalidId, updateQuestionDto)).rejects.toThrow(BadRequestException);
+      expect(service.update).not.toHaveBeenCalled();
+    });
+
+    it('should throw an error if updating question fails', async () => {
+      const validId = '6824b6bc22d33d13503750b8';
+      const updateQuestionDto: CreateQuestionDto = { label: 'Updated Question', relatedQuestions: [] };
+
+      jest.spyOn(service, 'update').mockRejectedValue(new Error());
+
+      await expect(controller.update(validId, updateQuestionDto)).rejects.toThrow(new Error());
+      expect(service.update).toHaveBeenCalledWith(validId, updateQuestionDto);
     });
   });
 });

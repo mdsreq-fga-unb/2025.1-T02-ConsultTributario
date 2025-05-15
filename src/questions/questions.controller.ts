@@ -58,7 +58,7 @@ export class QuestionsController {
   @ApiResponse({ status: 200, description: 'Pergunta atualizada com sucesso' })
   @ApiResponse({ status: 404, description: 'ID inválido' })
   @ApiResponse({ status: 400, description: 'Pergunta não encontrada' })
-  update(@Param('id') id: string, @Body() updateQuestionDto: UpdateQuestionDto) {
+  async update(@Param('id') id: string, @Body() updateQuestionDto: UpdateQuestionDto) {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException('invalid id');
     }
