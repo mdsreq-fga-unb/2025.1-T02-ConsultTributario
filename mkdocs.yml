@@ -74,6 +74,9 @@ nav:
     - Cronograma de Entregas: visao-produto/cronograma-entrega.md
     - Interação Equipe e Cliente: visao-produto/interacao-equipe-cliente.md
     - Lições Aprendidas: visao-produto/licoes-aprendidas.md
+    - DoR e DoD: visao-produto/dor-dod.md
+  - Backlog do Produto:
+    - Backlog do Produto: visao-produto/product-backlog.md
   - Guia de Contribuição: 
     - Política de Branches: guia-contribuicao/politica-de-branches.md
     - Política de Commits: guia-contribuicao/politica-de-commits.md
