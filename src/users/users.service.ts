@@ -9,7 +9,7 @@ import { Model } from 'mongoose';
 @Injectable()
 export class UsersService {
 
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) { }
 
   async create(createUserDto: CreateUserDto): Promise<Omit<User, 'password'>> {
 
@@ -19,13 +19,13 @@ export class UsersService {
         ...createUserDto,
         password: await bcrypt.hash(createUserDto.password, 10),
       }
-  
+
       const newUser = new this.userModel(data);
-  
+
       const saved = await newUser.save()
-  
+
       const { password, ...userWithoutPassword } = saved.toObject();
-  
+
       return userWithoutPassword;
 
     } catch (error) {
@@ -41,10 +41,11 @@ export class UsersService {
     return users.map(({ password, ...rest }) => rest);
   }
 
-  
-  findByEmail(email: string) {
-    return ``;
+
+  async findByEmail(email: string): Promise<User | null> {
+    return this.userModel.findOne({ email }).exec();
   }
+
 
 
 }
