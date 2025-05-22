@@ -176,34 +176,34 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 
 | Código US | Código RF              | Épico Relacionado             | Story Points  |
 |-----------|------------------------|-------------------------------|---------------|
-| US-01     | RF01                   | CNPJ e Dados da Empresa       | não estimado  |
-| US-03     | RF03                   | CNPJ e Dados da Empresa       | não estimado  |
-| US-04     | RF04                   | CNPJ e Dados da Empresa       | não estimado  |
-| US-02     | RF02                   | CNPJ e Dados da Empresa       | não estimado  |
-| US-05     | RF05                   | CNPJ e Dados da Empresa       | não estimado  |
-| US-06     | RF06                   | CNPJ e Dados da Empresa       | não estimado  |
-| US-07     | RF07                   | CNPJ e Dados da Empresa       | não estimado  |
-| US-08     | RF09                   | CNPJ e Dados da Empresa       | não estimado  |
-| US-09     | RF10                   | CNPJ e Dados da Empresa       | não estimado  |
-| US-10     | RF11                   | CNPJ e Dados da Empresa       | não estimado  |
-| US-11     | RF03, RF04, RF05       | CNPJ e Dados da Empresa       | não estimado  |
-| US-12     | RF12                   | Teses Tributárias             | não estimado  |
-| US-13     | RF13                   | Teses Tributárias             | não estimado  |
-| US-14     | RF14                   | Teses Tributárias             | não estimado  |
-| US-15     | RF15                   | Teses Tributárias             | não estimado  |
-| US-16     | RF16                   | Teses Tributárias             | não estimado  |
-| US-17     | RF17                   | Teses Tributárias             | não estimado  |
-| US-18     | RF18                   | Teses Tributárias             | não estimado  |
-| US-19     | RF19                   | Teses Tributárias             | não estimado  |
-| US-20     | RF20                   | Teses Tributárias             | não estimado  |
-| US-21     | RF24                   | Teses Tributárias             | não estimado  |
-| US-22     | RF25                   | Questionários                 | não estimado  |
-| US-23     | RF26                   | Questionários                 | não estimado  |
-| US-24     | RF27                   | Questionários                 | não estimado  |
-| US-25     | RF28                   | Questionários                 | não estimado  |
-| US-26     | RF29                   | Questionários                 | não estimado  |
-| US-27     | RF30                   | Exportação e Relacionamentos  | não estimado  |
-| US-28     | RF31                   | Exportação e Relacionamentos  | não estimado  |
-| US-29     | RF23                   | Exportação e Relacionamentos  | não estimado  |
-| US-30     | RF21                   | Exportação e Relacionamentos  | não estimado  |
-| US-31     | RF22                   | Exportação e Relacionamentos  | não estimado  |
+| US-01     | RF01                   | EP-03                         | não estimado  |
+| US-03     | RF03                   | EP-05       | não estimado  |
+| US-04     | RF04                   | EP-05       | não estimado  |
+| US-02     | RF02                   | EP-05       | não estimado  |
+| US-05     | RF05                   | EP-05       | não estimado  |
+| US-06     | RF06                   | EP-05       | não estimado  |
+| US-07     | RF07                   | EP-05       | não estimado  |
+| US-08     | RF09                   | EP-05       | não estimado  |
+| US-09     | RF10                   | EP-05       | não estimado  |
+| US-10     | RF11                   | EP-05       | não estimado  |
+| US-11     | RF03, RF04, RF05       | EP-05       | não estimado  |
+| US-12     | RF12                   | EP-01             | não estimado  |
+| US-13     | RF13                   | EP-01             | não estimado  |
+| US-14     | RF14                   | EP-01             | não estimado  |
+| US-15     | RF15                   | EP-01             | não estimado  |
+| US-16     | RF16                   | EP-01             | não estimado  |
+| US-17     | RF17                   | EP-01             | não estimado  |
+| US-18     | RF18                   | EP-01             | não estimado  |
+| US-19     | RF19                   | EP-01             | não estimado  |
+| US-20     | RF20                   | EP-02             | não estimado  |
+| US-21     | RF24                   | EP-01             | não estimado  |
+| US-22     | RF25                   | EP-03                 | não estimado  |
+| US-23     | RF26                   | EP-03                 | não estimado  |
+| US-24     | RF27                   | EP-03                 | não estimado  |
+| US-25     | RF28                   | EP-03                 | não estimado  |
+| US-26     | RF29                   | EP-03                 | não estimado  |
+| US-27     | RF30                   | EP-04  | não estimado  |
+| US-28     | RF31                   | EP-02  | não estimado  |
+| US-29     | RF23                   | EP-02  | não estimado  |
+| US-30     | RF21                   | EP-02  | não estimado  |
+| US-31     | RF22                   | EP-02  | não estimado  |
