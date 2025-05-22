@@ -7,65 +7,52 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 
 ## 1 - Requisitos Funcionais
 
-### Gestão de CNPJ
+| Código | Requisito Funcional                                 |
+|--------|----------------------------------------------------------------|
+| RF01   | Inserir número de CNPJ                                         |
+| RF02   | Validar formato do CNPJ                                        |
+| RF03   | Consultar dados do CNPJ via API                                |
+| RF04   | Exibir dados retornados da consulta ao CNPJ                    |
+| RF05   | Armazenar dados do CNPJ                                        |
+| RF06   | Editar dados retornados do CNPJ                                |
+| RF07   | Listar CNPJs consultados                                       |
+| RF08   | Visualizar dados retornados de consultas passadas ao CNPJ      |
+| RF09   | Pré-preencher questionário com dados do CNPJ                   |
+| RF10   | Associar dados de CNPJ às teses aplicáveis                     |
+| RF11   | Associar dados de CNPJ às perguntas                            |
+| RF12   | Criar tese tributária                           |
+| RF13   | Editar tese tributária                          |
+| RF14   | Apagar tese tributária                          |
+| RF15   | Categorizar tese tributária                     |
+| RF16   | Criar categorias de teses                       |
+| RF17   | Visualizar lista de teses                       |
+| RF18   | Pesquisar tese por nome                         |
+| RF19   | Filtrar teses por categoria                     |
+| RF20   | Criar pergunta jurídica                               |
+| RF21   | Editar pergunta jurídica                              |
+| RF22   | Apagar pergunta jurídica                              |
+| RF23   | Visualizar lista de perguntas jurídicas               |
+| RF24   | Relacionar tese a pergunta                            |
+| RF25   | Iniciar questionário com perguntas criadas            |
+| RF26   | Salvar respostas do questionário                      |
+| RF27   | Editar resposta salva do questionário                 |
+| RF28   | Visualizar relatório de teses aplicáveis              |
+| RF29   | Apagar questionário respondido                        |
+| RF30   | Exportar relatório de teses aplicáveis em PDF         |
+| RF31   | Relacionar pergunta a outras perguntas                |
 
-| Código | Requisito Funcional (resumido)                                 | Prioridade (MoSCoW) |
-|--------|----------------------------------------------------------------|----------------------|
-| RF01   | Inserir número de CNPJ                                         |                      |
-| RF02   | Validar formato do CNPJ                                        |                      |
-| RF03   | Consultar dados do CNPJ via API                                |                      |
-| RF04   | Exibir dados retornados da consulta ao CNPJ                    |                      |
-| RF05   | Armazenar dados do CNPJ                                        |                      |
-| RF06   | Editar dados retornados do CNPJ                                |                      |
-| RF07   | Listar CNPJs consultados                                       |                      |
-| RF08   | Visualizar dados retornados de consultas passadas ao CNPJ      |                      |
-| RF09   | Pré-preencher questionário com dados do CNPJ                   |                      |
-| RF10   | Associar dados de CNPJ às teses aplicáveis                     |                      |
-| RF11   | Associar dados de CNPJ às perguntas                            |                      |
+## 2 - Requisitos Não Funcionais
 
-### Gestão de Teses Tributárias
-
-| Código | Requisito Funcional (resumido)                  | Prioridade (MoSCoW) |
-|--------|-------------------------------------------------|----------------------|
-| RF12   | Criar tese tributária                           |                      |
-| RF13   | Editar tese tributária                          |                      |
-| RF14   | Apagar tese tributária                          |                      |
-| RF15   | Categorizar tese tributária                     |                      |
-| RF16   | Criar categorias de teses                       |                      |
-| RF17   | Visualizar lista de teses                       |                      |
-| RF18   | Pesquisar tese por nome                         |                      |
-| RF19   | Filtrar teses por categoria                     |                      |
-
-### Questionários Jurídicos
-
-| Código | Requisito Funcional (resumido)                        | Prioridade (MoSCoW) |
-|--------|-------------------------------------------------------|----------------------|
-| RF20   | Criar pergunta jurídica                               |                      |
-| RF21   | Editar pergunta jurídica                              |                      |
-| RF22   | Apagar pergunta jurídica                              |                      |
-| RF23   | Visualizar lista de perguntas jurídicas               |                      |
-| RF24   | Relacionar tese a pergunta                            |                      |
-| RF25   | Iniciar questionário com perguntas criadas            |                      |
-| RF26   | Salvar respostas do questionário                      |                      |
-| RF27   | Editar resposta salva do questionário                 |                      |
-| RF28   | Visualizar relatório de teses aplicáveis              |                      |
-| RF29   | Apagar questionário respondido                        |                      |
-| RF30   | Exportar relatório de teses aplicáveis em PDF         |                      |
-| RF31   | Relacionar pergunta a outras perguntas                |                      |
-
-
-## 2 ▪ Requisitos Não Funcionais
-
-| Código  | Requisito Não Funcional                        | Prioridade (MoSCoW) |
-|---------|----------------------------------------------- |----------------------|
-| RNF01   | O sistema deve responder às ações do usuário em até 2 segundos, garantindo uma experiência fluida.                    |                      |
-| RNF02   | A geração de relatórios em PDF, como os de teses aplicáveis, deve ser concluída em no máximo 5 segundos.                            |                      |
-| RNF03   | Todo o tráfego deve ocorrer via HTTPS, e o sistema deve estar protegido contra injeções SQL (SQLi) e outras ameaças conhecidas (como XSS).                   |                      |
-| RNF04   | As credenciais dos usuários devem ser protegidas com hash (ex: bcrypt) e o sistema deve adotar TLS para segurança nas transmissões.                |                      |
-| RNF05   | O sistema deve manter logs de erros e acessos dos usuários, permitindo rastreabilidade e diagnóstico de falhas.                        |                      |
-| RNF06   | Toda comunicação com APIs externas (ex: consulta de CNPJ) deve utilizar HTTPS para garantir a integridade e confidencialidade dos dados.                  |                      |
-| RNF07   | A interface e os textos do sistema devem utilizar linguagem adequada ao público jurídico, evitando termos técnicos de TI ou ambiguidade.            |                      |
-| RNF08   | A estrutura do sistema deve permitir que os administradores atualizem facilmente teses tributárias e perguntas jurídicas, sem depender de suporte técnico.            |                      |
+| Código  | Requisito Não Funcional                        |
+|---------|----------------------------------------------- |
+| RNF01   | O sistema deve responder às ações do usuário em até 2 segundos, garantindo uma experiência fluida.                    |
+| RNF02   | A geração de relatórios em PDF, como os de teses aplicáveis, deve ser concluída em no máximo 5 segundos.                            |
+| RNF03   | Todo o tráfego deve ocorrer via HTTPS, e o sistema deve estar protegido contra injeções SQL (SQLi) e outras ameaças conhecidas (como XSS).                   |
+| RNF04   | As credenciais dos usuários devem ser protegidas com hash (ex: bcrypt) e o sistema deve adotar TLS para segurança nas transmissões.                |
+| RNF05   | O sistema deve manter logs de erros e acessos dos usuários, permitindo rastreabilidade e diagnóstico de falhas.                        |
+| RNF06   | Toda comunicação com APIs externas (ex: consulta de CNPJ) deve utilizar HTTPS para garantir a integridade e confidencialidade dos dados.                  |
+| RNF07   | A interface e os textos do sistema devem utilizar linguagem adequada ao público jurídico, evitando termos técnicos de TI ou ambiguidade.            |
+| RNF08   | A estrutura do sistema deve permitir que os administradores atualizem facilmente teses tributárias e perguntas jurídicas, sem depender de suporte técnico.            |
 
 ## Épicos
 
@@ -76,7 +63,6 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | EP-03   | Questionário de Diagnóstico Tributário         |
 | EP-04   | Geração de Relatório de Teses Aplicáveis       |
 | EP-05   | Gerenciamento de CNPJ                          |
-| EP-06   | Autenticação e Controle de Acesso              |
 
 ## Histórias de Usuário
 
@@ -207,3 +193,39 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | US-29     | RF23                   | EP-02  | não estimado  |
 | US-30     | RF21                   | EP-02  | não estimado  |
 | US-31     | RF22                   | EP-02  | não estimado  |
+
+## Priorização do Backlog
+
+| Código US | Descrição              | Prioridade             | MVP           |
+|-----------|------------------------|------------------------|---------------|
+| US-01     | Inserir número de CNPJ para análise                        | não estimado |          |
+| US-03     | Consultar dados públicos do CNPJ via API                   | não estimado |          |
+| US-04     | Exibir informações públicas do CNPJ                        | não estimado |          |
+| US-02     | Validar formato do CNPJ inserido                           | não estimado |          |
+| US-05     | Armazenar temporariamente dados do CNPJ para uso interno   | não estimado |          |
+| US-07     | Listar empresas já consultadas                             | não estimado |          |
+| US-08     | Pré-preencher campos do questionário com dados do CNPJ     | não estimado |          |
+| US-09     | Associar informações do CNPJ às teses aplicáveis           | não estimado |          |
+| US-06     | Editar manualmente dados do CNPJ                           | não estimado |          |
+| US-10     | Associar informações do CNPJ às perguntas do sistema       | não estimado |          |
+| US-11     | Atualizar dados de um CNPJ                                 | não estimado |          |
+| US-12     | Criar tese tributária                                      | não estimado |          |
+| US-13     | Editar tese tributária existente                           | não estimado |          |
+| US-14     | Excluir tese tributária                                    | não estimado |          |
+| US-15     | Categorizar tese tributária                                | não estimado |          |
+| US-16     | Criar categorias de teses                                  | não estimado |          |
+| US-17     | Visualizar lista de teses cadastradas                      | não estimado |          |
+| US-18     | Pesquisar tese por nome, palavra-chave ou categoria        | não estimado |          |
+| US-19     | Filtrar teses por categoria                                | não estimado |          |
+| US-20     | Criar pergunta jurídica                                    | não estimado |          |
+| US-21     | Relacionar tese a perguntas jurídicas                      | não estimado |          |
+| US-22     | Iniciar e responder questionário jurídico                  | não estimado |          |
+| US-23     | Salvar respostas de questionário                           | não estimado |          |
+| US-24     | Editar respostas salvas de questionários anteriore         | não estimado |          |
+| US-25     | Visualizar relatório de teses aplicáveis                   | não estimado |          |
+| US-26     | Excluir questionário respondido                            | não estimado |          |
+| US-27     | Exportar relatório de teses em PDF                         | não estimado |          |
+| US-28     | Relacionar pergunta jurídica a outras perguntas            | não estimado |          |
+| US-29     | Exibir lista de perguntas cadastradas                      | não estimado |          |
+| US-30     | Editar pergunta jurídica                                   | não estimado |          |
+| US-31     | Excluir pergunta jurídica                                  | não estimado |          |
