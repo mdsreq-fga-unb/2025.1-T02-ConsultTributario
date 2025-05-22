@@ -4,6 +4,7 @@
 | ------ | ---------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
 | 1.0    | -          | [Equipe ConsultTributário](https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario) | Versão inicial, documentação base herdada.                                         |
 | 2.0    | 05/05/2025 | [Vinicius Vieira](https://github.com/viniciusvieira00)                                     | Atualizações da política, baseada nas novas ISSUES e padronizações para o projeto. |
+| 3.0    | 22/05/2025 | [Vinicius Vieira](https://github.com/viniciusvieira00)                                     | Atualização da política de Branches para o projeto.|
 
 ---
 
@@ -44,7 +45,7 @@ Branch principal para o desenvolvimento do backend da aplicação.
 
 **Regras:**
 - Contém o código-fonte da API e serviços (NestJS)
-- Novas funcionalidades devem ser desenvolvidas em branches específicas (ex: `backend/X-nome_funcionalidade`)
+- Novas funcionalidades devem ser desenvolvidas em branches específicas (ex: `back-end/X-nome_funcionalidade`)
 - Integrações ocorrem via Pull Requests após revisão
 
 ### 1.5 Branch **frontend**
@@ -53,7 +54,7 @@ Branch principal para o desenvolvimento do frontend da aplicação.
 
 **Regras:**
 - Contém o código-fonte da interface de usuário (Next.js)
-- Novas funcionalidades devem ser desenvolvidas em branches específicas (ex: `frontend/X-nome_funcionalidade`)
+- Novas funcionalidades devem ser desenvolvidas em branches específicas (ex: `front-end/X-nome_funcionalidade`)
 - Integrações ocorrem via Pull Requests após revisão
 
 ---
@@ -86,11 +87,11 @@ Branches para desenvolvimento de funcionalidades no backend são criadas a parti
 
 **Padrão de nomenclatura**:
 ```bash
-backend/X-nome_da_funcionalidade
+back-end/X-nome_da_funcionalidade
 ```
 **Exemplo**:
 ```bash
-backend/8-criar-crud-clientes
+back-end/8-criar-crud-clientes
 ```
 **Onde**:
 - **X**: número da *issue* associada
@@ -102,11 +103,11 @@ Branches para desenvolvimento de funcionalidades no frontend são criadas a part
 
 **Padrão de nomenclatura**:
 ```bash
-frontend/X-nome_da_funcionalidade
+front-end/X-nome_da_funcionalidade
 ```
 **Exemplo**:
 ```bash
-frontend/15-implementar-tela-calculo-icms
+front-end/15-implementar-tela-calculo-icms
 ```
 **Onde**:
 - **X**: número da *issue* associada
@@ -251,8 +252,8 @@ O fluxo de trabalho completo no projeto ConsultTributario, desde a criação da 
 2. **Desenvolvimento**
    - Criar branch específica a partir da branch base adequada:
      - `doc/X-nome` para documentação (a partir de `docs`)
-     - `backend/X-nome` para backend (a partir de `backend`)
-     - `frontend/X-nome` para frontend (a partir de `frontend`)
+     - `back-end/X-nome` para backend (a partir de `backend`)
+     - `front-end/X-nome` para frontend (a partir de `frontend`)
    - Implementar a solução seguindo os padrões do projeto
    - Realizar commits atômicos e significativos conforme a Política de Commits
 
@@ -289,7 +290,6 @@ Issue → Branch Específica → Desenvolvimento → Testes Locais → PR → Re
    |                                                           v
    +-----------------------------Ajustes-----------------------+
 ```
-
 ---
 
 ## Referências
