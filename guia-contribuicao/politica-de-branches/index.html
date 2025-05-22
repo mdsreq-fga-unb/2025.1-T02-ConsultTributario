@@ -1361,6 +1361,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#issue-branch-especifica-desenvolvimento-testes-locais-pr-revisao-cicd-merge-integracaodeploy-v-ajustes-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue → Branch Específica → Desenvolvimento → Testes Locais → PR → Revisão → CI/CD → Merge → Integração/Deploy ^ | | v +-----------------------------Ajustes-----------------------+
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       Referências
@@ -1600,6 +1609,12 @@
 <td><a href="https://github.com/viniciusvieira00">Vinicius Vieira</a></td>
 <td>Atualizações da política, baseada nas novas ISSUES e padronizações para o projeto.</td>
 </tr>
+<tr>
+<td>3.0</td>
+<td>22/05/2025</td>
+<td><a href="https://github.com/viniciusvieira00">Vinicius Vieira</a></td>
+<td>Atualização da política de Branches para o projeto.</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -1627,13 +1642,13 @@
 <p>Branch principal para o desenvolvimento do backend da aplicação.</p>
 <p><strong>Regras:</strong>
 - Contém o código-fonte da API e serviços (NestJS)
-- Novas funcionalidades devem ser desenvolvidas em branches específicas (ex: <code>backend/X-nome_funcionalidade</code>)
+- Novas funcionalidades devem ser desenvolvidas em branches específicas (ex: <code>back-end/X-nome_funcionalidade</code>)
 - Integrações ocorrem via Pull Requests após revisão</p>
 <h3 id="15-branch-frontend">1.5 Branch <strong>frontend</strong><a class="headerlink" href="#15-branch-frontend" title="Permanent link">&para;</a></h3>
 <p>Branch principal para o desenvolvimento do frontend da aplicação.</p>
 <p><strong>Regras:</strong>
 - Contém o código-fonte da interface de usuário (Next.js)
-- Novas funcionalidades devem ser desenvolvidas em branches específicas (ex: <code>frontend/X-nome_funcionalidade</code>)
+- Novas funcionalidades devem ser desenvolvidas em branches específicas (ex: <code>front-end/X-nome_funcionalidade</code>)
 - Integrações ocorrem via Pull Requests após revisão</p>
 <hr />
 <h2 id="2-branches-de-desenvolvimento">2. Branches de Desenvolvimento<a class="headerlink" href="#2-branches-de-desenvolvimento" title="Permanent link">&para;</a></h2>
@@ -1653,10 +1668,10 @@
 <h3 id="22-branches-de-backend">2.2 Branches de Backend<a class="headerlink" href="#22-branches-de-backend" title="Permanent link">&para;</a></h3>
 <p>Branches para desenvolvimento de funcionalidades no backend são criadas a partir de <code>backend</code>.</p>
 <p><strong>Padrão de nomenclatura</strong>:
-<div class="highlight"><pre><span></span><code>backend/X-nome_da_funcionalidade
+<div class="highlight"><pre><span></span><code>back-end/X-nome_da_funcionalidade
 </code></pre></div>
 <strong>Exemplo</strong>:
-<div class="highlight"><pre><span></span><code>backend/8-criar-crud-clientes
+<div class="highlight"><pre><span></span><code>back-end/8-criar-crud-clientes
 </code></pre></div>
 <strong>Onde</strong>:
 - <strong>X</strong>: número da <em>issue</em> associada
@@ -1664,10 +1679,10 @@
 <h3 id="23-branches-de-frontend">2.3 Branches de Frontend<a class="headerlink" href="#23-branches-de-frontend" title="Permanent link">&para;</a></h3>
 <p>Branches para desenvolvimento de funcionalidades no frontend são criadas a partir de <code>frontend</code>.</p>
 <p><strong>Padrão de nomenclatura</strong>:
-<div class="highlight"><pre><span></span><code>frontend/X-nome_da_funcionalidade
+<div class="highlight"><pre><span></span><code>front-end/X-nome_da_funcionalidade
 </code></pre></div>
 <strong>Exemplo</strong>:
-<div class="highlight"><pre><span></span><code>frontend/15-implementar-tela-calculo-icms
+<div class="highlight"><pre><span></span><code>front-end/15-implementar-tela-calculo-icms
 </code></pre></div>
 <strong>Onde</strong>:
 - <strong>X</strong>: número da <em>issue</em> associada
@@ -1795,8 +1810,8 @@
 </li>
 <li>Criar branch específica a partir da branch base adequada:<ul>
 <li><code>doc/X-nome</code> para documentação (a partir de <code>docs</code>)</li>
-<li><code>backend/X-nome</code> para backend (a partir de <code>backend</code>)</li>
-<li><code>frontend/X-nome</code> para frontend (a partir de <code>frontend</code>)</li>
+<li><code>back-end/X-nome</code> para backend (a partir de <code>backend</code>)</li>
+<li><code>front-end/X-nome</code> para frontend (a partir de <code>frontend</code>)</li>
 </ul>
 </li>
 <li>Implementar a solução seguindo os padrões do projeto</li>
@@ -1843,12 +1858,11 @@
 <li>Verificação da publicação em <code>gh-pages</code></li>
 </ol>
 <h3 id="61-diagrama-do-fluxo-de-trabalho">6.1 Diagrama do Fluxo de Trabalho<a class="headerlink" href="#61-diagrama-do-fluxo-de-trabalho" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>Issue → Branch Específica → Desenvolvimento → Testes Locais → PR → Revisão → CI/CD → Merge → Integração/Deploy
+<h2 id="issue-branch-especifica-desenvolvimento-testes-locais-pr-revisao-cicd-merge-integracaodeploy-v-ajustes-"><div class="highlight"><pre><span></span><code>Issue → Branch Específica → Desenvolvimento → Testes Locais → PR → Revisão → CI/CD → Merge → Integração/Deploy
    ^                                                           |
    |                                                           v
    +-----------------------------Ajustes-----------------------+
-</code></pre></div>
-<hr />
+</code></pre></div><a class="headerlink" href="#issue-branch-especifica-desenvolvimento-testes-locais-pr-revisao-cicd-merge-integracaodeploy-v-ajustes-" title="Permanent link">&para;</a></h2>
 <h2 id="referencias">Referências<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>[1] DRIESSEN, Vincent. A successful Git branching model. [S. l.], 5 jan. 2010.<br />
