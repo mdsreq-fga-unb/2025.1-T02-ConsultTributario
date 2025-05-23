@@ -1,0 +1,64 @@
+name: 📝 Melhoria de Documentação
+description: Sugerir melhorias na documentação
+title: 'docs: '
+labels: ['documentation']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por ajudar a melhorar nossa documentação!
+
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo de Melhoria
+      description: Que tipo de melhoria na documentação você está sugerindo?
+      options:
+        - Nova documentação
+        - Correção de erros
+        - Melhoria de clareza
+        - Tradução
+        - Adição de exemplos
+        - Outro
+    validations:
+      required: true
+
+  - type: textarea
+    id: localizacao
+    attributes:
+      label: Localização
+      description: Onde está a documentação que precisa ser melhorada? Forneça links se possível.
+      placeholder: A documentação na seção X...
+    validations:
+      required: true
+
+  - type: textarea
+    id: descricao
+    attributes:
+      label: Descrição da Melhoria
+      description: Descreva detalhadamente a melhoria que você gostaria de ver na documentação
+      placeholder: A documentação deveria incluir...
+    validations:
+      required: true
+
+  - type: textarea
+    id: sugestao
+    attributes:
+      label: Sugestão de Conteúdo
+      description: Se você tem uma sugestão específica para o novo conteúdo, adicione aqui
+      placeholder: |
+        ```markdown
+        # Título
+
+        Conteúdo sugerido...
+        ```
+    validations:
+      required: false
+
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto Adicional
+      description: Adicione qualquer outro contexto sobre a melhoria de documentação aqui
+    validations:
+      required: false

@@ -1,0 +1,82 @@
+name: 🚀 Nova Funcionalidade
+description: Sugerir uma ideia para este projeto
+title: 'feat: '
+labels: ['enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por sugerir uma nova funcionalidade! Preencha o formulário abaixo para nos ajudar a entender sua proposta.
+
+  - type: textarea
+    id: problema
+    attributes:
+      label: Problema Relacionado
+      description: A sua solicitação está relacionada a algum problema? Descreva-o.
+      placeholder: Fico frustrado quando [...]
+    validations:
+      required: false
+
+  - type: textarea
+    id: solucao
+    attributes:
+      label: Solução Desejada
+      description: Descreva detalhadamente a funcionalidade que você gostaria de ver implementada
+      placeholder: Gostaria que o aplicativo pudesse [...]
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternativas
+    attributes:
+      label: Alternativas Consideradas
+      description: Descreva alternativas que você considerou para resolver o problema
+      placeholder: Também considerei [...]
+    validations:
+      required: false
+
+  - type: dropdown
+    id: prioridade
+    attributes:
+      label: Prioridade
+      description: Qual você considera ser a prioridade desta solicitação?
+      options:
+        - Baixa
+        - Média
+        - Alta
+        - Crítica
+    validations:
+      required: true
+
+  - type: dropdown
+    id: escopo
+    attributes:
+      label: Escopo
+      description: Qual área do aplicativo seria afetada?
+      multiple: true
+      options:
+        - Frontend
+        - Backend
+        - UX/UI
+        - Infraestrutura
+        - Base de Dados
+        - Segurança
+    validations:
+      required: true
+
+  - type: textarea
+    id: beneficios
+    attributes:
+      label: Benefícios Esperados
+      description: Quais são os benefícios que esta funcionalidade traria?
+      placeholder: Esta funcionalidade melhoraria [...]
+    validations:
+      required: true
+
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto Adicional
+      description: Adicione qualquer outro contexto, wireframes ou exemplos sobre a solicitação de funcionalidade aqui
+    validations:
+      required: false

@@ -1,0 +1,98 @@
+name: 🐛 Relatar Bug
+description: Reporte um problema ou comportamento inesperado
+title: 'bug: '
+labels: ['bug', 'triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por dedicar seu tempo para relatar um bug!
+
+  - type: textarea
+    id: descricao
+    attributes:
+      label: Descrição do Problema
+      description: Uma descrição clara e concisa do que é o bug
+      placeholder: O aplicativo trava quando...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproducao
+    attributes:
+      label: Passos para Reproduzir
+      description: Passos para reproduzir o comportamento
+      placeholder: |
+        1. Vá para '...'
+        2. Clique em '....'
+        3. Role até '....'
+        4. Veja o erro
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento Esperado
+      description: Uma descrição clara e concisa do que você esperava que acontecesse
+    validations:
+      required: true
+
+  - type: dropdown
+    id: ambiente
+    attributes:
+      label: Ambiente
+      description: Em qual ambiente o problema ocorre?
+      options:
+        - Desenvolvimento
+        - Homologação
+        - Produção
+    validations:
+      required: true
+
+  - type: dropdown
+    id: plataforma
+    attributes:
+      label: Plataforma
+      description: Em qual plataforma o problema ocorre?
+      multiple: true
+      options:
+        - Android
+        - iOS
+        - Web
+    validations:
+      required: true
+
+  - type: input
+    id: versao
+    attributes:
+      label: Versão do App
+      description: Qual versão do aplicativo você está usando?
+      placeholder: '1.0.0'
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs Relevantes
+      description: Copie e cole quaisquer logs relevantes
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Se aplicável, adicione screenshots para ajudar a explicar seu problema
+    validations:
+      required: false
+
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto Adicional
+      description: Adicione qualquer outro contexto sobre o problema aqui
+    validations:
+      required: false
