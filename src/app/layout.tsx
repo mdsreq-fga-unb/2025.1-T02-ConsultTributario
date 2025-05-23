@@ -1,23 +1,26 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/app/components/Navbar/Navbar";
-import Footer from "@/app/components/Footer/Footer";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ["latin"] });
+import './globals.css';
+import Footer from '@/app/components/Footer/Footer';
+import Navbar from '@/app/components/Navbar/Navbar';
 
-export default function RootLayout({
+const inter = Inter({ subsets: ['latin'] });
+
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
-    <html lang="pt-BR">
+    <html lang='pt-BR'>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
         <Navbar />
-        <main className="flex-grow">{children}</main>
+        <main className='flex-grow'>{children}</main>
         <Footer />
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
