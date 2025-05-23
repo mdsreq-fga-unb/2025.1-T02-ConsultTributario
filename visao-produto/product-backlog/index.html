@@ -1393,10 +1393,6 @@
 <td>Inserir número de CNPJ</td>
 </tr>
 <tr>
-<td>RF02</td>
-<td>Validar formato do CNPJ</td>
-</tr>
-<tr>
 <td>RF03</td>
 <td>Consultar dados do CNPJ via API</td>
 </tr>
@@ -1429,10 +1425,6 @@
 <td>Associar dados de CNPJ às teses aplicáveis</td>
 </tr>
 <tr>
-<td>RF11</td>
-<td>Associar dados de CNPJ às perguntas</td>
-</tr>
-<tr>
 <td>RF12</td>
 <td>Criar tese tributária</td>
 </tr>
@@ -1462,7 +1454,7 @@
 </tr>
 <tr>
 <td>RF19</td>
-<td>Filtrar teses por categoria</td>
+<td>Agrupar teses por categorias</td>
 </tr>
 <tr>
 <td>RF20</td>
@@ -1511,6 +1503,10 @@
 <tr>
 <td>RF31</td>
 <td>Relacionar pergunta a outras perguntas</td>
+</tr>
+<tr>
+<td>RF32</td>
+<td>Salvar relatório de teses aplicáveis</td>
 </tr>
 </tbody>
 </table>
@@ -1595,10 +1591,6 @@
 <em>Como usuário, quero inserir o número de CNPJ de uma empresa para análise, para ser feita a consulta de informações automaticamente.</em></p>
 </li>
 <li>
-<p><strong>US-02:</strong> Validar formato do CNPJ inserido<br />
-<em>Como usuário, quero que o formato do CNPJ inserido seja validado pelo sistema, para garantir que ele esteja correto antes de prosseguir com a consulta.</em></p>
-</li>
-<li>
 <p><strong>US-03:</strong> Consultar dados públicos do CNPJ via API<br />
 <em>Como usuário, quero obter os dados de uma empresa pelo CNPJ de forma rápida, para evitar a pesquisa por informações em sites externos.</em></p>
 </li>
@@ -1616,7 +1608,7 @@
 </li>
 <li>
 <p><strong>US-07:</strong> Listar empresas já consultadas<br />
-<em>Como usuário, quero visualizar uma lista de empresas cujos CNPJs já foram consultados, para reutilizar informações sem precisar fazer nova consulta.</em></p>
+<em>Como usuário, quero visualizar uma lista de empresas cujos CNPJs já foram consultados, para reutilizar informações sem precisar fazer uma nova consulta.</em></p>
 </li>
 <li>
 <p><strong>US-08:</strong> Pré-preencher campos do questionário com dados do CNPJ<br />
@@ -1627,8 +1619,8 @@
 <em>Como usuário, quero associar os dados do CNPJ às teses tributárias relevantes, para facilitar a geração de diagnósticos.</em></p>
 </li>
 <li>
-<p><strong>US-10:</strong> Associar informações do CNPJ às perguntas do sistema<br />
-<em>Como sistema, quero vincular as informações do CNPJ às perguntas jurídicas, para agilizar as respostas aos questionários.</em></p>
+<p><strong>US-10:</strong> Visualizar dados retornados de consultas passadas ao CNPJ<br />
+<em>Como usuário, quero visualizar os dados obtidos em uma consulta anterior de CNPJ, para analisar novamente sem precisar consultar outra vez.</em></p>
 </li>
 <li>
 <p><strong>US-11:</strong> Atualizar dados de um CNPJ<br />
@@ -1663,8 +1655,8 @@
 <em>Como usuário, quero buscar teses tributárias usando filtros e palavras-chave, para encontrar rapidamente as mais relevantes.</em></p>
 </li>
 <li>
-<p><strong>US-19:</strong> Filtrar teses por categoria<br />
-<em>Como usuário, quero aplicar filtros por categoria nas teses, para facilitar a navegação e análise por temas jurídicos.</em></p>
+<p><strong>US-19:</strong> Agrupar teses por categorias<br />
+<em>Como usuário, quero agrupar teses tributárias por categorias, para organizar melhor a base de conhecimento e facilitar a busca por temas específicos.</em></p>
 </li>
 <li>
 <p><strong>US-20:</strong> Criar pergunta jurídica<br />
@@ -1714,6 +1706,10 @@
 <p><strong>US-31:</strong> Excluir pergunta jurídica<br />
 <em>Como advogado, quero excluir perguntas jurídicas do sistema, para remover aquelas que não são mais úteis ou estão desatualizadas.</em></p>
 </li>
+<li>
+<p><strong>US-32: Salvar relatório de teses aplicáveis</strong><br />
+<em>Como usuário, quero salvar o relatório de teses tributárias aplicáveis gerado a partir de um questionário, para poder acessá-lo posteriormente sem precisar refazer a análise.</em></p>
+</li>
 </ul>
 <table>
 <thead>
@@ -1740,12 +1736,6 @@
 <tr>
 <td>US-04</td>
 <td>RF04</td>
-<td>EP-05</td>
-<td>não estimado</td>
-</tr>
-<tr>
-<td>US-02</td>
-<td>RF02</td>
 <td>EP-05</td>
 <td>não estimado</td>
 </tr>
@@ -1781,13 +1771,19 @@
 </tr>
 <tr>
 <td>US-10</td>
-<td>RF11</td>
+<td>RF08</td>
 <td>EP-05</td>
 <td>não estimado</td>
 </tr>
 <tr>
 <td>US-11</td>
 <td>RF03, RF04, RF05</td>
+<td>EP-05</td>
+<td>não estimado</td>
+</tr>
+<tr>
+<td>US-32</td>
+<td>RF32</td>
 <td>EP-05</td>
 <td>não estimado</td>
 </tr>
@@ -1925,189 +1921,189 @@
 </thead>
 <tbody>
 <tr>
-<td>US-01</td>
-<td>Inserir número de CNPJ para análise</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-03</td>
-<td>Consultar dados públicos do CNPJ via API</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-04</td>
-<td>Exibir informações públicas do CNPJ</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-02</td>
-<td>Validar formato do CNPJ inserido</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-05</td>
-<td>Armazenar temporariamente dados do CNPJ para uso interno</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-07</td>
-<td>Listar empresas já consultadas</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-08</td>
-<td>Pré-preencher campos do questionário com dados do CNPJ</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-09</td>
-<td>Associar informações do CNPJ às teses aplicáveis</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-06</td>
-<td>Editar manualmente dados do CNPJ</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-10</td>
-<td>Associar informações do CNPJ às perguntas do sistema</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-11</td>
-<td>Atualizar dados de um CNPJ</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
 <td>US-12</td>
 <td>Criar tese tributária</td>
-<td>não estimado</td>
-<td></td>
+<td>Must have</td>
+<td>X</td>
 </tr>
 <tr>
 <td>US-13</td>
 <td>Editar tese tributária existente</td>
-<td>não estimado</td>
-<td></td>
+<td>Must have</td>
+<td>X</td>
 </tr>
 <tr>
 <td>US-14</td>
 <td>Excluir tese tributária</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-15</td>
-<td>Categorizar tese tributária</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-16</td>
-<td>Criar categorias de teses</td>
-<td>não estimado</td>
-<td></td>
+<td>Must have</td>
+<td>X</td>
 </tr>
 <tr>
 <td>US-17</td>
 <td>Visualizar lista de teses cadastradas</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-18</td>
-<td>Pesquisar tese por nome, palavra-chave ou categoria</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-19</td>
-<td>Filtrar teses por categoria</td>
-<td>não estimado</td>
-<td></td>
+<td>Must have</td>
+<td>X</td>
 </tr>
 <tr>
 <td>US-20</td>
 <td>Criar pergunta jurídica</td>
-<td>não estimado</td>
-<td></td>
+<td>Must have</td>
+<td>X</td>
 </tr>
 <tr>
 <td>US-21</td>
 <td>Relacionar tese a perguntas jurídicas</td>
-<td>não estimado</td>
-<td></td>
+<td>Must have</td>
+<td>X</td>
 </tr>
 <tr>
 <td>US-22</td>
 <td>Iniciar e responder questionário jurídico</td>
-<td>não estimado</td>
-<td></td>
+<td>Must have</td>
+<td>X</td>
+</tr>
+<tr>
+<td>US-28</td>
+<td>Relacionar pergunta jurídica a outras perguntas</td>
+<td>Must have</td>
+<td>X</td>
+</tr>
+<tr>
+<td>US-29</td>
+<td>Exibir lista de perguntas cadastradas</td>
+<td>Must have</td>
+<td>X</td>
+</tr>
+<tr>
+<td>US-30</td>
+<td>Editar pergunta jurídica</td>
+<td>Must have</td>
+<td>X</td>
+</tr>
+<tr>
+<td>US-31</td>
+<td>Excluir pergunta jurídica</td>
+<td>Must have</td>
+<td>X</td>
+</tr>
+<tr>
+<td>US-25</td>
+<td>Visualizar relatório de teses aplicáveis</td>
+<td>Must have</td>
+<td>X</td>
+</tr>
+<tr>
+<td>US-01</td>
+<td>Inserir número de CNPJ para análise</td>
+<td>Must have</td>
+<td>X</td>
+</tr>
+<tr>
+<td>US-32</td>
+<td>Salvar relatório de teses aplicáveis</td>
+<td>Must have</td>
+<td>X</td>
+</tr>
+<tr>
+<td>US-16</td>
+<td>Criar categorias de teses</td>
+<td>Should have</td>
+<td>X</td>
+</tr>
+<tr>
+<td>US-15</td>
+<td>Categorizar tese tributária</td>
+<td>Should have</td>
+<td>X</td>
+</tr>
+<tr>
+<td>US-19</td>
+<td>Agrupar teses por categorias</td>
+<td>Should have</td>
+<td>X</td>
+</tr>
+<tr>
+<td>US-03</td>
+<td>Consultar dados públicos do CNPJ via API</td>
+<td>Should have</td>
+<td>X</td>
+</tr>
+<tr>
+<td>US-04</td>
+<td>Exibir informações públicas do CNPJ</td>
+<td>Should have</td>
+<td>X</td>
 </tr>
 <tr>
 <td>US-23</td>
 <td>Salvar respostas de questionário</td>
-<td>não estimado</td>
+<td>Should have</td>
 <td></td>
 </tr>
 <tr>
 <td>US-24</td>
 <td>Editar respostas salvas de questionários anteriore</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-25</td>
-<td>Visualizar relatório de teses aplicáveis</td>
-<td>não estimado</td>
+<td>Should have</td>
 <td></td>
 </tr>
 <tr>
 <td>US-26</td>
 <td>Excluir questionário respondido</td>
-<td>não estimado</td>
+<td>Should have</td>
+<td></td>
+</tr>
+<tr>
+<td>US-09</td>
+<td>Associar informações do CNPJ às teses aplicáveis</td>
+<td>Should have</td>
+<td></td>
+</tr>
+<tr>
+<td>US-06</td>
+<td>Editar manualmente dados do CNPJ</td>
+<td>Could have</td>
+<td></td>
+</tr>
+<tr>
+<td>US-10</td>
+<td>Visualizar dados retornados de consultas passadas ao CNPJ</td>
+<td>Could have</td>
+<td></td>
+</tr>
+<tr>
+<td>US-11</td>
+<td>Atualizar dados de um CNPJ</td>
+<td>Could have</td>
+<td></td>
+</tr>
+<tr>
+<td>US-18</td>
+<td>Pesquisar tese por nome, palavra-chave ou categoria</td>
+<td>Could have</td>
+<td></td>
+</tr>
+<tr>
+<td>US-05</td>
+<td>Armazenar temporariamente dados do CNPJ para uso interno</td>
+<td>Could have</td>
+<td></td>
+</tr>
+<tr>
+<td>US-07</td>
+<td>Listar empresas já consultadas</td>
+<td>Could have</td>
+<td></td>
+</tr>
+<tr>
+<td>US-08</td>
+<td>Pré-preencher campos do questionário com dados do CNPJ</td>
+<td>Could have</td>
 <td></td>
 </tr>
 <tr>
 <td>US-27</td>
 <td>Exportar relatório de teses em PDF</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-28</td>
-<td>Relacionar pergunta jurídica a outras perguntas</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-29</td>
-<td>Exibir lista de perguntas cadastradas</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-30</td>
-<td>Editar pergunta jurídica</td>
-<td>não estimado</td>
-<td></td>
-</tr>
-<tr>
-<td>US-31</td>
-<td>Excluir pergunta jurídica</td>
-<td>não estimado</td>
+<td>Could have</td>
 <td></td>
 </tr>
 </tbody>
