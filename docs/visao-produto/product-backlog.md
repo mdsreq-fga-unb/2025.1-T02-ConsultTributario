@@ -10,7 +10,6 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | Código | Requisito Funcional                                 |
 |--------|----------------------------------------------------------------|
 | RF01   | Inserir número de CNPJ                                         |
-| RF02   | Validar formato do CNPJ                                        |
 | RF03   | Consultar dados do CNPJ via API                                |
 | RF04   | Exibir dados retornados da consulta ao CNPJ                    |
 | RF05   | Armazenar dados do CNPJ                                        |
@@ -19,7 +18,6 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | RF08   | Visualizar dados retornados de consultas passadas ao CNPJ      |
 | RF09   | Pré-preencher questionário com dados do CNPJ                   |
 | RF10   | Associar dados de CNPJ às teses aplicáveis                     |
-| RF11   | Associar dados de CNPJ às perguntas                            |
 | RF12   | Criar tese tributária                           |
 | RF13   | Editar tese tributária                          |
 | RF14   | Apagar tese tributária                          |
@@ -27,7 +25,7 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | RF16   | Criar categorias de teses                       |
 | RF17   | Visualizar lista de teses                       |
 | RF18   | Pesquisar tese por nome                         |
-| RF19   | Filtrar teses por categoria                     |
+| RF19   | Agrupar teses por categorias                    |
 | RF20   | Criar pergunta jurídica                               |
 | RF21   | Editar pergunta jurídica                              |
 | RF22   | Apagar pergunta jurídica                              |
@@ -40,6 +38,7 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | RF29   | Apagar questionário respondido                        |
 | RF30   | Exportar relatório de teses aplicáveis em PDF         |
 | RF31   | Relacionar pergunta a outras perguntas                |
+| RF32   | Salvar relatório de teses aplicáveis                  |
 
 ## 2 - Requisitos Não Funcionais
 
@@ -69,9 +68,6 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 - **US-01:** Inserir número de CNPJ para análise  
   *Como usuário, quero inserir o número de CNPJ de uma empresa para análise, para ser feita a consulta de informações automaticamente.*
 
-- **US-02:** Validar formato do CNPJ inserido  
-  *Como usuário, quero que o formato do CNPJ inserido seja validado pelo sistema, para garantir que ele esteja correto antes de prosseguir com a consulta.*
-
 - **US-03:** Consultar dados públicos do CNPJ via API  
   *Como usuário, quero obter os dados de uma empresa pelo CNPJ de forma rápida, para evitar a pesquisa por informações em sites externos.*
 
@@ -85,7 +81,7 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
   *Como usuário, quero revisar e corrigir manualmente os dados do CNPJ consultado, para garantir que estejam corretos antes de usar em análises.*
 
 - **US-07:** Listar empresas já consultadas  
-  *Como usuário, quero visualizar uma lista de empresas cujos CNPJs já foram consultados, para reutilizar informações sem precisar fazer nova consulta.*
+  *Como usuário, quero visualizar uma lista de empresas cujos CNPJs já foram consultados, para reutilizar informações sem precisar fazer uma nova consulta.*
 
 - **US-08:** Pré-preencher campos do questionário com dados do CNPJ  
   *Como usuário, quero que os dados do CNPJ preencham automaticamente os campos do questionário, para economizar tempo.*
@@ -93,8 +89,8 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 - **US-09:** Associar informações do CNPJ às teses aplicáveis  
   *Como usuário, quero associar os dados do CNPJ às teses tributárias relevantes, para facilitar a geração de diagnósticos.*
 
-- **US-10:** Associar informações do CNPJ às perguntas do sistema  
-  *Como sistema, quero vincular as informações do CNPJ às perguntas jurídicas, para agilizar as respostas aos questionários.*
+- **US-10:** Visualizar dados retornados de consultas passadas ao CNPJ  
+  *Como usuário, quero visualizar os dados obtidos em uma consulta anterior de CNPJ, para analisar novamente sem precisar consultar outra vez.*
 
 - **US-11:** Atualizar dados de um CNPJ  
   *Como usuário, quero atualizar os dados de um CNPJ já consultado, para garantir que estou utilizando informações recentes na análise.*
@@ -120,8 +116,8 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 - **US-18:** Pesquisar tese por nome, palavra-chave ou categoria  
   *Como usuário, quero buscar teses tributárias usando filtros e palavras-chave, para encontrar rapidamente as mais relevantes.*
 
-- **US-19:** Filtrar teses por categoria  
-  *Como usuário, quero aplicar filtros por categoria nas teses, para facilitar a navegação e análise por temas jurídicos.*
+- **US-19:** Agrupar teses por categorias  
+  *Como usuário, quero agrupar teses tributárias por categorias, para organizar melhor a base de conhecimento e facilitar a busca por temas específicos.*
 
 - **US-20:** Criar pergunta jurídica  
   *Como advogado, quero cadastrar novas perguntas jurídicas, para usá-las nos questionários e relacioná-las a teses.*
@@ -159,20 +155,22 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 - **US-31:** Excluir pergunta jurídica  
   *Como advogado, quero excluir perguntas jurídicas do sistema, para remover aquelas que não são mais úteis ou estão desatualizadas.*
 
+- **US-32: Salvar relatório de teses aplicáveis**  
+  *Como usuário, quero salvar o relatório de teses tributárias aplicáveis gerado a partir de um questionário, para poder acessá-lo posteriormente sem precisar refazer a análise.*
 
 | Código US | Código RF              | Épico Relacionado             | Story Points  |
 |-----------|------------------------|-------------------------------|---------------|
 | US-01     | RF01                   | EP-03                         | não estimado  |
 | US-03     | RF03                   | EP-05       | não estimado  |
 | US-04     | RF04                   | EP-05       | não estimado  |
-| US-02     | RF02                   | EP-05       | não estimado  |
 | US-05     | RF05                   | EP-05       | não estimado  |
 | US-06     | RF06                   | EP-05       | não estimado  |
 | US-07     | RF07                   | EP-05       | não estimado  |
 | US-08     | RF09                   | EP-05       | não estimado  |
 | US-09     | RF10                   | EP-05       | não estimado  |
-| US-10     | RF11                   | EP-05       | não estimado  |
+| US-10     | RF08                   | EP-05       | não estimado  |
 | US-11     | RF03, RF04, RF05       | EP-05       | não estimado  |
+| US-32     | RF32                   | EP-05       | não estimado  |
 | US-12     | RF12                   | EP-01             | não estimado  |
 | US-13     | RF13                   | EP-01             | não estimado  |
 | US-14     | RF14                   | EP-01             | não estimado  |
@@ -194,38 +192,39 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | US-30     | RF21                   | EP-02  | não estimado  |
 | US-31     | RF22                   | EP-02  | não estimado  |
 
+
 ## Priorização do Backlog
 
-| Código US | Descrição              | Prioridade             | MVP           |
-|-----------|------------------------|------------------------|---------------|
-| US-01     | Inserir número de CNPJ para análise                        | não estimado |          |
-| US-03     | Consultar dados públicos do CNPJ via API                   | não estimado |          |
-| US-04     | Exibir informações públicas do CNPJ                        | não estimado |          |
-| US-02     | Validar formato do CNPJ inserido                           | não estimado |          |
-| US-05     | Armazenar temporariamente dados do CNPJ para uso interno   | não estimado |          |
-| US-07     | Listar empresas já consultadas                             | não estimado |          |
-| US-08     | Pré-preencher campos do questionário com dados do CNPJ     | não estimado |          |
-| US-09     | Associar informações do CNPJ às teses aplicáveis           | não estimado |          |
-| US-06     | Editar manualmente dados do CNPJ                           | não estimado |          |
-| US-10     | Associar informações do CNPJ às perguntas do sistema       | não estimado |          |
-| US-11     | Atualizar dados de um CNPJ                                 | não estimado |          |
-| US-12     | Criar tese tributária                                      | não estimado |          |
-| US-13     | Editar tese tributária existente                           | não estimado |          |
-| US-14     | Excluir tese tributária                                    | não estimado |          |
-| US-15     | Categorizar tese tributária                                | não estimado |          |
-| US-16     | Criar categorias de teses                                  | não estimado |          |
-| US-17     | Visualizar lista de teses cadastradas                      | não estimado |          |
-| US-18     | Pesquisar tese por nome, palavra-chave ou categoria        | não estimado |          |
-| US-19     | Filtrar teses por categoria                                | não estimado |          |
-| US-20     | Criar pergunta jurídica                                    | não estimado |          |
-| US-21     | Relacionar tese a perguntas jurídicas                      | não estimado |          |
-| US-22     | Iniciar e responder questionário jurídico                  | não estimado |          |
-| US-23     | Salvar respostas de questionário                           | não estimado |          |
-| US-24     | Editar respostas salvas de questionários anteriore         | não estimado |          |
-| US-25     | Visualizar relatório de teses aplicáveis                   | não estimado |          |
-| US-26     | Excluir questionário respondido                            | não estimado |          |
-| US-27     | Exportar relatório de teses em PDF                         | não estimado |          |
-| US-28     | Relacionar pergunta jurídica a outras perguntas            | não estimado |          |
-| US-29     | Exibir lista de perguntas cadastradas                      | não estimado |          |
-| US-30     | Editar pergunta jurídica                                   | não estimado |          |
-| US-31     | Excluir pergunta jurídica                                  | não estimado |          |
+| Código US | Descrição                                                  | Prioridade   | MVP      |
+|-----------|------------------------------------------------------------|--------------|----------|
+| US-12     | Criar tese tributária                                      | Must have    |    X     |
+| US-13     | Editar tese tributária existente                           | Must have    |    X     |
+| US-14     | Excluir tese tributária                                    | Must have    |    X     |
+| US-17     | Visualizar lista de teses cadastradas                      | Must have    |    X     |
+| US-20     | Criar pergunta jurídica                                    | Must have    |    X     |
+| US-21     | Relacionar tese a perguntas jurídicas                      | Must have    |    X     |
+| US-22     | Iniciar e responder questionário jurídico                  | Must have    |    X     |
+| US-28     | Relacionar pergunta jurídica a outras perguntas            | Must have    |    X     |
+| US-29     | Exibir lista de perguntas cadastradas                      | Must have    |    X     |
+| US-30     | Editar pergunta jurídica                                   | Must have    |    X     |
+| US-31     | Excluir pergunta jurídica                                  | Must have    |    X     |
+| US-25     | Visualizar relatório de teses aplicáveis                   | Must have    |    X     |
+| US-01     | Inserir número de CNPJ para análise                        | Must have    |    X     |
+| US-32     | Salvar relatório de teses aplicáveis                       | Must have    |    X     |
+| US-16     | Criar categorias de teses                                  | Should have  |    X     |
+| US-15     | Categorizar tese tributária                                | Should have  |    X     |
+| US-19     | Agrupar teses por categorias                               | Should have  |    X     |
+| US-03     | Consultar dados públicos do CNPJ via API                   | Should have  |    X     |
+| US-04     | Exibir informações públicas do CNPJ                        | Should have  |    X     |
+| US-23     | Salvar respostas de questionário                           | Should have  |          |
+| US-24     | Editar respostas salvas de questionários anteriore         | Should have  |          |
+| US-26     | Excluir questionário respondido                            | Should have  |          |
+| US-09     | Associar informações do CNPJ às teses aplicáveis           | Should have  |          |
+| US-06     | Editar manualmente dados do CNPJ                           | Could have   |          |
+| US-10     | Visualizar dados retornados de consultas passadas ao CNPJ  | Could have   |          |
+| US-11     | Atualizar dados de um CNPJ                                 | Could have   |          |
+| US-18     | Pesquisar tese por nome, palavra-chave ou categoria        | Could have   |          |
+| US-05     | Armazenar temporariamente dados do CNPJ para uso interno   | Could have   |          |
+| US-07     | Listar empresas já consultadas                             | Could have   |          |
+| US-08     | Pré-preencher campos do questionário com dados do CNPJ     | Could have   |          |
+| US-27     | Exportar relatório de teses em PDF                         | Could have   |          |
