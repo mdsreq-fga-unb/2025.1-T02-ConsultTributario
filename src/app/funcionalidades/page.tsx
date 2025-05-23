@@ -49,4 +49,4 @@ const Funcionalidades = () => {
   );
 };
 
-export default ComponentName;
+export default Funcionalidades;

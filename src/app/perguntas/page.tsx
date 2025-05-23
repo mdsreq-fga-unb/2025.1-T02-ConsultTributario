@@ -45,4 +45,4 @@ const Perguntas = () => {
   );
 };
 
-export default ComponentName;
+export default Perguntas;

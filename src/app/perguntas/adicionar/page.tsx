@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import { Button } from '@/components/ui/button';
-const page = () => {
+const Page = () => {
   return (
     <div className='max-w-2xl mx-auto my-10 p-6 border border-gray-200 rounded-xl'>
       <div className='flex flex-col gap-4'>
@@ -21,4 +21,4 @@ const page = () => {
   );
 };
 
-export default ComponentName;
+export default Page;

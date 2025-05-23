@@ -4,4 +4,4 @@ const SignUp = () => {
   return <div>SignUp</div>;
 };
 
-export default ComponentName;
+export default SignUp;

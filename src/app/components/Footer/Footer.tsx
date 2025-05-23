@@ -11,4 +11,4 @@ const Footer = () => {
   );
 };
 
-export default ComponentName;
+export default Footer;
