@@ -40,8 +40,9 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | RF30   | Exportar relatório de teses aplicáveis em PDF                  |
 | RF31   | Relacionar pergunta a outras perguntas                         |
 | RF32   | Salvar relatório de teses aplicáveis                           |
-| RF33   | Editar categorias de teses                                     |
-| RF34   | Apagar categorias de teses                                     |
+| RF33   | Editar categoria de teses                                     |
+| RF34   | Apagar categoria de teses                                     |
+| RF35   | Listar categorias de teses                                     |
 
 ## 2 - Requisitos Não Funcionais
 
@@ -158,14 +159,17 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 - **US-31:** Excluir pergunta jurídica  
   *Como advogado, quero excluir perguntas jurídicas do sistema, para remover aquelas que não são mais úteis ou estão desatualizadas.*
 
-- **US-32: Salvar relatório de teses aplicáveis**  
+- **US-32:** Salvar relatório de teses aplicáveis  
   *Como usuário, quero salvar o relatório de teses tributárias aplicáveis gerado a partir de um questionário, para poder acessá-lo posteriormente sem precisar refazer a análise.*
 
-- **US-33: Editar categorias de teses tributárias**  
+- **US-33:**  Editar categorias de teses tributárias 
   *Como advogado, quero editar o nome de uma categoria de tese tributária, para manter a organização da base de dados e corrigir erros ou padronizar nomenclaturas.*
 
-- **US-34: Apagar categorias de teses tributárias**  
+- **US-34:** Apagar categorias de teses tributárias  
   *Como advogado, quero poder apagar uma categoria de tese tributária, para remover agrupamentos que não fazem mais sentido ou foram criados incorretamente.*
+
+- **US-35:** Visualizar lista de categorias de teses tributárias  
+  *Como advogado, quero visualizar uma lista com todas as categorias de teses tributárias cadastradas no sistema, para entender como as teses estão organizadas e facilitar a navegação e o filtro por temas.*
 
 | Código US | Código RF              | Épico Relacionado   |
 |-----------|------------------------|---------------------|
@@ -200,8 +204,11 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | US-29     | RF23                   | EP-02               | 
 | US-30     | RF21                   | EP-02               | 
 | US-31     | RF22                   | EP-02               | 
+| US-32     | RF32                   | EP-03               | 
 | US-33     | RF33                   | EP-01               | 
-| US-34     | RF34                   | EP-01               | 
+| US-34     | RF34                   | EP-01               |
+| US-35     | RF35                   | EP-01               | 
+
 
 ## Priorização do Backlog
 
@@ -227,10 +234,11 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | US-03     | Consultar dados públicos do CNPJ via API                   | Should have  |    X     |
 | US-04     | Exibir informações públicas do CNPJ                        | Should have  |    X     |
 | US-33     | Editar categorias de teses tributárias                     | Should have  |    X     |
+| US-35     | Visualizar lista de categorias de teses tributárias        | Should have  |    X     |
+| US-09     | Associar informações do CNPJ às teses aplicáveis           | Should have  |          |
 | US-23     | Salvar respostas de questionário                           | Should have  |          |
 | US-24     | Editar respostas salvas de questionários anteriore         | Should have  |          |
 | US-26     | Excluir questionário respondido                            | Should have  |          |
-| US-09     | Associar informações do CNPJ às teses aplicáveis           | Should have  |          |
 | US-06     | Editar manualmente dados do CNPJ                           | Could have   |          |
 | US-10     | Visualizar dados retornados de consultas passadas ao CNPJ  | Could have   |          |
 | US-11     | Atualizar dados de um CNPJ                                 | Could have   |          |
