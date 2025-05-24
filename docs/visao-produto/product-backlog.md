@@ -2,12 +2,13 @@
 | Data | Versão | Descrição | Autor |
 |---- | ------ | --------- | ----- |
 | 20/05/27 | 1.0 | Criação do Documento | Artur Krauspenhar |
+| 24/05/27 | 2.0 | Prioriza backlog     | Artur Krauspenhar |
 
 O backlog de produto é uma lista dinâmica e priorizada que contém todos os requisitos, funcionalidades, melhorias e correções que serão necessárias para o desenvolvimento de um produto. Ele funciona como um guia para a equipe de desenvolvimento, servindo de referência para todas as tarefas que precisam ser realizadas ao longo do ciclo de vida do projeto. Essa lista não é fixa, mas sim atualizável conforme o produto evolui e novas necessidades surgem, garantindo que o time esteja sempre alinhado às prioridades e expectativas do projeto.
 
 ## 1 - Requisitos Funcionais
 
-| Código | Requisito Funcional                                 |
+| Código | Requisito Funcional                                            |
 |--------|----------------------------------------------------------------|
 | RF01   | Inserir número de CNPJ                                         |
 | RF03   | Consultar dados do CNPJ via API                                |
@@ -18,27 +19,29 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | RF08   | Visualizar dados retornados de consultas passadas ao CNPJ      |
 | RF09   | Pré-preencher questionário com dados do CNPJ                   |
 | RF10   | Associar dados de CNPJ às teses aplicáveis                     |
-| RF12   | Criar tese tributária                           |
-| RF13   | Editar tese tributária                          |
-| RF14   | Apagar tese tributária                          |
-| RF15   | Categorizar tese tributária                     |
-| RF16   | Criar categorias de teses                       |
-| RF17   | Visualizar lista de teses                       |
-| RF18   | Pesquisar tese por nome                         |
-| RF19   | Agrupar teses por categorias                    |
-| RF20   | Criar pergunta jurídica                               |
-| RF21   | Editar pergunta jurídica                              |
-| RF22   | Apagar pergunta jurídica                              |
-| RF23   | Visualizar lista de perguntas jurídicas               |
-| RF24   | Relacionar tese a pergunta                            |
-| RF25   | Iniciar questionário com perguntas criadas            |
-| RF26   | Salvar respostas do questionário                      |
-| RF27   | Editar resposta salva do questionário                 |
-| RF28   | Visualizar relatório de teses aplicáveis              |
-| RF29   | Apagar questionário respondido                        |
-| RF30   | Exportar relatório de teses aplicáveis em PDF         |
-| RF31   | Relacionar pergunta a outras perguntas                |
-| RF32   | Salvar relatório de teses aplicáveis                  |
+| RF12   | Criar tese tributária                                          |
+| RF13   | Editar tese tributária                                         |
+| RF14   | Apagar tese tributária                                         |
+| RF15   | Categorizar tese tributária                                    |
+| RF16   | Criar categorias de teses                                      |
+| RF17   | Visualizar lista de teses                                      |
+| RF18   | Pesquisar tese por nome                                        |
+| RF19   | Agrupar teses por categorias                                   |
+| RF20   | Criar pergunta jurídica                                        |
+| RF21   | Editar pergunta jurídica                                       |
+| RF22   | Apagar pergunta jurídica                                       |
+| RF23   | Visualizar lista de perguntas jurídicas                        |
+| RF24   | Relacionar tese a pergunta                                     |
+| RF25   | Iniciar questionário com perguntas criadas                     |
+| RF26   | Salvar respostas do questionário                               |
+| RF27   | Editar resposta salva do questionário                          |
+| RF28   | Visualizar relatório de teses aplicáveis                       |
+| RF29   | Apagar questionário respondido                                 |
+| RF30   | Exportar relatório de teses aplicáveis em PDF                  |
+| RF31   | Relacionar pergunta a outras perguntas                         |
+| RF32   | Salvar relatório de teses aplicáveis                           |
+| RF33   | Editar categorias de teses                                     |
+| RF34   | Apagar categorias de teses                                     |
 
 ## 2 - Requisitos Não Funcionais
 
@@ -158,40 +161,47 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 - **US-32: Salvar relatório de teses aplicáveis**  
   *Como usuário, quero salvar o relatório de teses tributárias aplicáveis gerado a partir de um questionário, para poder acessá-lo posteriormente sem precisar refazer a análise.*
 
-| Código US | Código RF              | Épico Relacionado             | Story Points  |
-|-----------|------------------------|-------------------------------|---------------|
-| US-01     | RF01                   | EP-03                         | não estimado  |
-| US-03     | RF03                   | EP-05       | não estimado  |
-| US-04     | RF04                   | EP-05       | não estimado  |
-| US-05     | RF05                   | EP-05       | não estimado  |
-| US-06     | RF06                   | EP-05       | não estimado  |
-| US-07     | RF07                   | EP-05       | não estimado  |
-| US-08     | RF09                   | EP-05       | não estimado  |
-| US-09     | RF10                   | EP-05       | não estimado  |
-| US-10     | RF08                   | EP-05       | não estimado  |
-| US-11     | RF03, RF04, RF05       | EP-05       | não estimado  |
-| US-32     | RF32                   | EP-05       | não estimado  |
-| US-12     | RF12                   | EP-01             | não estimado  |
-| US-13     | RF13                   | EP-01             | não estimado  |
-| US-14     | RF14                   | EP-01             | não estimado  |
-| US-15     | RF15                   | EP-01             | não estimado  |
-| US-16     | RF16                   | EP-01             | não estimado  |
-| US-17     | RF17                   | EP-01             | não estimado  |
-| US-18     | RF18                   | EP-01             | não estimado  |
-| US-19     | RF19                   | EP-01             | não estimado  |
-| US-20     | RF20                   | EP-02             | não estimado  |
-| US-21     | RF24                   | EP-01             | não estimado  |
-| US-22     | RF25                   | EP-03                 | não estimado  |
-| US-23     | RF26                   | EP-03                 | não estimado  |
-| US-24     | RF27                   | EP-03                 | não estimado  |
-| US-25     | RF28                   | EP-03                 | não estimado  |
-| US-26     | RF29                   | EP-03                 | não estimado  |
-| US-27     | RF30                   | EP-04  | não estimado  |
-| US-28     | RF31                   | EP-02  | não estimado  |
-| US-29     | RF23                   | EP-02  | não estimado  |
-| US-30     | RF21                   | EP-02  | não estimado  |
-| US-31     | RF22                   | EP-02  | não estimado  |
+- **US-33: Editar categorias de teses tributárias**  
+  *Como advogado, quero editar o nome de uma categoria de tese tributária, para manter a organização da base de dados e corrigir erros ou padronizar nomenclaturas.*
 
+- **US-34: Apagar categorias de teses tributárias**  
+  *Como advogado, quero poder apagar uma categoria de tese tributária, para remover agrupamentos que não fazem mais sentido ou foram criados incorretamente.*
+
+| Código US | Código RF              | Épico Relacionado   |
+|-----------|------------------------|---------------------|
+| US-01     | RF01                   | EP-03               |
+| US-03     | RF03                   | EP-05               | 
+| US-04     | RF04                   | EP-05               | 
+| US-05     | RF05                   | EP-05               | 
+| US-06     | RF06                   | EP-05               | 
+| US-07     | RF07                   | EP-05               | 
+| US-08     | RF09                   | EP-05               | 
+| US-09     | RF10                   | EP-05               | 
+| US-10     | RF08                   | EP-05               | 
+| US-11     | RF03, RF04, RF05       | EP-05               | 
+| US-32     | RF32                   | EP-05               | 
+| US-12     | RF12                   | EP-01               | 
+| US-13     | RF13                   | EP-01               | 
+| US-14     | RF14                   | EP-01               | 
+| US-15     | RF15                   | EP-01               | 
+| US-16     | RF16                   | EP-01               | 
+| US-17     | RF17                   | EP-01               | 
+| US-18     | RF18                   | EP-01               | 
+| US-19     | RF19                   | EP-01               | 
+| US-20     | RF20                   | EP-02               | 
+| US-21     | RF24                   | EP-01               | 
+| US-22     | RF25                   | EP-03               | 
+| US-23     | RF26                   | EP-03               | 
+| US-24     | RF27                   | EP-03               | 
+| US-25     | RF28                   | EP-03               | 
+| US-26     | RF29                   | EP-03               | 
+| US-27     | RF30                   | EP-04               | 
+| US-28     | RF31                   | EP-02               | 
+| US-29     | RF23                   | EP-02               | 
+| US-30     | RF21                   | EP-02               | 
+| US-31     | RF22                   | EP-02               | 
+| US-33     | RF33                   | EP-01               | 
+| US-34     | RF34                   | EP-01               | 
 
 ## Priorização do Backlog
 
@@ -216,6 +226,7 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | US-19     | Agrupar teses por categorias                               | Should have  |    X     |
 | US-03     | Consultar dados públicos do CNPJ via API                   | Should have  |    X     |
 | US-04     | Exibir informações públicas do CNPJ                        | Should have  |    X     |
+| US-33     | Editar categorias de teses tributárias                     | Should have  |    X     |
 | US-23     | Salvar respostas de questionário                           | Should have  |          |
 | US-24     | Editar respostas salvas de questionários anteriore         | Should have  |          |
 | US-26     | Excluir questionário respondido                            | Should have  |          |
@@ -228,3 +239,4 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | US-07     | Listar empresas já consultadas                             | Could have   |          |
 | US-08     | Pré-preencher campos do questionário com dados do CNPJ     | Could have   |          |
 | US-27     | Exportar relatório de teses em PDF                         | Could have   |          |
+| US-34     | Apagar categorias de teses tributárias                     | Could have   |          |
