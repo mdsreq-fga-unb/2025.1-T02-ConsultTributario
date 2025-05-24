@@ -1516,11 +1516,15 @@
 </tr>
 <tr>
 <td>RF33</td>
-<td>Editar categorias de teses</td>
+<td>Editar categoria de teses</td>
 </tr>
 <tr>
 <td>RF34</td>
-<td>Apagar categorias de teses</td>
+<td>Apagar categoria de teses</td>
+</tr>
+<tr>
+<td>RF35</td>
+<td>Listar categorias de teses</td>
 </tr>
 </tbody>
 </table>
@@ -1721,16 +1725,20 @@
 <em>Como advogado, quero excluir perguntas jurídicas do sistema, para remover aquelas que não são mais úteis ou estão desatualizadas.</em></p>
 </li>
 <li>
-<p><strong>US-32: Salvar relatório de teses aplicáveis</strong><br />
+<p><strong>US-32:</strong> Salvar relatório de teses aplicáveis<br />
 <em>Como usuário, quero salvar o relatório de teses tributárias aplicáveis gerado a partir de um questionário, para poder acessá-lo posteriormente sem precisar refazer a análise.</em></p>
 </li>
 <li>
-<p><strong>US-33: Editar categorias de teses tributárias</strong><br />
-<em>Como advogado, quero editar o nome de uma categoria de tese tributária, para manter a organização da base de dados e corrigir erros ou padronizar nomenclaturas.</em></p>
+<p><strong>US-33:</strong>  Editar categorias de teses tributárias 
+  <em>Como advogado, quero editar o nome de uma categoria de tese tributária, para manter a organização da base de dados e corrigir erros ou padronizar nomenclaturas.</em></p>
 </li>
 <li>
-<p><strong>US-34: Apagar categorias de teses tributárias</strong><br />
+<p><strong>US-34:</strong> Apagar categorias de teses tributárias<br />
 <em>Como advogado, quero poder apagar uma categoria de tese tributária, para remover agrupamentos que não fazem mais sentido ou foram criados incorretamente.</em></p>
+</li>
+<li>
+<p><strong>US-35:</strong> Visualizar lista de categorias de teses tributárias<br />
+<em>Como advogado, quero visualizar uma lista com todas as categorias de teses tributárias cadastradas no sistema, para entender como as teses estão organizadas e facilitar a navegação e o filtro por temas.</em></p>
 </li>
 </ul>
 <table>
@@ -1898,6 +1906,11 @@
 <td>EP-02</td>
 </tr>
 <tr>
+<td>US-32</td>
+<td>RF32</td>
+<td>EP-03</td>
+</tr>
+<tr>
 <td>US-33</td>
 <td>RF33</td>
 <td>EP-01</td>
@@ -1905,6 +1918,11 @@
 <tr>
 <td>US-34</td>
 <td>RF34</td>
+<td>EP-01</td>
+</tr>
+<tr>
+<td>US-35</td>
+<td>RF35</td>
 <td>EP-01</td>
 </tr>
 </tbody>
@@ -2041,6 +2059,18 @@
 <td>X</td>
 </tr>
 <tr>
+<td>US-35</td>
+<td>Visualizar lista de categorias de teses tributárias</td>
+<td>Should have</td>
+<td>X</td>
+</tr>
+<tr>
+<td>US-09</td>
+<td>Associar informações do CNPJ às teses aplicáveis</td>
+<td>Should have</td>
+<td></td>
+</tr>
+<tr>
 <td>US-23</td>
 <td>Salvar respostas de questionário</td>
 <td>Should have</td>
@@ -2055,12 +2085,6 @@
 <tr>
 <td>US-26</td>
 <td>Excluir questionário respondido</td>
-<td>Should have</td>
-<td></td>
-</tr>
-<tr>
-<td>US-09</td>
-<td>Associar informações do CNPJ às teses aplicáveis</td>
 <td>Should have</td>
 <td></td>
 </tr>
