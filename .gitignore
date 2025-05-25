@@ -31,8 +31,11 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-.env*
-
+# Arquivos de ambiente
+.env
+.env.local
+.env.development
+.env.production
 .vercel
 
 *.tsbuildinfo

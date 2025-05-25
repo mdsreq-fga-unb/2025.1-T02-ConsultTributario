@@ -7,11 +7,16 @@
   body {
     @apply text-gray-800 antialiased;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold;
   }
-  
+
   a {
     @apply text-blue-600 hover:text-blue-800;
   }
@@ -22,11 +27,11 @@
   .btn-primary {
     @apply px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors;
   }
-  
+
   .btn-outline {
     @apply px-4 py-2 border border-blue-600 text-blue-600 rounded-md hover:bg-blue-50 transition-colors;
   }
-  
+
   .card {
     @apply bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow;
   }

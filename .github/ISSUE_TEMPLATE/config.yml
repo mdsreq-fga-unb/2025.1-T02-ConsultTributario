@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🤔 Dúvidas e Discussões
+    url: https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario/discussions
+    about: Use esta seção para discussões, perguntas e conversas sobre o projeto
+  - name: 🔒 Relatório de Segurança
+    url: https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario/security/policy
+    about: Por favor, reporte problemas de segurança através deste link

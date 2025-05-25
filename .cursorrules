@@ -1,0 +1,65 @@
+# Regras do Cursor para o Projeto REQ Consult Frontend
+
+## Stack do Projeto
+- Next.js 15.3.2
+- React 19
+- TypeScript 5.8
+- Tailwind CSS 3.3
+- Shadcn/ui
+- ESLint + Prettier + Commitlint + Husky
+
+## Padrões de Desenvolvimento
+
+### Estrutura de Pastas
+- `/src/app` - App Router do Next.js
+- `/src/components` - Componentes React reutilizáveis
+- `/src/lib` - Utilitários e configurações
+- `/src/types` - Definições de tipos TypeScript
+
+### Convenções de Código
+1. **Componentes**: PascalCase (ex: `UserProfile.tsx`)
+2. **Funções/Hooks**: camelCase (ex: `useAuth.ts`)
+3. **Constantes**: UPPER_SNAKE_CASE (ex: `API_URL`)
+4. **Arquivos CSS/Styles**: kebab-case (ex: `user-profile.module.css`)
+
+### Padrões de Commit
+Seguir Conventional Commits com os tipos:
+- `feat`: nova funcionalidade
+- `fix`: correção de bug
+- `docs`: documentação
+- `style`: formatação (sem lógica)
+- `refactor`: refatoração
+- `perf`: performance
+- `test`: testes
+- `build`: build/ferramentas
+- `ci`: integração contínua
+- `cd`: entrega contínua
+- `improve`: melhorias gerais
+- `revert`: reverter commit
+
+### Fluxo Git
+- Branch `frontend`: branch principal de desenvolvimento
+- Feature branches: `feature/<nome>`
+- Bugfix branches: `fix/<nome>`
+- Sempre criar PR para merge
+
+### Boas Práticas
+1. Sempre usar TypeScript com tipagem explícita
+2. Componentes funcionais com hooks
+3. Evitar `any` - usar `unknown` quando necessário
+4. Separar lógica de negócio da UI
+5. Testes unitários para funções críticas
+6. Usar Tailwind classes ao invés de CSS inline
+7. Componentes do Shadcn/ui como base
+
+### Comandos Importantes
+- `npm run dev` - desenvolvimento local
+- `npm run commit` - criar commit com Commitizen
+- `npm run lint:fix` - corrigir problemas de lint
+- `npm run prettier:fix` - formatar código
+
+### Integração com IA
+- Sempre verificar imports e dependências
+- Seguir padrões existentes no código
+- Não gerar hashes ou conteúdo binário
+- Priorizar legibilidade e manutenibilidade 
