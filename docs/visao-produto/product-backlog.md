@@ -182,7 +182,7 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | US-08     | RF09                   | EP-05               | 
 | US-09     | RF10                   | EP-05               | 
 | US-10     | RF08                   | EP-05               | 
-| US-11     | RF03, RF04, RF05       | EP-05               | 
+| US-11     | RF03                   | EP-05               | 
 | US-12     | RF12                   | EP-01               | 
 | US-13     | RF13                   | EP-01               | 
 | US-14     | RF14                   | EP-01               | 
