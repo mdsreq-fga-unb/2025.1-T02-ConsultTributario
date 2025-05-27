@@ -58,10 +58,10 @@ jobs:
             const invalidFiles = files.filter(file => {
               // Verifica se é um arquivo permitido exato
               if (allowedFiles.includes(file)) return false;
-              
+
               // Verifica se está em um path permitido
               if (allowedPaths.some(path => file.startsWith(path))) return false;
-              
+
               return true;
             });
 
@@ -104,8 +104,8 @@ jobs:
       - name: Type check
         if: steps.check-frontend.outputs.has_package_json == 'true'
         run: |
-          if npm run --silent tsc --help > /dev/null 2>&1; then
-            npm run tsc -- --noEmit
+          if npm run --silent type-check --help > /dev/null 2>&1; then
+            npm run type-check
           else
             echo "⚠️ TypeScript não configurado - pulando verificação de tipos"
           fi
@@ -176,8 +176,8 @@ jobs:
       - name: Type check
         if: steps.check-backend.outputs.has_package_json == 'true'
         run: |
-          if npm run --silent tsc --help > /dev/null 2>&1; then
-            npm run tsc -- --noEmit
+          if npm run --silent type-check --help > /dev/null 2>&1; then
+            npm run type-check
           else
             echo "⚠️ TypeScript não configurado - pulando verificação de tipos"
           fi
