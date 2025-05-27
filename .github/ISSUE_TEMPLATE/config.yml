@@ -3,6 +3,15 @@ contact_links:
   - name: 🤔 Dúvidas e Discussões
     url: https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario/discussions
     about: Use esta seção para discussões, perguntas e conversas sobre o projeto
+
+  - name: 📚 Documentação do Projeto
+    url: https://mdsreq-fga-unb.github.io/2025.1-T02-ConsultTributario/
+    about: Acesse a documentação completa do projeto, incluindo guias e práticas
+
   - name: 🔒 Relatório de Segurança
     url: https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario/security/policy
     about: Por favor, reporte problemas de segurança através deste link
+
+  - name: 📋 Manual de Contribuição
+    url: https://mdsreq-fga-unb.github.io/2025.1-T02-ConsultTributario/contribuicao/
+    about: Consulte o manual completo para contribuir com o projeto (branches, commits, PRs)

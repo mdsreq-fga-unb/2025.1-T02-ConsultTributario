@@ -15,8 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Adiciona label "triage" a novas issues
-      - uses: actions/github-script@v6
+      - name: Add triage label to issues
         if: github.event_name == 'issues'
+        uses: actions/github-script@v7
         with:
           script: |
             github.rest.issues.addLabels({
@@ -27,58 +28,120 @@ jobs:
             })
 
       # Adiciona label de escopo com base em diretórios alterados em PRs
-      - uses: actions/checkout@v4
+      - name: Checkout repository
         if: github.event_name == 'pull_request'
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Label PR com base nos arquivos alterados
         if: github.event_name == 'pull_request'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { owner, repo } = context.repo;
             const pr_number = context.issue.number;
 
-            // Busca os arquivos modificados no PR
-            const response = await github.rest.pulls.listFiles({
-              owner,
-              repo,
-              pull_number: pr_number,
-            });
-
-            const files = response.data.map(file => file.filename);
-            const labels = new Set();
-
-            // Determina os labels com base nos arquivos alterados
-            if (files.some(file => file.startsWith('src/app/') || file.includes('.tsx') || file.includes('.jsx'))) {
-              labels.add('scope: frontend');
-            }
-
-            if (files.some(file => file.startsWith('src/') || file.includes('main.ts'))) {
-              labels.add('scope: backend');
-            }
-
-            if (files.some(file => file.includes('.github/') || file.includes('package.json') || file.includes('.eslintrc'))) {
-              labels.add('scope: infrastructure');
-            }
-
-            if (files.some(file => file.includes('test/') || file.includes('.test.') || file.includes('.spec.'))) {
-              labels.add('test');
-            }
-
-            if (files.some(file => file.includes('README.md') || file.includes('doc/'))) {
-              labels.add('documentation');
-            }
-
-            // Adiciona os labels determinados ao PR
-            if (labels.size > 0) {
-              await github.rest.issues.addLabels({
+            try {
+              // Busca os arquivos modificados no PR
+              const response = await github.rest.pulls.listFiles({
                 owner,
                 repo,
-                issue_number: pr_number,
-                labels: Array.from(labels)
+                pull_number: pr_number,
               });
+
+              const files = response.data.map(file => file.filename);
+              const labels = new Set();
+
+              console.log(`Arquivos modificados: ${files.join(', ')}`);
+
+              // Determina os labels com base nos arquivos alterados
+              if (files.some(file => 
+                file.startsWith('src/app/') || 
+                file.startsWith('src/components/') ||
+                file.startsWith('src/pages/') ||
+                file.includes('.tsx') || 
+                file.includes('.jsx') ||
+                file.includes('frontend')
+              )) {
+                labels.add('scope: frontend');
+              }
+
+              if (files.some(file => 
+                file.startsWith('src/api/') ||
+                file.startsWith('src/server/') ||
+                file.startsWith('api/') ||
+                file.includes('main.ts') ||
+                file.includes('server.') ||
+                file.includes('backend')
+              )) {
+                labels.add('scope: backend');
+              }
+
+              if (files.some(file => 
+                file.includes('.github/') || 
+                file.includes('package.json') || 
+                file.includes('.eslintrc') ||
+                file.includes('tsconfig.json') ||
+                file.includes('vite.config') ||
+                file.includes('webpack.config') ||
+                file.includes('Dockerfile') ||
+                file.includes('docker-compose')
+              )) {
+                labels.add('scope: infrastructure');
+              }
+
+              if (files.some(file => 
+                file.includes('test/') || 
+                file.includes('.test.') || 
+                file.includes('.spec.') ||
+                file.includes('__tests__/') ||
+                file.includes('cypress/') ||
+                file.includes('e2e/')
+              )) {
+                labels.add('test');
+              }
+
+              if (files.some(file => 
+                file.includes('README.md') || 
+                file.startsWith('docs/') ||
+                file.includes('.md') ||
+                file.includes('mkdocs.yml') ||
+                file.includes('requirements.txt')
+              )) {
+                labels.add('documentation');
+              }
+
+              // Detecta tipo de mudança baseado no título do PR
+              const title = context.payload.pull_request.title.toLowerCase();
+              
+              if (title.includes('feat') || title.includes('feature')) {
+                labels.add('enhancement');
+              } else if (title.includes('fix') || title.includes('bug')) {
+                labels.add('bug');
+              } else if (title.includes('docs') || title.includes('documentation')) {
+                labels.add('documentation');
+              } else if (title.includes('refactor')) {
+                labels.add('refactor');
+              }
+
+              // Adiciona os labels determinados ao PR
+              if (labels.size > 0) {
+                const labelsArray = Array.from(labels);
+                console.log(`Adicionando labels: ${labelsArray.join(', ')}`);
+                
+                await github.rest.issues.addLabels({
+                  owner,
+                  repo,
+                  issue_number: pr_number,
+                  labels: labelsArray
+                });
+              } else {
+                console.log('Nenhum label específico foi determinado para este PR');
+              }
+            } catch (error) {
+              console.error('Erro ao processar labels do PR:', error);
+              core.setFailed(`Erro ao processar labels: ${error.message}`);
             }

@@ -1,5 +1,12 @@
 name: Commitlint
-on: [pull_request]
+on:
+  pull_request:
+    branches: ['main', 'frontend', 'backend', 'docs']
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
 
 jobs:
   commitlint:
@@ -14,14 +21,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install commitlint dependencies
+        run: |
+          npm install --save-dev @commitlint/config-conventional @commitlint/cli
+
+      - name: Create commitlint config if not exists
+        run: |
+          if [ ! -f ".commitlintrc.js" ] && [ ! -f ".commitlintrc.json" ] && [ ! -f "commitlint.config.js" ]; then
+            echo "module.exports = { extends: ['@commitlint/config-conventional'] };" > .commitlintrc.js
+            echo "✅ Arquivo de configuração do commitlint criado"
+          fi
 
       - name: Validate PR commits with commitlint
-        uses: wagoid/commitlint-github-action@v5
+        uses: wagoid/commitlint-github-action@v6
         with:
-          configFile: .commitlintrc.js
+          configFile: '.commitlintrc.js'
           failOnWarnings: false
-          helpURL: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+          helpURL: 'https://github.com/conventional-changelog/commitlint/#what-is-commitlint'

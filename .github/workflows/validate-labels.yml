@@ -1,0 +1,218 @@
+name: Validate Labels
+
+on:
+  issues:
+    types: [opened, edited, labeled, unlabeled]
+  pull_request:
+    types: [opened, edited, labeled, unlabeled, ready_for_review]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  validate-issue-labels:
+    if: github.event_name == 'issues'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate Issue Labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+
+            // Busca informações da issue
+            const issue = await github.rest.issues.get({
+              owner,
+              repo,
+              issue_number
+            });
+
+            const labels = issue.data.labels.map(label => label.name);
+            const title = issue.data.title.toLowerCase();
+
+            console.log(`Issue #${issue_number}: ${issue.data.title}`);
+            console.log(`Labels atuais: ${labels.join(', ')}`);
+
+            // Validações específicas
+            const validations = [];
+
+            // 1. Issues de bug devem ter label 'bug'
+            if (title.includes('bug') && !labels.includes('bug')) {
+              validations.push('❌ Issues de bug devem ter o label "bug"');
+            }
+
+            // 2. User Stories devem ter label 'user-story'
+            if (title.startsWith('us-') && !labels.includes('user-story')) {
+              validations.push('❌ User Stories devem ter o label "user-story"');
+            }
+
+            // 3. Features devem ter label 'enhancement'
+            if (title.includes('feat') && !labels.includes('enhancement')) {
+              validations.push('❌ Features devem ter o label "enhancement"');
+            }
+
+            // 4. Issues devem ter prioridade MoSCoW
+            const priorityLabels = labels.filter(label => 
+              label.startsWith('priority:') || 
+              label.includes('must') || 
+              label.includes('should') || 
+              label.includes('could') || 
+              label.includes('wont')
+            );
+
+            if (priorityLabels.length === 0 && !labels.includes('triage')) {
+              validations.push('⚠️ Considere adicionar um label de prioridade (priority: must/should/could/wont)');
+            }
+
+            // 5. Issues devem ter contexto
+            const contextLabels = labels.filter(label => label.startsWith('scope:'));
+            if (contextLabels.length === 0 && !labels.includes('triage')) {
+              validations.push('⚠️ Considere adicionar um label de contexto (scope: frontend/backend/docs/infrastructure)');
+            }
+
+            // Comentário com validações
+            if (validations.length > 0) {
+              const comment = `## 🏷️ Validação de Labels
+
+            ${validations.join('\n')}
+
+            ### 📋 Labels Recomendados para o Projeto:
+
+            **Tipos:**
+            - \`bug\` - Problemas e defeitos
+            - \`enhancement\` - Novas funcionalidades
+            - \`user-story\` - User Stories
+            - \`documentation\` - Melhorias na documentação
+            - \`refactor\` - Refatoração de código
+
+            **Prioridade (MoSCoW):**
+            - \`priority: must\` - Essencial para o MVP
+            - \`priority: should\` - Importante mas não crítico
+            - \`priority: could\` - Desejável se houver tempo
+            - \`priority: wont\` - Não será feito nesta versão
+
+            **Contexto:**
+            - \`scope: frontend\` - Interface do usuário
+            - \`scope: backend\` - API e lógica de negócio
+            - \`scope: infrastructure\` - Infra, CI/CD, configurações
+            - \`scope: docs\` - Documentação
+
+            **Status:**
+            - \`triage\` - Aguardando triagem
+            - \`status: ready\` - Pronto para desenvolvimento
+            - \`status: in-progress\` - Em desenvolvimento
+            - \`status: blocked\` - Bloqueado
+            `;
+
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number,
+                body: comment
+              });
+            } else {
+              console.log('✅ Labels estão adequados');
+            }
+
+  validate-pr-labels:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR Labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const pr_number = context.issue.number;
+
+            // Busca informações do PR
+            const pr = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number: pr_number
+            });
+
+            const labels = pr.data.labels.map(label => label.name);
+            const title = pr.data.title.toLowerCase();
+            const baseBranch = pr.data.base.ref;
+
+            console.log(`PR #${pr_number}: ${pr.data.title}`);
+            console.log(`Branch destino: ${baseBranch}`);
+            console.log(`Labels atuais: ${labels.join(', ')}`);
+
+            const validations = [];
+
+            // 1. PRs para main devem ter validação especial
+            if (baseBranch === 'main') {
+              if (!labels.includes('scope: infrastructure') && !labels.includes('documentation')) {
+                validations.push('⚠️ PRs para main geralmente devem ter label "scope: infrastructure" ou "documentation"');
+              }
+            }
+
+            // 2. PRs devem ter tipo baseado no título
+            if (title.startsWith('feat') && !labels.includes('enhancement')) {
+              validations.push('❌ PRs de feature devem ter o label "enhancement"');
+            }
+
+            if (title.startsWith('fix') && !labels.includes('bug')) {
+              validations.push('❌ PRs de fix devem ter o label "bug"');
+            }
+
+            if (title.startsWith('docs') && !labels.includes('documentation')) {
+              validations.push('❌ PRs de documentação devem ter o label "documentation"');
+            }
+
+            // 3. PRs devem ter contexto
+            const contextLabels = labels.filter(label => label.startsWith('scope:'));
+            if (contextLabels.length === 0) {
+              validations.push('⚠️ Considere adicionar um label de contexto (scope: frontend/backend/docs/infrastructure)');
+            }
+
+            // 4. PRs grandes devem ter label de complexidade
+            const additions = pr.data.additions || 0;
+            const deletions = pr.data.deletions || 0;
+            const totalChanges = additions + deletions;
+
+            if (totalChanges > 500 && !labels.some(label => label.includes('large') || label.includes('complex'))) {
+              validations.push(`⚠️ PR grande (${totalChanges} linhas alteradas) - considere adicionar label de complexidade`);
+            }
+
+            // Comentário com validações
+            if (validations.length > 0) {
+              const comment = `## 🏷️ Validação de Labels do PR
+
+            ${validations.join('\n')}
+
+            ### 📋 Labels Recomendados para PRs:
+
+            **Baseado no tipo de mudança:**
+            - \`enhancement\` - Novas funcionalidades (feat)
+            - \`bug\` - Correções (fix)
+            - \`documentation\` - Documentação (docs)
+            - \`refactor\` - Refatoração
+            - \`test\` - Testes
+
+            **Contexto (obrigatório):**
+            - \`scope: frontend\` - Mudanças no frontend
+            - \`scope: backend\` - Mudanças no backend
+            - \`scope: infrastructure\` - CI/CD, configurações
+            - \`scope: docs\` - Documentação
+
+            **Complexidade (opcional):**
+            - \`size: small\` - Mudanças pequenas (< 100 linhas)
+            - \`size: medium\` - Mudanças médias (100-500 linhas)
+            - \`size: large\` - Mudanças grandes (> 500 linhas)
+            `;
+
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: pr_number,
+                body: comment
+              });
+            } else {
+              console.log('✅ Labels do PR estão adequados');
+            }
