@@ -2,6 +2,7 @@
 | Data | Versão | Descrição | Autor |
 |---- | ------ | --------- | ----- |
 | 26/05/25 | 1.0 | Criação do Documento | Artur Krauspenhar e Diogo |
+| 26/05/25 | 2.0 | Adição de tabela de mapeamento das atividades de ER no ScrumXP | Vinicius Vieira |
 
 # Engenharia de Requisitos
 
@@ -35,3 +36,23 @@ permitindo um entendimento melhor sobre as funcionalidades necessárias para a p
 
   - Backlog de Requisitos: Após a coleta de feedbacks, o backlog será ajustado com base nos novos critérios definidos.
   - Pontos por Histórias: As User Stories serão reavaliadas e pontuadas conforme o esforço necessário, garantindo uma organização eficiente para a próxima iteração.
+
+## Mapeamento das Atividades de ER no ScrumXP
+
+| Fase do ScrumXP | Atividades da ER | Prática | Técnica | Resultado Esperado |
+| :---- | :---- | :---- | :---- | :---- |
+| **Planejamento do Release** | Elicitação e Descoberta | Entrevistas com os Stakeholders | Entrevistas abertas | Compreensão das visões e expectativas do cliente |
+|  |  | Análise da concorrência | Análise Comparativa | Identificação de softwares já existentes, e comparação com o que o cliente deseja |
+|  | Análise e Consenso | Análise de Requisitos (RFs e RNFs) | Identificação de valor de negócio | Identificação de RFs e RNFs que agregarão mais ao negócio |
+| **Planejamento da Sprint** | Análise e Consenso | Priorização de requisitos | MoSCoW | Backlog priorizado com foco nas entregas essenciais |
+|  | Elicitação e Descoberta | Entrevistas com Stakeholders | Série de perguntas estruturadas | Identificação de novas funcionalidades e ajuste do backlog |
+|  | Declaração e Organização | Definição de User Stories | Refinamento do backlog | Histórias organizadas com critérios claros e alinhados |
+| **Desenvolvimento da Sprint** | Análise e Consenso | Revisão de Requisitos | Reuniões | Alinhamento de requisitos e resolução de ambiguidades |
+|  | Verificação e Validação | Validação de User Stories | DoR e DoD | Verificar histórias de usuários para garantir que atendem os critérios |
+|  | Organização e Atualização | Atualização do Backlog | Gestão contínua | Backlog atualizado com o progresso das histórias |
+| **Revisão da Sprint** | Verificação e Validação | Testes de Aceitação | Testes baseados em US | Lista de user stories habilitadas para a revisão da sprint |
+|  | Validação | Coleta de Feedback | Apresentação do produto | Feedbacks validados e discutidos com o P.O. para ajustes |
+| **Retrospectiva da Sprint** | Verificação e Validação | Avaliação do Processo de ER | Discussões e feedback | Identificação de melhorias para o processo e a equipe |
+|  | Organização e Atualização | Ajuste do Backlog | Análise de feedbacks | Backlog ajustado com base nos novos critérios |
+|  |  | Repontuação de Histórias | Planning Poker | User Stories reavaliadas conforme o esforço necessário |
+| **Planejamento da Próxima Release** | Análise e Consenso | Organização do backlog | Priorização e refinamento | Itens do backlog revisados e preparados para próxima iteração |
