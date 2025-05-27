@@ -3,6 +3,7 @@
 |---- | ------ | --------- | ----- |
 | 20/05/27 | 1.0 | Criação do Documento | Artur Krauspenhar |
 | 24/05/27 | 2.0 | Prioriza backlog     | Artur Krauspenhar |
+| 26/05/27 | 3.0 | Revisão e correção     | Rafael Schadt |
 
 O backlog de produto é uma lista dinâmica e priorizada que contém todos os requisitos, funcionalidades, melhorias e correções que serão necessárias para o desenvolvimento de um produto. Ele funciona como um guia para a equipe de desenvolvimento, servindo de referência para todas as tarefas que precisam ser realizadas ao longo do ciclo de vida do projeto. Essa lista não é fixa, mas sim atualizável conforme o produto evolui e novas necessidades surgem, garantindo que o time esteja sempre alinhado às prioridades e expectativas do projeto.
 
@@ -210,6 +211,26 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 
 
 ## Priorização do Backlog
+
+A priorização do backlog foi realizada utilizando o método **MoSCoW**, uma técnica amplamente adotada para auxiliar na definição do que deve ser desenvolvido com maior urgência em projetos ágeis. Essa abordagem classifica as funcionalidades em três categorias principais: `Must have`, `Should have` e `Could have`, cada uma representando um nível de prioridade distinto.
+
+- **Must have**  
+  Funcionalidades essenciais, indispensáveis para o funcionamento mínimo do produto. Sua entrega é obrigatória, pois sem elas o produto não atende aos requisitos básicos de uso ou de negócio.
+
+- **Should have**  
+  Funcionalidades importantes, que agregam valor significativo ao produto, mas que podem ser implementadas após os itens críticos. Embora não sejam vitais para o funcionamento imediato, sua ausência pode impactar a experiência do usuário ou a eficiência do sistema.
+
+- **Could have**  
+  Funcionalidades desejáveis, que aumentam a atratividade ou conveniência do produto, mas que não são essenciais no escopo inicial. Podem ser consideradas caso haja tempo ou recursos disponíveis.
+
+O principal objetivo da aplicação do método foi assegurar que o desenvolvimento fosse orientado pelas reais necessidades do negócio, considerando também os recursos disponíveis.
+A partir dessa análise, foi possível estabelecer o **MVP (Produto Mínimo Viável)**, composto pelas funcionalidades classificadas como:
+
+- `Must have`
+- `Should have`
+
+A definição das prioridades foi feita em conjunto com o cliente, garantindo alinhamento com os objetivos do projeto.
+
 
 | Código US | Descrição                                                  | Prioridade   | MVP      |
 |-----------|------------------------------------------------------------|--------------|----------|

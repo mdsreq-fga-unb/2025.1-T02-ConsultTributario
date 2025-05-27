@@ -34,6 +34,10 @@ Navegue pela documentação do projeto:
 ### Interação Equipe e Cliente
 - [Interação Equipe e Cliente](visao-produto/interacao-equipe-cliente.md)
 
+### Backlog do Produto
+- [Backlog Geral](visao-produto/product-backlog.md)
+- [Priorização do Backlog](visao-produto/product-backlog.md)
+
 ### Lições aprendidas
 - [Lições aprendidas](visao-produto/licoes-aprendidas.md)
 
