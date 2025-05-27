@@ -1,7 +1,7 @@
 ## Histórico de Versão:
 | Data | Versão | Descrição | Autor |
 |---- | ------ | --------- | ----- |
-| 17/05/27 | 1.0 | Criação do Documento | Artur Krauspenhar |
+| 17/05/25 | 1.0 | Criação do Documento | Artur Krauspenhar |
 
 # 8. DoR e DoD
 

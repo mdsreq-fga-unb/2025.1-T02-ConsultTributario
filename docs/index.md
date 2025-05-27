@@ -30,6 +30,7 @@ Navegue pela documentação do projeto:
 
 ### Estratégias de Engenharia de Software
 - [Estratégias de Engenharia de Software](visao-produto/estrategias-engenharia-software.md)
+- [Engenharia de Requisitos](visao-produto/engenharia-requisitos.md)
 
 ### Interação Equipe e Cliente
 - [Interação Equipe e Cliente](visao-produto/interacao-equipe-cliente.md)
