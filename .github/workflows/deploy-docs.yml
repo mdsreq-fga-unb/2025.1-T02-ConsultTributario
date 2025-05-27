@@ -1,0 +1,122 @@
+name: Deploy Documentação
+
+on:
+  # Deploy automático quando há push na branch docs
+  push:
+    branches: ['docs']
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - 'requirements.txt'
+
+  # Deploy automático quando PR é mergeado na branch docs
+  pull_request:
+    branches: ['docs']
+    types: [closed]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - 'requirements.txt'
+
+  # Permite execução manual
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permite apenas um deploy por vez
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Job para build da documentação
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          if [ -f "requirements.txt" ]; then
+            pip install -r requirements.txt
+          else
+            pip install mkdocs mkdocs-material
+          fi
+
+      - name: Verify MkDocs configuration
+        run: |
+          if [ -f "mkdocs.yml" ]; then
+            echo "✅ mkdocs.yml encontrado"
+            mkdocs --version
+          else
+            echo "❌ mkdocs.yml não encontrado"
+            exit 1
+          fi
+
+      - name: Build documentation
+        run: mkdocs build --strict
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./site
+
+  # Job para deploy no GitHub Pages
+  deploy:
+    # Só executa se o build foi bem-sucedido
+    needs: build
+    
+    # Só executa em push para docs ou PR mergeado
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/docs') ||
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true) ||
+      github.event_name == 'workflow_dispatch'
+    
+    runs-on: ubuntu-latest
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+      - name: Comment on PR with deploy URL
+        if: github.event_name == 'pull_request' && github.event.pull_request.merged == true
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🚀 **Documentação atualizada com sucesso!**
+              
+              📖 Acesse a documentação em: ${{ steps.deployment.outputs.page_url }}
+              
+              ✅ Deploy realizado automaticamente após merge do PR.`
+            }) 

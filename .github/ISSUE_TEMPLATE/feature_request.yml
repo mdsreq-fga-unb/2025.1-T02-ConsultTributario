@@ -1,0 +1,202 @@
+name: 🚀 Nova Funcionalidade
+description: Sugerir uma nova funcionalidade para o ConsultTributário
+title: 'feat: '
+labels: ['enhancement', 'triage']
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por sugerir uma nova funcionalidade! 
+        
+        Este template segue as práticas de engenharia de requisitos do projeto. 
+        Preencha as informações abaixo para nos ajudar a entender e avaliar sua proposta.
+
+  - type: textarea
+    id: user_story
+    attributes:
+      label: 📋 User Story
+      description: |
+        Descreva a funcionalidade no formato de User Story:
+        "Como [tipo de usuário], quero [ação/funcionalidade], para que [benefício/valor]"
+      placeholder: |
+        Como contribuinte pessoa jurídica, 
+        quero consultar automaticamente as obrigações tributárias da minha empresa,
+        para que eu possa manter a conformidade fiscal sem precisar navegar por múltiplos sites.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problema
+    attributes:
+      label: 🎯 Problema/Necessidade
+      description: |
+        Qual problema esta funcionalidade resolve? 
+        Qual necessidade do usuário ela atende?
+      placeholder: |
+        Ex: Atualmente os usuários precisam acessar múltiplos sites para consultar informações tributárias,
+        o que torna o processo demorado e propenso a erros...
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios_aceitacao
+    attributes:
+      label: ✅ Critérios de Aceitação
+      description: |
+        Defina os critérios de aceitação no formato:
+        "Dado [contexto], quando [ação], então [resultado esperado]"
+      placeholder: |
+        - [ ] Dado que o usuário inseriu um CNPJ válido, quando clicar em "Consultar", então o sistema deve exibir as obrigações tributárias em até 3 segundos
+        - [ ] Dado que o CNPJ é inválido, quando o usuário tentar consultar, então deve exibir mensagem "CNPJ inválido. Verifique os dados e tente novamente"
+        - [ ] Dado que a consulta foi bem-sucedida, quando exibir os resultados, então deve mostrar data da última atualização dos dados
+      render: markdown
+    validations:
+      required: true
+
+  - type: dropdown
+    id: prioridade_moscow
+    attributes:
+      label: ⚡ Prioridade (MoSCoW)
+      description: Classifique a prioridade desta funcionalidade
+      options:
+        - Must Have (Essencial para o MVP)
+        - Should Have (Importante mas não crítico)
+        - Could Have (Desejável se houver tempo)
+        - Won't Have (Não será feito nesta versão)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: contexto_sistema
+    attributes:
+      label: 🎯 Contexto do Sistema
+      description: Qual área do sistema seria afetada?
+      multiple: true
+      options:
+        - Frontend (Interface do usuário)
+        - Backend (API/Lógica de negócio)
+        - Banco de Dados
+        - Integração Externa (APIs terceiros)
+        - Documentação
+        - Infraestrutura/Deploy
+        - Segurança
+    validations:
+      required: true
+
+  - type: textarea
+    id: solucao_proposta
+    attributes:
+      label: 💡 Solução Proposta
+      description: |
+        Descreva detalhadamente como você imagina que esta funcionalidade deveria funcionar.
+        Inclua fluxos de usuário, interfaces, integrações necessárias.
+      placeholder: |
+        1. Usuário acessa a página principal
+        2. Insere o CNPJ no campo de busca
+        3. Sistema valida o formato do CNPJ
+        4. Sistema consulta APIs da Receita Federal
+        5. Exibe resultados organizados por categoria...
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencias
+    attributes:
+      label: 🔗 Dependências e Integrações
+      description: |
+        Esta funcionalidade depende de outras funcionalidades, APIs externas ou recursos?
+      placeholder: |
+        - API da Receita Federal para consulta de CNPJ
+        - Funcionalidade de validação de CNPJ (US-02)
+        - Sistema de cache para otimizar consultas
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternativas
+    attributes:
+      label: 🔄 Alternativas Consideradas
+      description: Descreva outras abordagens que você considerou para resolver o problema
+      placeholder: |
+        - Integração direta com Simples Nacional
+        - Consulta manual por formulário
+        - Import de planilhas Excel
+    validations:
+      required: false
+
+  - type: textarea
+    id: impacto_beneficios
+    attributes:
+      label: 📈 Impacto e Benefícios
+      description: |
+        Quais são os benefícios esperados? 
+        Qual o impacto nos usuários e no negócio?
+      placeholder: |
+        - Redução de 80% no tempo de consulta tributária
+        - Diminuição de erros manuais
+        - Melhoria na experiência do usuário
+        - Aumento na retenção de usuários
+    validations:
+      required: true
+
+  - type: textarea
+    id: riscos_complexidade
+    attributes:
+      label: ⚠️ Riscos e Complexidade
+      description: |
+        Identifique possíveis riscos, desafios técnicos ou complexidades desta implementação
+      placeholder: |
+        - Dependência de APIs externas (disponibilidade)
+        - Limite de requisições das APIs públicas
+        - Complexidade de parsing de diferentes formatos de resposta
+        - Necessidade de cache para performance
+    validations:
+      required: false
+
+  - type: textarea
+    id: prototipo_mockup
+    attributes:
+      label: 🎨 Protótipo/Mockup
+      description: |
+        Se você tem ideias visuais, wireframes, ou referências de design, 
+        cole aqui ou forneça links
+      placeholder: |
+        [Cole aqui imagens, links para Figma, ou descrições visuais]
+    validations:
+      required: false
+
+  - type: textarea
+    id: contexto_adicional
+    attributes:
+      label: 📌 Contexto Adicional
+      description: |
+        Informações adicionais relevantes:
+        - Pesquisas com usuários
+        - Dados de uso
+        - Referências de mercado
+        - Regulamentações aplicáveis
+      placeholder: |
+        - 70% dos usuários pesquisados relataram dificuldade na consulta manual
+        - Concorrente X já oferece funcionalidade similar
+        - Regulamentação Y exige este tipo de consulta
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: ✅ Checklist
+      description: Confirme que você verificou os itens abaixo
+      options:
+        - label: Verifiquei se já existe uma funcionalidade similar
+          required: true
+        - label: A User Story está no formato correto
+          required: true
+        - label: Os critérios de aceitação são testáveis
+          required: true
+        - label: Considerei o impacto nos usuários existentes
+          required: false
+        - label: Esta funcionalidade alinha com os objetivos do projeto
+          required: true

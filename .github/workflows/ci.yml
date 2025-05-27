@@ -1,0 +1,274 @@
+name: Continuous Integration
+
+on:
+  # Triggers para PRs
+  pull_request:
+    branches: ['main', 'frontend', 'backend', 'docs']
+    types: [opened, synchronize, reopened]
+
+  # Triggers para pushes diretos (apenas branches de desenvolvimento)
+  push:
+    branches: ['frontend', 'backend', 'docs']
+    paths-ignore:
+      - '**.md'
+      - '.github/**'
+      - 'docs/**'
+
+# Define permissões mínimas necessárias
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  # Validação específica para PRs direcionados à main
+  validate-main-pr:
+    if: github.event_name == 'pull_request' && github.base_ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate files changed
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const pr_number = context.issue.number;
+
+            // Busca arquivos modificados
+            const response = await github.rest.pulls.listFiles({
+              owner,
+              repo,
+              pull_number: pr_number,
+            });
+
+            const files = response.data.map(file => file.filename);
+            const allowedFiles = [
+              'README.md',
+              'LICENSE',
+              '.gitignore'
+            ];
+            
+            const allowedPaths = [
+              '.github/workflows/',
+              '.github/ISSUE_TEMPLATE/',
+              '.github/'
+            ];
+
+            // Verifica se há arquivos não permitidos
+            const invalidFiles = files.filter(file => {
+              // Verifica se é um arquivo permitido exato
+              if (allowedFiles.includes(file)) return false;
+              
+              // Verifica se está em um path permitido
+              if (allowedPaths.some(path => file.startsWith(path))) return false;
+              
+              return true;
+            });
+
+            if (invalidFiles.length > 0) {
+              core.setFailed(`PR para main contém arquivos não permitidos:\n${invalidFiles.join('\n')}\n\nApenas são permitidos: README.md, LICENSE, .gitignore e arquivos em .github/`);
+            } else {
+              console.log('✅ Todos os arquivos são permitidos para PRs na main');
+            }
+
+  # CI para frontend
+  frontend-ci:
+    if: |
+      (github.event_name == 'pull_request' && github.base_ref == 'frontend') ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/frontend')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check if frontend files exist
+        id: check-frontend
+        run: |
+          if [ -f "package.json" ]; then
+            echo "has_package_json=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_package_json=false" >> $GITHUB_OUTPUT
+            echo "⚠️ package.json não encontrado - pulando CI do frontend"
+          fi
+
+      - name: Setup Node.js
+        if: steps.check-frontend.outputs.has_package_json == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        if: steps.check-frontend.outputs.has_package_json == 'true'
+        run: npm ci
+
+      - name: Type check
+        if: steps.check-frontend.outputs.has_package_json == 'true'
+        run: |
+          if npm run --silent tsc --help > /dev/null 2>&1; then
+            npm run tsc -- --noEmit
+          else
+            echo "⚠️ TypeScript não configurado - pulando verificação de tipos"
+          fi
+
+      - name: Lint
+        if: steps.check-frontend.outputs.has_package_json == 'true'
+        run: |
+          if npm run --silent lint --help > /dev/null 2>&1; then
+            npm run lint
+          else
+            echo "⚠️ Linter não configurado - pulando lint"
+          fi
+          
+          if npm run --silent prettier --help > /dev/null 2>&1; then
+            npm run prettier
+          else
+            echo "⚠️ Prettier não configurado - pulando formatação"
+          fi
+
+      - name: Run tests
+        if: steps.check-frontend.outputs.has_package_json == 'true'
+        run: |
+          if npm run --silent test --help > /dev/null 2>&1; then
+            npm test
+          else
+            echo "⚠️ Testes não configurados - pulando testes"
+          fi
+
+      - name: Build
+        if: steps.check-frontend.outputs.has_package_json == 'true'
+        run: |
+          if npm run --silent build --help > /dev/null 2>&1; then
+            npm run build
+          else
+            echo "⚠️ Build não configurado - pulando build"
+          fi
+
+  # CI para backend
+  backend-ci:
+    if: |
+      (github.event_name == 'pull_request' && github.base_ref == 'backend') ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/backend')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check if backend files exist
+        id: check-backend
+        run: |
+          if [ -f "package.json" ]; then
+            echo "has_package_json=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_package_json=false" >> $GITHUB_OUTPUT
+            echo "⚠️ package.json não encontrado - pulando CI do backend"
+          fi
+
+      - name: Setup Node.js
+        if: steps.check-backend.outputs.has_package_json == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        if: steps.check-backend.outputs.has_package_json == 'true'
+        run: npm ci
+
+      - name: Type check
+        if: steps.check-backend.outputs.has_package_json == 'true'
+        run: |
+          if npm run --silent tsc --help > /dev/null 2>&1; then
+            npm run tsc -- --noEmit
+          else
+            echo "⚠️ TypeScript não configurado - pulando verificação de tipos"
+          fi
+
+      - name: Lint
+        if: steps.check-backend.outputs.has_package_json == 'true'
+        run: |
+          if npm run --silent lint --help > /dev/null 2>&1; then
+            npm run lint
+          else
+            echo "⚠️ Linter não configurado - pulando lint"
+          fi
+          
+          if npm run --silent prettier --help > /dev/null 2>&1; then
+            npm run prettier
+          else
+            echo "⚠️ Prettier não configurado - pulando formatação"
+          fi
+
+      - name: Run tests
+        if: steps.check-backend.outputs.has_package_json == 'true'
+        run: |
+          if npm run --silent test --help > /dev/null 2>&1; then
+            npm test
+          else
+            echo "⚠️ Testes não configurados - pulando testes"
+          fi
+
+      - name: Build
+        if: steps.check-backend.outputs.has_package_json == 'true'
+        run: |
+          if npm run --silent build --help > /dev/null 2>&1; then
+            npm run build
+          else
+            echo "⚠️ Build não configurado - pulando build"
+          fi
+
+  # CI para documentação
+  docs-ci:
+    if: |
+      (github.event_name == 'pull_request' && github.base_ref == 'docs') ||
+      (github.event_name == 'push' && github.ref == 'refs/heads/docs')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python for MkDocs
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Check if MkDocs is configured
+        id: check-mkdocs
+        run: |
+          if [ -f "mkdocs.yml" ] || [ -f "requirements.txt" ]; then
+            echo "has_mkdocs=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_mkdocs=false" >> $GITHUB_OUTPUT
+            echo "⚠️ MkDocs não configurado - pulando verificações específicas"
+          fi
+
+      - name: Install MkDocs dependencies
+        if: steps.check-mkdocs.outputs.has_mkdocs == 'true'
+        run: |
+          if [ -f "requirements.txt" ]; then
+            pip install -r requirements.txt
+          else
+            pip install mkdocs mkdocs-material
+          fi
+
+      - name: Check MkDocs configuration
+        if: steps.check-mkdocs.outputs.has_mkdocs == 'true'
+        run: |
+          if [ -f "mkdocs.yml" ]; then
+            mkdocs build --strict
+          else
+            echo "⚠️ mkdocs.yml não encontrado"
+          fi
+
+      - name: Check Markdown links
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'yes'
+          config-file: '.github/workflows/mlc_config.json'
+
+      - name: Setup Node.js for Prettier
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check Markdown formatting
+        run: |
+          npm install -g prettier
+          prettier --check "**/*.md" "**/*.mdx" || echo "⚠️ Alguns arquivos Markdown não estão formatados corretamente"

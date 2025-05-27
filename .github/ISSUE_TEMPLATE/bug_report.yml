@@ -1,0 +1,169 @@
+name: 🐛 Relatar Bug
+description: Reporte um problema ou comportamento inesperado no ConsultTributário
+title: 'bug: '
+labels: ['bug', 'triage']
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por dedicar seu tempo para relatar um bug! 
+        
+        Por favor, preencha as informações abaixo para nos ajudar a entender e corrigir o problema.
+
+  - type: textarea
+    id: descricao
+    attributes:
+      label: 📝 Descrição do Problema
+      description: Uma descrição clara e concisa do que é o bug
+      placeholder: |
+        Ex: O sistema não valida corretamente o CNPJ quando...
+        Ex: A consulta tributária retorna erro 500 quando...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproducao
+    attributes:
+      label: 🔄 Passos para Reproduzir
+      description: Passos detalhados para reproduzir o comportamento
+      placeholder: |
+        1. Acesse a página '...'
+        2. Preencha o campo '...' com '...'
+        3. Clique em '....'
+        4. Observe o erro
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ Comportamento Esperado
+      description: Uma descrição clara do que você esperava que acontecesse
+      placeholder: |
+        Ex: O sistema deveria validar o CNPJ e exibir os dados da empresa
+    validations:
+      required: true
+
+  - type: dropdown
+    id: contexto
+    attributes:
+      label: 🎯 Contexto do Sistema
+      description: Em qual parte do sistema o problema ocorre?
+      options:
+        - Frontend (Interface do usuário)
+        - Backend (API/Servidor)
+        - Documentação
+        - Infraestrutura/Deploy
+        - Não sei identificar
+    validations:
+      required: true
+
+  - type: dropdown
+    id: ambiente
+    attributes:
+      label: 🌍 Ambiente
+      description: Em qual ambiente o problema ocorre?
+      options:
+        - Desenvolvimento (localhost)
+        - Homologação/Staging
+        - Produção
+        - Todos os ambientes
+    validations:
+      required: true
+
+  - type: dropdown
+    id: plataforma
+    attributes:
+      label: 💻 Plataforma/Navegador
+      description: Em qual plataforma o problema ocorre?
+      multiple: true
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Mobile (Android)
+        - Mobile (iOS)
+        - Todos os navegadores
+    validations:
+      required: true
+
+  - type: input
+    id: versao
+    attributes:
+      label: 🏷️ Versão
+      description: Qual versão do sistema você está usando?
+      placeholder: 'v1.0.0 ou commit hash'
+    validations:
+      required: false
+
+  - type: dropdown
+    id: prioridade
+    attributes:
+      label: ⚡ Prioridade (MoSCoW)
+      description: Qual a prioridade deste bug?
+      options:
+        - Must Have (Crítico - bloqueia funcionalidade essencial)
+        - Should Have (Alto - impacta experiência significativamente)
+        - Could Have (Médio - melhoria desejável)
+        - Won't Have (Baixo - não crítico para versão atual)
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 📋 Logs/Mensagens de Erro
+      description: Copie e cole quaisquer logs, mensagens de erro ou stack traces relevantes
+      render: shell
+      placeholder: |
+        Console do navegador:
+        [timestamp] ERROR: ...
+        
+        Logs do servidor:
+        [timestamp] 500 Internal Server Error: ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 📸 Screenshots/Evidências
+      description: Se aplicável, adicione screenshots, GIFs ou vídeos para demonstrar o problema
+      placeholder: |
+        Cole aqui imagens ou links para evidências visuais do problema
+    validations:
+      required: false
+
+  - type: textarea
+    id: contexto_adicional
+    attributes:
+      label: 📌 Contexto Adicional
+      description: |
+        Informações adicionais que podem ajudar:
+        - Dados específicos que causam o problema
+        - Configurações especiais
+        - Relação com outras funcionalidades
+        - Impacto nos usuários
+      placeholder: |
+        Ex: O problema só ocorre com CNPJs que começam com "11"
+        Ex: Afeta aproximadamente 30% dos usuários
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: ✅ Checklist
+      description: Confirme que você verificou os itens abaixo
+      options:
+        - label: Verifiquei se já existe uma issue similar
+          required: true
+        - label: Testei em ambiente limpo (cache limpo, sem extensões)
+          required: false
+        - label: O problema é reproduzível consistentemente
+          required: false
+        - label: Incluí todas as informações necessárias
+          required: true
