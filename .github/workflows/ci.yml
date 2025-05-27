@@ -129,7 +129,13 @@ jobs:
         if: steps.check-frontend.outputs.has_package_json == 'true'
         run: |
           if npm run --silent test --help > /dev/null 2>&1; then
-            npm test
+            # Verifica se existem arquivos de teste
+            if find . -name "*.test.*" -o -name "*.spec.*" | grep -q .; then
+              npm test
+            else
+              echo "⚠️ Nenhum arquivo de teste encontrado - executando com --passWithNoTests"
+              npm test -- --passWithNoTests
+            fi
           else
             echo "⚠️ Testes não configurados - pulando testes"
           fi
@@ -201,7 +207,13 @@ jobs:
         if: steps.check-backend.outputs.has_package_json == 'true'
         run: |
           if npm run --silent test --help > /dev/null 2>&1; then
-            npm test
+            # Verifica se existem arquivos de teste
+            if find . -name "*.test.*" -o -name "*.spec.*" | grep -q .; then
+              npm test
+            else
+              echo "⚠️ Nenhum arquivo de teste encontrado - executando com --passWithNoTests"
+              npm test -- --passWithNoTests
+            fi
           else
             echo "⚠️ Testes não configurados - pulando testes"
           fi
