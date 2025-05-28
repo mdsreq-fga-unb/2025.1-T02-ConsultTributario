@@ -1,6 +1,6 @@
 # 📊 ConsultTributário
 
-Projeto desenvolvido pelo **Grupo 07** para a disciplina de Métodos de Desenvolvimento de Software na Universidade de Brasília (UnB).
+Projeto desenvolvido pelo **Grupo 07** para a disciplina de **Requisitos de Software** na Universidade de Brasília (UnB).
 
 ## 📝 Sobre o Projeto
 
