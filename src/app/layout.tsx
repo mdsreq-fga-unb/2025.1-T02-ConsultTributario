@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Footer from '@/app/components/Footer/Footer';
 import Navbar from '@/app/components/Navbar/Navbar';
+import { AuthProvider } from '@/auth';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,9 +16,11 @@ const RootLayout = ({
   return (
     <html lang='pt-BR'>
       <body className={`${inter.className} flex flex-col min-h-screen`}>
-        <Navbar />
-        <main className='flex-grow'>{children}</main>
-        <Footer />
+        <AuthProvider>
+          <Navbar />
+          <main className='flex-grow'>{children}</main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
