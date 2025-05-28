@@ -1,6 +1,6 @@
 # ConsultTributário - Grupo 07
 
-Bem-vindo à documentação oficial do projeto **ConsultTributário**, desenvolvido pelo **Grupo 07 - UnB** para a disciplina de Métodos de Desenvolvimento de Software.
+Bem-vindo à documentação oficial do projeto **ConsultTributário**, desenvolvido pelo **Grupo 07 - UnB** para a disciplina de Requisitos de Software.
 
 > O **ConsultTributário** é uma aplicação web que visa facilitar a consulta de informações tributárias e fiscais, proporcionando uma experiência simplificada para contribuintes e profissionais da área.
 
