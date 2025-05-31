@@ -21,6 +21,9 @@ export class QuestionDto {
   tooltip: string;
 
   @Expose()
+  isActive: boolean;
+
+  @Expose()
   @Type(() => RelatedQuestionDto)
   relatedQuestions: RelatedQuestionDto[];
 }

@@ -285,6 +285,7 @@ describe('QuestionsService', () => {
       const updateDto: UpdateQuestionDto = {
         label: 'Updated Question',
         tooltip: 'Updated Tooltip',
+        isActive: false,
         relatedQuestions: [],
       };
       const updatedQuestion = { ...updateDto, _id: questionId };
