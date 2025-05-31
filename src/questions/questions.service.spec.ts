@@ -61,7 +61,7 @@ describe('QuestionsService', () => {
     it('should create a question without related questions', async () => {
       const mockedQuestion: CreateQuestionDto = {
         label: 'Test Question',
-        toolTip: 'Test Tooltip',
+        tooltip: 'Test Tooltip',
         relatedQuestions: [],
       };
       model.create.mockResolvedValue(mockedQuestion as any);
@@ -76,7 +76,7 @@ describe('QuestionsService', () => {
     it('should create a question with valid related questions', async () => {
       const mockedQuestion: CreateQuestionDto = {
         label: 'Test Question',
-        toolTip: 'Test Tooltip',
+        tooltip: 'Test Tooltip',
         relatedQuestions: ['123', '456'],
       };
       const mockQuery: any = { exec: jest.fn().mockResolvedValue(['123', '456']) };
@@ -96,7 +96,7 @@ describe('QuestionsService', () => {
     it('should throw BadRequestException when related questions ids are invalid', async () => {
       const mockedQuestion: CreateQuestionDto = {
         label: 'Test Question',
-        toolTip: 'Test Tooltip',
+        tooltip: 'Test Tooltip',
         relatedQuestions: ['123', '456'],
       };
       const mockQuery: any = { exec: jest.fn().mockResolvedValue(['123']) };
@@ -114,7 +114,7 @@ describe('QuestionsService', () => {
     it('should throw error when create fails', async () => {
       const mockedQuestion: CreateQuestionDto = {
         label: 'Test Question',
-        toolTip: 'Test Tooltip',
+        tooltip: 'Test Tooltip',
         relatedQuestions: ['123', '456'],
       };
       const mockQuery: any = { exec: jest.fn().mockResolvedValue(['123', '456']) };
@@ -284,7 +284,7 @@ describe('QuestionsService', () => {
       const questionId = '123';
       const updateDto: UpdateQuestionDto = {
         label: 'Updated Question',
-        toolTip: 'Updated Tooltip',
+        tooltip: 'Updated Tooltip',
         relatedQuestions: [],
       };
       const updatedQuestion = { ...updateDto, _id: questionId };

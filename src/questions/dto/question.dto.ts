@@ -18,7 +18,7 @@ export class QuestionDto {
   label: string;
 
   @Expose()
-  toolTip: string;
+  tooltip: string;
 
   @Expose()
   @Type(() => RelatedQuestionDto)
