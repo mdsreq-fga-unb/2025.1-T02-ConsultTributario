@@ -20,7 +20,7 @@ export class CreateQuestionDto {
   })
   @IsString()
   @IsOptional()
-  toolTip?: string;
+  tooltip?: string;
 
   @ApiProperty({
     description: 'Array de IDs das perguntas relacionadas',
