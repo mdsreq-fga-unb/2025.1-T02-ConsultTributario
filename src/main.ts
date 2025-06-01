@@ -48,6 +48,7 @@ async function bootstrap() {
     credentials: true,
     maxAge: 86400
   });
-  await app.listen(process.env.PORT || 8000);
+  await app.listen(process.env.PORT || 8000, '0.0.0.0');
+  console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();
