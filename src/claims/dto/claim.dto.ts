@@ -1,5 +1,4 @@
 import { Expose, Transform, Type } from 'class-transformer';
-import { Question } from 'src/questions/schemas/question.schema';
 
 export class RelatedQuestionDto {
   @Expose()
@@ -8,6 +7,9 @@ export class RelatedQuestionDto {
 
   @Expose()
   label: string;
+
+  @Expose()
+  isActive: boolean;
 }
 
 export class ClaimDto {
