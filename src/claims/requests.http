@@ -3,12 +3,12 @@ POST http://localhost:8000/claims
 Content-Type: application/json
 
 {
-  "title": "Claim 4",
+  "title": "Claim 3",
   "objective": "Objective for claim 1",
   "summary": "Summary for claim 1",
   "recoverable_period": "12 months",
   "recoverable_value": "1000",
-  "relatedQuestions": "68365ccfed8b809ccb0c60ce"
+  "relatedQuestion": "683c6de111fb31187f89798f"
 }
 
 ### Find all claims
