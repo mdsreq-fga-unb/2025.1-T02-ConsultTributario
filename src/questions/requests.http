@@ -5,14 +5,14 @@ Content-Type: application/json
 {
   "label": "Pergunta 5",
   "tooltip": "Dica para a pergunta 5",
-  "relatedQuestions": ["68365d10ed8b809ccb0c60e1", "68365ccfed8b809ccb0c60ce"]
+  "relatedQuestions": ["68365d10ed8b809ccb0c60e1", "68365ccfed8b809ccb0c60c"]
 }
 
 ### Find all questions
 GET http://localhost:8000/questions
 
 ### Find question by id
-GET http://localhost:8000/questions/68365ccfed8b809ccb0c60ce
+GET http://localhost:8000/questions/68365d10ed8b809ccb0c60e1
 
 ### Delete question
 DELETE http://localhost:8000/questions/6824b6bc22d33d13503750b8
@@ -24,4 +24,3 @@ Content-Type: application/json
 {
   "isActive": true
 }
-
