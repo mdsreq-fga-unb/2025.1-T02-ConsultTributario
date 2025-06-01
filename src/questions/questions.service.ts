@@ -1,13 +1,17 @@
 import { Injectable, NotFoundException, BadRequestException, ConflictException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, Types } from 'mongoose';
+import { Model } from 'mongoose';
 import { Question } from './schemas/question.schema';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
+import { Claim } from 'src/claims/schemas/claim.schema';
 
 @Injectable()
 export class QuestionsService {
-  constructor(@InjectModel(Question.name) private readonly questionModel: Model<Question>) {}
+  constructor(
+    @InjectModel(Question.name) private readonly questionModel: Model<Question>,
+    @InjectModel(Claim.name) private readonly claimModel: Model<Claim>
+  ) {}
 
   async create(createQuestionDto: CreateQuestionDto): Promise<Question> {
     if (createQuestionDto.relatedQuestions.length > 0) {
@@ -43,9 +47,7 @@ export class QuestionsService {
         throw new BadRequestException('invalid related IDs');
       }
 
-      const existingQuestions = await this.questionModel
-        .find({ _id: { $in: relatedQuestions } })
-        .exec();
+      const existingQuestions = await this.questionModel.find({ _id: { $in: relatedQuestions } }).exec();
 
       if (existingQuestions.length !== relatedQuestions.length) {
         throw new BadRequestException('invalid related IDs');
@@ -66,6 +68,7 @@ export class QuestionsService {
 
   async remove(id: string): Promise<void> {
     await this.questionModel.updateMany({ relatedQuestions: id }, { $pull: { relatedQuestions: id } });
+    await this.claimModel.updateMany({ questions: id }, { $pull: { questions: id } });
 
     await this.questionModel.findByIdAndDelete(id).exec();
   }
