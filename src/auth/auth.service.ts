@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
+import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import * as bcrypt from 'bcrypt'
 import { User } from 'src/users/entities/user.entity';
 import { UserPayload } from './models/UserPayload';
@@ -43,5 +44,10 @@ export class AuthService {
 
         // Se chegar aqui, significa que nao encontrou um user e/ou a senha não corresponde
         throw new Error('Email address or password provided is incorrect.')
+    }
+
+    async register(createUserDto: CreateUserDto) {
+        const user = await this.userService.create(createUserDto);
+        return user;
     }
 }

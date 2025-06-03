@@ -11,7 +11,7 @@ export class UsersService {
 
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) { }
 
-  async create(createUserDto: CreateUserDto): Promise<Omit<User, 'password'>> {
+  async create(createUserDto: CreateUserDto): Promise<User> {
 
     try {
 
@@ -24,9 +24,9 @@ export class UsersService {
 
       const saved = await newUser.save()
 
-      const { password, ...userWithoutPassword } = saved.toObject();
+      // const { password, ...userWithoutPassword } = saved.toObject();
 
-      return userWithoutPassword;
+      return saved;
 
     } catch (error) {
       if (error.code === 11000) { // Email em uso

@@ -8,11 +8,11 @@ import { IsPublic } from 'src/auth/decorators/is-public.decorator';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @IsPublic()
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
-  }
+  // @IsPublic()
+  // @Post()
+  // create(@Body() createUserDto: CreateUserDto) {
+  //   return this.usersService.create(createUserDto);
+  // }
 
   @Get()
   async findAll() {
