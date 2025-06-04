@@ -28,5 +28,5 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
 
-    - name: Run test coverage
+    - name: Run E2E tests
       run: yarn test:cov
