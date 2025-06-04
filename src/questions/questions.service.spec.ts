@@ -79,7 +79,9 @@ describe('QuestionsService', () => {
         tooltip: 'Test Tooltip',
         relatedQuestions: ['123', '456'],
       };
-      const mockQuery: any = { exec: jest.fn().mockResolvedValue(['123', '456']) };
+      const mockQuery: any = {
+        exec: jest.fn().mockResolvedValue(['123', '456']),
+      };
       model.find.mockReturnValue(mockQuery);
       model.create.mockResolvedValue(mockedQuestion as any);
 
@@ -117,7 +119,9 @@ describe('QuestionsService', () => {
         tooltip: 'Test Tooltip',
         relatedQuestions: ['123', '456'],
       };
-      const mockQuery: any = { exec: jest.fn().mockResolvedValue(['123', '456']) };
+      const mockQuery: any = {
+        exec: jest.fn().mockResolvedValue(['123', '456']),
+      };
       model.find.mockReturnValue(mockQuery);
       const error = new Error('Database error');
       model.create.mockRejectedValue(error);
@@ -236,7 +240,7 @@ describe('QuestionsService', () => {
 
       expect(model.updateMany).toHaveBeenCalledWith(
         { relatedQuestions: questionId },
-        { $pull: { relatedQuestions: questionId } }
+        { $pull: { relatedQuestions: questionId } },
       );
       expect(model.findByIdAndDelete).toHaveBeenCalledWith(questionId);
     });
@@ -257,7 +261,7 @@ describe('QuestionsService', () => {
 
       expect(model.updateMany).toHaveBeenCalledWith(
         { relatedQuestions: questionId },
-        { $pull: { relatedQuestions: questionId } }
+        { $pull: { relatedQuestions: questionId } },
       );
       expect(model.findByIdAndDelete).toHaveBeenCalledWith(questionId);
     });
@@ -273,7 +277,7 @@ describe('QuestionsService', () => {
       await expect(result).rejects.toThrow(error);
       expect(model.updateMany).toHaveBeenCalledWith(
         { relatedQuestions: questionId },
-        { $pull: { relatedQuestions: questionId } }
+        { $pull: { relatedQuestions: questionId } },
       );
       expect(model.findByIdAndDelete).not.toHaveBeenCalled();
     });
@@ -299,7 +303,11 @@ describe('QuestionsService', () => {
       const result = await service.update(questionId, updateDto);
 
       expect(result).toEqual(updatedQuestion);
-      expect(model.findByIdAndUpdate).toHaveBeenCalledWith(questionId, updateDto, { new: true });
+      expect(model.findByIdAndUpdate).toHaveBeenCalledWith(
+        questionId,
+        updateDto,
+        { new: true },
+      );
     });
 
     it('should update question with valid related questions', async () => {
@@ -369,7 +377,9 @@ describe('QuestionsService', () => {
         exec: jest.fn().mockResolvedValue(null),
       } as any);
 
-      await expect(service.update(questionId, updateDto)).rejects.toThrow(NotFoundException);
+      await expect(service.update(questionId, updateDto)).rejects.toThrow(
+        NotFoundException,
+      );
     });
 
     it('should throw error when database operation fails', async () => {

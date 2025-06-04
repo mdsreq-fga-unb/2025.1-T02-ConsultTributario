@@ -18,14 +18,14 @@ export class SerializeInterceptor<T extends ClassConstructor<unknown>>
 
   intercept(
     context: ExecutionContext,
-    handler: CallHandler<any>
+    handler: CallHandler<any>,
   ): Observable<any> {
     return handler.handle().pipe(
       map((data) => {
         return plainToClass(this.dto, data, {
           excludeExtraneousValues: true,
         });
-      })
+      }),
     );
   }
 }
