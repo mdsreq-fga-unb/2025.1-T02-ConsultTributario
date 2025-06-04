@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException, BadRequestException, ConflictException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { Question } from './schemas/question.schema';
@@ -7,14 +11,18 @@ import { UpdateQuestionDto } from './dto/update-question.dto';
 
 @Injectable()
 export class QuestionsService {
-  constructor(@InjectModel(Question.name) private readonly questionModel: Model<Question>) {}
+  constructor(
+    @InjectModel(Question.name) private readonly questionModel: Model<Question>,
+  ) {}
 
   async create(createQuestionDto: CreateQuestionDto): Promise<Question> {
     if (createQuestionDto.relatedQuestions.length > 0) {
       const existingQuestions = await this.questionModel
         .find({ _id: { $in: createQuestionDto.relatedQuestions } })
         .exec();
-      if (existingQuestions.length !== createQuestionDto.relatedQuestions.length) {
+      if (
+        existingQuestions.length !== createQuestionDto.relatedQuestions.length
+      ) {
         throw new BadRequestException('invalid related question IDs');
       }
     }
@@ -27,7 +35,10 @@ export class QuestionsService {
   }
 
   async findOne(id: string) {
-    const question = await this.questionModel.findById(id).populate('relatedQuestions').exec();
+    const question = await this.questionModel
+      .findById(id)
+      .populate('relatedQuestions')
+      .exec();
 
     if (!question) {
       throw new NotFoundException('invalid id');
@@ -65,7 +76,10 @@ export class QuestionsService {
   }
 
   async remove(id: string): Promise<void> {
-    await this.questionModel.updateMany({ relatedQuestions: id }, { $pull: { relatedQuestions: id } });
+    await this.questionModel.updateMany(
+      { relatedQuestions: id },
+      { $pull: { relatedQuestions: id } },
+    );
 
     await this.questionModel.findByIdAndDelete(id).exec();
   }
