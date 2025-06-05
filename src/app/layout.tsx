@@ -5,6 +5,7 @@ import './globals.css';
 import Footer from '@/app/components/Footer/Footer';
 import Navbar from '@/app/components/Navbar/Navbar';
 import { AuthProvider } from '@/auth';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +21,7 @@ const RootLayout = ({
           <Navbar />
           <main className='flex-grow'>{children}</main>
           <Footer />
+          <Toaster />
         </AuthProvider>
       </body>
     </html>
