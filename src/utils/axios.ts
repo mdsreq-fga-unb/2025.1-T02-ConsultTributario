@@ -83,4 +83,18 @@ export const endpoints = {
     update: (id: string) => `/users/${id}`,
     delete: (id: string) => `/users/${id}`,
   },
+  question: {
+    list: '/questions',
+    details: (id: string) => `/questions/${id}`,
+    create: '/questions',
+    update: (id: string) => `/questions/${id}`,
+    delete: (id: string) => `/questions/${id}`,
+  },
+  teses: {
+    list: '/claims',
+    details: (id: string) => `/claims/${id}`,
+    create: '/claims',
+    update: (id: string) => `/claims/${id}`,
+    delete: (id: string) => `/claims/${id}`,
+  },
 };
