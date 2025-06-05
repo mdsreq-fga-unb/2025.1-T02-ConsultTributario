@@ -3,12 +3,12 @@ import { ClaimsService } from './claims.service';
 import { ClaimsController } from './claims.controller';
 import { Claim, ClaimSchema } from './schemas/claim.schema';
 import { MongooseModule } from '@nestjs/mongoose';
-import { QuestionsModule } from 'src/questions/questions.module';
+import { QuestionsModule } from '../questions/questions.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Claim.name, schema: ClaimSchema }]),
-    QuestionsModule
+    QuestionsModule,
   ],
   controllers: [ClaimsController],
   providers: [ClaimsService],

@@ -51,21 +51,21 @@ describe('Questions E2E', () => {
         .post('/questions')
         .send({
           label: 'any_label',
-          toolTip: 'any_tooltip',
+          tooltip: 'any_tooltip',
           relatedQuestions: [],
         })
         .expect(201);
 
       expect(res.body).toHaveProperty('_id');
       expect(res.body.label).toBe('any_label');
-      expect(res.body.toolTip).toBe('any_tooltip');
+      expect(res.body.tooltip).toBe('any_tooltip');
       expect(res.body.relatedQuestions).toEqual([]);
     });
 
     it('should return 400 if label is missing', async () => {
       await request(app.getHttpServer())
         .post('/questions')
-        .send({ toolTip: 'any_tooltip', relatedQuestions: [] })
+        .send({ tooltip: 'any_tooltip', relatedQuestions: [] })
         .expect(400);
     });
 
@@ -74,7 +74,7 @@ describe('Questions E2E', () => {
         .post('/questions')
         .send({
           label: 'any_label',
-          toolTip: 'any_tooltip',
+          tooltip: 'any_tooltip',
           relatedQuestions: ['invalid-id'],
         })
         .expect(400);
@@ -86,7 +86,7 @@ describe('Questions E2E', () => {
         .post('/questions')
         .send({
           label: 'any_label',
-          toolTip: 'any_tooltip',
+          tooltip: 'any_tooltip',
           relatedQuestions: [nonExistentId],
         })
         .expect(400);
@@ -106,16 +106,19 @@ describe('Questions E2E', () => {
     it('should return all questions', async () => {
       await request(app.getHttpServer()).post('/questions').send({
         label: 'question1',
-        toolTip: 'tooltip1',
+        tooltip: 'tooltip1',
         relatedQuestions: [],
       });
 
       const res = await request(app.getHttpServer())
         .get('/questions')
         .expect(200);
+
       expect(res.body).toBeInstanceOf(Array);
       expect(res.body.length).toBe(1);
       expect(res.body[0].label).toBe('question1');
+      expect(res.body[0].tooltip).toBe('tooltip1');
+      expect(res.body[0].isActive).toBe(true);
     });
   });
 
@@ -127,7 +130,7 @@ describe('Questions E2E', () => {
         .post('/questions')
         .send({
           label: 'initial_label',
-          toolTip: 'initial_tooltip',
+          tooltip: 'initial_tooltip',
           relatedQuestions: [],
         })
         .expect(201);
@@ -137,7 +140,8 @@ describe('Questions E2E', () => {
     it('should update a question', async () => {
       const updatedData = {
         label: 'updated_label',
-        toolTip: 'updated_tooltip',
+        isActive: false,
+        tooltip: 'updated_tooltip',
       };
       const res = await request(app.getHttpServer())
         .patch(`/questions/${questionId}`)
@@ -145,7 +149,8 @@ describe('Questions E2E', () => {
         .expect(200);
 
       expect(res.body.label).toBe('updated_label');
-      expect(res.body.toolTip).toBe('updated_tooltip');
+      expect(res.body.tooltip).toBe('updated_tooltip');
+      expect(res.body.isActive).toBe(false);
     });
 
     it('should return 404 if question ID to update does not exist', async () => {
@@ -175,45 +180,6 @@ describe('Questions E2E', () => {
       await request(app.getHttpServer())
         .patch(`/questions/${questionId}`)
         .send({ relatedQuestions: [questionId] })
-        .expect(400);
-    });
-  });
-
-  describe('/questions/:id (DELETE)', () => {
-    let questionId: string;
-
-    beforeEach(async () => {
-      const createResponse = await request(app.getHttpServer())
-        .post('/questions')
-        .send({
-          label: 'to_be_deleted',
-          toolTip: 'delete_tooltip',
-          relatedQuestions: [],
-        })
-        .expect(201);
-      questionId = createResponse.body._id;
-    });
-
-    it('should delete a question and return 204', async () => {
-      await request(app.getHttpServer())
-        .delete(`/questions/${questionId}`)
-        .expect(204);
-
-      await request(app.getHttpServer())
-        .get(`/questions/${questionId}`)
-        .expect(404);
-    });
-
-    it('should return 204 even if question ID does not exist (but valid format)', async () => {
-      const nonExistentId = '605fe2a85d28392b8c800000';
-      await request(app.getHttpServer())
-        .delete(`/questions/${nonExistentId}`)
-        .expect(204);
-    });
-
-    it('should return 400 if ID is not a valid MongoDB ObjectId', async () => {
-      await request(app.getHttpServer())
-        .delete('/questions/invalid-id-format')
         .expect(400);
     });
   });

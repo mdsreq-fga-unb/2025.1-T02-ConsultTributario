@@ -223,66 +223,6 @@ describe('QuestionsService', () => {
     });
   });
 
-  describe('remove', () => {
-    it('should remove question and update related questions', async () => {
-      const questionId = '123';
-
-      const updateManyMock: any = {
-        exec: jest.fn().mockResolvedValue({ modifiedCount: 1 }),
-      };
-      const findByIdAndDeleteMock: any = {
-        exec: jest.fn().mockResolvedValue({ _id: questionId }),
-      };
-      model.updateMany.mockReturnValue(updateManyMock);
-      model.findByIdAndDelete.mockReturnValue(findByIdAndDeleteMock);
-
-      await service.remove(questionId);
-
-      expect(model.updateMany).toHaveBeenCalledWith(
-        { relatedQuestions: questionId },
-        { $pull: { relatedQuestions: questionId } },
-      );
-      expect(model.findByIdAndDelete).toHaveBeenCalledWith(questionId);
-    });
-
-    it('should handle case when question does not exist', async () => {
-      const questionId = 'nonexistent-id';
-
-      const updateManyMock: any = {
-        exec: jest.fn().mockResolvedValue({ modifiedCount: 0 }),
-      };
-      const findByIdAndDeleteMock: any = {
-        exec: jest.fn().mockResolvedValue(null),
-      };
-      model.updateMany.mockResolvedValue(updateManyMock);
-      model.findByIdAndDelete.mockReturnValue(findByIdAndDeleteMock);
-
-      await service.remove(questionId);
-
-      expect(model.updateMany).toHaveBeenCalledWith(
-        { relatedQuestions: questionId },
-        { $pull: { relatedQuestions: questionId } },
-      );
-      expect(model.findByIdAndDelete).toHaveBeenCalledWith(questionId);
-    });
-
-    it('should throw error when database operation fails', async () => {
-      const questionId = '123';
-      const error = new Error('Database error');
-
-      model.updateMany.mockRejectedValue(error);
-
-      const result = service.remove(questionId);
-
-      await expect(result).rejects.toThrow(error);
-      expect(model.updateMany).toHaveBeenCalledWith(
-        { relatedQuestions: questionId },
-        { $pull: { relatedQuestions: questionId } },
-      );
-      expect(model.findByIdAndDelete).not.toHaveBeenCalled();
-    });
-  });
-
   describe('update', () => {
     it('should update question without related questions', async () => {
       const questionId = '123';

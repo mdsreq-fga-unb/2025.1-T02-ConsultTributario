@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Question } from 'src/questions/schemas/question.schema';
+import { Question } from '../../questions/schemas/question.schema';
 
 @Schema({ timestamps: true })
 export class Claim extends Document {

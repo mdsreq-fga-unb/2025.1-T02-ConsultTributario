@@ -66,17 +66,4 @@ export class QuestionsController {
     }
     return this.questionsService.update(id, updateQuestionDto);
   }
-
-  @Delete(':id')
-  @HttpCode(HttpStatus.NO_CONTENT)
-  @ApiOperation({ summary: 'Apaga uma pergunta existente' })
-  @ApiBody({ type: UpdateQuestionDto })
-  @ApiResponse({ status: 204, description: 'Pergunta apagada com sucesso' })
-  @ApiResponse({ status: 404, description: 'ID inválido' })
-  async remove(@Param('id') id: string) {
-    if (!Types.ObjectId.isValid(id)) {
-      throw new BadRequestException('invalid id');
-    }
-    return this.questionsService.remove(id);
-  }
 }

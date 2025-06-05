@@ -168,31 +168,4 @@ describe('QuestionsController', () => {
       expect(service.update).toHaveBeenCalledWith(validId, updateQuestionDto);
     });
   });
-
-  describe('remove', () => {
-    it('should remove a question', async () => {
-      const validId = '6824b6bc22d33d13503750b8';
-      jest.spyOn(service, 'remove').mockResolvedValue(undefined);
-
-      expect(await controller.remove(validId)).toBeUndefined();
-      expect(service.remove).toHaveBeenCalledWith(validId);
-    });
-
-    it('should throw BadRequestException if invalid id is provided', async () => {
-      const invalidId = 'invalid-id';
-
-      await expect(controller.remove(invalidId)).rejects.toThrow(
-        BadRequestException,
-      );
-      expect(service.remove).not.toHaveBeenCalled();
-    });
-
-    it('should throw an error if removing question fails', async () => {
-      const validId = '6824b6bc22d33d13503750b8';
-      jest.spyOn(service, 'remove').mockRejectedValue(new Error());
-
-      await expect(controller.remove(validId)).rejects.toThrow(new Error());
-      expect(service.remove).toHaveBeenCalledWith(validId);
-    });
-  });
 });
