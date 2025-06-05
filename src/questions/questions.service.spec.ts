@@ -61,7 +61,7 @@ describe('QuestionsService', () => {
     it('should create a question without related questions', async () => {
       const mockedQuestion: CreateQuestionDto = {
         label: 'Test Question',
-        toolTip: 'Test Tooltip',
+        tooltip: 'Test Tooltip',
         relatedQuestions: [],
       };
       model.create.mockResolvedValue(mockedQuestion as any);
@@ -76,10 +76,12 @@ describe('QuestionsService', () => {
     it('should create a question with valid related questions', async () => {
       const mockedQuestion: CreateQuestionDto = {
         label: 'Test Question',
-        toolTip: 'Test Tooltip',
+        tooltip: 'Test Tooltip',
         relatedQuestions: ['123', '456'],
       };
-      const mockQuery: any = { exec: jest.fn().mockResolvedValue(['123', '456']) };
+      const mockQuery: any = {
+        exec: jest.fn().mockResolvedValue(['123', '456']),
+      };
       model.find.mockReturnValue(mockQuery);
       model.create.mockResolvedValue(mockedQuestion as any);
 
@@ -96,7 +98,7 @@ describe('QuestionsService', () => {
     it('should throw BadRequestException when related questions ids are invalid', async () => {
       const mockedQuestion: CreateQuestionDto = {
         label: 'Test Question',
-        toolTip: 'Test Tooltip',
+        tooltip: 'Test Tooltip',
         relatedQuestions: ['123', '456'],
       };
       const mockQuery: any = { exec: jest.fn().mockResolvedValue(['123']) };
@@ -114,10 +116,12 @@ describe('QuestionsService', () => {
     it('should throw error when create fails', async () => {
       const mockedQuestion: CreateQuestionDto = {
         label: 'Test Question',
-        toolTip: 'Test Tooltip',
+        tooltip: 'Test Tooltip',
         relatedQuestions: ['123', '456'],
       };
-      const mockQuery: any = { exec: jest.fn().mockResolvedValue(['123', '456']) };
+      const mockQuery: any = {
+        exec: jest.fn().mockResolvedValue(['123', '456']),
+      };
       model.find.mockReturnValue(mockQuery);
       const error = new Error('Database error');
       model.create.mockRejectedValue(error);
@@ -219,72 +223,13 @@ describe('QuestionsService', () => {
     });
   });
 
-  describe('remove', () => {
-    it('should remove question and update related questions', async () => {
-      const questionId = '123';
-
-      const updateManyMock: any = {
-        exec: jest.fn().mockResolvedValue({ modifiedCount: 1 }),
-      };
-      const findByIdAndDeleteMock: any = {
-        exec: jest.fn().mockResolvedValue({ _id: questionId }),
-      };
-      model.updateMany.mockReturnValue(updateManyMock);
-      model.findByIdAndDelete.mockReturnValue(findByIdAndDeleteMock);
-
-      await service.remove(questionId);
-
-      expect(model.updateMany).toHaveBeenCalledWith(
-        { relatedQuestions: questionId },
-        { $pull: { relatedQuestions: questionId } }
-      );
-      expect(model.findByIdAndDelete).toHaveBeenCalledWith(questionId);
-    });
-
-    it('should handle case when question does not exist', async () => {
-      const questionId = 'nonexistent-id';
-
-      const updateManyMock: any = {
-        exec: jest.fn().mockResolvedValue({ modifiedCount: 0 }),
-      };
-      const findByIdAndDeleteMock: any = {
-        exec: jest.fn().mockResolvedValue(null),
-      };
-      model.updateMany.mockResolvedValue(updateManyMock);
-      model.findByIdAndDelete.mockReturnValue(findByIdAndDeleteMock);
-
-      await service.remove(questionId);
-
-      expect(model.updateMany).toHaveBeenCalledWith(
-        { relatedQuestions: questionId },
-        { $pull: { relatedQuestions: questionId } }
-      );
-      expect(model.findByIdAndDelete).toHaveBeenCalledWith(questionId);
-    });
-
-    it('should throw error when database operation fails', async () => {
-      const questionId = '123';
-      const error = new Error('Database error');
-
-      model.updateMany.mockRejectedValue(error);
-
-      const result = service.remove(questionId);
-
-      await expect(result).rejects.toThrow(error);
-      expect(model.updateMany).toHaveBeenCalledWith(
-        { relatedQuestions: questionId },
-        { $pull: { relatedQuestions: questionId } }
-      );
-      expect(model.findByIdAndDelete).not.toHaveBeenCalled();
-    });
-  });
-
   describe('update', () => {
     it('should update question without related questions', async () => {
       const questionId = '123';
       const updateDto: UpdateQuestionDto = {
         label: 'Updated Question',
-        toolTip: 'Updated Tooltip',
+        tooltip: 'Updated Tooltip',
+        isActive: false,
         relatedQuestions: [],
       };
       const updatedQuestion = { ...updateDto, _id: questionId };
@@ -298,7 +243,11 @@ describe('QuestionsService', () => {
       const result = await service.update(questionId, updateDto);
 
       expect(result).toEqual(updatedQuestion);
-      expect(model.findByIdAndUpdate).toHaveBeenCalledWith(questionId, updateDto, { new: true });
+      expect(model.findByIdAndUpdate).toHaveBeenCalledWith(
+        questionId,
+        updateDto,
+        { new: true },
+      );
     });
 
     it('should update question with valid related questions', async () => {
@@ -368,7 +317,9 @@ describe('QuestionsService', () => {
         exec: jest.fn().mockResolvedValue(null),
       } as any);
 
-      await expect(service.update(questionId, updateDto)).rejects.toThrow(NotFoundException);
+      await expect(service.update(questionId, updateDto)).rejects.toThrow(
+        NotFoundException,
+      );
     });
 
     it('should throw error when database operation fails', async () => {

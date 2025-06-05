@@ -17,7 +17,6 @@ import { Types } from 'mongoose';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { QuestionDto } from './dto/question.dto';
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { Question } from './schemas/question.schema';
 
 @Serialize(QuestionDto)
 @Controller('questions')
@@ -58,23 +57,13 @@ export class QuestionsController {
   @ApiResponse({ status: 200, description: 'Pergunta atualizada com sucesso' })
   @ApiResponse({ status: 404, description: 'ID inválido' })
   @ApiResponse({ status: 400, description: 'Pergunta não encontrada' })
-  async update(@Param('id') id: string, @Body() updateQuestionDto: UpdateQuestionDto) {
+  async update(
+    @Param('id') id: string,
+    @Body() updateQuestionDto: UpdateQuestionDto,
+  ) {
     if (!Types.ObjectId.isValid(id)) {
       throw new BadRequestException('invalid id');
     }
     return this.questionsService.update(id, updateQuestionDto);
-  }
-
-  @Delete(':id')
-  @HttpCode(HttpStatus.NO_CONTENT)
-  @ApiOperation({ summary: 'Apaga uma pergunta existente' })
-  @ApiBody({ type: UpdateQuestionDto })
-  @ApiResponse({ status: 204, description: 'Pergunta apagada com sucesso' })
-  @ApiResponse({ status: 404, description: 'ID inválido' })
-  async remove(@Param('id') id: string) {
-    if (!Types.ObjectId.isValid(id)) {
-      throw new BadRequestException('invalid id');
-    }
-    return this.questionsService.remove(id);
   }
 }

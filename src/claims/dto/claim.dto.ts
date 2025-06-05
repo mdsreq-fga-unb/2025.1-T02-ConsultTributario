@@ -7,23 +7,32 @@ export class RelatedQuestionDto {
 
   @Expose()
   label: string;
-}
-
-export class QuestionDto {
-  @Transform(({ obj }) => obj._id.toString())
-  @Expose()
-  _id: string;
-
-  @Expose()
-  label: string;
-
-  @Expose()
-  tooltip: string;
 
   @Expose()
   isActive: boolean;
+}
+
+export class ClaimDto {
+  @Expose()
+  @Transform(({ obj }) => obj._id.toString())
+  _id: string;
+
+  @Expose()
+  title: string;
+
+  @Expose()
+  objective: string;
+
+  @Expose()
+  summary: string;
+
+  @Expose()
+  recoverable_period: string;
+
+  @Expose()
+  recoverable_value: string;
 
   @Expose()
   @Type(() => RelatedQuestionDto)
-  relatedQuestions: RelatedQuestionDto[];
+  relatedQuestion: RelatedQuestionDto;
 }

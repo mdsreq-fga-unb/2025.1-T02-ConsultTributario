@@ -3,7 +3,6 @@
 .psql
 dist
 node_modules
-yarn.lock
 .DS_Store
 /data
 coverage
