@@ -1,10 +1,10 @@
 'use client';
 
-import { ArrowLeft, Save, Loader2 } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { createClaim, useGetClaims } from '@/api/claim';
+import { useGetClaims, updateClaim } from '@/api/claim';
 import { useGetQuestions } from '@/api/question';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -19,37 +19,49 @@ import {
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-import { ICreateClaim } from '@/types/claim';
+import { IClaim, ICreateClaim } from '@/types/claim';
 
-export const CadastrarTese = () => {
+
+export const EditarTese = ({ id }: { id: string }) => {
   const router = useRouter();
   const { toast } = useToast();
-  const { claims: tesesExistentes } = useGetClaims();
-
-  // Estados do formulário
-  const [formData, setFormData] = useState<ICreateClaim>({
-    title: '',
-    objective: '',
-    summary: '',
-    recoverable_period: '',
-    recoverable_value: '',
-  });
-
-  // Estados de controle
-  const [salvando, setSalvando] = useState(false);
+  const { claims: teses, claimsLoading } = useGetClaims();
   const { questions: perguntas, questionsLoading: carregandoPerguntas } = useGetQuestions();
-  const [erros, setErros] = useState<Record<string, string>>({});
+  const [formData, setFormData] = useState<ICreateClaim | null>(null);
   const [perguntaSelecionada, setPerguntaSelecionada] = useState<{
     _id: string;
     label: string;
   } | null>(null);
+  const [salvando, setSalvando] = useState(false);
+  const [erros, setErros] = useState<Record<string, string>>({});
 
-  // Função para atualizar campos do formulário
+  useEffect(() => {
+    if (!claimsLoading) {
+      const tese = teses.find((t: IClaim) => t._id === id);
+      if (tese) {
+        setFormData({
+          title: tese.title,
+          objective: tese.objective,
+          summary: tese.summary,
+          recoverable_period: tese.recoverable_period,
+          recoverable_value: tese.recoverable_value,
+        });
+        if (tese.relatedQuestion) {
+          setPerguntaSelecionada({
+            _id: tese.relatedQuestion._id,
+            label: tese.relatedQuestion.label,
+          });
+        }
+      }
+    }
+  }, [teses, id, claimsLoading]);
+
   const atualizarCampo = <T extends keyof ICreateClaim>(
     campo: T,
     valor: ICreateClaim[T] | undefined
   ) => {
     setFormData(prev => {
+      if (!prev) return prev;
       const newData = { ...prev };
       if (valor === undefined) {
         delete newData[campo];
@@ -58,85 +70,54 @@ export const CadastrarTese = () => {
       }
       return newData;
     });
-
-    // Limpar erro do campo quando o usuário começar a digitar
     if (erros[campo]) {
-      setErros(prev => ({
-        ...prev,
-        [campo]: '',
-      }));
+      setErros(prev => ({ ...prev, [campo]: '' }));
     }
   };
 
-  // Validação do formulário
   const validarFormulario = (): boolean => {
+    if (!formData) return false;
     const novosErros: Record<string, string> = {};
-
-    if (!formData.title.trim()) {
-      novosErros.title = 'O título é obrigatório';
-    } else {
-      // Verifica se já existe uma tese com o mesmo título
-      const tituloExiste = tesesExistentes.some(
-        tese => tese.title.toLowerCase() === formData.title.toLowerCase()
-      );
-      if (tituloExiste) {
-        novosErros.title = 'Já existe uma tese com este título';
-      }
-    }
-
-    if (!formData.objective.trim()) {
-      novosErros.objective = 'O objetivo é obrigatório';
-    }
-
-    if (!formData.summary.trim()) {
-      novosErros.summary = 'O resumo é obrigatório';
-    }
-
-    if (!formData.recoverable_period.trim()) {
+    if (!formData.title.trim()) novosErros.title = 'O título é obrigatório';
+    if (!formData.objective.trim()) novosErros.objective = 'O objetivo é obrigatório';
+    if (!formData.summary.trim()) novosErros.summary = 'O resumo é obrigatório';
+    if (!formData.recoverable_period.trim())
       novosErros.recoverable_period = 'O período recuperável é obrigatório';
-    }
-
-    if (!formData.recoverable_value.trim()) {
+    if (!formData.recoverable_value.trim())
       novosErros.recoverable_value = 'O valor recuperável é obrigatório';
-    }
-
     setErros(novosErros);
     return Object.keys(novosErros).length === 0;
   };
 
-  // Função para salvar a tese
   const salvarTese = async () => {
-    if (!validarFormulario()) {
-      return;
-    }
-
+    if (!validarFormulario() || !formData) return;
     try {
       setSalvando(true);
       const dadosParaEnviar = {
         ...formData,
-        relatedQuestion: perguntaSelecionada?._id,
+        relatedQuestion: perguntaSelecionada ? perguntaSelecionada._id : null,
       };
-      await createClaim(dadosParaEnviar);
-
-      toast({
-        variant: 'success',
-        title: 'Sucesso',
-        description: 'Tese cadastrada com sucesso',
-      });
-
-      // Redirecionar para a lista de teses
+      await updateClaim(id, dadosParaEnviar);
+      toast({ variant: 'success', title: 'Sucesso', description: 'Tese atualizada com sucesso' });
       router.push('/biblioteca-teses');
     } catch (error) {
-      const mensagemErro = error instanceof Error ? error.message : 'Erro ao cadastrar tese';
-      toast({
-        title: 'Erro',
-        description: mensagemErro,
-        variant: 'destructive',
-      });
+      const mensagemErro = error instanceof Error ? error.message : 'Erro ao atualizar tese';
+      toast({ title: 'Erro', description: mensagemErro, variant: 'destructive' });
     } finally {
       setSalvando(false);
     }
   };
+
+  if (claimsLoading || !formData) {
+    return (
+      <div className='max-w-6xl mx-auto'>
+        <div className='bg-white rounded-md border border-gray-200 p-8 text-center'>
+          <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4'></div>
+          <p className='text-gray-500'>Carregando dados...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className='max-w-4xl mx-auto'>
@@ -150,15 +131,12 @@ export const CadastrarTese = () => {
           Voltar
         </Button>
       </div>
-
       <Card className='shadow-sm border border-gray-100'>
         <CardHeader className='border-b border-gray-100'>
-          <CardTitle className='text-xl font-semibold text-gray-800'>Informações da Tese</CardTitle>
+          <CardTitle className='text-xl font-semibold text-gray-800'>Editar Tese</CardTitle>
         </CardHeader>
-
         <CardContent className='p-6'>
           <div className='space-y-6'>
-            {/* Título */}
             <div className='space-y-2'>
               <Label htmlFor='title' className='text-gray-700 font-medium'>
                 Título <span className='text-red-500'>*</span>
@@ -167,13 +145,10 @@ export const CadastrarTese = () => {
                 id='title'
                 value={formData.title}
                 onChange={e => atualizarCampo('title', e.target.value)}
-                placeholder='Digite o título da tese'
                 className={erros.title ? 'border-red-500' : ''}
               />
               {erros.title && <p className='text-sm text-red-500'>{erros.title}</p>}
             </div>
-
-            {/* Objetivo */}
             <div className='space-y-2'>
               <Label htmlFor='objective' className='text-gray-700 font-medium'>
                 Objetivo <span className='text-red-500'>*</span>
@@ -182,14 +157,11 @@ export const CadastrarTese = () => {
                 id='objective'
                 value={formData.objective}
                 onChange={e => atualizarCampo('objective', e.target.value)}
-                placeholder='Descreva o objetivo da tese'
                 className={`resize-none ${erros.objective ? 'border-red-500' : ''}`}
                 rows={4}
               />
               {erros.objective && <p className='text-sm text-red-500'>{erros.objective}</p>}
             </div>
-
-            {/* Resumo */}
             <div className='space-y-2'>
               <Label htmlFor='summary' className='text-gray-700 font-medium'>
                 Resumo <span className='text-red-500'>*</span>
@@ -198,14 +170,11 @@ export const CadastrarTese = () => {
                 id='summary'
                 value={formData.summary}
                 onChange={e => atualizarCampo('summary', e.target.value)}
-                placeholder='Digite um resumo da tese'
                 className={`resize-none ${erros.summary ? 'border-red-500' : ''}`}
                 rows={6}
               />
               {erros.summary && <p className='text-sm text-red-500'>{erros.summary}</p>}
             </div>
-
-            {/* Período Recuperável e Valor Recuperável */}
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
               <div className='space-y-2'>
                 <Label htmlFor='recoverable_period' className='text-gray-700 font-medium'>
@@ -215,7 +184,6 @@ export const CadastrarTese = () => {
                   id='recoverable_period'
                   value={formData.recoverable_period}
                   onChange={e => atualizarCampo('recoverable_period', e.target.value)}
-                  placeholder='Ex: 12 meses, 5 anos'
                   className={`resize-none ${erros.recoverable_period ? 'border-red-500' : ''}`}
                   rows={2}
                 />
@@ -223,7 +191,6 @@ export const CadastrarTese = () => {
                   <p className='text-sm text-red-500'>{erros.recoverable_period}</p>
                 )}
               </div>
-
               <div className='space-y-2'>
                 <Label htmlFor='recoverable_value' className='text-gray-700 font-medium'>
                   Valor Recuperável <span className='text-red-500'>*</span>
@@ -232,7 +199,6 @@ export const CadastrarTese = () => {
                   id='recoverable_value'
                   value={formData.recoverable_value}
                   onChange={e => atualizarCampo('recoverable_value', e.target.value)}
-                  placeholder='Ex: R$ 10.000,00'
                   className={`resize-none ${erros.recoverable_value ? 'border-red-500' : ''}`}
                   rows={2}
                 />
@@ -241,8 +207,6 @@ export const CadastrarTese = () => {
                 )}
               </div>
             </div>
-
-            {/* Pergunta Relacionada */}
             <div className='space-y-2'>
               <Label className='text-gray-700 font-medium'>Pergunta Relacionada</Label>
               <Select
@@ -253,12 +217,8 @@ export const CadastrarTese = () => {
                     return;
                   }
                   const pergunta = perguntas.find(p => p._id === value);
-                  if (pergunta) {
-                    setPerguntaSelecionada({
-                      _id: pergunta._id,
-                      label: pergunta.label,
-                    });
-                  }
+                  if (pergunta)
+                    setPerguntaSelecionada({ _id: pergunta._id, label: pergunta.label });
                 }}
               >
                 <SelectTrigger className='w-full'>
@@ -291,8 +251,6 @@ export const CadastrarTese = () => {
               )}
             </div>
           </div>
-
-          {/* Botões de ação */}
           <div className='flex gap-4 pt-8 border-t border-gray-100 mt-8'>
             <Button
               variant='outline'
@@ -307,17 +265,7 @@ export const CadastrarTese = () => {
               className='bg-[#0099ff] hover:bg-[#0077cc] text-white'
               disabled={salvando}
             >
-              {salvando ? (
-                <>
-                  <Loader2 className='h-4 w-4 mr-2 animate-spin' />
-                  Salvando...
-                </>
-              ) : (
-                <>
-                  <Save className='h-4 w-4 mr-2' />
-                  Salvar Tese
-                </>
-              )}
+              {salvando ? 'Salvando...' : 'Salvar Alterações'}
             </Button>
           </div>
         </CardContent>

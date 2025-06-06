@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import useSWR from 'swr';
 
-import { IClaim, ICreateClaim } from '@/types/claim';
+import { IClaim, ICreateClaim, IUpdateClaim } from '@/types/claim';
 
 import axios, { endpoints, fetcher } from '../utils/axios';
 
@@ -26,7 +26,7 @@ export async function createClaim(claimData: ICreateClaim) {
   return response.data;
 }
 
-export async function updateClaim(claimId: string, claimData: Partial<ICreateClaim>) {
+export async function updateClaim(claimId: string, claimData: Partial<IUpdateClaim>) {
   const response = await axios.patch(endpoints.teses.update(claimId), claimData);
   return response.data;
 }

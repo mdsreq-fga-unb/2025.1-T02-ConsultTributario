@@ -264,14 +264,16 @@ export const BibliotecaTeses = () => {
 
                   {/* Botões de ação */}
                   <div className='flex gap-2 mt-6 justify-end'>
-                    <Button
-                      variant='outline'
-                      size='sm'
-                      className='text-[#0099ff] border-[#0099ff] hover:bg-[#e6f5ff] hover:text-[#0077cc]'
-                    >
-                      <Edit className='h-4 w-4 mr-1' />
-                      Editar
-                    </Button>
+                    <Link href={`/biblioteca-teses/editar-tese/${tese._id}`}>
+                      <Button
+                        variant='outline'
+                        size='sm'
+                        className='text-[#0099ff] border-[#0099ff] hover:bg-[#e6f5ff] hover:text-[#0077cc]'
+                      >
+                        <Edit className='h-4 w-4 mr-1' />
+                        Editar
+                      </Button>
+                    </Link>
                     {/* <Button
                       variant="outline"
                       size="sm"

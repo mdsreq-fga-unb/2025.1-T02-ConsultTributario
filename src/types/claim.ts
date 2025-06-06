@@ -22,3 +22,12 @@ export interface ICreateClaim {
   recoverable_value: string;
   relatedQuestion?: string;
 }
+
+export interface IUpdateClaim {
+  title: string;
+  objective: string;
+  summary: string;
+  recoverable_period: string;
+  recoverable_value: string;
+  relatedQuestion: string | null;
+}

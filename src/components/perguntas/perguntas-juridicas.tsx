@@ -171,20 +171,6 @@ export const PerguntasJuridicas = () => {
                             <div className='whitespace-pre-wrap break-words'>
                               {pergunta.tooltip.replace(/\\u003c/g, '<').replace(/\\u003e/g, '>')}
                             </div>
-                            <TooltipProvider>
-                              <Tooltip>
-                                <TooltipTrigger asChild>
-                                  <HelpCircle className='h-4 w-4 text-[#0099ff] mt-1 cursor-help' />
-                                </TooltipTrigger>
-                                <TooltipContent className='max-w-md'>
-                                  <p className='whitespace-pre-wrap break-words'>
-                                    {pergunta.tooltip
-                                      .replace(/\\u003c/g, '<')
-                                      .replace(/\\u003e/g, '>')}
-                                  </p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </TooltipProvider>
                           </div>
                         </div>
                       </div>
