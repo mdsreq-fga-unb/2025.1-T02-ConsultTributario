@@ -3,12 +3,11 @@ POST http://localhost:8000/claims
 Content-Type: application/json
 
 {
-  "title": "Claim 3",
+  "title": "Claim 7",
   "objective": "Objective for claim 1",
   "summary": "Summary for claim 1",
   "recoverable_period": "12 months",
-  "recoverable_value": "1000",
-  "relatedQuestion": "683c6de111fb31187f89798f"
+  "recoverable_value": "1000"
 }
 
 ### Find all claims
@@ -19,3 +18,11 @@ GET http://localhost:8000/claims/683b3cf012fae1a976e73a48
 
 ### Delete claim
 DELETE http://localhost:8000/claims/683b3cf012fae1a976e73a48
+
+### Update claim
+PATCH http://localhost:8000/claims/6842380b25c67771b102343c
+Content-Type: application/json
+
+{
+  "relatedQuestion": null
+}

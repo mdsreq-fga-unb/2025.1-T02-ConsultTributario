@@ -19,7 +19,11 @@ export class Claim extends Document {
   @Prop()
   recoverable_value: string;
 
-  @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Question' })
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'Question',
+    default: null,
+  })
   relatedQuestion: Question;
 }
 

@@ -8,6 +8,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateClaimDto } from './dto/create-claim.dto';
 import { QuestionsService } from '../questions/questions.service';
+import { UpdateClaimDto } from './dto/update-claim.dto';
+import e from 'express';
 
 @Injectable()
 export class ClaimsService {
@@ -53,5 +55,34 @@ export class ClaimsService {
 
   async remove(id: string): Promise<void> {
     await this.claimModel.findByIdAndDelete(id).exec();
+  }
+
+  async update(id: string, updateClaimDto: UpdateClaimDto): Promise<Claim> {
+    if (updateClaimDto.relatedQuestion) {
+      const existingQuestions = await this.questionService.findOne(
+        updateClaimDto.relatedQuestion,
+      );
+      if (!existingQuestions) {
+        throw new BadRequestException('invalid related question ID');
+      }
+    }
+
+    const existingClaim = await this.claimModel
+      .findOne({ title: updateClaimDto.title })
+      .exec();
+    if (existingClaim && existingClaim.id !== id) {
+      throw new BadRequestException('claim title already exists');
+    }
+
+    const updatedClaim = await this.claimModel
+      .findByIdAndUpdate(id, updateClaimDto, { new: true })
+      .populate('relatedQuestion')
+      .exec();
+
+    if (!updatedClaim) {
+      throw new NotFoundException('claim not found');
+    }
+
+    return updatedClaim;
   }
 }
