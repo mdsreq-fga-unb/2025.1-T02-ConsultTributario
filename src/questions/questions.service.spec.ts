@@ -7,6 +7,7 @@ import { CreateQuestionDto } from './dto/create-question.dto';
 import { NotFoundException } from '@nestjs/common';
 import { UpdateQuestionDto } from './dto/update-question.dto';
 import { QuestionDomainService } from './services/question-domain.service';
+import { ERROR_MESSAGES } from '@/common/constants/app.constants';
 
 const questionModelMock = {
   create: jest.fn(),
@@ -108,7 +109,7 @@ describe('QuestionsService', () => {
 
       const result = service.create(mockedQuestion);
 
-      await expect(result).rejects.toThrow('invalid related question IDs');
+      await expect(result).rejects.toThrow(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
       expect(model.find).toHaveBeenCalledWith({
         _id: { $in: mockedQuestion.relatedQuestions },
       });
@@ -286,7 +287,7 @@ describe('QuestionsService', () => {
 
       const result = service.update(questionId, updateDto);
 
-      await expect(result).rejects.toThrow('invalid related IDs');
+      await expect(result).rejects.toThrow(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
       expect(model.findByIdAndUpdate).not.toHaveBeenCalled();
     });
 
@@ -299,7 +300,7 @@ describe('QuestionsService', () => {
 
       const result = service.update(questionId, updateDto);
 
-      await expect(result).rejects.toThrow('invalid related IDs');
+      await expect(result).rejects.toThrow(ERROR_MESSAGES.SELF_REFERENCE_NOT_ALLOWED);
       expect(model.find).not.toHaveBeenCalled();
       expect(model.findByIdAndUpdate).not.toHaveBeenCalled();
     });

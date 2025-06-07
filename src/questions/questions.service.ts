@@ -6,6 +6,7 @@ import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
 import { IQuestionService } from '@/shared/interfaces/question.interface';
 import { QuestionDomainService } from './services/question-domain.service';
+import { ERROR_MESSAGES } from '@/common/constants/app.constants';
 
 @Injectable()
 export class QuestionsService implements IQuestionService {
@@ -21,7 +22,7 @@ export class QuestionsService implements IQuestionService {
         .exec();
 
       if (existingQuestions.length !== createQuestionDto.relatedQuestions.length) {
-        throw new BadRequestException('invalid related question IDs');
+        throw new BadRequestException(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
       }
     }
 
@@ -36,7 +37,7 @@ export class QuestionsService implements IQuestionService {
     const question = await this.questionModel.findById(id).populate('relatedQuestions').exec();
 
     if (!question) {
-      throw new NotFoundException('invalid id');
+      throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
     }
 
     return question;
@@ -45,7 +46,7 @@ export class QuestionsService implements IQuestionService {
   async update(id: string, updateQuestionDto: UpdateQuestionDto): Promise<Question> {
     if (this.questionDomainService.hasRelatedQuestions(updateQuestionDto)) {
       if (this.questionDomainService.validateSelfReference(id, updateQuestionDto.relatedQuestions ?? [])) {
-        throw new BadRequestException('invalid related IDs');
+        throw new BadRequestException(ERROR_MESSAGES.SELF_REFERENCE_NOT_ALLOWED);
       }
 
       const existingQuestions = await this.questionModel
@@ -53,7 +54,7 @@ export class QuestionsService implements IQuestionService {
         .exec();
 
       if (existingQuestions.length !== updateQuestionDto.relatedQuestions?.length) {
-        throw new BadRequestException('invalid related IDs');
+        throw new BadRequestException(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
       }
     }
 
@@ -63,7 +64,7 @@ export class QuestionsService implements IQuestionService {
       .exec();
 
     if (!updatedQuestion) {
-      throw new NotFoundException('invalid id');
+      throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
     }
 
     return updatedQuestion;
