@@ -1,10 +1,7 @@
+import { BaseEntityDto, BaseTimestampDto } from '@/shared/dtos/base.dto';
 import { Expose, Transform, Type } from 'class-transformer';
 
-export class RelatedQuestionDto {
-  @Expose()
-  @Transform(({ obj }) => obj._id.toString())
-  _id: string;
-
+export class RelatedQuestionDto extends BaseEntityDto {
   @Expose()
   label: string;
 
@@ -12,11 +9,7 @@ export class RelatedQuestionDto {
   isActive: boolean;
 }
 
-export class ClaimDto {
-  @Expose()
-  @Transform(({ obj }) => obj._id.toString())
-  _id: string;
-
+export class ClaimDto extends BaseTimestampDto {
   @Expose()
   title: string;
 
