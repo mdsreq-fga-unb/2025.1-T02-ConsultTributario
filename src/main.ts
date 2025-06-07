@@ -35,7 +35,7 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('api/docs', app, document);
 
   app.enableCors({
     origin: process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:3000'],
@@ -44,7 +44,15 @@ async function bootstrap() {
     credentials: true,
     maxAge: 86400,
   });
-  await app.listen(process.env.PORT || 8000, '0.0.0.0');
+
+  const port = process.env.PORT || 8000;
+  await app.listen(port, '0.0.0.0');
+
   console.log(`Application is running on: ${await app.getUrl()}`);
+  console.log(`API Documentation available at: ${await app.getUrl()}/api/docs`);
 }
-bootstrap();
+
+bootstrap().catch((error) => {
+  console.error('Error starting application:', error);
+  process.exit(1);
+});
