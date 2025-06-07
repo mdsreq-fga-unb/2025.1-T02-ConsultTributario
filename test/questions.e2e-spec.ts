@@ -1,15 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import {
-  FastifyAdapter,
-  NestFastifyApplication,
-} from '@nestjs/platform-fastify';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { AppModule } from '../src/app.module';
 import * as request from 'supertest';
-import {
-  startMemoryServer,
-  stopMemoryServer,
-  clearDatabase,
-} from './mongodb-memory';
+import { startMemoryServer, stopMemoryServer, clearDatabase } from './mongodb-memory';
 import { ValidationPipe } from '@nestjs/common';
 
 describe('Questions E2E', () => {
@@ -28,9 +21,7 @@ describe('Questions E2E', () => {
       imports: [AppModule],
     }).compile();
 
-    app = moduleFixture.createNestApplication<NestFastifyApplication>(
-      new FastifyAdapter(),
-    );
+    app = moduleFixture.createNestApplication<NestFastifyApplication>(new FastifyAdapter());
 
     app.useGlobalPipes(
       new ValidationPipe({
@@ -97,9 +88,7 @@ describe('Questions E2E', () => {
 
   describe('/questions (GET)', () => {
     it('should return an empty array when no questions exist', async () => {
-      const res = await request(app.getHttpServer())
-        .get('/questions')
-        .expect(200);
+      const res = await request(app.getHttpServer()).get('/questions').expect(200);
       expect(res.body).toEqual([]);
     });
 
@@ -110,9 +99,7 @@ describe('Questions E2E', () => {
         relatedQuestions: [],
       });
 
-      const res = await request(app.getHttpServer())
-        .get('/questions')
-        .expect(200);
+      const res = await request(app.getHttpServer()).get('/questions').expect(200);
 
       expect(res.body).toBeInstanceOf(Array);
       expect(res.body.length).toBe(1);
@@ -143,10 +130,7 @@ describe('Questions E2E', () => {
         isActive: false,
         tooltip: 'updated_tooltip',
       };
-      const res = await request(app.getHttpServer())
-        .patch(`/questions/${questionId}`)
-        .send(updatedData)
-        .expect(200);
+      const res = await request(app.getHttpServer()).patch(`/questions/${questionId}`).send(updatedData).expect(200);
 
       expect(res.body.label).toBe('updated_label');
       expect(res.body.tooltip).toBe('updated_tooltip');
@@ -155,17 +139,11 @@ describe('Questions E2E', () => {
 
     it('should return 404 if question ID to update does not exist', async () => {
       const nonExistentId = '605fe2a85d28392b8c800000';
-      await request(app.getHttpServer())
-        .patch(`/questions/${nonExistentId}`)
-        .send({ label: 'any_label' })
-        .expect(404);
+      await request(app.getHttpServer()).patch(`/questions/${nonExistentId}`).send({ label: 'any_label' }).expect(404);
     });
 
     it('should return 400 if ID is not a valid MongoDB ObjectId', async () => {
-      await request(app.getHttpServer())
-        .patch('/questions/invalid-id-format')
-        .send({ label: 'any_label' })
-        .expect(400);
+      await request(app.getHttpServer()).patch('/questions/invalid-id-format').send({ label: 'any_label' }).expect(400);
     });
 
     it('should return 400 if relatedQuestions in payload contains non-existent question ID', async () => {

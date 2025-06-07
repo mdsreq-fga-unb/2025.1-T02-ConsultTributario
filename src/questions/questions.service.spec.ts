@@ -188,7 +188,7 @@ describe('QuestionsService', () => {
       };
       model.findById.mockReturnValue(mockQuery);
 
-      const result = await service.findOne('1');
+      const result = await service.findById('1');
 
       expect(result).toEqual(mockQuestion);
       expect(model.findById).toHaveBeenCalledWith('1');
@@ -202,7 +202,7 @@ describe('QuestionsService', () => {
       };
       model.findById.mockReturnValue(mockQuery);
 
-      const result = service.findOne('nonexistent-id');
+      const result = service.findById('nonexistent-id');
 
       await expect(result).rejects.toThrow(NotFoundException);
       expect(model.findById).toHaveBeenCalledWith('nonexistent-id');
@@ -216,7 +216,7 @@ describe('QuestionsService', () => {
       };
       model.findById.mockReturnValue(mockQuery);
 
-      const result = service.findOne('1');
+      const result = service.findById('1');
 
       await expect(result).rejects.toThrow(error);
       expect(model.findById).toHaveBeenCalledWith('1');
@@ -243,11 +243,7 @@ describe('QuestionsService', () => {
       const result = await service.update(questionId, updateDto);
 
       expect(result).toEqual(updatedQuestion);
-      expect(model.findByIdAndUpdate).toHaveBeenCalledWith(
-        questionId,
-        updateDto,
-        { new: true },
-      );
+      expect(model.findByIdAndUpdate).toHaveBeenCalledWith(questionId, updateDto, { new: true });
     });
 
     it('should update question with valid related questions', async () => {
@@ -317,9 +313,7 @@ describe('QuestionsService', () => {
         exec: jest.fn().mockResolvedValue(null),
       } as any);
 
-      await expect(service.update(questionId, updateDto)).rejects.toThrow(
-        NotFoundException,
-      );
+      await expect(service.update(questionId, updateDto)).rejects.toThrow(NotFoundException);
     });
 
     it('should throw error when database operation fails', async () => {

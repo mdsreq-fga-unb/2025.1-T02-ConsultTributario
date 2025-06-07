@@ -62,9 +62,7 @@ describe('QuestionsController', () => {
 
       jest.spyOn(service, 'create').mockRejectedValue(new Error());
 
-      await expect(controller.create(createQuestionDto)).rejects.toThrow(
-        new Error(),
-      );
+      await expect(controller.create(createQuestionDto)).rejects.toThrow(new Error());
       expect(service.create).toHaveBeenCalledWith(createQuestionDto);
     });
   });
@@ -90,30 +88,6 @@ describe('QuestionsController', () => {
     });
   });
 
-  describe('findOne', () => {
-    it('should return a question by id', async () => {
-      const validId = '6824b6bc22d33d13503750b8';
-      const result: any = {
-        _id: validId,
-        label: 'Test Question',
-        relatedQuestions: [],
-      };
-
-      jest.spyOn(service, 'findOne').mockResolvedValue(result);
-
-      expect(await controller.findOne(validId)).toEqual(result);
-      expect(service.findOne).toHaveBeenCalledWith(validId);
-    });
-
-    it('should throw an error if fetching question by id fails', async () => {
-      const validId = '6824b6bc22d33d13503750b8';
-      jest.spyOn(service, 'findOne').mockRejectedValue(new Error());
-
-      await expect(controller.findOne(validId)).rejects.toThrow(new Error());
-      expect(service.findOne).toHaveBeenCalledWith(validId);
-    });
-  });
-
   describe('update', () => {
     it('should update a question', async () => {
       const validId = '6824b6bc22d33d13503750b8';
@@ -125,9 +99,7 @@ describe('QuestionsController', () => {
 
       jest.spyOn(service, 'update').mockResolvedValue(result);
 
-      expect(await controller.update(validId, updateQuestionDto)).toEqual(
-        result,
-      );
+      expect(await controller.update(validId, updateQuestionDto)).toEqual(result);
       expect(service.update).toHaveBeenCalledWith(validId, updateQuestionDto);
     });
 
@@ -140,9 +112,7 @@ describe('QuestionsController', () => {
 
       jest.spyOn(service, 'update').mockRejectedValue(new Error());
 
-      await expect(
-        controller.update(validId, updateQuestionDto),
-      ).rejects.toThrow(new Error());
+      await expect(controller.update(validId, updateQuestionDto)).rejects.toThrow(new Error());
       expect(service.update).toHaveBeenCalledWith(validId, updateQuestionDto);
     });
   });

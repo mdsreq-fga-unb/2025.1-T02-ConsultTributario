@@ -17,8 +17,8 @@ export class ClaimsController {
   }
 
   @Get(':id')
-  async findOne(@Param('id', MongoIdValidationPipe) id: string) {
-    return await this.claimsService.findOne(id);
+  async findById(@Param('id', MongoIdValidationPipe) id: string) {
+    return await this.claimsService.findById(id);
   }
 
   @Get()
@@ -27,10 +27,7 @@ export class ClaimsController {
   }
 
   @Patch(':id')
-  async update(
-    @Param('id', MongoIdValidationPipe) id: string,
-    @Body() updateClaimDto: UpdateClaimDto,
-  ) {
+  async update(@Param('id', MongoIdValidationPipe) id: string, @Body() updateClaimDto: UpdateClaimDto) {
     return await this.claimsService.update(id, updateClaimDto);
   }
 }

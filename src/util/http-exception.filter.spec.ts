@@ -21,10 +21,7 @@ describe('HttpExceptionFilter', () => {
   });
 
   it('deve retornar mensagem como array quando for string', () => {
-    const exception = new HttpException(
-      { message: 'erro simples', error: 'Bad Request' },
-      400,
-    );
+    const exception = new HttpException({ message: 'erro simples', error: 'Bad Request' }, 400);
     filter.catch(exception, mockHost as ArgumentsHost);
 
     expect(mockReply.status).toHaveBeenCalledWith(400);
@@ -36,10 +33,7 @@ describe('HttpExceptionFilter', () => {
   });
 
   it('deve retornar mensagem como array quando já for array', () => {
-    const exception = new HttpException(
-      { message: ['erro1', 'erro2'], error: 'Bad Request' },
-      400,
-    );
+    const exception = new HttpException({ message: ['erro1', 'erro2'], error: 'Bad Request' }, 400);
     filter.catch(exception, mockHost as ArgumentsHost);
 
     expect(mockReply.status).toHaveBeenCalledWith(400);

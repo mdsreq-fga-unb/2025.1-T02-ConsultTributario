@@ -28,25 +28,13 @@ export class QuestionsController {
     return this.questionsService.findAll();
   }
 
-  @Get(':id')
-  @ApiOperation({ summary: 'Busca uma pergunta pelo ID' })
-  @ApiResponse({ status: 200, description: 'Pergunta retornada com sucesso' })
-  @ApiResponse({ status: 404, description: 'ID inválido' })
-  @ApiResponse({ status: 400, description: 'Pergunta não encontrada' })
-  async findOne(@Param('id', MongoIdValidationPipe) id: string) {
-    return this.questionsService.findOne(id);
-  }
-
   @Patch(':id')
   @ApiOperation({ summary: 'Atualiza uma pergunta existente' })
   @ApiBody({ type: UpdateQuestionDto })
   @ApiResponse({ status: 200, description: 'Pergunta atualizada com sucesso' })
   @ApiResponse({ status: 404, description: 'ID inválido' })
   @ApiResponse({ status: 400, description: 'Pergunta não encontrada' })
-  async update(
-    @Param('id', MongoIdValidationPipe) id: string,
-    @Body() updateQuestionDto: UpdateQuestionDto,
-  ) {
+  async update(@Param('id', MongoIdValidationPipe) id: string, @Body() updateQuestionDto: UpdateQuestionDto) {
     return this.questionsService.update(id, updateQuestionDto);
   }
 }

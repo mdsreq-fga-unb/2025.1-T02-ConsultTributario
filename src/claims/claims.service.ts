@@ -1,18 +1,14 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { Claim } from './schemas/claim.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateClaimDto } from './dto/create-claim.dto';
 import { QuestionsService } from '../questions/questions.service';
 import { UpdateClaimDto } from './dto/update-claim.dto';
-import e from 'express';
+import { IClaimService } from '@/shared/interfaces/claim.interface';
 
 @Injectable()
-export class ClaimsService {
+export class ClaimsService implements IClaimService {
   constructor(
     @InjectModel(Claim.name) private readonly claimModel: Model<Claim>,
     private readonly questionService: QuestionsService,
@@ -20,17 +16,13 @@ export class ClaimsService {
 
   async create(createClaimDto: CreateClaimDto): Promise<Claim> {
     if (createClaimDto.relatedQuestion) {
-      const existingQuestions = await this.questionService.findOne(
-        createClaimDto.relatedQuestion,
-      );
+      const existingQuestions = await this.questionService.findById(createClaimDto.relatedQuestion);
       if (!existingQuestions) {
         throw new BadRequestException('invalid related question ID');
       }
     }
 
-    const existingClaim = await this.claimModel
-      .findOne({ title: createClaimDto.title })
-      .exec();
+    const existingClaim = await this.claimModel.findOne({ title: createClaimDto.title }).exec();
     if (existingClaim) {
       throw new BadRequestException('claim title already exists');
     }
@@ -38,11 +30,8 @@ export class ClaimsService {
     return this.claimModel.create(createClaimDto);
   }
 
-  async findOne(id: string): Promise<Claim> {
-    const claim = await this.claimModel
-      .findById(id)
-      .populate('relatedQuestion')
-      .exec();
+  async findById(id: string): Promise<Claim> {
+    const claim = await this.claimModel.findById(id).populate('relatedQuestion').exec();
     if (!claim) {
       throw new NotFoundException('claim not found');
     }
@@ -53,23 +42,15 @@ export class ClaimsService {
     return this.claimModel.find().populate('relatedQuestion').exec();
   }
 
-  async remove(id: string): Promise<void> {
-    await this.claimModel.findByIdAndDelete(id).exec();
-  }
-
   async update(id: string, updateClaimDto: UpdateClaimDto): Promise<Claim> {
     if (updateClaimDto.relatedQuestion) {
-      const existingQuestions = await this.questionService.findOne(
-        updateClaimDto.relatedQuestion,
-      );
+      const existingQuestions = await this.questionService.findById(updateClaimDto.relatedQuestion);
       if (!existingQuestions) {
         throw new BadRequestException('invalid related question ID');
       }
     }
 
-    const existingClaim = await this.claimModel
-      .findOne({ title: updateClaimDto.title })
-      .exec();
+    const existingClaim = await this.claimModel.findOne({ title: updateClaimDto.title }).exec();
     if (existingClaim && existingClaim.id !== id) {
       throw new BadRequestException('claim title already exists');
     }

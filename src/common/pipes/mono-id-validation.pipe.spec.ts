@@ -15,8 +15,6 @@ describe('MongoIdValidationPipe', () => {
 
   it('should throw BadRequestException for invalid ObjectId', () => {
     const invalidId = 'invalid-id';
-    expect(() => pipe.transform(invalidId, {} as any)).toThrow(
-      BadRequestException,
-    );
+    expect(() => pipe.transform(invalidId, {} as any)).toThrow(BadRequestException);
   });
 });
