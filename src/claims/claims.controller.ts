@@ -1,21 +1,10 @@
-import {
-  BadRequestException,
-  Body,
-  Controller,
-  Delete,
-  Get,
-  HttpCode,
-  HttpStatus,
-  Param,
-  Patch,
-  Post,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { ClaimsService } from './claims.service';
 import { Serialize } from '../common/interceptors/serialize.interceptor';
 import { ClaimDto } from './dto/claim.dto';
 import { CreateClaimDto } from './dto/create-claim.dto';
-import { Types } from 'mongoose';
 import { UpdateClaimDto } from './dto/update-claim.dto';
+import { MongoIdValidationPipe } from '@common/pipes/mongo-id-validation.pipe';
 
 @Serialize(ClaimDto)
 @Controller('claims')
@@ -28,10 +17,7 @@ export class ClaimsController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
-    if (!Types.ObjectId.isValid(id)) {
-      throw new BadRequestException('invalid id');
-    }
+  async findOne(@Param('id', MongoIdValidationPipe) id: string) {
     return await this.claimsService.findOne(id);
   }
 
@@ -40,23 +26,11 @@ export class ClaimsController {
     return await this.claimsService.findAll();
   }
 
-  @Delete(':id')
-  @HttpCode(HttpStatus.NO_CONTENT)
-  async remove(@Param('id') id: string) {
-    if (!Types.ObjectId.isValid(id)) {
-      throw new BadRequestException('invalid id');
-    }
-    return await this.claimsService.remove(id);
-  }
-
   @Patch(':id')
   async update(
-    @Param('id') id: string,
+    @Param('id', MongoIdValidationPipe) id: string,
     @Body() updateClaimDto: UpdateClaimDto,
   ) {
-    if (!Types.ObjectId.isValid(id)) {
-      throw new BadRequestException('invalid id');
-    }
     return await this.claimsService.update(id, updateClaimDto);
   }
 }

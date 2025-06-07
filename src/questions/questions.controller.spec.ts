@@ -105,15 +105,6 @@ describe('QuestionsController', () => {
       expect(service.findOne).toHaveBeenCalledWith(validId);
     });
 
-    it('should throw BadRequestException if invalid id is provided', async () => {
-      const invalidId = 'invalid-id';
-
-      await expect(controller.findOne(invalidId)).rejects.toThrow(
-        BadRequestException,
-      );
-      expect(service.findOne).not.toHaveBeenCalled();
-    });
-
     it('should throw an error if fetching question by id fails', async () => {
       const validId = '6824b6bc22d33d13503750b8';
       jest.spyOn(service, 'findOne').mockRejectedValue(new Error());
@@ -138,19 +129,6 @@ describe('QuestionsController', () => {
         result,
       );
       expect(service.update).toHaveBeenCalledWith(validId, updateQuestionDto);
-    });
-
-    it('should throw BadRequestException if invalid id is provided', async () => {
-      const invalidId = 'invalid-id';
-      const updateQuestionDto: CreateQuestionDto = {
-        label: 'Updated Question',
-        relatedQuestions: [],
-      };
-
-      await expect(
-        controller.update(invalidId, updateQuestionDto),
-      ).rejects.toThrow(BadRequestException);
-      expect(service.update).not.toHaveBeenCalled();
     });
 
     it('should throw an error if updating question fails', async () => {

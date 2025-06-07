@@ -86,7 +86,11 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/$1",
+      "^@common/(.*)$": "<rootDir>/common/$1"
+    }
   },
   "engines": {
     "node": "22.x"
