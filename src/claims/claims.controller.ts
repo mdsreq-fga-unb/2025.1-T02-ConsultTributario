@@ -11,7 +11,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { ClaimsService } from './claims.service';
-import { Serialize } from '../interceptors/serialize.interceptor';
+import { Serialize } from '../common/interceptors/serialize.interceptor';
 import { ClaimDto } from './dto/claim.dto';
 import { CreateClaimDto } from './dto/create-claim.dto';
 import { Types } from 'mongoose';
