@@ -6,6 +6,7 @@ import { Model } from 'mongoose';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { NotFoundException } from '@nestjs/common';
 import { UpdateQuestionDto } from './dto/update-question.dto';
+import { QuestionDomainService } from './services/question-domain.service';
 
 const questionModelMock = {
   create: jest.fn(),
@@ -42,6 +43,7 @@ describe('QuestionsService', () => {
           provide: getModelToken(Question.name),
           useValue: questionModelMock,
         },
+        QuestionDomainService,
       ],
     }).compile();
 
@@ -175,7 +177,7 @@ describe('QuestionsService', () => {
     });
   });
 
-  describe('findOne', () => {
+  describe('findById', () => {
     it('should return a question with populated related questions', async () => {
       const mockQuestion = {
         _id: '1',

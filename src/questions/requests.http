@@ -5,7 +5,9 @@ Content-Type: application/json
 {
   "label": "Pergunta 5",
   "tooltip": "Dica para a pergunta 5",
-  "relatedQuestions": []
+  "relatedQuestions": [
+    "684462032c52eefcf8e30b85"  
+  ]
 }
 
 ### Find all questions

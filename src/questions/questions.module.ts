@@ -4,6 +4,7 @@ import { QuestionsService } from './questions.service';
 import { QuestionsController } from './questions.controller';
 import { Question, QuestionSchema } from './schemas/question.schema';
 import { Claim, ClaimSchema } from '../claims/schemas/claim.schema';
+import { QuestionDomainService } from './services/question-domain.service';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { Claim, ClaimSchema } from '../claims/schemas/claim.schema';
     ]),
   ],
   controllers: [QuestionsController],
-  providers: [QuestionsService],
+  providers: [QuestionsService, QuestionDomainService],
   exports: [QuestionsService],
 })
 export class QuestionsModule {}

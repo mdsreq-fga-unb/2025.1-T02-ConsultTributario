@@ -5,16 +5,21 @@ import { Question } from './schemas/question.schema';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
 import { IQuestionService } from '@/shared/interfaces/question.interface';
+import { QuestionDomainService } from './services/question-domain.service';
 
 @Injectable()
 export class QuestionsService implements IQuestionService {
-  constructor(@InjectModel(Question.name) private readonly questionModel: Model<Question>) {}
+  constructor(
+    @InjectModel(Question.name) private readonly questionModel: Model<Question>,
+    private readonly questionDomainService: QuestionDomainService,
+  ) {}
 
   async create(createQuestionDto: CreateQuestionDto): Promise<Question> {
-    if (createQuestionDto.relatedQuestions.length > 0) {
+    if (this.questionDomainService.hasRelatedQuestions(createQuestionDto)) {
       const existingQuestions = await this.questionModel
         .find({ _id: { $in: createQuestionDto.relatedQuestions } })
         .exec();
+
       if (existingQuestions.length !== createQuestionDto.relatedQuestions.length) {
         throw new BadRequestException('invalid related question IDs');
       }
@@ -38,15 +43,16 @@ export class QuestionsService implements IQuestionService {
   }
 
   async update(id: string, updateQuestionDto: UpdateQuestionDto): Promise<Question> {
-    const relatedQuestions = updateQuestionDto.relatedQuestions || [];
-    if (relatedQuestions.length > 0) {
-      if (relatedQuestions.includes(id)) {
+    if (this.questionDomainService.hasRelatedQuestions(updateQuestionDto)) {
+      if (this.questionDomainService.validateSelfReference(id, updateQuestionDto.relatedQuestions ?? [])) {
         throw new BadRequestException('invalid related IDs');
       }
 
-      const existingQuestions = await this.questionModel.find({ _id: { $in: relatedQuestions } }).exec();
+      const existingQuestions = await this.questionModel
+        .find({ _id: { $in: updateQuestionDto.relatedQuestions } })
+        .exec();
 
-      if (existingQuestions.length !== relatedQuestions.length) {
+      if (existingQuestions.length !== updateQuestionDto.relatedQuestions?.length) {
         throw new BadRequestException('invalid related IDs');
       }
     }
