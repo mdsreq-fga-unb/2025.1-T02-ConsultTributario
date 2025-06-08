@@ -233,7 +233,6 @@ describe('QuestionsService', () => {
         label: 'Updated Question',
         tooltip: 'Updated Tooltip',
         isActive: false,
-        relatedQuestions: [],
       };
       const updatedQuestion = { ...updateDto, _id: questionId };
 
@@ -332,6 +331,42 @@ describe('QuestionsService', () => {
       } as any);
 
       const result = service.update(questionId, updateDto);
+
+      await expect(result).rejects.toThrow(error);
+    });
+  });
+
+  describe('findByIds', () => {
+    it('should return an array of questions for given ids', async () => {
+      const questionIds = ['1', '2'];
+      const mockQuestions = [
+        { _id: '1', label: 'Question 1' },
+        { _id: '2', label: 'Question 2' },
+      ];
+      model.find.mockReturnValue({
+        exec: jest.fn().mockResolvedValue(mockQuestions),
+      } as any);
+
+      const result = await service.findByIds(questionIds);
+
+      expect(result).toEqual(mockQuestions);
+      expect(model.find).toHaveBeenCalledWith({ _id: { $in: questionIds } });
+    });
+
+    it('should return an empty array if no ids are provided', async () => {
+      const result = await service.findByIds([]);
+
+      expect(result).toEqual([]);
+      expect(model.find).not.toHaveBeenCalled();
+    });
+
+    it('should throw error when database operation fails', async () => {
+      const error = new Error('Database error');
+      model.find.mockReturnValue({
+        exec: jest.fn().mockRejectedValue(error),
+      } as any);
+
+      const result = service.findByIds(['1']);
 
       await expect(result).rejects.toThrow(error);
     });

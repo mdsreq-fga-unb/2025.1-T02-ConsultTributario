@@ -42,11 +42,11 @@ export class QuestionsService implements IQuestionService {
   }
 
   async findByIds(id: string[]): Promise<Question[]> {
-    const questions = await this.questionModel.find({ _id: { $in: id } }).exec();
-
-    if (!questions || questions.length === 0) {
-      throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
+    if (!id || id.length === 0) {
+      return [];
     }
+
+    const questions = await this.questionModel.find({ _id: { $in: id } }).exec();
 
     return questions;
   }
