@@ -6,7 +6,7 @@ import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
 import { IQuestionService } from '@/shared/interfaces/question.interface';
 import { QuestionDomainService } from './services/question-domain.service';
-import { ERROR_MESSAGES } from '@/common/constants/app.constants';
+import { ERROR_MESSAGES } from '@common/constants/app.constants';
 
 @Injectable()
 export class QuestionsService implements IQuestionService {
@@ -17,9 +17,7 @@ export class QuestionsService implements IQuestionService {
 
   async create(createQuestionDto: CreateQuestionDto): Promise<Question> {
     if (this.questionDomainService.hasRelatedQuestions(createQuestionDto)) {
-      const existingQuestions = await this.questionModel
-        .find({ _id: { $in: createQuestionDto.relatedQuestions } })
-        .exec();
+      const existingQuestions = await this.findByIds(createQuestionDto.relatedQuestions);
 
       if (existingQuestions.length !== createQuestionDto.relatedQuestions.length) {
         throw new BadRequestException(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
@@ -43,15 +41,23 @@ export class QuestionsService implements IQuestionService {
     return question;
   }
 
+  async findByIds(id: string[]): Promise<Question[]> {
+    const questions = await this.questionModel.find({ _id: { $in: id } }).exec();
+
+    if (!questions || questions.length === 0) {
+      throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
+    }
+
+    return questions;
+  }
+
   async update(id: string, updateQuestionDto: UpdateQuestionDto): Promise<Question> {
     if (this.questionDomainService.hasRelatedQuestions(updateQuestionDto)) {
       if (this.questionDomainService.validateSelfReference(id, updateQuestionDto.relatedQuestions ?? [])) {
         throw new BadRequestException(ERROR_MESSAGES.SELF_REFERENCE_NOT_ALLOWED);
       }
 
-      const existingQuestions = await this.questionModel
-        .find({ _id: { $in: updateQuestionDto.relatedQuestions } })
-        .exec();
+      const existingQuestions = await this.findByIds(updateQuestionDto.relatedQuestions ?? []);
 
       if (existingQuestions.length !== updateQuestionDto.relatedQuestions?.length) {
         throw new BadRequestException(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);

@@ -6,7 +6,7 @@ import { CreateClaimDto } from './dto/create-claim.dto';
 import { QuestionsService } from '../questions/questions.service';
 import { UpdateClaimDto } from './dto/update-claim.dto';
 import { IClaimService } from '@/shared/interfaces/claim.interface';
-import { ERROR_MESSAGES } from '@/common/constants/app.constants';
+import { ERROR_MESSAGES } from '@common/constants/app.constants';
 
 @Injectable()
 export class ClaimsService implements IClaimService {
