@@ -9,5 +9,6 @@ import { QuestionsModule } from '../questions/questions.module';
   imports: [MongooseModule.forFeature([{ name: Claim.name, schema: ClaimSchema }]), QuestionsModule],
   controllers: [ClaimsController],
   providers: [ClaimsService],
+  exports: [ClaimsService],
 })
 export class ClaimsModule {}

@@ -14,7 +14,7 @@ Content-Type: application/json
 GET http://localhost:8000/claims
 
 ### Find claim by id
-GET http://localhost:8000/claims/683b3cf012fae1a976e73a48
+GET http://localhost:8000/claims/683c8a990cf5910c84941f4d
 
 ### Delete claim
 DELETE http://localhost:8000/claims/683b3cf012fae1a976e73a48
