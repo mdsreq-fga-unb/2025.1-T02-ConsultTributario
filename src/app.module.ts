@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { QuestionsModule } from './questions/questions.module';
 import { ClaimsModule } from './claims/claims.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { DiagnosesModule } from './diagnoses/diagnoses.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
     QuestionsModule,
     ClaimsModule,
+    DiagnosesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

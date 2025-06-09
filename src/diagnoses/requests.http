@@ -1,0 +1,22 @@
+### Create diagnosis
+POST http://localhost:8000/diagnoses
+Content-Type: application/json
+
+{
+  "clientName": "New Diagnosis",
+  "questionResponses": [
+    {
+      "questionId": "683c6de111fb31187f89798f",
+      "answer": "dont_know"
+    }
+  ]
+}
+
+### Find all diagnoses
+GET http://localhost:8000/diagnoses
+
+### Find diagnosis by ID
+GET http://localhost:8000/diagnoses/6844f6748ef0296afae7724d
+
+### Find diagnosis recommended by ID
+GET http://localhost:8000/diagnoses/6844f6748ef0296afae7724d/recommendations
