@@ -8,6 +8,8 @@ export interface IQuestion {
   label: string;
   tooltip: string;
   isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
   relatedQuestions: IRelatedQuestion[];
 }
 

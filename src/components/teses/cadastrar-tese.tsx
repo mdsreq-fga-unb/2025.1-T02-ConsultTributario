@@ -275,11 +275,14 @@ export const CadastrarTese = () => {
                       Nenhuma pergunta disponível
                     </SelectItem>
                   ) : (
-                    perguntas.map(pergunta => (
-                      <SelectItem key={pergunta._id} value={pergunta._id}>
-                        {pergunta.label}
-                      </SelectItem>
-                    ))
+                    perguntas.map(
+                      pergunta =>
+                        pergunta.isActive && (
+                          <SelectItem key={pergunta._id} value={pergunta._id}>
+                            {pergunta.label}
+                          </SelectItem>
+                        )
+                    )
                   )}
                 </SelectContent>
               </Select>

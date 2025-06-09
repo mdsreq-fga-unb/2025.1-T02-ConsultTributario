@@ -21,7 +21,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { IClaim, ICreateClaim } from '@/types/claim';
 
-
 export const EditarTese = ({ id }: { id: string }) => {
   const router = useRouter();
   const { toast } = useToast();
@@ -235,11 +234,14 @@ export const EditarTese = ({ id }: { id: string }) => {
                       Nenhuma pergunta disponível
                     </SelectItem>
                   ) : (
-                    perguntas.map(pergunta => (
-                      <SelectItem key={pergunta._id} value={pergunta._id}>
-                        {pergunta.label}
-                      </SelectItem>
-                    ))
+                    perguntas.map(
+                      pergunta =>
+                        pergunta.isActive && (
+                          <SelectItem key={pergunta._id} value={pergunta._id}>
+                            {pergunta.label}
+                          </SelectItem>
+                        )
+                    )
                   )}
                 </SelectContent>
               </Select>

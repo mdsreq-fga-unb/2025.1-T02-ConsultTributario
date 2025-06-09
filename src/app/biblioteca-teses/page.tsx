@@ -1,10 +1,20 @@
+'use client';
+
 import { Plus } from 'lucide-react';
 import Link from 'next/link';
 
-import { BibliotecaTeses } from '@/components/teses/biblioteca-teses';
+import { useGetClaims } from '@/api/claim';
+import { ListagemTeses } from '@/components/teses/listagem-teses';
 import { Button } from '@/components/ui/button';
 
 const BibliotecaTesesPage = () => {
+  const {
+    claims: teses,
+    claimsLoading: carregando,
+    claimsError: erro,
+    refreshClaims: carregarDados,
+  } = useGetClaims();
+
   return (
     <div className='container mx-auto px-4 py-8'>
       <div className='flex justify-between items-center mb-8'>
@@ -16,7 +26,16 @@ const BibliotecaTesesPage = () => {
           </Button>
         </Link>
       </div>
-      <BibliotecaTeses />
+      <ListagemTeses
+        teses={teses}
+        carregando={carregando}
+        erro={erro}
+        tentarNovamente={carregarDados}
+        descricao='Seu catálogo de oportunidades tributárias.'
+        mensagemVazia='Nenhuma tese cadastrada.'
+        linkEditar={id => `/biblioteca-teses/editar-tese/${id}`}
+        mostrarBotoesAcao={true}
+      />
     </div>
   );
 };

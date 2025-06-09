@@ -4,7 +4,7 @@ import { PlusIcon, ChevronDownIcon, ChevronUpIcon, Pencil, Trash2 } from 'lucide
 import { HelpCircle } from 'lucide-react';
 import { useState } from 'react';
 
-import { useGetQuestions, createQuestion, updateQuestion, deleteQuestion } from '@/api/question';
+import { useGetQuestions, createQuestion, updateQuestion } from '@/api/question';
 import { ConfirmarExclusaoDialog } from '@/components/perguntas/confirmar-exclusao-dialog';
 import { CriarPerguntaDialog } from '@/components/perguntas/criar-pergunta-dialog';
 import { EditarPerguntaDialog } from '@/components/perguntas/editar-pergunta-dialog';
@@ -81,27 +81,27 @@ export const PerguntasJuridicas = () => {
   };
 
   // Função para excluir uma pergunta
-  const excluirPergunta = async () => {
-    if (perguntaAtual) {
-      try {
-        await deleteQuestion(perguntaAtual._id);
-        refreshQuestions();
-        setExcluirDialogAberto(false);
-        toast({
-          title: 'Sucesso!',
-          description: 'Pergunta excluída com sucesso.',
-          variant: 'default',
-        });
-      } catch (error) {
-        console.error('Erro ao excluir pergunta:', error);
-        toast({
-          title: 'Erro!',
-          description: 'Não foi possível excluir a pergunta. Tente novamente.',
-          variant: 'destructive',
-        });
-      }
-    }
-  };
+  // const excluirPergunta = async () => {
+  //   if (perguntaAtual) {
+  //     try {
+  //       await deleteQuestion(perguntaAtual._id);
+  //       refreshQuestions();
+  //       setExcluirDialogAberto(false);
+  //       toast({
+  //         title: 'Sucesso!',
+  //         description: 'Pergunta excluída com sucesso.',
+  //         variant: 'default',
+  //       });
+  //     } catch (error) {
+  //       console.error('Erro ao excluir pergunta:', error);
+  //       toast({
+  //         title: 'Erro!',
+  //         description: 'Não foi possível excluir a pergunta. Tente novamente.',
+  //         variant: 'destructive',
+  //       });
+  //     }
+  //   }
+  // };
 
   if (questionsLoading) {
     return (
@@ -207,7 +207,7 @@ export const PerguntasJuridicas = () => {
                         <Pencil className='h-4 w-4 mr-1' />
                         Editar
                       </Button>
-                      <Button
+                      {/* <Button
                         variant='outline'
                         size='sm'
                         className='text-red-500 border-red-200 hover:bg-red-50 hover:text-red-600'
@@ -219,7 +219,7 @@ export const PerguntasJuridicas = () => {
                       >
                         <Trash2 className='h-4 w-4 mr-1' />
                         Excluir
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
                 </div>
@@ -249,12 +249,12 @@ export const PerguntasJuridicas = () => {
       )}
 
       {/* Diálogo para confirmar exclusão */}
-      <ConfirmarExclusaoDialog
+      {/* <ConfirmarExclusaoDialog
         aberto={excluirDialogAberto}
         onFechar={() => setExcluirDialogAberto(false)}
         onConfirmar={excluirPergunta}
         pergunta={perguntaAtual}
-      />
+      /> */}
     </div>
   );
 };

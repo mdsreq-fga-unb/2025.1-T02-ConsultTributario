@@ -4,23 +4,34 @@ import { ChevronDown, ChevronUp, Plus, Minus, Edit, Trash2 } from 'lucide-react'
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { useGetClaims } from '@/api/claim';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
 import { IClaim } from '@/types/claim';
 
-export const BibliotecaTeses = () => {
+interface ListagemTesesProps {
+  teses: IClaim[];
+  carregando?: boolean;
+  erro?: any;
+  tentarNovamente?: () => void;
+  mostrarBotoesAcao?: boolean;
+  linkEditar?: (id: string) => string;
+  mensagemVazia?: string;
+  titulo?: string;
+  descricao?: string;
+}
+
+export const ListagemTeses = ({
+  teses,
+  carregando = false,
+  erro,
+  tentarNovamente,
+  mostrarBotoesAcao = false,
+  linkEditar = (id: string) => `/biblioteca-teses/editar-tese/${id}`,
+  mensagemVazia = 'Nenhuma tese encontrada.',
+  titulo,
+  descricao,
+}: ListagemTesesProps) => {
   const [tesesExpandidas, setTesesExpandidas] = useState<string[]>([]);
-  const { toast } = useToast();
-
-  const {
-    claims: teses,
-    claimsLoading: carregando,
-    claimsError: erro,
-    refreshClaims: carregarDados,
-  } = useGetClaims();
-
   const [detalhesExpandidos, setDetalhesExpandidos] = useState<
     Record<string, Record<string, boolean>>
   >({});
@@ -30,7 +41,6 @@ export const BibliotecaTeses = () => {
       setTesesExpandidas(tesesExpandidas.filter(t => t !== id));
     } else {
       setTesesExpandidas([...tesesExpandidas, id]);
-      // Inicializa os detalhes expandidos para a nova tese se não existir
       if (!detalhesExpandidos[id]) {
         setDetalhesExpandidos({
           ...detalhesExpandidos,
@@ -46,7 +56,6 @@ export const BibliotecaTeses = () => {
     }
   };
 
-  // Função para alternar a expansão de um detalhe
   const toggleDetalhe = (teseId: string, detalhe: string) => {
     setDetalhesExpandidos({
       ...detalhesExpandidos,
@@ -55,11 +64,6 @@ export const BibliotecaTeses = () => {
         [detalhe]: !detalhesExpandidos[teseId]?.[detalhe],
       },
     });
-  };
-
-  // Função para tentar novamente em caso de erro
-  const tentarNovamente = () => {
-    carregarDados();
   };
 
   if (carregando) {
@@ -94,9 +98,14 @@ export const BibliotecaTeses = () => {
           </div>
           <h3 className='text-lg font-medium text-gray-900 mb-2'>Erro ao carregar teses</h3>
           <p className='text-gray-500 mb-4'>{erro.message}</p>
-          <Button onClick={tentarNovamente} className='bg-[#0099ff] hover:bg-[#0077cc] text-white'>
-            Tentar Novamente
-          </Button>
+          {tentarNovamente && (
+            <Button
+              onClick={tentarNovamente}
+              className='bg-[#0099ff] hover:bg-[#0077cc] text-white'
+            >
+              Tentar Novamente
+            </Button>
+          )}
         </div>
       </div>
     );
@@ -104,22 +113,13 @@ export const BibliotecaTeses = () => {
 
   return (
     <div className='mx-auto'>
-      <p className='text-sm text-gray-600 mb-6'>Seu catálogo de oportunidades tributárias.</p>
+      {titulo && <h1 className='text-3xl font-semibold text-gray-800 mb-4'>{titulo}</h1>}
+      {descricao && <p className='text-sm text-gray-600 mb-6'>{descricao}</p>}
 
       {/* Lista de teses */}
-      <div className='space-y-2'>
+      <div className='space-y-3'>
         {teses.length === 0 ? (
-          <div className='p-8 text-center text-gray-500'>
-            Nenhuma tese cadastrada.
-            <div className='mt-4'>
-              <Link href='/biblioteca-teses/cadastrar-nova'>
-                <Button className='bg-[#0099ff] hover:bg-[#0077cc] text-white'>
-                  <Plus className='h-4 w-4 mr-2' />
-                  Cadastrar Primeira Tese
-                </Button>
-              </Link>
-            </div>
-          </div>
+          <div className='p-8 text-center text-gray-500 border rounded-lg'>{mensagemVazia}</div>
         ) : (
           teses.map((tese: IClaim, index: number) => (
             <div
@@ -161,7 +161,7 @@ export const BibliotecaTeses = () => {
               {tesesExpandidas.includes(tese._id) && (
                 <div className='p-6 border-t-2 border-gray-200 bg-gray-50 rounded-b-lg animate-in fade-in-0 slide-in-from-top-2 duration-300'>
                   {/* Objetivo */}
-                  <div className='mb-4'>
+                  <div className='mb-6'>
                     <div
                       className='flex items-center gap-2 cursor-pointer'
                       onClick={() => toggleDetalhe(tese._id, 'OBJETIVO')}
@@ -174,14 +174,14 @@ export const BibliotecaTeses = () => {
                       <h3 className='text-blue-500 font-medium'>OBJETIVO</h3>
                     </div>
                     {detalhesExpandidos[tese._id]?.['OBJETIVO'] && (
-                      <div className='mt-2 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300'>
+                      <div className='mt-3 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300'>
                         {tese.objective}
                       </div>
                     )}
                   </div>
 
                   {/* Pergunta relacionada */}
-                  <div className='mb-4'>
+                  <div className='mb-6'>
                     <div
                       className='flex items-center gap-2 cursor-pointer'
                       onClick={() => toggleDetalhe(tese._id, 'PERGUNTA RELACIONADA')}
@@ -194,7 +194,7 @@ export const BibliotecaTeses = () => {
                       <h3 className='text-blue-500 font-medium'>REQUISITO DA TESE</h3>
                     </div>
                     {detalhesExpandidos[tese._id]?.['PERGUNTA RELACIONADA'] && (
-                      <div className='mt-2 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300'>
+                      <div className='mt-3 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300'>
                         {tese.relatedQuestion
                           ? tese.relatedQuestion.label
                           : 'Nenhuma pergunta relacionada'}
@@ -203,7 +203,7 @@ export const BibliotecaTeses = () => {
                   </div>
 
                   {/* Resumo */}
-                  <div className='mb-4'>
+                  <div className='mb-6'>
                     <div
                       className='flex items-center gap-2 cursor-pointer'
                       onClick={() => toggleDetalhe(tese._id, 'RESUMO')}
@@ -216,14 +216,14 @@ export const BibliotecaTeses = () => {
                       <h3 className='text-blue-500 font-medium'>RESUMO</h3>
                     </div>
                     {detalhesExpandidos[tese._id]?.['RESUMO'] && (
-                      <div className='mt-2 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300 whitespace-pre-wrap'>
+                      <div className='mt-3 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300 whitespace-pre-wrap'>
                         {tese.summary}
                       </div>
                     )}
                   </div>
 
                   {/* Período recuperável */}
-                  <div className='mb-4'>
+                  <div className='mb-6'>
                     <div
                       className='flex items-center gap-2 cursor-pointer'
                       onClick={() => toggleDetalhe(tese._id, 'PERÍODO RECUPERÁVEL')}
@@ -236,14 +236,14 @@ export const BibliotecaTeses = () => {
                       <h3 className='text-blue-500 font-medium'>PERÍODO RECUPERÁVEL</h3>
                     </div>
                     {detalhesExpandidos[tese._id]?.['PERÍODO RECUPERÁVEL'] && (
-                      <div className='mt-2 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300 whitespace-pre-wrap'>
+                      <div className='mt-3 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300 whitespace-pre-wrap'>
                         {tese.recoverable_period}
                       </div>
                     )}
                   </div>
 
                   {/* Valor recuperável */}
-                  <div className='mb-4'>
+                  <div className='mb-6'>
                     <div
                       className='flex items-center gap-2 cursor-pointer'
                       onClick={() => toggleDetalhe(tese._id, 'VALOR RECUPERÁVEL')}
@@ -256,33 +256,27 @@ export const BibliotecaTeses = () => {
                       <h3 className='text-blue-500 font-medium'>VALOR RECUPERÁVEL</h3>
                     </div>
                     {detalhesExpandidos[tese._id]?.['VALOR RECUPERÁVEL'] && (
-                      <div className='mt-2 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300 whitespace-pre-wrap'>
+                      <div className='mt-3 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300 whitespace-pre-wrap'>
                         {tese.recoverable_value}
                       </div>
                     )}
                   </div>
 
                   {/* Botões de ação */}
-                  <div className='flex gap-2 mt-6 justify-end'>
-                    <Link href={`/biblioteca-teses/editar-tese/${tese._id}`}>
-                      <Button
-                        variant='outline'
-                        size='sm'
-                        className='text-[#0099ff] border-[#0099ff] hover:bg-[#e6f5ff] hover:text-[#0077cc]'
-                      >
-                        <Edit className='h-4 w-4 mr-1' />
-                        Editar
-                      </Button>
-                    </Link>
-                    {/* <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-red-500 border-red-200 hover:bg-red-50 hover:text-red-600"
-                    >
-                      <Trash2 className="h-4 w-4 mr-1" />
-                      Excluir
-                    </Button> */}
-                  </div>
+                  {mostrarBotoesAcao && (
+                    <div className='flex gap-2 mt-6 justify-end'>
+                      <Link href={linkEditar(tese._id)}>
+                        <Button
+                          variant='outline'
+                          size='sm'
+                          className='text-[#0099ff] border-[#0099ff] hover:bg-[#e6f5ff] hover:text-[#0077cc]'
+                        >
+                          <Edit className='h-4 w-4 mr-1' />
+                          Editar
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

@@ -11,6 +11,8 @@ export interface IClaim {
   summary: string;
   recoverable_period: string;
   recoverable_value: string;
+  createdAt: string;
+  updatedAt: string;
   relatedQuestion: IRelatedQuestion;
 }
 
