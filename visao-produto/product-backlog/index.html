@@ -1656,11 +1656,11 @@
 <tbody>
 <tr>
 <td>RNF01</td>
-<td>O sistema deve responder a ações do usuário em até 2 segundos, em rede estável (ping ≤ 200ms, banda ≥ 10 Mbps).</td>
+<td>O sistema deve responder a ações do usuário (como cliques em botões, navegação entre telas ou envio de formulários) em até 2 segundos, em rede estável (ping ≤ 200ms, banda ≥ 10 Mbps), medido no navegador do cliente.</td>
 </tr>
 <tr>
 <td>RNF02</td>
-<td>A geração de relatórios em PDF deve ser concluída em no máximo 5 segundos.</td>
+<td>A geração de relatórios em PDF, como os de teses aplicáveis, deve ser concluída em no máximo 5 segundos.</td>
 </tr>
 <tr>
 <td>RNF03</td>
@@ -1672,19 +1672,19 @@
 </tr>
 <tr>
 <td>RNF05</td>
-<td>O sistema deve registrar logs com: ID do usuário (ou anônimo), IP, endpoint, data/hora, tipo de ação e status.</td>
+<td>O sistema deve registrar logs contendo: ID do usuário (ou anônimo), IP de origem, endpoint acessado, data/hora, tipo de ação (login, edição, falha, erro), e o código de resposta da requisição.</td>
 </tr>
 <tr>
 <td>RNF07</td>
-<td>Logs devem ser armazenados no MongoDB com retenção mínima de 6 meses.</td>
+<td>Logs devem ser armazenados no banco de dados (MongoDB) com retenção mínima de 6 meses para fins de auditoria e diagnóstico.</td>
 </tr>
 <tr>
 <td>RNF08</td>
-<td>Toda comunicação com APIs externas deve ocorrer via HTTPS.</td>
+<td>Toda comunicação com APIs externas ( BrasilAPI, ReceitaWS ou InfoSimples) deve ocorrer via HTTPS para garantir a integridade e confidencialidade dos dados.</td>
 </tr>
 <tr>
 <td>RNF09</td>
-<td>Toda a interface textual deve estar em português correto, sem erros gramaticais ou termos técnicos de TI.</td>
+<td>Toda a interface textual do sistema (rótulos, mensagens de erro, botões e descrições) deve ser escrita em português correto e estar livre de erros gramaticais e ortográficos, além de evitar termos técnicos de TI como “API”, “payload”, “token” e similares.</td>
 </tr>
 </tbody>
 </table>
