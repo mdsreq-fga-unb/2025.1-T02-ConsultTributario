@@ -71,7 +71,7 @@ describe('Questions E2E', () => {
         .expect(400);
     });
 
-    it('should return 404 if relatedQuestions contains non-existent question ID', async () => {
+    it('should return 400 if relatedQuestions contains non-existent question ID', async () => {
       const nonExistentId = '605fe2a85d28392b8c800000';
       const res = await request(app.getHttpServer())
         .post('/questions')
@@ -80,7 +80,7 @@ describe('Questions E2E', () => {
           tooltip: 'any_tooltip',
           relatedQuestions: [nonExistentId],
         })
-        .expect(404);
+        .expect(400);
     });
   });
 
@@ -144,12 +144,12 @@ describe('Questions E2E', () => {
       await request(app.getHttpServer()).patch('/questions/invalid-id-format').send({ label: 'any_label' }).expect(400);
     });
 
-    it('should return 404 if relatedQuestions in payload contains non-existent question ID', async () => {
+    it('should return 400 if relatedQuestions in payload contains non-existent question ID', async () => {
       const nonExistentRelatedId = '605fe2a85d28392b8c800001';
       await request(app.getHttpServer())
         .patch(`/questions/${questionId}`)
         .send({ relatedQuestions: [nonExistentRelatedId] })
-        .expect(404);
+        .expect(400);
     });
 
     it('should return 400 if relatedQuestions in payload contains the ID of the question being updated', async () => {
