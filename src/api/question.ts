@@ -29,8 +29,3 @@ export async function updateQuestion(questionId: string, questionData: Partial<I
   const response = await axios.patch(endpoints.question.update(questionId), questionData);
   return response.data;
 }
-
-export async function deleteQuestion(questionId: string) {
-  const response = await axios.delete(endpoints.question.delete(questionId));
-  return response.data;
-}

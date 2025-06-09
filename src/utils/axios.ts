@@ -85,16 +85,20 @@ export const endpoints = {
   },
   question: {
     list: '/questions',
-    details: (id: string) => `/questions/${id}`,
     create: '/questions',
     update: (id: string) => `/questions/${id}`,
-    delete: (id: string) => `/questions/${id}`,
   },
   teses: {
     list: '/claims',
     details: (id: string) => `/claims/${id}`,
     create: '/claims',
     update: (id: string) => `/claims/${id}`,
-    delete: (id: string) => `/claims/${id}`,
+  },
+  diagnosticos: {
+    list: '/diagnoses',
+    create: '/diagnoses',
+    detail: (id: string) => `/diagnoses/${id}`,
+    delete: (id: string) => `/diagnoses/${id}`,
+    recommendations: (id: string) => `/diagnoses/${id}/recommendations`,
   },
 };

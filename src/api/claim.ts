@@ -30,8 +30,3 @@ export async function updateClaim(claimId: string, claimData: Partial<IUpdateCla
   const response = await axios.patch(endpoints.teses.update(claimId), claimData);
   return response.data;
 }
-
-export async function deleteClaim(claimId: string) {
-  const response = await axios.delete(endpoints.teses.delete(claimId));
-  return response.data;
-}
