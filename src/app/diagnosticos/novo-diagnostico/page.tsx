@@ -90,10 +90,10 @@ const NovoDiagnostico = () => {
 
   // Atualiza o histórico de perguntas quando as páginas mudam
   useEffect(() => {
-    if (paginas.length > historicoPerguntas.length) {
+    if (paginas.length > 0) {
       setHistoricoPerguntas(paginas);
     }
-  }, [paginas, historicoPerguntas.length]);
+  }, [paginas]);
 
   // Perguntas da página atual
   const perguntasPaginaAtual = useMemo(() => {
@@ -130,10 +130,41 @@ const NovoDiagnostico = () => {
   const isUltimaPagina = !podeIrProximaPagina && !existemMaisPerguntasPotenciais;
 
   const handleResposta = (perguntaId: string, resposta: Resposta) => {
-    setRespostas(prev => ({
-      ...prev,
-      [perguntaId]: resposta,
-    }));
+    setRespostas(prev => {
+      const novasRespostas = {
+        ...prev,
+        [perguntaId]: resposta,
+      };
+
+      // Verifica se alguma pergunta deve ser ocultada devido a esta mudança
+      const perguntasParaRemover: string[] = [];
+
+      // Para cada pergunta existente nas respostas
+      Object.keys(novasRespostas).forEach(id => {
+        const pergunta = perguntas.find(p => p._id === id);
+
+        if (pergunta && pergunta.relatedQuestions.length > 0) {
+          // Verifica se todas as dependências ainda permitem que a pergunta seja visível
+          const deveSerVisivel = pergunta.relatedQuestions.every(dep => {
+            const respostaDependencia = novasRespostas[dep._id];
+            return respostaDependencia === 'sim' || respostaDependencia === 'nao_sei';
+          });
+
+          // Se a pergunta não deve mais ser visível, marca para remoção
+          if (!deveSerVisivel) {
+            perguntasParaRemover.push(id);
+          }
+        }
+      });
+
+      // Remove as respostas das perguntas que não devem mais ser visíveis
+      const respostasLimpas = { ...novasRespostas };
+      perguntasParaRemover.forEach(id => {
+        delete respostasLimpas[id];
+      });
+
+      return respostasLimpas;
+    });
   };
 
   const proximaPagina = () => {
