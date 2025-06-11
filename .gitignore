@@ -7,3 +7,4 @@ yarn.lock
 .DS_Store
 /data
 coverage
+package-lock.json
