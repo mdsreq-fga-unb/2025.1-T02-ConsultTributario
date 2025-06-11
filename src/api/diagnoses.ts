@@ -12,54 +12,78 @@ import {
 import axios, { endpoints, fetcher } from '../utils/axios';
 
 export function useGetClaimRecommendations(id: string) {
-  const { data, isLoading, error, mutate } = useSWR(
+  const { data, isLoading, error, mutate, isValidating } = useSWR(
     id ? endpoints.diagnosticos.recommendations(id) : null,
     fetcher
   );
 
+  const isConnectionError =
+    error?.code === 'ERR_NETWORK' || error?.message?.includes('ERR_CONNECTION_REFUSED');
+
+  if (isConnectionError) {
+    error.message = 'Erro de conexão. Verifique sua internet ou tente novamente mais tarde.';
+  }
   return useMemo(
     () => ({
       recommendations: data as IClaimRecommendationResponseDto,
-      recommendationsLoading: isLoading,
+      recommendationsLoading: isLoading || isValidating,
       recommendationsError: error,
       recommendationsEmpty: !isLoading && !data?.length,
-      recommendationsValidating: isLoading,
+      recommendationsValidating: isValidating,
       refreshRecommendations: mutate,
     }),
-    [data, isLoading, error, mutate]
+    [data, isLoading, error, mutate, isValidating]
   );
 }
 
 export function useGetDiagnoses() {
-  const { data, isLoading, error, mutate } = useSWR(endpoints.diagnosticos.list, fetcher);
+  const { data, isLoading, error, mutate, isValidating } = useSWR(
+    endpoints.diagnosticos.list,
+    fetcher
+  );
 
+  const isConnectionError =
+    error?.code === 'ERR_NETWORK' || error?.message?.includes('ERR_CONNECTION_REFUSED');
+
+  if (isConnectionError) {
+    error.message = 'Erro de conexão. Verifique sua internet ou tente novamente mais tarde.';
+  }
   return useMemo(
     () => ({
       diagnoses: (data as IDiagnosis[]) || [],
-      diagnosesLoading: isLoading,
+      diagnosesLoading: isLoading || isValidating,
       diagnosesError: error,
       diagnosesEmpty: !isLoading && !data?.length,
-      diagnosesValidating: isLoading,
+      diagnosesValidating: isValidating,
       refreshDiagnoses: mutate,
     }),
-    [data, isLoading, error, mutate]
+    [data, isLoading, error, mutate, isValidating]
   );
 }
 
 export function useGetDiagnosis(id: string) {
-  const { data, isLoading, error, mutate } = useSWR(
+  const { data, isLoading, error, mutate, isValidating } = useSWR(
     id ? endpoints.diagnosticos.detail(id) : null,
     fetcher
   );
 
+  const isConnectionError =
+    error?.code === 'ERR_NETWORK' || error?.message?.includes('ERR_CONNECTION_REFUSED');
+
+  if (isConnectionError) {
+    error.message = 'Erro de conexão. Verifique sua internet ou tente novamente mais tarde.';
+  }
+
   return useMemo(
     () => ({
       diagnosis: (data as IDiagnosis) || null,
-      diagnosisLoading: isLoading,
+      diagnosisLoading: isLoading || isValidating,
       diagnosisError: error,
       refreshDiagnosis: mutate,
+      diagnosisValidating: isValidating,
+      diagnosisEmpty: !isLoading && !data && !isValidating,
     }),
-    [data, isLoading, error, mutate]
+    [data, isLoading, error, mutate, isValidating]
   );
 }
 

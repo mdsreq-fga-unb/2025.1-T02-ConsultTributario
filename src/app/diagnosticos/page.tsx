@@ -4,25 +4,25 @@ import { Plus } from 'lucide-react';
 import Link from 'next/link';
 
 import { useGetDiagnoses } from '@/api/diagnoses';
+import { ErrorDisplay, LoadingDisplay } from '@/components/errors';
 import { Button } from '@/components/ui/button';
 import { IDiagnosis } from '@/types/diagnoses';
 
 const DiagnosticoPage = () => {
-  const { diagnoses, diagnosesLoading, diagnosesError, diagnosesEmpty } = useGetDiagnoses();
+  const { diagnoses, diagnosesLoading, diagnosesError, diagnosesEmpty, refreshDiagnoses } =
+    useGetDiagnoses();
 
   if (diagnosesLoading) {
-    return (
-      <div className='container mx-auto px-4 py-8'>
-        <div className='text-center text-gray-500'>Carregando diagnósticos...</div>
-      </div>
-    );
+    return <LoadingDisplay mensagem='Carregando diagnósticos tributários...' />;
   }
 
   if (diagnosesError) {
     return (
-      <div className='container mx-auto px-4 py-8'>
-        <div className='text-center text-red-500'>Erro ao carregar diagnósticos</div>
-      </div>
+      <ErrorDisplay
+        erro={diagnosesError}
+        titulo='Erro ao carregar diagnósticos'
+        tentarNovamente={refreshDiagnoses}
+      />
     );
   }
 

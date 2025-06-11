@@ -1,18 +1,17 @@
 'use client';
 
-import { PlusIcon, ChevronDownIcon, ChevronUpIcon, Pencil, Trash2 } from 'lucide-react';
-import { HelpCircle } from 'lucide-react';
+import { PlusIcon, ChevronDownIcon, ChevronUpIcon, Pencil } from 'lucide-react';
 import { useState } from 'react';
 
 import { useGetQuestions, createQuestion, updateQuestion } from '@/api/question';
-import { ConfirmarExclusaoDialog } from '@/components/perguntas/confirmar-exclusao-dialog';
 import { CriarPerguntaDialog } from '@/components/perguntas/criar-pergunta-dialog';
 import { EditarPerguntaDialog } from '@/components/perguntas/editar-pergunta-dialog';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/components/ui/tooltip';
 import { useToast } from '@/components/ui/use-toast';
 import { IQuestion, IQuestionCreate, IQuestionUpdate } from '@/types/question';
+
+import { ErrorDisplay, LoadingDisplay } from '../errors';
 
 export const PerguntasJuridicas = () => {
   // Estado para controlar qual pergunta está expandida
@@ -26,7 +25,26 @@ export const PerguntasJuridicas = () => {
   const [perguntaAtual, setPerguntaAtual] = useState<IQuestion | null>(null);
 
   // Hook para buscar perguntas da API
-  const { questions: perguntas, questionsLoading, refreshQuestions } = useGetQuestions();
+  const {
+    questions: perguntas,
+    questionsLoading = false,
+    refreshQuestions,
+    questionsError,
+  } = useGetQuestions();
+
+  if (questionsLoading) {
+    return <LoadingDisplay mensagem='Carregando perguntas jurídicas...' />;
+  }
+
+  if (questionsError) {
+    return (
+      <ErrorDisplay
+        erro={questionsError}
+        titulo='Erro ao carregar perguntas'
+        tentarNovamente={refreshQuestions}
+      />
+    );
+  }
 
   // Função para alternar a expansão de uma pergunta
   const toggleExpansao = (id: string) => {
@@ -102,14 +120,6 @@ export const PerguntasJuridicas = () => {
   //     }
   //   }
   // };
-
-  if (questionsLoading) {
-    return (
-      <div className='bg-white rounded-lg shadow-sm border border-gray-100 p-8 text-center text-gray-500'>
-        Carregando perguntas...
-      </div>
-    );
-  }
 
   return (
     <div className='bg-white rounded-lg shadow-sm border border-gray-100'>

@@ -1,9 +1,10 @@
 'use client';
 
-import { ChevronDown, ChevronUp, Plus, Minus, Edit, Trash2 } from 'lucide-react';
+import { ChevronDown, ChevronUp, Plus, Minus, Edit } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
+import { ErrorDisplay, LoadingDisplay } from '@/components/errors';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { IClaim } from '@/types/claim';
@@ -36,6 +37,16 @@ export const ListagemTeses = ({
     Record<string, Record<string, boolean>>
   >({});
 
+  if (carregando) {
+    return <LoadingDisplay mensagem='Carregando teses tributárias...' />;
+  }
+
+  if (erro) {
+    return (
+      <ErrorDisplay erro={erro} titulo='Erro ao carregar teses' tentarNovamente={tentarNovamente} />
+    );
+  }
+
   const toggleTese = (id: string) => {
     if (tesesExpandidas.includes(id)) {
       setTesesExpandidas(tesesExpandidas.filter(t => t !== id));
@@ -65,51 +76,6 @@ export const ListagemTeses = ({
       },
     });
   };
-
-  if (carregando) {
-    return (
-      <div className='max-w-6xl mx-auto'>
-        <div className='bg-white rounded-md border border-gray-200 p-8 text-center'>
-          <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4'></div>
-          <p className='text-gray-500'>Carregando teses...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (erro) {
-    return (
-      <div className='max-w-6xl mx-auto'>
-        <div className='bg-white rounded-md border border-gray-200 p-8 text-center'>
-          <div className='text-red-500 mb-4'>
-            <svg
-              className='h-12 w-12 mx-auto'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={2}
-                d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z'
-              />
-            </svg>
-          </div>
-          <h3 className='text-lg font-medium text-gray-900 mb-2'>Erro ao carregar teses</h3>
-          <p className='text-gray-500 mb-4'>{erro.message}</p>
-          {tentarNovamente && (
-            <Button
-              onClick={tentarNovamente}
-              className='bg-[#0099ff] hover:bg-[#0077cc] text-white'
-            >
-              Tentar Novamente
-            </Button>
-          )}
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className='mx-auto'>
@@ -161,7 +127,7 @@ export const ListagemTeses = ({
               {tesesExpandidas.includes(tese._id) && (
                 <div className='p-6 border-t-2 border-gray-200 bg-gray-50 rounded-b-lg animate-in fade-in-0 slide-in-from-top-2 duration-300'>
                   {/* Objetivo */}
-                  <div className='mb-6'>
+                  <div className='mb-4'>
                     <div
                       className='flex items-center gap-2 cursor-pointer'
                       onClick={() => toggleDetalhe(tese._id, 'OBJETIVO')}
@@ -171,7 +137,7 @@ export const ListagemTeses = ({
                       ) : (
                         <Plus className='h-4 w-4 text-blue-500' />
                       )}
-                      <h3 className='text-blue-500 font-medium'>OBJETIVO</h3>
+                      <h3 className='text-blue-500 font-semibold'>OBJETIVO</h3>
                     </div>
                     {detalhesExpandidos[tese._id]?.['OBJETIVO'] && (
                       <div className='mt-3 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300'>
@@ -181,7 +147,7 @@ export const ListagemTeses = ({
                   </div>
 
                   {/* Pergunta relacionada */}
-                  <div className='mb-6'>
+                  <div className='mb-4'>
                     <div
                       className='flex items-center gap-2 cursor-pointer'
                       onClick={() => toggleDetalhe(tese._id, 'PERGUNTA RELACIONADA')}
@@ -191,7 +157,7 @@ export const ListagemTeses = ({
                       ) : (
                         <Plus className='h-4 w-4 text-blue-500' />
                       )}
-                      <h3 className='text-blue-500 font-medium'>REQUISITO DA TESE</h3>
+                      <h3 className='text-blue-500 font-semibold'>REQUISITO DA TESE</h3>
                     </div>
                     {detalhesExpandidos[tese._id]?.['PERGUNTA RELACIONADA'] && (
                       <div className='mt-3 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300'>
@@ -203,7 +169,7 @@ export const ListagemTeses = ({
                   </div>
 
                   {/* Resumo */}
-                  <div className='mb-6'>
+                  <div className='mb-4'>
                     <div
                       className='flex items-center gap-2 cursor-pointer'
                       onClick={() => toggleDetalhe(tese._id, 'RESUMO')}
@@ -213,7 +179,7 @@ export const ListagemTeses = ({
                       ) : (
                         <Plus className='h-4 w-4 text-blue-500' />
                       )}
-                      <h3 className='text-blue-500 font-medium'>RESUMO</h3>
+                      <h3 className='text-blue-500 font-semibold'>RESUMO</h3>
                     </div>
                     {detalhesExpandidos[tese._id]?.['RESUMO'] && (
                       <div className='mt-3 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300 whitespace-pre-wrap'>
@@ -223,7 +189,7 @@ export const ListagemTeses = ({
                   </div>
 
                   {/* Período recuperável */}
-                  <div className='mb-6'>
+                  <div className='mb-4'>
                     <div
                       className='flex items-center gap-2 cursor-pointer'
                       onClick={() => toggleDetalhe(tese._id, 'PERÍODO RECUPERÁVEL')}
@@ -233,7 +199,7 @@ export const ListagemTeses = ({
                       ) : (
                         <Plus className='h-4 w-4 text-blue-500' />
                       )}
-                      <h3 className='text-blue-500 font-medium'>PERÍODO RECUPERÁVEL</h3>
+                      <h3 className='text-blue-500 font-semibold'>PERÍODO RECUPERÁVEL</h3>
                     </div>
                     {detalhesExpandidos[tese._id]?.['PERÍODO RECUPERÁVEL'] && (
                       <div className='mt-3 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300 whitespace-pre-wrap'>
@@ -243,7 +209,7 @@ export const ListagemTeses = ({
                   </div>
 
                   {/* Valor recuperável */}
-                  <div className='mb-6'>
+                  <div className='mb-4'>
                     <div
                       className='flex items-center gap-2 cursor-pointer'
                       onClick={() => toggleDetalhe(tese._id, 'VALOR RECUPERÁVEL')}
@@ -253,7 +219,7 @@ export const ListagemTeses = ({
                       ) : (
                         <Plus className='h-4 w-4 text-blue-500' />
                       )}
-                      <h3 className='text-blue-500 font-medium'>VALOR RECUPERÁVEL</h3>
+                      <h3 className='text-blue-500 font-semibold'>VALOR RECUPERÁVEL</h3>
                     </div>
                     {detalhesExpandidos[tese._id]?.['VALOR RECUPERÁVEL'] && (
                       <div className='mt-3 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300 whitespace-pre-wrap'>

@@ -61,6 +61,13 @@ export default axiosInstance;
 
 // ----------------------------------------------------------------------
 
+export const swrConfig = {
+  errorRetryCount: 2,
+  errorRetryInterval: 10000,
+  revalidateOnFocus: false,
+  revalidateOnReconnect: true,
+};
+
 // Fetcher function for SWR
 export const fetcher = async (url: string) => {
   const response = await axiosInstance.get(url);

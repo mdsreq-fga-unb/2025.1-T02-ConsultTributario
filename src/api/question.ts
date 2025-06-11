@@ -5,18 +5,24 @@ import { IQuestion, IQuestionCreate, IQuestionUpdate } from '../types/question';
 import axios, { endpoints, fetcher } from '../utils/axios';
 
 export function useGetQuestions() {
-  const { data, isLoading, error, mutate } = useSWR(endpoints.question.list, fetcher);
+  const { data, isLoading, error, mutate, isValidating } = useSWR(endpoints.question.list, fetcher);
 
+  const isConnectionError =
+    error?.code === 'ERR_NETWORK' || error?.message?.includes('ERR_CONNECTION_REFUSED');
+
+  if (isConnectionError) {
+    error.message = 'Erro de conexão. Verifique sua internet ou tente novamente mais tarde.';
+  }
   return useMemo(
     () => ({
       questions: (data as IQuestion[]) || [],
-      questionsLoading: isLoading,
+      questionsLoading: isLoading || isValidating,
       questionsError: error,
-      questionsEmpty: !isLoading && !data?.length,
-      questionsValidating: isLoading,
+      questionsEmpty: !isValidating && !isLoading && !data?.length,
+      questionsValidating: isValidating,
       refreshQuestions: mutate,
     }),
-    [data, isLoading, error, mutate]
+    [data, isLoading, error, mutate, isValidating]
   );
 }
 
