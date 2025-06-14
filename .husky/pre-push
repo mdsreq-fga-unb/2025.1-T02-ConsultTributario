@@ -1,2 +1,2 @@
-npm run test:e2e
-npm run test:cov
+yarn test:e2e
+yarn test:cov
