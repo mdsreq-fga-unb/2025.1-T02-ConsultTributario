@@ -1,4 +1,4 @@
-name: Run Tests
+name: Run Tests Coverage
 
 on: [push]
 
@@ -22,5 +22,5 @@ jobs:
     - name: Install dependencies
       run: yarn install
 
-    - name: Run tests
+    - name: Run test coverage
       run: yarn test:cov

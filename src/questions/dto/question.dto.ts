@@ -1,24 +1,20 @@
+import { BaseEntityDto, BaseTimestampDto } from '@/shared/dtos/base.dto';
 import { Expose, Transform, Type } from 'class-transformer';
 
-export class RelatedQuestionDto {
-  @Expose()
-  @Transform(({ obj }) => obj._id.toString())
-  _id: string;
-
+export class RelatedQuestionDto extends BaseEntityDto {
   @Expose()
   label: string;
 }
 
-export class QuestionDto {
-  @Transform(({ obj }) => obj._id.toString())
-  @Expose()
-  _id: string;
-
+export class QuestionDto extends BaseTimestampDto {
   @Expose()
   label: string;
 
   @Expose()
-  toolTip: string;
+  tooltip: string;
+
+  @Expose()
+  isActive: boolean;
 
   @Expose()
   @Type(() => RelatedQuestionDto)

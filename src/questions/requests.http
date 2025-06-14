@@ -3,26 +3,23 @@ POST http://localhost:8000/questions
 Content-Type: application/json
 
 {
-  "label": "Pergunta 1",
-  "relatedQuestions": []
+  "label": "Pergunta 5",
+  "tooltip": "Dica para a pergunta 5",
+  "relatedQuestions": [
+    "684462032c52eefcf8e30b85"  
+  ]
 }
 
 ### Find all questions
 GET http://localhost:8000/questions
 
 ### Find question by id
-GET http://localhost:8000/questions/6824b6bc22d33d13503750b8
-
-### Delete question
-DELETE http://localhost:8000/questions/6824b6bc22d33d13503750b8
+GET http://localhost:8000/questions/68365d10ed8b809ccb0c60e
 
 ### Update question
-PATCH http://localhost:8000/questions/6825232492ed9ec904b84e87
+PATCH http://localhost:8000/questions/68365d10ed8b809ccb0c60e1
 Content-Type: application/json
 
 {
-  "relatedQuestions": [
-    "6824b6bc22d33d13503750b8"
-  ]
+  "isActive": true
 }
-

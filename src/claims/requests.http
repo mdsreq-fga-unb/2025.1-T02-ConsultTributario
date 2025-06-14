@@ -1,0 +1,28 @@
+### Create claim
+POST http://localhost:8000/claims
+Content-Type: application/json
+
+{
+  "title": "Claim 7",
+  "objective": "Objective for claim 1",
+  "summary": "Summary for claim 1",
+  "recoverable_period": "12 months",
+  "recoverable_value": "1000"
+}
+
+### Find all claims
+GET http://localhost:8000/claims
+
+### Find claim by id
+GET http://localhost:8000/claims/683c8a990cf5910c84941f4d
+
+### Delete claim
+DELETE http://localhost:8000/claims/683b3cf012fae1a976e73a48
+
+### Update claim
+PATCH http://localhost:8000/claims/6842380b25c67771b102343c
+Content-Type: application/json
+
+{
+  "relatedQuestion": null
+}

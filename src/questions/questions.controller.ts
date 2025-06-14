@@ -1,23 +1,11 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  BadRequestException,
-  HttpCode,
-  HttpStatus,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param } from '@nestjs/common';
 import { QuestionsService } from './questions.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
-import { Types } from 'mongoose';
-import { Serialize } from '../interceptors/serialize.interceptor';
+import { Serialize } from '../common/interceptors/serialize.interceptor';
 import { QuestionDto } from './dto/question.dto';
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { Question } from './schemas/question.schema';
+import { MongoIdValidationPipe } from '@common/pipes/mongo-id-validation.pipe';
 
 @Serialize(QuestionDto)
 @Controller('questions')
@@ -40,41 +28,13 @@ export class QuestionsController {
     return this.questionsService.findAll();
   }
 
-  @Get(':id')
-  @ApiOperation({ summary: 'Busca uma pergunta pelo ID' })
-  @ApiResponse({ status: 200, description: 'Pergunta retornada com sucesso' })
-  @ApiResponse({ status: 404, description: 'ID inválido' })
-  @ApiResponse({ status: 400, description: 'Pergunta não encontrada' })
-  async findOne(@Param('id') id: string) {
-    if (!Types.ObjectId.isValid(id)) {
-      throw new BadRequestException('invalid id');
-    }
-    return this.questionsService.findOne(id);
-  }
-
   @Patch(':id')
   @ApiOperation({ summary: 'Atualiza uma pergunta existente' })
   @ApiBody({ type: UpdateQuestionDto })
   @ApiResponse({ status: 200, description: 'Pergunta atualizada com sucesso' })
   @ApiResponse({ status: 404, description: 'ID inválido' })
   @ApiResponse({ status: 400, description: 'Pergunta não encontrada' })
-  async update(@Param('id') id: string, @Body() updateQuestionDto: UpdateQuestionDto) {
-    if (!Types.ObjectId.isValid(id)) {
-      throw new BadRequestException('invalid id');
-    }
+  async update(@Param('id', MongoIdValidationPipe) id: string, @Body() updateQuestionDto: UpdateQuestionDto) {
     return this.questionsService.update(id, updateQuestionDto);
-  }
-
-  @Delete(':id')
-  @HttpCode(HttpStatus.NO_CONTENT)
-  @ApiOperation({ summary: 'Apaga uma pergunta existente' })
-  @ApiBody({ type: UpdateQuestionDto })
-  @ApiResponse({ status: 204, description: 'Pergunta apagada com sucesso' })
-  @ApiResponse({ status: 404, description: 'ID inválido' })
-  async remove(@Param('id') id: string) {
-    if (!Types.ObjectId.isValid(id)) {
-      throw new BadRequestException('invalid id');
-    }
-    return this.questionsService.remove(id);
   }
 }

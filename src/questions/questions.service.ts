@@ -1,54 +1,66 @@
-import { Injectable, NotFoundException, BadRequestException, ConflictException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, Types } from 'mongoose';
+import { Model } from 'mongoose';
 import { Question } from './schemas/question.schema';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
+import { IQuestionService } from '@/shared/interfaces/question.interface';
+import { QuestionDomainService } from './services/question-domain.service';
+import { ERROR_MESSAGES } from '@common/constants/app.constants';
 
 @Injectable()
-export class QuestionsService {
-  constructor(@InjectModel(Question.name) private readonly questionModel: Model<Question>) {}
+export class QuestionsService implements IQuestionService {
+  constructor(
+    @InjectModel(Question.name) private readonly questionModel: Model<Question>,
+    private readonly questionDomainService: QuestionDomainService,
+  ) {}
 
   async create(createQuestionDto: CreateQuestionDto): Promise<Question> {
-    if (createQuestionDto.relatedQuestions.length > 0) {
-      const existingQuestions = await this.questionModel
-        .find({ _id: { $in: createQuestionDto.relatedQuestions } })
-        .exec();
+    if (this.questionDomainService.hasRelatedQuestions(createQuestionDto)) {
+      const existingQuestions = await this.findByIds(createQuestionDto.relatedQuestions);
+
       if (existingQuestions.length !== createQuestionDto.relatedQuestions.length) {
-        throw new BadRequestException('invalid related question IDs');
+        throw new BadRequestException(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
       }
     }
 
     return this.questionModel.create(createQuestionDto);
   }
 
-  findAll() {
-    return this.questionModel.find().populate('relatedQuestions').exec();
+  async findAll(): Promise<Question[]> {
+    return await this.questionModel.find().populate('relatedQuestions').exec();
   }
 
-  async findOne(id: string) {
+  async findById(id: string): Promise<Question> {
     const question = await this.questionModel.findById(id).populate('relatedQuestions').exec();
 
     if (!question) {
-      throw new NotFoundException('invalid id');
+      throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
     }
 
     return question;
   }
 
-  async update(id: string, updateQuestionDto: UpdateQuestionDto) {
-    const relatedQuestions = updateQuestionDto.relatedQuestions || [];
-    if (relatedQuestions.length > 0) {
-      if (relatedQuestions.includes(id)) {
-        throw new BadRequestException('invalid related IDs');
+  async findByIds(id: string[]): Promise<Question[]> {
+    if (!id || id.length === 0) {
+      return [];
+    }
+
+    const questions = await this.questionModel.find({ _id: { $in: id } }).exec();
+
+    return questions;
+  }
+
+  async update(id: string, updateQuestionDto: UpdateQuestionDto): Promise<Question> {
+    if (this.questionDomainService.hasRelatedQuestions(updateQuestionDto)) {
+      if (this.questionDomainService.validateSelfReference(id, updateQuestionDto.relatedQuestions ?? [])) {
+        throw new BadRequestException(ERROR_MESSAGES.SELF_REFERENCE_NOT_ALLOWED);
       }
 
-      const existingQuestions = await this.questionModel
-        .find({ _id: { $in: relatedQuestions } })
-        .exec();
+      const existingQuestions = await this.findByIds(updateQuestionDto.relatedQuestions ?? []);
 
-      if (existingQuestions.length !== relatedQuestions.length) {
-        throw new BadRequestException('invalid related IDs');
+      if (existingQuestions.length !== updateQuestionDto.relatedQuestions?.length) {
+        throw new BadRequestException(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
       }
     }
 
@@ -58,15 +70,9 @@ export class QuestionsService {
       .exec();
 
     if (!updatedQuestion) {
-      throw new NotFoundException('invalid id');
+      throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
     }
 
     return updatedQuestion;
-  }
-
-  async remove(id: string): Promise<void> {
-    await this.questionModel.updateMany({ relatedQuestions: id }, { $pull: { relatedQuestions: id } });
-
-    await this.questionModel.findByIdAndDelete(id).exec();
   }
 }

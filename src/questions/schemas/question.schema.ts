@@ -7,7 +7,10 @@ export class Question extends Document {
   label: string;
 
   @Prop()
-  toolTip: string;
+  tooltip: string;
+
+  @Prop({ default: true })
+  isActive: boolean;
 
   @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Question' }] })
   relatedQuestions: Question[];
