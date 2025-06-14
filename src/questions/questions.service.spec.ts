@@ -99,6 +99,7 @@ describe('QuestionsService', () => {
       expect(model.find).toHaveBeenCalled();
       expect(model.find).toHaveBeenCalledWith({
         _id: { $in: mockedQuestion.relatedQuestions },
+        isActive: true,
       });
       expect(model.create).toHaveBeenCalledWith(mockedQuestion);
     });
@@ -117,6 +118,7 @@ describe('QuestionsService', () => {
       await expect(result).rejects.toThrow(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
       expect(model.find).toHaveBeenCalledWith({
         _id: { $in: mockedQuestion.relatedQuestions },
+        isActive: true,
       });
       expect(model.create).not.toHaveBeenCalled();
     });
@@ -275,6 +277,7 @@ describe('QuestionsService', () => {
       expect(result).toBeDefined();
       expect(model.find).toHaveBeenCalledWith({
         _id: { $in: updateDto.relatedQuestions },
+        isActive: true,
       });
     });
 
@@ -352,14 +355,14 @@ describe('QuestionsService', () => {
         exec: jest.fn().mockResolvedValue(mockQuestions),
       } as any);
 
-      const result = await service.findByIds(questionIds);
+      const result = await service.findByIdsActive(questionIds);
 
       expect(result).toEqual(mockQuestions);
-      expect(model.find).toHaveBeenCalledWith({ _id: { $in: questionIds } });
+      expect(model.find).toHaveBeenCalledWith({ _id: { $in: questionIds }, isActive: true });
     });
 
     it('should return an empty array if no ids are provided', async () => {
-      const result = await service.findByIds([]);
+      const result = await service.findByIdsActive([]);
 
       expect(result).toEqual([]);
       expect(model.find).not.toHaveBeenCalled();
@@ -371,7 +374,7 @@ describe('QuestionsService', () => {
         exec: jest.fn().mockRejectedValue(error),
       } as any);
 
-      const result = service.findByIds(['1']);
+      const result = service.findByIdsActive(['1']);
 
       await expect(result).rejects.toThrow(error);
     });
