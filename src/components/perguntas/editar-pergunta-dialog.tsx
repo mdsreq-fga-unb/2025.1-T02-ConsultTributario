@@ -58,17 +58,17 @@ export const EditarPerguntaDialog = ({
 
   const handleSalvar = () => {
     if (!label.trim()) {
-      setErro('O campo Label é obrigatório');
+      setErro('O campo Pergunta é obrigatório!');
       return;
     }
 
     if (label.length > 150) {
-      setErro('A pergunta deve ter no máximo 150 caracteres');
+      setErro('A pergunta deve ter no máximo 150 caracteres!');
       return;
     }
 
     if (tooltip.length > 500) {
-      setErro('A dica de resposta deve ter no máximo 500 caracteres');
+      setErro('A dica de resposta deve ter no máximo 500 caracteres!');
       return;
     }
 
@@ -77,7 +77,7 @@ export const EditarPerguntaDialog = ({
     );
 
     if (perguntaExistente) {
-      setErro('Essa pergunta já existe');
+      setErro('Essa pergunta já existe!');
       return;
     }
 
