@@ -21,7 +21,7 @@ export class QuestionsService implements IQuestionService {
     }
 
     if (this.questionDomainService.hasRelatedQuestions(createQuestionDto)) {
-      const existingQuestions = await this.findByIds(createQuestionDto.relatedQuestions);
+      const existingQuestions = await this.findByIdsActive(createQuestionDto.relatedQuestions);
 
       if (existingQuestions.length !== createQuestionDto.relatedQuestions.length) {
         throw new BadRequestException(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
@@ -49,12 +49,12 @@ export class QuestionsService implements IQuestionService {
     return await this.questionModel.findOne({ label }).exec();
   }
 
-  async findByIds(id: string[]): Promise<Question[]> {
+  async findByIdsActive(id: string[]): Promise<Question[]> {
     if (!id || id.length === 0) {
       return [];
     }
 
-    const questions = await this.questionModel.find({ _id: { $in: id } }).exec();
+    const questions = await this.questionModel.find({ _id: { $in: id }, isActive: true }).exec();
 
     return questions;
   }
@@ -65,7 +65,7 @@ export class QuestionsService implements IQuestionService {
         throw new BadRequestException(ERROR_MESSAGES.SELF_REFERENCE_NOT_ALLOWED);
       }
 
-      const existingQuestions = await this.findByIds(updateQuestionDto.relatedQuestions ?? []);
+      const existingQuestions = await this.findByIdsActive(updateQuestionDto.relatedQuestions ?? []);
 
       if (existingQuestions.length !== updateQuestionDto.relatedQuestions?.length) {
         throw new BadRequestException(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
