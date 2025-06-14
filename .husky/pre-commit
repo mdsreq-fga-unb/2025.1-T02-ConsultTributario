@@ -1,2 +1,1 @@
-npm run format
-npm run test
+yarn lint-staged

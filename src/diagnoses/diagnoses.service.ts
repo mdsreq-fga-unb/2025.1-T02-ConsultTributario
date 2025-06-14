@@ -20,7 +20,7 @@ export class DiagnosesService implements IDiagnosesService {
   async create(diagnosis: CreateDiagnosisDto): Promise<Diagnosis> {
     const questionIds = diagnosis.questionResponses.map((q) => q.questionId);
 
-    const existingQuestions = await this.questionService.findByIds(questionIds);
+    const existingQuestions = await this.questionService.findByIdsActive(questionIds);
     if (existingQuestions.length !== questionIds.length) {
       throw new BadRequestException(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
     }

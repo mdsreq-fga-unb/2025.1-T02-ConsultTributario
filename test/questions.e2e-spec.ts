@@ -37,26 +37,81 @@ describe('Questions E2E', () => {
   });
 
   describe('/questions (POST)', () => {
-    it('should create a question', async () => {
+    let existingQuestionIdNotActive: string;
+    let existingQuestionIdActive: string;
+
+    beforeEach(async () => {
+      await clearDatabase();
+      let response = await request(app.getHttpServer()).post('/questions').send({
+        label: 'any_label 2',
+        tooltip: 'any_tooltip',
+        relatedQuestions: [],
+      });
+
+      existingQuestionIdActive = response.body._id;
+
+      response = await request(app.getHttpServer()).post('/questions').send({
+        label: 'any_label',
+        tooltip: 'any_tooltip',
+        relatedQuestions: [],
+      });
+
+      existingQuestionIdNotActive = response.body._id;
+
+      await request(app.getHttpServer()).patch(`/questions/${existingQuestionIdNotActive}`).send({
+        isActive: false,
+      });
+    });
+
+    it('should create a question with valid data without related questions', async () => {
       const res = await request(app.getHttpServer())
         .post('/questions')
         .send({
-          label: 'any_label',
-          tooltip: 'any_tooltip',
+          label: 'valid_label',
+          tooltip: 'valid_tooltip',
           relatedQuestions: [],
         })
         .expect(201);
 
       expect(res.body).toHaveProperty('_id');
-      expect(res.body.label).toBe('any_label');
-      expect(res.body.tooltip).toBe('any_tooltip');
+      expect(res.body.label).toBe('valid_label');
+      expect(res.body.tooltip).toBe('valid_tooltip');
       expect(res.body.relatedQuestions).toEqual([]);
+    });
+
+    it('should create a question with valid data with related questions', async () => {
+      await request(app.getHttpServer())
+        .post('/questions')
+        .send({
+          label: 'valid_label',
+          tooltip: 'valid_tooltip',
+          relatedQuestions: [existingQuestionIdActive],
+        })
+        .expect(201);
+    });
+
+    it('should return 400 if related questions are not active', async () => {
+      await request(app.getHttpServer())
+        .post('/questions')
+        .send({
+          label: 'valid_label',
+          tooltip: 'valid_tooltip',
+          relatedQuestions: [existingQuestionIdNotActive],
+        })
+        .expect(400);
     });
 
     it('should return 400 if label is missing', async () => {
       await request(app.getHttpServer())
         .post('/questions')
-        .send({ tooltip: 'any_tooltip', relatedQuestions: [] })
+        .send({ tooltip: 'valid_tooltip', relatedQuestions: [] })
+        .expect(400);
+    });
+
+    it('should return 400 if label already exists', async () => {
+      await request(app.getHttpServer())
+        .post('/questions')
+        .send({ label: 'any_label', tooltip: 'valid_tooltip', relatedQuestions: [] })
         .expect(400);
     });
 
@@ -73,7 +128,7 @@ describe('Questions E2E', () => {
 
     it('should return 400 if relatedQuestions contains non-existent question ID', async () => {
       const nonExistentId = '605fe2a85d28392b8c800000';
-      const res = await request(app.getHttpServer())
+      await request(app.getHttpServer())
         .post('/questions')
         .send({
           label: 'any_label',

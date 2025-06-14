@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsArray, IsMongoId, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsArray, IsMongoId, IsOptional, MaxLength } from 'class-validator';
 
 export class CreateQuestionDto {
   @ApiProperty({
@@ -7,8 +7,11 @@ export class CreateQuestionDto {
     example: 'Como calcular ICMS?',
     type: String,
     required: true,
+    uniqueItems: true,
+    maxLength: 150,
   })
   @IsString()
+  @MaxLength(150)
   @IsNotEmpty()
   label: string;
 
@@ -17,8 +20,10 @@ export class CreateQuestionDto {
     example: 'Essa pergunta é relacionada a ICMS',
     type: String,
     required: false,
+    maxLength: 500,
   })
   @IsString()
+  @MaxLength(500)
   @IsOptional()
   tooltip?: string;
 
