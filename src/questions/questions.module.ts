@@ -7,12 +7,7 @@ import { Claim, ClaimSchema } from '../claims/schemas/claim.schema';
 import { QuestionDomainService } from './services/question-domain.service';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([
-      { name: Question.name, schema: QuestionSchema },
-      { name: Claim.name, schema: ClaimSchema },
-    ]),
-  ],
+  imports: [MongooseModule.forFeature([{ name: Question.name, schema: QuestionSchema }])],
   controllers: [QuestionsController],
   providers: [QuestionsService, QuestionDomainService],
   exports: [QuestionsService],
