@@ -62,6 +62,16 @@ export const EditarPerguntaDialog = ({
       return;
     }
 
+    if (label.length > 150) {
+      setErro('A pergunta deve ter no máximo 150 caracteres');
+      return;
+    }
+
+    if (tooltip.length > 500) {
+      setErro('A dica de resposta deve ter no máximo 500 caracteres');
+      return;
+    }
+
     onSalvar({
       _id: pergunta._id,
       label,
@@ -113,8 +123,16 @@ export const EditarPerguntaDialog = ({
               }}
               placeholder='Digite a pergunta'
               className={erro ? 'border-red-500' : ''}
+              maxLength={150}
             />
-            {erro && <p className='text-sm text-red-500'>{erro}</p>}
+            <div className='flex justify-between items-center'>
+              {erro && <p className='text-sm text-red-500'>{erro}</p>}
+              <p
+                className={`text-sm ml-auto ${label.length > 150 ? 'text-red-500' : 'text-gray-500'}`}
+              >
+                {label.length}/150 caracteres
+              </p>
+            </div>
           </div>
 
           <div className='space-y-2'>
@@ -128,7 +146,13 @@ export const EditarPerguntaDialog = ({
               placeholder='Informações adicionais sobre a pergunta'
               className='resize-none'
               rows={6}
+              maxLength={500}
             />
+            <p
+              className={`text-sm text-right ${tooltip.length > 500 ? 'text-red-500' : 'text-gray-500'}`}
+            >
+              {tooltip.length}/500 caracteres
+            </p>
           </div>
 
           <div className='space-y-2'>
@@ -156,19 +180,14 @@ export const EditarPerguntaDialog = ({
                   </SelectItem>
                 ) : (
                   perguntas
-                    .filter(p => !relatedQuestions.some(rq => rq._id === p._id))
-                    .map(p => (
-                      <SelectItem key={p._id} value={p._id}>
+                    .filter(
+                      pergunta =>
+                        pergunta.isActive && !relatedQuestions.some(rq => rq._id === pergunta._id)
+                    )
+                    .map(pergunta => (
+                      <SelectItem key={pergunta._id} value={pergunta._id}>
                         <div className='flex items-center gap-2'>
-                          <span className={!p.isActive ? 'text-gray-400' : ''}>{p.label}</span>
-                          {!p.isActive && (
-                            <Badge
-                              variant='secondary'
-                              className='bg-gray-100 text-gray-500 text-xs'
-                            >
-                              Inativa
-                            </Badge>
-                          )}
+                          <span className='text-gray-800'>{pergunta.label}</span>
                         </div>
                       </SelectItem>
                     ))
