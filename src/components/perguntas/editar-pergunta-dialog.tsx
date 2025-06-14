@@ -72,6 +72,15 @@ export const EditarPerguntaDialog = ({
       return;
     }
 
+    const perguntaExistente = perguntas.find(
+      pergunta => pergunta.label.toLowerCase().trim() === label.toLowerCase().trim()
+    );
+
+    if (perguntaExistente) {
+      setErro('Essa pergunta já existe');
+      return;
+    }
+
     onSalvar({
       _id: pergunta._id,
       label,
