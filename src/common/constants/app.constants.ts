@@ -7,6 +7,7 @@ export const ERROR_MESSAGES = {
 
   // Question-specific errors
   SELF_REFERENCE_NOT_ALLOWED: 'Question cannot reference itself',
+  QUESTION_LABEL_EXISTS: 'Question label already exists',
 
   // Claim-specific errors
   CLAIM_TITLE_EXISTS: 'Claim title already exists',

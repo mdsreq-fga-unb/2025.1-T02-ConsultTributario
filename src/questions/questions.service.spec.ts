@@ -22,7 +22,9 @@ const questionModelMock = {
       exec: jest.fn(),
     }),
   }),
-  findOne: jest.fn(),
+  findOne: jest.fn().mockReturnValue({
+    exec: jest.fn(),
+  }),
   findByIdAndUpdate: jest.fn(),
   updateMany: jest.fn().mockReturnValue({
     exec: jest.fn(),
@@ -67,10 +69,13 @@ describe('QuestionsService', () => {
         tooltip: 'Test Tooltip',
         relatedQuestions: [],
       };
+      jest.spyOn(service, 'findByLabel').mockResolvedValue(null);
+
       model.create.mockResolvedValue(mockedQuestion as any);
 
       const result = await service.create(mockedQuestion);
 
+      expect(service.findByLabel).toHaveBeenCalledWith(mockedQuestion.label);
       expect(result).toEqual(mockedQuestion);
       expect(model.find).not.toHaveBeenCalled();
       expect(model.create).toHaveBeenCalledWith(mockedQuestion);

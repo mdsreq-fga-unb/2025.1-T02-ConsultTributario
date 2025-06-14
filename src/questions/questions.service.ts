@@ -16,6 +16,10 @@ export class QuestionsService implements IQuestionService {
   ) {}
 
   async create(createQuestionDto: CreateQuestionDto): Promise<Question> {
+    if (await this.findByLabel(createQuestionDto.label)) {
+      throw new BadRequestException(ERROR_MESSAGES.QUESTION_LABEL_EXISTS);
+    }
+
     if (this.questionDomainService.hasRelatedQuestions(createQuestionDto)) {
       const existingQuestions = await this.findByIds(createQuestionDto.relatedQuestions);
 
@@ -39,6 +43,10 @@ export class QuestionsService implements IQuestionService {
     }
 
     return question;
+  }
+
+  async findByLabel(label: string): Promise<Question | null> {
+    return await this.questionModel.findOne({ label }).exec();
   }
 
   async findByIds(id: string[]): Promise<Question[]> {
