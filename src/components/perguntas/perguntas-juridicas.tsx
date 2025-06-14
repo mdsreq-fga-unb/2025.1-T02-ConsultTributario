@@ -64,7 +64,7 @@ export const PerguntasJuridicas = () => {
       toast({
         title: 'Sucesso!',
         description: 'Pergunta criada com sucesso.',
-        variant: 'default',
+        variant: 'success',
       });
     } catch (error) {
       console.error('Erro ao criar pergunta:', error);
@@ -86,7 +86,7 @@ export const PerguntasJuridicas = () => {
       toast({
         title: 'Sucesso!',
         description: 'Pergunta atualizada com sucesso.',
-        variant: 'default',
+        variant: 'success',
       });
     } catch (error) {
       console.error('Erro ao editar pergunta:', error);
