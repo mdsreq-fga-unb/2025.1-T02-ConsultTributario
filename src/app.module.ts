@@ -6,7 +6,7 @@ import { QuestionsModule } from './questions/questions.module';
 import { ClaimsModule } from './claims/claims.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DiagnosesModule } from './diagnoses/diagnoses.module';
-import { CategoriesModule } from './categories/categories.module';
+import { TaxTypesModule } from './tax-types/tax-types.module';
 
 @Module({
   imports: [
@@ -24,6 +24,7 @@ import { CategoriesModule } from './categories/categories.module';
     QuestionsModule,
     ClaimsModule,
     DiagnosesModule,
+    TaxTypesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

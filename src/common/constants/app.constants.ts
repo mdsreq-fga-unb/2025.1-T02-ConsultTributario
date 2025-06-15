@@ -14,6 +14,9 @@ export const ERROR_MESSAGES = {
 
   // Diagnosis-specific errors
   INVALID_QUESTION_RESPONSES: 'Invalid question responses',
+
+  // Tax type-specific errors
+  TAX_TYPE_NAME_EXISTS: 'Tax type name already exists',
 } as const;
 
 export const VALIDATION_MESSAGES = {

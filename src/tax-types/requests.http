@@ -1,0 +1,18 @@
+### Get all tax types
+GET http://localhost:8000/tax-types
+
+### Create a new tax type
+POST http://localhost:8000/tax-types
+Content-Type: application/json
+
+{
+  "name": "New Tax Type 2"
+}
+
+### Update an existing tax type
+PATCH http://localhost:8000/tax-types/684f4a67a7d074f2e52d7593
+Content-Type: application/json
+
+{
+  "name": "Updated Tax Type"
+}
