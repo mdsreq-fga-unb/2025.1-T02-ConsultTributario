@@ -104,8 +104,8 @@ export const CriarPerguntaDialog = ({
 
   return (
     <Dialog open={aberto} onOpenChange={handleFechar}>
-      <DialogContent className='sm:max-w-[600px]'>
-        <DialogHeader>
+      <DialogContent aria-describedby={undefined} className='sm:max-w-[600px]'>
+        <DialogHeader aria-description='Crie uma nova pergunta para o quiz'>
           <DialogTitle className='text-xl font-semibold text-gray-800'>
             Criar Nova Pergunta
           </DialogTitle>

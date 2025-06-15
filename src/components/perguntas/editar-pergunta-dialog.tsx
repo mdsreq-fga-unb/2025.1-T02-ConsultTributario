@@ -113,7 +113,7 @@ export const EditarPerguntaDialog = ({
 
   return (
     <Dialog open={aberto} onOpenChange={handleFechar}>
-      <DialogContent className='sm:max-w-[600px]'>
+      <DialogContent aria-describedby={undefined} className='sm:max-w-[600px]'>
         <DialogHeader>
           <DialogTitle className='text-xl font-semibold text-gray-800'>Editar Pergunta</DialogTitle>
         </DialogHeader>
