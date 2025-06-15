@@ -126,6 +126,37 @@ describe('Questions E2E', () => {
         })
         .expect(201);
     });
+
+    it('should return 400 if relatedQuestion is not active', async () => {
+      const res = await request(app.getHttpServer())
+        .post('/questions')
+        .send({
+          label: 'Question 1',
+          relatedQuestions: [],
+        })
+        .expect(201);
+
+      const questionId = res.body._id;
+
+      await request(app.getHttpServer())
+        .patch(`/questions/${questionId}`)
+        .send({
+          isActive: false,
+        })
+        .expect(200);
+
+      await request(app.getHttpServer())
+        .post('/claims')
+        .send({
+          title: 'Claim',
+          objective: 'Objective for claim',
+          summary: 'Summary for claim',
+          recoverable_period: '12 months',
+          recoverable_value: '1000',
+          relatedQuestion: questionId,
+        })
+        .expect(400);
+    });
   });
 
   describe('/claims (GET)', () => {
