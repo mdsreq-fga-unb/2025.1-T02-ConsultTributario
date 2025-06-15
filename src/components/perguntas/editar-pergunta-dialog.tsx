@@ -139,7 +139,7 @@ export const EditarPerguntaDialog = ({
               <p
                 className={`text-sm ml-auto ${label.length > 150 ? 'text-red-500' : 'text-gray-500'}`}
               >
-                {label.length}/150 caracteres
+                {label.length}/150
               </p>
             </div>
           </div>
@@ -160,7 +160,7 @@ export const EditarPerguntaDialog = ({
             <p
               className={`text-sm text-right ${tooltip.length > 500 ? 'text-red-500' : 'text-gray-500'}`}
             >
-              {tooltip.length}/500 caracteres
+              {tooltip.length}/500
             </p>
           </div>
 
