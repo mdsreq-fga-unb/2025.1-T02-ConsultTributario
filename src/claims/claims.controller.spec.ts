@@ -56,6 +56,7 @@ describe('ClaimsController', () => {
       recoverable_period: 'Detailed description of the claim',
       summary: 'Summary of the claim',
       recoverable_value: '1000',
+      taxType: 'valid-tax-type-id',
     };
 
     it('should create a claim successfully', async () => {
