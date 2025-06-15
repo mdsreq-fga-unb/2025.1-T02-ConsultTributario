@@ -166,14 +166,12 @@ describe('Questions E2E', () => {
     let questionId: string;
 
     beforeEach(async () => {
-      const createResponse = await request(app.getHttpServer())
-        .post('/questions')
-        .send({
-          label: 'initial_label',
-          tooltip: 'initial_tooltip',
-          relatedQuestions: [],
-        })
-        .expect(201);
+      const createResponse = await request(app.getHttpServer()).post('/questions').send({
+        label: 'any_label',
+        tooltip: 'any_tooltip',
+        relatedQuestions: [],
+      });
+
       questionId = createResponse.body._id;
     });
 
@@ -211,6 +209,21 @@ describe('Questions E2E', () => {
       await request(app.getHttpServer())
         .patch(`/questions/${questionId}`)
         .send({ relatedQuestions: [questionId] })
+        .expect(400);
+    });
+
+    it('should return 400 if relatedQuestions are not active', async () => {
+      const response = await request(app.getHttpServer()).post('/questions').send({
+        label: 'inactive_question',
+        tooltip: 'inactive_tooltip',
+        relatedQuestions: [],
+      });
+
+      await request(app.getHttpServer()).patch(`/questions/${response.body._id}`).send({ isActive: false }).expect(200);
+
+      await request(app.getHttpServer())
+        .patch(`/questions/${questionId}`)
+        .send({ relatedQuestions: [response.body._id] })
         .expect(400);
     });
   });
