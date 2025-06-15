@@ -52,8 +52,8 @@ export class ClaimsService implements IClaimService {
 
   async update(id: string, updateClaimDto: UpdateClaimDto): Promise<Claim> {
     if (updateClaimDto.relatedQuestion) {
-      const existingQuestions = await this.questionService.findById(updateClaimDto.relatedQuestion);
-      if (!existingQuestions) {
+      const existingQuestions = await this.questionService.findByIdsActive([updateClaimDto.relatedQuestion]);
+      if (existingQuestions.length !== 1) {
         throw new BadRequestException(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
       }
     }
