@@ -207,9 +207,9 @@ export const EditarTese = ({ id }: { id: string }) => {
               </div>
             </div>
             <div className='space-y-2'>
-              <Label className='text-gray-700 font-medium'>Pergunta Relacionada</Label>
+              <Label className='text-gray-700 font-medium'>Pergunta Relacionada (opcional)</Label>
               <Select
-                value={perguntaSelecionada?._id}
+                value={perguntaSelecionada?._id || 'none'}
                 onValueChange={value => {
                   if (value === 'none') {
                     setPerguntaSelecionada(null);
@@ -221,7 +221,7 @@ export const EditarTese = ({ id }: { id: string }) => {
                 }}
               >
                 <SelectTrigger className='w-full'>
-                  <SelectValue placeholder='Selecione uma pergunta relacionada (opcional)' />
+                  <SelectValue placeholder='Selecione uma pergunta relacionada' />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value='none'>Nenhuma pergunta relacionada</SelectItem>
