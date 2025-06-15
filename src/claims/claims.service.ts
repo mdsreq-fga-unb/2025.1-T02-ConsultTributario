@@ -17,8 +17,8 @@ export class ClaimsService implements IClaimService {
 
   async create(createClaimDto: CreateClaimDto): Promise<Claim> {
     if (createClaimDto.relatedQuestion) {
-      const existingQuestions = await this.questionService.findById(createClaimDto.relatedQuestion);
-      if (!existingQuestions) {
+      const existingQuestions = await this.questionService.findByIdsActive([createClaimDto.relatedQuestion]);
+      if (existingQuestions.length !== 1) {
         throw new BadRequestException(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
       }
     }

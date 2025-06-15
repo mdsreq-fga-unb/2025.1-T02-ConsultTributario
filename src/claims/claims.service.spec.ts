@@ -35,6 +35,7 @@ const claimModelMock = {
 
 const questionServiceMock = {
   findById: jest.fn().mockResolvedValue({ _id: 'relatedQuestionId' }),
+  findByIdsActive: jest.fn().mockResolvedValue([{ _id: 'relatedQuestionId' }]),
 };
 
 describe('ClaimsService', () => {
@@ -100,7 +101,7 @@ describe('ClaimsService', () => {
         relatedQuestion: 'invalid_id',
       };
 
-      questionServiceMock.findById.mockReturnValue(null);
+      questionServiceMock.findByIdsActive.mockReturnValue([]);
 
       await expect(service.create(createClaimDto)).rejects.toThrow(BadRequestException);
       expect(model.create).not.toHaveBeenCalled();
@@ -203,7 +204,7 @@ describe('ClaimsService', () => {
         exec: jest.fn().mockResolvedValue(null),
       } as any);
 
-      await expect(service.update('nonexistent_id', updateClaimDto)).rejects.toThrow(BadRequestException);
+      await expect(service.update('nonexistent_id', updateClaimDto)).rejects.toThrow(NotFoundException);
     });
 
     it('should throw an error if invalid related question is provided', async () => {
