@@ -75,29 +75,48 @@ export const CadastrarTese = () => {
     if (!formData.title.trim()) {
       novosErros.title = 'O título é obrigatório';
     } else {
-      // Verifica se já existe uma tese com o mesmo título
       const tituloExiste = tesesExistentes.some(
-        tese => tese.title.toLowerCase() === formData.title.toLowerCase()
+        tese => tese.title.toLowerCase().trim() === formData.title.toLowerCase().trim()
       );
       if (tituloExiste) {
         novosErros.title = 'Já existe uma tese com este título';
       }
     }
 
+    if (formData.title.length > 150) {
+      novosErros.title = 'O título deve ter no máximo 150 caracteres';
+    }
+
     if (!formData.objective.trim()) {
       novosErros.objective = 'O objetivo é obrigatório';
+    }
+
+    if (formData.objective.length > 1000) {
+      novosErros.objective = 'O objetivo deve ter no máximo 1000 caracteres';
     }
 
     if (!formData.summary.trim()) {
       novosErros.summary = 'O resumo é obrigatório';
     }
 
+    if (formData.summary.length > 5000) {
+      novosErros.summary = 'O resumo deve ter no máximo 5000 caracteres';
+    }
+
     if (!formData.recoverable_period.trim()) {
       novosErros.recoverable_period = 'O período recuperável é obrigatório';
     }
 
+    if (formData.recoverable_period.length > 1000) {
+      novosErros.recoverable_period = 'O período recuperável deve ter no máximo 1000 caracteres';
+    }
+
     if (!formData.recoverable_value.trim()) {
       novosErros.recoverable_value = 'O valor recuperável é obrigatório';
+    }
+
+    if (formData.recoverable_value.length > 1000) {
+      novosErros.recoverable_value = 'O valor recuperável deve ter no máximo 1000 caracteres';
     }
 
     setErros(novosErros);
@@ -169,8 +188,16 @@ export const CadastrarTese = () => {
                 onChange={e => atualizarCampo('title', e.target.value)}
                 placeholder='Digite o título da tese'
                 className={erros.title ? 'border-red-500' : ''}
+                maxLength={150}
               />
-              {erros.title && <p className='text-sm text-red-500'>{erros.title}</p>}
+              <div className='flex justify-between items-center'>
+                {erros.title && <p className='text-sm text-red-500'>{erros.title}</p>}
+                <p
+                  className={`text-sm ml-auto ${formData.title.length > 150 ? 'text-red-500' : 'text-gray-500'}`}
+                >
+                  {formData.title.length}/150
+                </p>
+              </div>
             </div>
 
             {/* Objetivo */}
@@ -185,8 +212,16 @@ export const CadastrarTese = () => {
                 placeholder='Descreva o objetivo da tese'
                 className={`resize-none ${erros.objective ? 'border-red-500' : ''}`}
                 rows={4}
+                maxLength={1000}
               />
-              {erros.objective && <p className='text-sm text-red-500'>{erros.objective}</p>}
+              <div className='flex justify-between items-center'>
+                {erros.objective && <p className='text-sm text-red-500'>{erros.objective}</p>}
+                <p
+                  className={`text-sm ml-auto ${formData.objective.length > 1000 ? 'text-red-500' : 'text-gray-500'}`}
+                >
+                  {formData.objective.length}/1000
+                </p>
+              </div>
             </div>
 
             {/* Resumo */}
@@ -201,8 +236,16 @@ export const CadastrarTese = () => {
                 placeholder='Digite um resumo da tese'
                 className={`resize-none ${erros.summary ? 'border-red-500' : ''}`}
                 rows={6}
+                maxLength={5000}
               />
-              {erros.summary && <p className='text-sm text-red-500'>{erros.summary}</p>}
+              <div className='flex justify-between items-center'>
+                {erros.summary && <p className='text-sm text-red-500'>{erros.summary}</p>}
+                <p
+                  className={`text-sm ml-auto ${formData.summary.length > 5000 ? 'text-red-500' : 'text-gray-500'}`}
+                >
+                  {formData.summary.length}/5000
+                </p>
+              </div>
             </div>
 
             {/* Período Recuperável e Valor Recuperável */}
@@ -217,11 +260,19 @@ export const CadastrarTese = () => {
                   onChange={e => atualizarCampo('recoverable_period', e.target.value)}
                   placeholder='Ex: 12 meses, 5 anos'
                   className={`resize-none ${erros.recoverable_period ? 'border-red-500' : ''}`}
-                  rows={2}
+                  rows={4}
+                  maxLength={1000}
                 />
-                {erros.recoverable_period && (
-                  <p className='text-sm text-red-500'>{erros.recoverable_period}</p>
-                )}
+                <div className='flex justify-between items-center'>
+                  {erros.recoverable_period && (
+                    <p className='text-sm text-red-500'>{erros.recoverable_period}</p>
+                  )}
+                  <p
+                    className={`text-sm ml-auto ${formData.recoverable_period.length > 1000 ? 'text-red-500' : 'text-gray-500'}`}
+                  >
+                    {formData.recoverable_period.length}/1000
+                  </p>
+                </div>
               </div>
 
               <div className='space-y-2'>
@@ -234,11 +285,19 @@ export const CadastrarTese = () => {
                   onChange={e => atualizarCampo('recoverable_value', e.target.value)}
                   placeholder='Ex: R$ 10.000,00'
                   className={`resize-none ${erros.recoverable_value ? 'border-red-500' : ''}`}
-                  rows={2}
+                  rows={4}
+                  maxLength={1000}
                 />
-                {erros.recoverable_value && (
-                  <p className='text-sm text-red-500'>{erros.recoverable_value}</p>
-                )}
+                <div className='flex justify-between items-center'>
+                  {erros.recoverable_value && (
+                    <p className='text-sm text-red-500'>{erros.recoverable_value}</p>
+                  )}
+                  <p
+                    className={`text-sm ml-auto ${formData.recoverable_value.length > 1000 ? 'text-red-500' : 'text-gray-500'}`}
+                  >
+                    {formData.recoverable_value.length}/1000
+                  </p>
+                </div>
               </div>
             </div>
 
