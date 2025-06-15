@@ -231,6 +231,8 @@ describe('ClaimsService', () => {
         taxType: 'valid_taxType_id',
       };
 
+      jest.spyOn(questionServiceMock, 'findByIdsActive').mockResolvedValue([{ _id: 'relatedQuestionId' }]);
+
       model.findByIdAndUpdate.mockReturnValue({
         populate: jest.fn().mockReturnThis(),
         exec: jest.fn().mockResolvedValue(null),
@@ -249,7 +251,7 @@ describe('ClaimsService', () => {
         relatedQuestion: 'invalid_id',
       };
 
-      questionServiceMock.findById.mockReturnValue(null);
+      questionServiceMock.findByIdsActive.mockReturnValue([]);
 
       await expect(service.update('1', updateClaimDto)).rejects.toThrow(BadRequestException);
       expect(model.create).not.toHaveBeenCalled();
