@@ -24,6 +24,9 @@ export const PerguntasJuridicas = () => {
   const [excluirDialogAberto, setExcluirDialogAberto] = useState(false);
   const [perguntaAtual, setPerguntaAtual] = useState<IQuestion | null>(null);
 
+  // Estado para controlar o filtro
+  const [filtro, setFiltro] = useState<'todas' | 'ativas' | 'inativas'>('ativas');
+
   // Hook para buscar perguntas da API
   const {
     questions: perguntas,
@@ -45,7 +48,6 @@ export const PerguntasJuridicas = () => {
       />
     );
   }
-
   // Função para alternar a expansão de uma pergunta
   const toggleExpansao = (id: string) => {
     if (expandida === id) {
@@ -54,6 +56,13 @@ export const PerguntasJuridicas = () => {
       setExpandida(id);
     }
   };
+
+  // Função para filtrar perguntas baseado no estado selecionado
+  const perguntasFiltradas = perguntas.filter(pergunta => {
+    if (filtro === 'ativas') return pergunta.isActive;
+    if (filtro === 'inativas') return !pergunta.isActive;
+    return true; // 'todas'
+  });
 
   // Função para adicionar uma nova pergunta
   const adicionarPergunta = async (pergunta: IQuestionCreate) => {
@@ -133,14 +142,58 @@ export const PerguntasJuridicas = () => {
           Criar Pergunta
         </Button>
       </div>
-
+      {/* Filtros */}
+      <div className='p-4 border-b border-gray-100'>
+        <div className='flex gap-2'>
+          <Button
+            variant={filtro === 'ativas' ? 'default' : 'outline'}
+            size='sm'
+            onClick={() => setFiltro('ativas')}
+            className={
+              filtro === 'ativas'
+                ? 'bg-green-600 hover:bg-green-700'
+                : 'text-gray-600 hover:text-green-600'
+            }
+          >
+            Ativas ({perguntas.filter(p => p.isActive).length})
+          </Button>
+          <Button
+            variant={filtro === 'inativas' ? 'default' : 'outline'}
+            size='sm'
+            onClick={() => setFiltro('inativas')}
+            className={
+              filtro === 'inativas'
+                ? 'bg-gray-600 hover:bg-gray-700'
+                : 'text-gray-600 hover:text-gray-600'
+            }
+          >
+            Inativas ({perguntas.filter(p => !p.isActive).length})
+          </Button>
+          <Button
+            variant={filtro === 'todas' ? 'default' : 'outline'}
+            size='sm'
+            onClick={() => setFiltro('todas')}
+            className={
+              filtro === 'todas'
+                ? 'bg-[#0099ff] hover:bg-[#0077cc]'
+                : 'text-gray-600 hover:text-[#0099ff]'
+            }
+          >
+            Todas ({perguntas.length})
+          </Button>
+        </div>
+      </div>{' '}
       <div className='divide-y divide-gray-100'>
-        {perguntas.length === 0 ? (
+        {perguntasFiltradas.length === 0 ? (
           <div className='p-8 text-center text-gray-500'>
-            Nenhuma pergunta cadastrada. Clique em &quot;Criar Pergunta&quot; para adicionar.
+            {filtro === 'todas'
+              ? 'Nenhuma pergunta cadastrada. Clique em "Criar Pergunta" para adicionar.'
+              : filtro === 'ativas'
+                ? 'Nenhuma pergunta ativa encontrada.'
+                : 'Nenhuma pergunta inativa encontrada.'}
           </div>
         ) : (
-          perguntas.map(pergunta => (
+          perguntasFiltradas.map(pergunta => (
             <div key={pergunta._id} className='transition-all duration-200'>
               <div
                 className={`p-4 flex justify-between items-center cursor-pointer hover:bg-gray-50
@@ -238,7 +291,6 @@ export const PerguntasJuridicas = () => {
           ))
         )}
       </div>
-
       {/* Diálogo para criar pergunta */}
       <CriarPerguntaDialog
         aberto={criarDialogAberto}
@@ -246,7 +298,6 @@ export const PerguntasJuridicas = () => {
         onSalvar={adicionarPergunta}
         perguntas={perguntas}
       />
-
       {/* Diálogo para editar pergunta */}
       {perguntaAtual && (
         <EditarPerguntaDialog
@@ -257,7 +308,6 @@ export const PerguntasJuridicas = () => {
           perguntas={perguntas.filter(p => p._id !== perguntaAtual._id)}
         />
       )}
-
       {/* Diálogo para confirmar exclusão */}
       {/* <ConfirmarExclusaoDialog
         aberto={excluirDialogAberto}
