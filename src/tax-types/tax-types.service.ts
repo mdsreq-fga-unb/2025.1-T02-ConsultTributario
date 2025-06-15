@@ -14,21 +14,13 @@ export class TaxTypesService implements ITaxTypesService {
     return this.taxTypeModel.find().exec();
   }
 
-  async findById(id: string): Promise<TaxType> {
+  async findById(id: string): Promise<TaxType | null> {
     const taxType = await this.taxTypeModel.findById(id).exec();
-    if (!taxType) {
-      throw new BadRequestException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
-    }
-
     return taxType;
   }
 
-  async findByName(name: string): Promise<TaxType> {
+  async findByName(name: string): Promise<TaxType | null> {
     const taxType = await this.taxTypeModel.findOne({ name }).exec();
-    if (!taxType) {
-      throw new BadRequestException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
-    }
-
     return taxType;
   }
 
