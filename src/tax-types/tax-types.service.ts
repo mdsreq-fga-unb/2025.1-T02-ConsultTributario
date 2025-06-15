@@ -14,8 +14,22 @@ export class TaxTypesService implements ITaxTypesService {
     return this.taxTypeModel.find().exec();
   }
 
-  async findByName(name: string): Promise<TaxType | null> {
-    return this.taxTypeModel.findOne({ name }).exec();
+  async findById(id: string): Promise<TaxType> {
+    const taxType = await this.taxTypeModel.findById(id).exec();
+    if (!taxType) {
+      throw new BadRequestException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
+    }
+
+    return taxType;
+  }
+
+  async findByName(name: string): Promise<TaxType> {
+    const taxType = await this.taxTypeModel.findOne({ name }).exec();
+    if (!taxType) {
+      throw new BadRequestException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
+    }
+
+    return taxType;
   }
 
   async create(createTaxTypeDto: CreateTaxTypeDto): Promise<TaxType> {
