@@ -4,19 +4,19 @@ import { Question } from '../../questions/schemas/question.schema';
 
 @Schema({ timestamps: true })
 export class Claim extends Document {
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true, unique: true, maxlength: 150 })
   title: string;
 
-  @Prop()
+  @Prop({ required: true, maxlength: 1000 })
   objective: string;
 
-  @Prop()
+  @Prop({ required: true, maxlength: 5000 })
   summary: string;
 
-  @Prop()
+  @Prop({ required: true, maxlength: 1000 })
   recoverable_period: string;
 
-  @Prop()
+  @Prop({ required: true, maxlength: 1000 })
   recoverable_value: string;
 
   @Prop({
