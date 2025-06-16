@@ -44,6 +44,8 @@ export const EditarTese = ({ id }: { id: string }) => {
           summary: tese.summary,
           recoverable_period: tese.recoverable_period,
           recoverable_value: tese.recoverable_value,
+          relatedQuestion: tese.relatedQuestion ? tese.relatedQuestion._id : null,
+          taxType: tese.taxType.name,
         });
         if (tese.relatedQuestion) {
           setPerguntaSelecionada({

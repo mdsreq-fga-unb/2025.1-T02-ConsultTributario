@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 import { createClaim, useGetClaims } from '@/api/claim';
 import { useGetQuestions } from '@/api/question';
+import { useGetTaxTypes } from '@/api/taxType';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -25,6 +26,7 @@ export const CadastrarTese = () => {
   const router = useRouter();
   const { toast } = useToast();
   const { claims: tesesExistentes } = useGetClaims();
+  const { taxTypes, taxTypesLoading } = useGetTaxTypes();
 
   // Estados do formulário
   const [formData, setFormData] = useState<ICreateClaim>({
@@ -33,6 +35,8 @@ export const CadastrarTese = () => {
     summary: '',
     recoverable_period: '',
     recoverable_value: '',
+    relatedQuestion: null,
+    taxType: '',
   });
 
   // Estados de controle
@@ -119,11 +123,14 @@ export const CadastrarTese = () => {
       novosErros.recoverable_value = 'O valor recuperável deve ter no máximo 1000 caracteres';
     }
 
+    if (!formData.taxType.trim()) {
+      novosErros.taxType = 'O tipo de imposto é obrigatório';
+    }
+
     setErros(novosErros);
     return Object.keys(novosErros).length === 0;
   };
 
-  // Função para salvar a tese
   const salvarTese = async () => {
     if (!validarFormulario()) {
       return;
@@ -133,7 +140,7 @@ export const CadastrarTese = () => {
       setSalvando(true);
       const dadosParaEnviar = {
         ...formData,
-        relatedQuestion: perguntaSelecionada?._id,
+        relatedQuestion: perguntaSelecionada?._id ? perguntaSelecionada._id : null,
       };
       await createClaim(dadosParaEnviar);
 
@@ -143,7 +150,6 @@ export const CadastrarTese = () => {
         description: 'Tese cadastrada com sucesso',
       });
 
-      // Redirecionar para a lista de teses
       router.push('/biblioteca-teses');
     } catch (error) {
       const mensagemErro = error instanceof Error ? error.message : 'Erro ao cadastrar tese';
@@ -299,6 +305,39 @@ export const CadastrarTese = () => {
                   </p>
                 </div>
               </div>
+            </div>
+
+            {/* Tipo de Imposto */}
+            <div className='space-y-2'>
+              <Label htmlFor='taxType' className='text-gray-700 font-medium'>
+                Tipo de Tributo <span className='text-red-500'>*</span>
+              </Label>
+              <Select
+                value={formData.taxType}
+                onValueChange={value => atualizarCampo('taxType', value)}
+              >
+                <SelectTrigger className={`max-w-60 ${erros.taxType ? 'border-red-500' : ''}`}>
+                  <SelectValue placeholder='Selecione um tipo de tributo' />
+                </SelectTrigger>
+                <SelectContent>
+                  {taxTypesLoading ? (
+                    <SelectItem value='loading' disabled>
+                      Carregando tipos de tributos...
+                    </SelectItem>
+                  ) : taxTypes.length === 0 ? (
+                    <SelectItem value='empty' disabled>
+                      Nenhum tipo de tributo disponível
+                    </SelectItem>
+                  ) : (
+                    taxTypes.map(taxType => (
+                      <SelectItem key={taxType._id} value={taxType._id}>
+                        {taxType.name}
+                      </SelectItem>
+                    ))
+                  )}
+                </SelectContent>
+              </Select>
+              {erros.taxType && <p className='text-sm text-red-500'>{erros.taxType}</p>}
             </div>
 
             {/* Pergunta Relacionada */}
