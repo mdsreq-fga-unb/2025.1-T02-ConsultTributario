@@ -1,11 +1,14 @@
 ## Histórico de Versão:
-| Data | Versão | Descrição | Autor |
-|---- | ------ | --------- | ----- |
-| 17/05/25 | 1.0 | Criação do Documento | Artur Krauspenhar |
+
+| Data     | Versão | Descrição                   | Autor             |
+| -------- | ------ | --------------------------- | ----------------- |
+| 17/05/25 | 1.0    | Criação do Documento        | Artur Krauspenhar |
+| 16/06/25 | 1.1    | Faz correçcões no documento | Artur Krauspenhar |
 
 # 8. DoR e DoD
 
 ## 8.1 Definiton of Ready (DoR)
+
 A Definition of Ready (DoR) é um conjunto de critérios que um item ou uma User Story do Backlog deve atender para ser considerando pronto para iniciar o trabalho desse item. Assim que um item do Backlog atende a esses critérios, ele é puxado para ser trabalhado durante a Sprint. Para que um item possa ser considerado 'Ready', ele precisa atender aos seguintes critérios:
 
 - **A História de Usuário foi construída no formato "Eu como [Ator], devo ser capaz de [o que fazer], para que [objetivo]"?**
@@ -16,11 +19,12 @@ A Definition of Ready (DoR) é um conjunto de critérios que um item ou uma User
 - **O requisito está bem alinhado com o cliente?** O requisito deve estar bem entendido entre o cliente e a equipe, para que assim o processo de desenvolvimento possa começar com ambas as partes em acordo.
 
 ## 8.2 Definition of Done (DoD)
+
 Se a DoR é um conjunto de critérios para que um item seja considerado adequado para começar a se trabalhar nele, então a Definition of Done (DoD) é o conjunto de critérios que um item precisa ter para ser considerado como terminado. Sendo esse conjunto de critérios descritos abaixo:
 
 - **Os critérios de aceitação definidos com os stakeholders foram atendidos?** O requisito deve conter todas as ações e comportamentos esperados pelos stakeholders, assim como foi definido anteriormente.
 - **O backend foi integrado ao frontend (Caso necessário)?** Backend e frontend devem ser integrados corretamete.
+- **A funcionalidade implementada possui, no mínimo, 80% de cobertura de testes unitários no back-end?** Essa porcentagem deve ser comprovada por relatório de cobertura gerado pela ferramenta Jest. Funcionalidades de front-end estão isentas deste critério.
 - **Todo o código passou por revisão de pares para garantir qualidade e aderência aos padrões do projeto, isto é, 2 revisores aprovaram o código?** Pelo processo de desenvolvimento de software aderido, ScrumXP, a revisão é feita também em pares.
-- **O código possui cobertura de testes de no mínimo 80%?**
 - **A funcionalidade foi integrada ao branch principal sem conflitos?** A funcionalidade não pode conter conflitos ou interferir de alguma forma no funcionamento de outra funcionalidade ou do projeto como um todo.
-- **A funcionalidade está disponível em um ambiente de homologação ou produção, pronta para validação?** A cada entrega, o ambiente que contém as funcionalidades desenvolvidas deve estar disponível para que as stakeholdes possam ter acesso.
+- **A funcionalidade está disponível em um ambiente de homologação, pronta para validação?** A cada entrega, o ambiente que contém as funcionalidades desenvolvidas deve estar disponível para que os stakeholdes e o PO possam ter acesso e validar.
