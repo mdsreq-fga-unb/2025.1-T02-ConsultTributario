@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 
 import { useGetClaims, updateClaim } from '@/api/claim';
 import { useGetQuestions } from '@/api/question';
+import { useGetTaxTypes } from '@/api/taxType';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -33,19 +34,21 @@ export const EditarTese = ({ id }: { id: string }) => {
   } | null>(null);
   const [salvando, setSalvando] = useState(false);
   const [erros, setErros] = useState<Record<string, string>>({});
+  const { taxTypes, taxTypesLoading } = useGetTaxTypes();
 
   useEffect(() => {
-    if (!claimsLoading) {
+    if (!claimsLoading && !taxTypesLoading) {
       const tese = teses.find((t: IClaim) => t._id === id);
       if (tese) {
+        const taxTypeId = taxTypes.find(taxType => taxType.name === tese.taxType.name)?._id || '';
+
         setFormData({
           title: tese.title,
           objective: tese.objective,
           summary: tese.summary,
           recoverable_period: tese.recoverable_period,
           recoverable_value: tese.recoverable_value,
-          relatedQuestion: tese.relatedQuestion ? tese.relatedQuestion._id : null,
-          taxType: tese.taxType.name,
+          taxType: taxTypeId,
         });
         if (tese.relatedQuestion) {
           setPerguntaSelecionada({
@@ -55,7 +58,7 @@ export const EditarTese = ({ id }: { id: string }) => {
         }
       }
     }
-  }, [teses, id, claimsLoading]);
+  }, [teses, id, claimsLoading, taxTypes, taxTypesLoading]);
 
   const atualizarCampo = <T extends keyof ICreateClaim>(
     campo: T,
@@ -109,7 +112,7 @@ export const EditarTese = ({ id }: { id: string }) => {
     }
   };
 
-  if (claimsLoading || !formData) {
+  if (claimsLoading || taxTypesLoading || !formData) {
     return (
       <div className='max-w-6xl mx-auto'>
         <div className='bg-white rounded-md border border-gray-200 p-8 text-center'>
@@ -208,6 +211,40 @@ export const EditarTese = ({ id }: { id: string }) => {
                 )}
               </div>
             </div>
+
+            {/* Tipo de Imposto */}
+            <div className='space-y-2'>
+              <Label htmlFor='taxType' className='text-gray-700 font-medium'>
+                Tipo de Tributo <span className='text-red-500'>*</span>
+              </Label>
+              <Select
+                value={formData.taxType}
+                onValueChange={value => atualizarCampo('taxType', value)}
+              >
+                <SelectTrigger className={`max-w-60 ${erros.taxType ? 'border-red-500' : ''}`}>
+                  <SelectValue placeholder='Selecione um tipo de tributo' />
+                </SelectTrigger>
+                <SelectContent>
+                  {taxTypesLoading ? (
+                    <SelectItem value='loading' disabled>
+                      Carregando tipos de tributos...
+                    </SelectItem>
+                  ) : taxTypes.length === 0 ? (
+                    <SelectItem value='empty' disabled>
+                      Nenhum tipo de tributo disponível
+                    </SelectItem>
+                  ) : (
+                    taxTypes.map(taxType => (
+                      <SelectItem key={taxType._id} value={taxType._id}>
+                        {taxType.name}
+                      </SelectItem>
+                    ))
+                  )}
+                </SelectContent>
+              </Select>
+              {erros.taxType && <p className='text-sm text-red-500'>{erros.taxType}</p>}
+            </div>
+
             <div className='space-y-2'>
               <Label className='text-gray-700 font-medium'>Pergunta Relacionada (opcional)</Label>
               <Select
