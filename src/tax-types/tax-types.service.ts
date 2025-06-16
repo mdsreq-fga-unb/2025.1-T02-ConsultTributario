@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { ITaxTypesService } from '@/shared/interfaces/tax-types.interface';
 import { TaxType } from './schemas/category.schema';
 import { InjectModel } from '@nestjs/mongoose';
@@ -37,7 +37,7 @@ export class TaxTypesService implements ITaxTypesService {
   async update(id: string, updateTaxTypeDto: UpdateTaxTypeDto): Promise<TaxType> {
     const existingTaxType = await this.findById(id);
     if (!existingTaxType) {
-      throw new BadRequestException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
+      throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
     }
 
     if (updateTaxTypeDto.name) {
