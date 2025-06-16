@@ -25,7 +25,7 @@ export interface ICreateClaim {
   summary: string;
   recoverable_period: string;
   recoverable_value: string;
-  relatedQuestion: string | null;
+  relatedQuestion?: string | null;
   taxType: string;
 }
 
@@ -35,6 +35,6 @@ export interface IUpdateClaim {
   summary: string;
   recoverable_period: string;
   recoverable_value: string;
-  relatedQuestion: string | null;
+  relatedQuestion?: string | null;
   taxType: string;
 }
