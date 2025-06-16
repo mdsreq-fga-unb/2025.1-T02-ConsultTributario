@@ -5,6 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateTaxTypeDto } from './dto/create-tax-type.dto';
 import { ERROR_MESSAGES } from '@/common/constants/app.constants';
+import { UpdateTaxTypeDto } from './dto/update-tax-type.dto';
 
 @Injectable()
 export class TaxTypesService implements ITaxTypesService {
@@ -25,11 +26,33 @@ export class TaxTypesService implements ITaxTypesService {
   }
 
   async create(createTaxTypeDto: CreateTaxTypeDto): Promise<TaxType> {
-    const existingTaxType = await this.findByName(createTaxTypeDto.name);
-    if (existingTaxType) {
+    const existingTaxTypeName = await this.findByName(createTaxTypeDto.name);
+    if (existingTaxTypeName) {
       throw new BadRequestException(ERROR_MESSAGES.TAX_TYPE_NAME_EXISTS);
     }
 
     return this.taxTypeModel.create(createTaxTypeDto);
+  }
+
+  async update(id: string, updateTaxTypeDto: UpdateTaxTypeDto): Promise<TaxType> {
+    const existingTaxType = await this.findById(id);
+    if (!existingTaxType) {
+      throw new BadRequestException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
+    }
+
+    if (updateTaxTypeDto.name) {
+      const existingTaxTypeName = await this.findByName(updateTaxTypeDto.name);
+      if (existingTaxTypeName) {
+        throw new BadRequestException(ERROR_MESSAGES.TAX_TYPE_NAME_EXISTS);
+      }
+    }
+
+    const updatedTaxType = await this.taxTypeModel.findByIdAndUpdate(id, updateTaxTypeDto, { new: true }).exec();
+
+    if (!updatedTaxType) {
+      throw new BadRequestException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
+    }
+
+    return updatedTaxType;
   }
 }
