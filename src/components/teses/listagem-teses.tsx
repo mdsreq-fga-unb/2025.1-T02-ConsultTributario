@@ -140,7 +140,7 @@ export const ListagemTeses = ({
                       <h3 className='text-blue-500 font-semibold'>OBJETIVO</h3>
                     </div>
                     {detalhesExpandidos[tese._id]?.['OBJETIVO'] && (
-                      <div className='mt-3 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300'>
+                      <div className='mt-3 pl-6 text-gray-700 animate-in fade-in-0 slide-in-from-top-2 duration-300 whitespace-pre-wrap'>
                         {tese.objective}
                       </div>
                     )}
