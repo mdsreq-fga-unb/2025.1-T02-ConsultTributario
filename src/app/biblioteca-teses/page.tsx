@@ -19,12 +19,19 @@ const BibliotecaTesesPage = () => {
     <div className='container mx-auto px-4 py-8'>
       <div className='flex justify-between items-center mb-8'>
         <h1 className='text-3xl font-semibold text-gray-800'>Biblioteca de Teses</h1>
-        <Link href='/biblioteca-teses/cadastrar-nova'>
-          <Button className='bg-[#0099ff] hover:bg-[#0077cc] text-white'>
+        {erro || carregando ? (
+          <Button className='bg-[#0099ff] hover:bg-[#0077cc] text-white' disabled={true}>
             <Plus className='h-4 w-4 mr-2' />
             Cadastrar Tese
           </Button>
-        </Link>
+        ) : (
+          <Link href='/biblioteca-teses/cadastrar-nova'>
+            <Button className='bg-[#0099ff] hover:bg-[#0077cc] text-white'>
+              <Plus className='h-4 w-4 mr-2' />
+              Cadastrar Tese
+            </Button>
+          </Link>
+        )}
       </div>
       <ListagemTeses
         teses={teses}

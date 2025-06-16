@@ -44,6 +44,8 @@ export const EditarTese = ({ id }: { id: string }) => {
           summary: tese.summary,
           recoverable_period: tese.recoverable_period,
           recoverable_value: tese.recoverable_value,
+          relatedQuestion: tese.relatedQuestion ? tese.relatedQuestion._id : null,
+          taxType: tese.taxType.name,
         });
         if (tese.relatedQuestion) {
           setPerguntaSelecionada({
@@ -132,7 +134,7 @@ export const EditarTese = ({ id }: { id: string }) => {
       </div>
       <Card className='shadow-sm border border-gray-100'>
         <CardHeader className='border-b border-gray-100'>
-          <CardTitle className='text-xl font-semibold text-gray-800'>Editar Tese</CardTitle>
+          <CardTitle className='text-xl font-semibold text-gray-800'>Informações da Tese</CardTitle>
         </CardHeader>
         <CardContent className='p-6'>
           <div className='space-y-6'>
@@ -207,9 +209,9 @@ export const EditarTese = ({ id }: { id: string }) => {
               </div>
             </div>
             <div className='space-y-2'>
-              <Label className='text-gray-700 font-medium'>Pergunta Relacionada</Label>
+              <Label className='text-gray-700 font-medium'>Pergunta Relacionada (opcional)</Label>
               <Select
-                value={perguntaSelecionada?._id}
+                value={perguntaSelecionada?._id || 'none'}
                 onValueChange={value => {
                   if (value === 'none') {
                     setPerguntaSelecionada(null);
@@ -221,7 +223,7 @@ export const EditarTese = ({ id }: { id: string }) => {
                 }}
               >
                 <SelectTrigger className='w-full'>
-                  <SelectValue placeholder='Selecione uma pergunta relacionada (opcional)' />
+                  <SelectValue placeholder='Selecione uma pergunta relacionada' />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value='none'>Nenhuma pergunta relacionada</SelectItem>
