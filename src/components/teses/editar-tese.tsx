@@ -132,7 +132,7 @@ export const EditarTese = ({ id }: { id: string }) => {
       </div>
       <Card className='shadow-sm border border-gray-100'>
         <CardHeader className='border-b border-gray-100'>
-          <CardTitle className='text-xl font-semibold text-gray-800'>Editar Tese</CardTitle>
+          <CardTitle className='text-xl font-semibold text-gray-800'>Informações da Tese</CardTitle>
         </CardHeader>
         <CardContent className='p-6'>
           <div className='space-y-6'>
