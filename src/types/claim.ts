@@ -1,3 +1,5 @@
+import { IMinimalTaxType } from './taxType';
+
 export interface IRelatedQuestion {
   _id: string;
   label: string;
@@ -13,6 +15,7 @@ export interface IClaim {
   recoverable_value: string;
   createdAt: string;
   updatedAt: string;
+  taxType: IMinimalTaxType;
   relatedQuestion: IRelatedQuestion;
 }
 
@@ -22,7 +25,8 @@ export interface ICreateClaim {
   summary: string;
   recoverable_period: string;
   recoverable_value: string;
-  relatedQuestion?: string;
+  relatedQuestion: string | null;
+  taxType: string;
 }
 
 export interface IUpdateClaim {
@@ -32,4 +36,5 @@ export interface IUpdateClaim {
   recoverable_period: string;
   recoverable_value: string;
   relatedQuestion: string | null;
+  taxType: string;
 }

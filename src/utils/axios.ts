@@ -108,4 +108,9 @@ export const endpoints = {
     delete: (id: string) => `/diagnoses/${id}`,
     recommendations: (id: string) => `/diagnoses/${id}/recommendations`,
   },
+  taxTypes: {
+    list: '/tax-types',
+    create: '/tax-types',
+    update: (id: string) => `/tax-types/${id}`,
+  },
 };
