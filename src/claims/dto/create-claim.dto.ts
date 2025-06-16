@@ -27,6 +27,11 @@ export class CreateClaimDto {
   recoverable_value: string;
 
   @IsString()
+  @IsNotEmpty()
+  @IsMongoId()
+  taxType: string;
+
+  @IsString()
   @IsOptional()
   @IsMongoId()
   relatedQuestion?: string;

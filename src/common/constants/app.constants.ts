@@ -11,9 +11,13 @@ export const ERROR_MESSAGES = {
 
   // Claim-specific errors
   CLAIM_TITLE_EXISTS: 'Claim title already exists',
+  INVALID_TAX_TYPE: 'Invalid tax type ID',
 
   // Diagnosis-specific errors
   INVALID_QUESTION_RESPONSES: 'Invalid question responses',
+
+  // Tax type-specific errors
+  TAX_TYPE_NAME_EXISTS: 'Tax type name already exists',
 } as const;
 
 export const VALIDATION_MESSAGES = {

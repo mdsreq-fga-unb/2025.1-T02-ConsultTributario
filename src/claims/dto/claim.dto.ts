@@ -1,5 +1,6 @@
 import { BaseEntityDto, BaseTimestampDto } from '@/shared/dtos/base.dto';
-import { Expose, Transform, Type } from 'class-transformer';
+import { MinimalTaxTypeDto } from '@/tax-types/dto/tax-type.dto';
+import { Expose, Type } from 'class-transformer';
 
 export class RelatedQuestionDto extends BaseEntityDto {
   @Expose()
@@ -24,6 +25,10 @@ export class ClaimDto extends BaseTimestampDto {
 
   @Expose()
   recoverable_value: string;
+
+  @Expose()
+  @Type(() => MinimalTaxTypeDto)
+  taxType: MinimalTaxTypeDto;
 
   @Expose()
   @Type(() => RelatedQuestionDto)

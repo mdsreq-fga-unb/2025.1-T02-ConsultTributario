@@ -1,22 +1,23 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Question } from '../../questions/schemas/question.schema';
+import { TaxType } from '@/tax-types/schemas/category.schema';
 
 @Schema({ timestamps: true })
 export class Claim extends Document {
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true, unique: true, maxlength: 150 })
   title: string;
 
-  @Prop()
+  @Prop({ required: true, maxlength: 1000 })
   objective: string;
 
-  @Prop()
+  @Prop({ required: true, maxlength: 5000 })
   summary: string;
 
-  @Prop()
+  @Prop({ required: true, maxlength: 1000 })
   recoverable_period: string;
 
-  @Prop()
+  @Prop({ required: true, maxlength: 1000 })
   recoverable_value: string;
 
   @Prop({
@@ -25,6 +26,13 @@ export class Claim extends Document {
     default: null,
   })
   relatedQuestion: Question;
+
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'TaxType',
+    required: true,
+  })
+  taxType: TaxType;
 }
 
 export const ClaimSchema = SchemaFactory.createForClass(Claim);

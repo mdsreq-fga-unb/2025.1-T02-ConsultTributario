@@ -3,11 +3,12 @@ POST http://localhost:8000/claims
 Content-Type: application/json
 
 {
-  "title": "Claim 7",
+  "title": "Claim 77",
   "objective": "Objective for claim 1",
   "summary": "Summary for claim 1",
   "recoverable_period": "12 months",
-  "recoverable_value": "1000"
+  "recoverable_value": "1000",
+  "taxType": "684f50ced5a12ba8e65241a7"
 }
 
 ### Find all claims
@@ -24,5 +25,5 @@ PATCH http://localhost:8000/claims/6842380b25c67771b102343c
 Content-Type: application/json
 
 {
-  "relatedQuestion": null
+  "taxType": "684f50ced5a12ba8e65241a7"
 }

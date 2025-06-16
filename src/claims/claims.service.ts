@@ -7,12 +7,14 @@ import { QuestionsService } from '../questions/questions.service';
 import { UpdateClaimDto } from './dto/update-claim.dto';
 import { IClaimService } from '@/shared/interfaces/claim.interface';
 import { ERROR_MESSAGES } from '@common/constants/app.constants';
+import { TaxTypesService } from '@/tax-types/tax-types.service';
 
 @Injectable()
 export class ClaimsService implements IClaimService {
   constructor(
     @InjectModel(Claim.name) private readonly claimModel: Model<Claim>,
     private readonly questionService: QuestionsService,
+    private readonly taxTypeService: TaxTypesService,
   ) {}
 
   async create(createClaimDto: CreateClaimDto): Promise<Claim> {
@@ -28,6 +30,11 @@ export class ClaimsService implements IClaimService {
       throw new BadRequestException(ERROR_MESSAGES.CLAIM_TITLE_EXISTS);
     }
 
+    const existingTaxType = await this.taxTypeService.findById(createClaimDto.taxType);
+    if (!existingTaxType) {
+      throw new BadRequestException(ERROR_MESSAGES.INVALID_TAX_TYPE);
+    }
+
     return this.claimModel.create(createClaimDto);
   }
 
@@ -40,13 +47,13 @@ export class ClaimsService implements IClaimService {
   }
 
   async findAll(): Promise<Claim[]> {
-    return this.claimModel.find().populate('relatedQuestion').exec();
+    return this.claimModel.find().populate('relatedQuestion taxType').exec();
   }
 
   async update(id: string, updateClaimDto: UpdateClaimDto): Promise<Claim> {
     if (updateClaimDto.relatedQuestion) {
-      const existingQuestions = await this.questionService.findById(updateClaimDto.relatedQuestion);
-      if (!existingQuestions) {
+      const existingQuestions = await this.questionService.findByIdsActive([updateClaimDto.relatedQuestion]);
+      if (existingQuestions.length !== 1) {
         throw new BadRequestException(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
       }
     }
@@ -54,6 +61,13 @@ export class ClaimsService implements IClaimService {
     const existingClaim = await this.claimModel.findOne({ title: updateClaimDto.title }).exec();
     if (existingClaim && existingClaim.id !== id) {
       throw new BadRequestException(ERROR_MESSAGES.CLAIM_TITLE_EXISTS);
+    }
+
+    if (updateClaimDto.taxType) {
+      const existingTaxType = await this.taxTypeService.findById(updateClaimDto.taxType);
+      if (!existingTaxType) {
+        throw new BadRequestException(ERROR_MESSAGES.INVALID_TAX_TYPE);
+      }
     }
 
     const updatedClaim = await this.claimModel

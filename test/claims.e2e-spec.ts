@@ -37,6 +37,39 @@ describe('Questions E2E', () => {
   });
 
   describe('/claims (POST)', () => {
+    let existingQuestionIdActive: string;
+    let existingQuestionIdNotActive: string;
+    let taxTypeId: string;
+
+    beforeEach(async () => {
+      await clearDatabase();
+      let response = await request(app.getHttpServer()).post('/questions').send({
+        label: 'any_label 2',
+        tooltip: 'any_tooltip',
+        relatedQuestions: [],
+      });
+
+      existingQuestionIdActive = response.body._id;
+
+      response = await request(app.getHttpServer()).post('/questions').send({
+        label: 'any_label',
+        tooltip: 'any_tooltip',
+        relatedQuestions: [],
+      });
+
+      existingQuestionIdNotActive = response.body._id;
+
+      response = await request(app.getHttpServer()).post('/tax-types').send({
+        name: 'any_name',
+      });
+
+      taxTypeId = response.body._id;
+
+      await request(app.getHttpServer()).patch(`/questions/${existingQuestionIdNotActive}`).send({
+        isActive: false,
+      });
+    });
+
     it('should create a claim with valid data', async () => {
       const res = await request(app.getHttpServer())
         .post('/claims')
@@ -46,6 +79,7 @@ describe('Questions E2E', () => {
           summary: 'Summary for claim',
           recoverable_period: '12 months',
           recoverable_value: '1000',
+          taxType: taxTypeId,
         })
         .expect(201);
 
@@ -77,6 +111,7 @@ describe('Questions E2E', () => {
         summary: 'Summary for claim 1',
         recoverable_period: '12 months',
         recoverable_value: '1000',
+        taxType: taxTypeId,
       });
 
       await request(app.getHttpServer())
@@ -86,6 +121,7 @@ describe('Questions E2E', () => {
           summary: 'Summary for claim 1',
           recoverable_period: '12 months',
           recoverable_value: '1000',
+          taxType: taxTypeId,
         })
         .expect(400);
     });
@@ -99,21 +135,12 @@ describe('Questions E2E', () => {
           recoverable_period: '12 months',
           recoverable_value: '1000',
           relatedQuestions: 'invalidObjectId',
+          taxType: taxTypeId,
         })
         .expect(400);
     });
 
     it('should return 201 if relatedQuestions contains valid ObjectId', async () => {
-      const res = await request(app.getHttpServer())
-        .post('/questions')
-        .send({
-          label: 'Question 1',
-          relatedQuestions: [],
-        })
-        .expect(201);
-
-      const questionId = res.body._id;
-
       await request(app.getHttpServer())
         .post('/claims')
         .send({
@@ -122,29 +149,13 @@ describe('Questions E2E', () => {
           summary: 'Summary for claim',
           recoverable_period: '12 months',
           recoverable_value: '1000',
-          relatedQuestion: questionId,
+          relatedQuestion: existingQuestionIdActive,
+          taxType: taxTypeId,
         })
         .expect(201);
     });
 
     it('should return 400 if relatedQuestion is not active', async () => {
-      const res = await request(app.getHttpServer())
-        .post('/questions')
-        .send({
-          label: 'Question 1',
-          relatedQuestions: [],
-        })
-        .expect(201);
-
-      const questionId = res.body._id;
-
-      await request(app.getHttpServer())
-        .patch(`/questions/${questionId}`)
-        .send({
-          isActive: false,
-        })
-        .expect(200);
-
       await request(app.getHttpServer())
         .post('/claims')
         .send({
@@ -153,16 +164,40 @@ describe('Questions E2E', () => {
           summary: 'Summary for claim',
           recoverable_period: '12 months',
           recoverable_value: '1000',
-          relatedQuestion: questionId,
+          relatedQuestion: existingQuestionIdActive,
+        })
+        .expect(400);
+    });
+
+    it('should return 400 if invalid taxType is provided', async () => {
+      await request(app.getHttpServer())
+        .post('/claims')
+        .send({
+          title: 'Claim',
+          objective: 'Objective for claim',
+          summary: 'Summary for claim',
+          recoverable_period: '12 months',
+          recoverable_value: '1000',
+          taxType: 'invalidObjectId',
         })
         .expect(400);
     });
   });
 
   describe('/claims (GET)', () => {
+    let taxTypeId: string;
+
+    beforeEach(async () => {
+      await clearDatabase();
+      const response = await request(app.getHttpServer()).post('/tax-types').send({
+        name: 'any_name',
+      });
+
+      taxTypeId = response.body._id;
+    });
+
     it('should return an empty array when no claims exist', async () => {
       const res = await request(app.getHttpServer()).get('/claims').expect(200);
-
       expect(res.body).toEqual([]);
     });
 
@@ -175,6 +210,7 @@ describe('Questions E2E', () => {
           summary: 'Summary for claim 1',
           recoverable_period: '12 months',
           recoverable_value: '1000',
+          taxType: taxTypeId,
         })
         .expect(201);
 
@@ -186,6 +222,7 @@ describe('Questions E2E', () => {
           summary: 'Summary for claim 2',
           recoverable_period: '12 months',
           recoverable_value: '1000',
+          taxType: taxTypeId,
         })
         .expect(201);
 
@@ -197,6 +234,17 @@ describe('Questions E2E', () => {
   });
 
   describe('/claims/:id (GET)', () => {
+    let taxTypeId: string;
+
+    beforeEach(async () => {
+      await clearDatabase();
+      const response = await request(app.getHttpServer()).post('/tax-types').send({
+        name: 'any_name',
+      });
+
+      taxTypeId = response.body._id;
+    });
+
     it('should return a claim by ID', async () => {
       const createRes = await request(app.getHttpServer())
         .post('/claims')
@@ -206,6 +254,7 @@ describe('Questions E2E', () => {
           summary: 'Summary for claim 1',
           recoverable_period: '12 months',
           recoverable_value: '1000',
+          taxType: taxTypeId,
         })
         .expect(201);
 
@@ -223,20 +272,52 @@ describe('Questions E2E', () => {
   });
 
   describe('/claims/:id (PATCH)', () => {
+    let existingQuestionIdActive: string;
+    let existingQuestionIdNotActive: string;
+    let taxTypeId: string;
+    let claimId: string;
+
+    beforeEach(async () => {
+      await clearDatabase();
+      let response = await request(app.getHttpServer()).post('/questions').send({
+        label: 'any_label',
+        tooltip: 'any_tooltip',
+        relatedQuestions: [],
+      });
+
+      existingQuestionIdActive = response.body._id;
+
+      response = await request(app.getHttpServer()).post('/questions').send({
+        label: 'any_label 2',
+        tooltip: 'any_tooltip',
+        relatedQuestions: [],
+      });
+
+      existingQuestionIdNotActive = response.body._id;
+
+      response = await request(app.getHttpServer()).post('/tax-types').send({
+        name: 'any_name',
+      });
+
+      taxTypeId = response.body._id;
+
+      await request(app.getHttpServer()).patch(`/questions/${existingQuestionIdNotActive}`).send({
+        isActive: false,
+      });
+
+      response = await request(app.getHttpServer()).post('/claims').send({
+        title: 'Claim 1',
+        objective: 'Objective for claim 1',
+        summary: 'Summary for claim 1',
+        recoverable_period: '12 months',
+        recoverable_value: '1000',
+        taxType: taxTypeId,
+      });
+
+      claimId = response.body._id;
+    });
+
     it('should update a claim with valid data', async () => {
-      const createRes = await request(app.getHttpServer())
-        .post('/claims')
-        .send({
-          title: 'Claim 1',
-          objective: 'Objective for claim 1',
-          summary: 'Summary for claim 1',
-          recoverable_period: '12 months',
-          recoverable_value: '1000',
-        })
-        .expect(201);
-
-      const claimId = createRes.body._id;
-
       const res = await request(app.getHttpServer())
         .patch(`/claims/${claimId}`)
         .send({
@@ -257,19 +338,6 @@ describe('Questions E2E', () => {
     });
 
     it('should return 400 if invalid data is provided', async () => {
-      const createRes = await request(app.getHttpServer())
-        .post('/claims')
-        .send({
-          title: 'Claim 1',
-          objective: 'Objective for claim 1',
-          summary: 'Summary for claim 1',
-          recoverable_period: '12 months',
-          recoverable_value: '1000',
-        })
-        .expect(201);
-
-      const claimId = createRes.body._id;
-
       await request(app.getHttpServer())
         .patch(`/claims/${claimId}`)
         .send({
@@ -277,6 +345,7 @@ describe('Questions E2E', () => {
           summary: '',
           recoverable_period: '',
           recoverable_value: '',
+          taxType: '',
         })
         .expect(400);
     });
@@ -286,19 +355,6 @@ describe('Questions E2E', () => {
     });
 
     it('should return 400 if relatedQuestion contains invalid ObjectId', async () => {
-      const createRes = await request(app.getHttpServer())
-        .post('/claims')
-        .send({
-          title: 'Claim 1',
-          objective: 'Objective for claim 1',
-          summary: 'Summary for claim 1',
-          recoverable_period: '12 months',
-          recoverable_value: '1000',
-        })
-        .expect(201);
-
-      const claimId = createRes.body._id;
-
       await request(app.getHttpServer())
         .patch(`/claims/${claimId}`)
         .send({
@@ -307,33 +363,12 @@ describe('Questions E2E', () => {
           recoverable_period: '24 months',
           recoverable_value: '2000',
           relatedQuestion: 'invalidObjectId',
+          taxType: taxTypeId,
         })
         .expect(400);
     });
 
     it('should return 200 if relatedQuestion contains valid ObjectId', async () => {
-      const createRes = await request(app.getHttpServer())
-        .post('/claims')
-        .send({
-          title: 'Claim 1',
-          objective: 'Objective for claim 1',
-          summary: 'Summary for claim 1',
-          recoverable_period: '12 months',
-          recoverable_value: '1000',
-        })
-        .expect(201);
-
-      const questionRes = await request(app.getHttpServer())
-        .post('/questions')
-        .send({
-          label: 'Question 1',
-          relatedQuestions: [],
-        })
-        .expect(201);
-
-      const questionId = questionRes.body._id;
-      const claimId = createRes.body._id;
-
       await request(app.getHttpServer())
         .patch(`/claims/${claimId}`)
         .send({
@@ -341,9 +376,35 @@ describe('Questions E2E', () => {
           summary: 'Updated summary for claim 1',
           recoverable_period: '24 months',
           recoverable_value: '2000',
-          relatedQuestion: questionId,
+          relatedQuestion: existingQuestionIdActive,
         })
         .expect(200);
+    });
+
+    it('should return 400 if relatedQuestion is not active', async () => {
+      await request(app.getHttpServer())
+        .patch(`/claims/${claimId}`)
+        .send({
+          title: 'Updated Claim 1',
+          summary: 'Updated summary for claim 1',
+          recoverable_period: '24 months',
+          recoverable_value: '2000',
+          relatedQuestion: existingQuestionIdNotActive,
+        })
+        .expect(400);
+    });
+
+    it('should return 400 if invalid taxType is provided', async () => {
+      await request(app.getHttpServer())
+        .patch(`/claims/${claimId}`)
+        .send({
+          title: 'Updated Claim 1',
+          summary: 'Updated summary for claim 1',
+          recoverable_period: '24 months',
+          recoverable_value: '2000',
+          taxType: 'invalidObjectId',
+        })
+        .expect(400);
     });
   });
 });

@@ -7,6 +7,7 @@ import { QuestionsService } from '../questions/questions.service';
 import { CreateClaimDto } from './dto/create-claim.dto';
 import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { UpdateClaimDto } from './dto/update-claim.dto';
+import { TaxTypesService } from '@/tax-types/tax-types.service';
 
 const claimModelMock = {
   create: jest.fn(),
@@ -38,6 +39,10 @@ const questionServiceMock = {
   findByIdsActive: jest.fn().mockResolvedValue([{ _id: 'relatedQuestionId' }]),
 };
 
+const taxTypeServiceMock = {
+  findById: jest.fn().mockResolvedValue({ _id: 'valid_taxType_id' }),
+};
+
 describe('ClaimsService', () => {
   let model: jest.Mocked<Model<Claim>>;
   let service: ClaimsService;
@@ -53,6 +58,10 @@ describe('ClaimsService', () => {
         {
           provide: QuestionsService,
           useValue: questionServiceMock,
+        },
+        {
+          provide: TaxTypesService,
+          useValue: taxTypeServiceMock,
         },
       ],
     }).compile();
@@ -77,6 +86,7 @@ describe('ClaimsService', () => {
         recoverable_period: 'Detailed description of the claim',
         summary: 'Summary of the claim',
         recoverable_value: '1000',
+        taxType: 'valid_taxType_id',
       };
       const result: any = { ...createClaimDto, _id: '1' };
 
@@ -99,6 +109,7 @@ describe('ClaimsService', () => {
         summary: 'Summary of the claim',
         recoverable_value: '1000',
         relatedQuestion: 'invalid_id',
+        taxType: 'valid_taxType_id',
       };
 
       questionServiceMock.findByIdsActive.mockReturnValue([]);
@@ -114,11 +125,28 @@ describe('ClaimsService', () => {
         recoverable_period: 'Detailed description of the claim',
         summary: 'Summary of the claim',
         recoverable_value: '1000',
+        taxType: 'valid_taxType_id',
       };
 
       model.findOne.mockReturnValue({
         exec: jest.fn().mockResolvedValue({ _id: '1' }),
       } as any);
+
+      await expect(service.create(createClaimDto)).rejects.toThrow(BadRequestException);
+      expect(model.create).not.toHaveBeenCalled();
+    });
+
+    it('should throw an error if invalid tax type is provided', async () => {
+      const createClaimDto: CreateClaimDto = {
+        title: 'Test Claim',
+        objective: 'This is a test claim',
+        recoverable_period: 'Detailed description of the claim',
+        summary: 'Summary of the claim',
+        recoverable_value: '1000',
+        taxType: 'invalid_taxType_id',
+      };
+
+      taxTypeServiceMock.findById.mockResolvedValue(null);
 
       await expect(service.create(createClaimDto)).rejects.toThrow(BadRequestException);
       expect(model.create).not.toHaveBeenCalled();
@@ -173,6 +201,7 @@ describe('ClaimsService', () => {
         recoverable_period: 'Updated detailed description of the claim',
         summary: 'Updated summary of the claim',
         recoverable_value: '2000',
+        taxType: 'valid_taxType_id',
       };
       const result: any = { ...updateClaimDto, _id: '1' };
 
@@ -184,6 +213,8 @@ describe('ClaimsService', () => {
       model.findOne.mockReturnValue({
         exec: jest.fn().mockResolvedValue(null),
       } as any);
+
+      jest.spyOn(taxTypeServiceMock, 'findById').mockResolvedValue({ _id: 'valid_taxType_id' });
 
       expect(await service.update('1', updateClaimDto)).toEqual(result);
       expect(model.findByIdAndUpdate).toHaveBeenCalledWith('1', updateClaimDto, { new: true });
@@ -197,7 +228,10 @@ describe('ClaimsService', () => {
         summary: 'Updated summary of the claim',
         recoverable_value: '2000',
         relatedQuestion: 'relatedQuestionId',
+        taxType: 'valid_taxType_id',
       };
+
+      jest.spyOn(questionServiceMock, 'findByIdsActive').mockResolvedValue([{ _id: 'relatedQuestionId' }]);
 
       model.findByIdAndUpdate.mockReturnValue({
         populate: jest.fn().mockReturnThis(),
@@ -217,7 +251,7 @@ describe('ClaimsService', () => {
         relatedQuestion: 'invalid_id',
       };
 
-      questionServiceMock.findById.mockReturnValue(null);
+      questionServiceMock.findByIdsActive.mockReturnValue([]);
 
       await expect(service.update('1', updateClaimDto)).rejects.toThrow(BadRequestException);
       expect(model.create).not.toHaveBeenCalled();
@@ -235,6 +269,22 @@ describe('ClaimsService', () => {
       model.findOne.mockReturnValue({
         exec: jest.fn().mockResolvedValue({ _id: '1' }),
       } as any);
+
+      await expect(service.update('1', updateClaimDto)).rejects.toThrow(BadRequestException);
+      expect(model.create).not.toHaveBeenCalled();
+    });
+
+    it('should throw an error if invalid tax type is provided', async () => {
+      const updateClaimDto: UpdateClaimDto = {
+        title: 'Test Claim',
+        objective: 'This is a test claim',
+        recoverable_period: 'Detailed description of the claim',
+        summary: 'Summary of the claim',
+        recoverable_value: '1000',
+        taxType: 'invalid_taxType_id',
+      };
+
+      taxTypeServiceMock.findById.mockResolvedValue(null);
 
       await expect(service.update('1', updateClaimDto)).rejects.toThrow(BadRequestException);
       expect(model.create).not.toHaveBeenCalled();
