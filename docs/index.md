@@ -52,4 +52,8 @@ Navegue pela documentação do projeto:
 ### Prototipos
 - [Versão 1](prototipo/versao1.md)
 
+### User Story Mapping
+- [User Story Mapping(ComunEventos)](USM/usm.md)
+
+
 ---
