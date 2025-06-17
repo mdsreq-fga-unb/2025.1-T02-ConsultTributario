@@ -4,7 +4,7 @@ import { Plus } from 'lucide-react';
 import Link from 'next/link';
 
 import { useGetClaims } from '@/api/claim';
-import { ListagemTeses } from '@/components/teses/listagem-teses';
+import { ListagemTeses } from '@/components/teses/listagem-teses-categorizada';
 import { Button } from '@/components/ui/button';
 
 const BibliotecaTesesPage = () => {
