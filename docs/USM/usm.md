@@ -1,7 +1,7 @@
 # User Story Mapping
 
 ##  O Quê
-Uma plataforma para revolucionar o mundo dos eventos comunitários.
+Uma plataforma digital voltada para facilitar a criação, gestão e participação em eventos comunitários, promovendo conexões locais e fortalecendo o engajamento entre organizadores, participantes e parceiros.
 
 ##  Por Quê
 Facilitar a organização, participação e interação em eventos, promovendo o engajamento da comunidade e conectando diferentes stakeholders:
