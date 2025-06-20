@@ -2206,11 +2206,16 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>user</strong></td>
-<td>Criar, editar, apagar e exportar <strong>apenas</strong> seus próprios diagnósticos (US-12, US-13, US-14, US-15, US-16)</td>
+<td><strong>user/admin</strong></td>
+<td>Realizar questionário (US-12)</td>
+</tr>
+<tr>
+<td><strong>user/admin</strong></td>
+<td>Editar, apagar, visualizar e exportar <strong>apenas</strong> seus próprios diagnósticos (US-12, US-13, US-14, US-15, US-16)</td>
 </tr>
 </tbody>
 </table>
+<p>OBS: Administrador não pode ver relatório dos usuários.</p>
 <h2 id="4-modelo-de-dados">4. Modelo de Dados<a class="headerlink" href="#4-modelo-de-dados" title="Permanent link">&para;</a></h2>
 <h3 id="entidade-diagnosis">Entidade: Diagnosis<a class="headerlink" href="#entidade-diagnosis" title="Permanent link">&para;</a></h3>
 <table>
@@ -2228,9 +2233,14 @@
 <td>PK (Mongo)</td>
 </tr>
 <tr>
+<td><code>createdBy</code></td>
+<td>ObjectId → User</td>
+<td>obrigatório</td>
+</tr>
+<tr>
 <td><code>clientName</code></td>
 <td>string</td>
-<td>obrigatório</td>
+<td>obrigatório • máx 100</td>
 </tr>
 <tr>
 <td><code>questionResponses</code></td>
