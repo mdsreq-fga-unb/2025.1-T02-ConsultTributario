@@ -79,7 +79,14 @@ nav:
     - Backlog do Produto: visao-produto/product-backlog.md
   - Backlog do Produto:
     - Backlog do Produto: visao-produto/product-backlog.md
-  - Guia de Contribuição: 
+    - Features:
+      - Feature 1: features/gerenciar-perguntas-tributarias/gerenciar-perguntas-tributarias.md
+      - User Stories Refinadas:
+        - US 8: features/gerenciar-perguntas-tributarias/us-08.md
+        - US 9: features/gerenciar-perguntas-tributarias/us-09.md
+        - US 10: features/gerenciar-perguntas-tributarias/us-10.md
+        - US 11: features/gerenciar-perguntas-tributarias/us-11.md
+  - Guia de Contribuição:
     - Política de Branches: guia-contribuicao/politica-de-branches.md
     - Política de Commits: guia-contribuicao/politica-de-commits.md
   - Apresentações:
