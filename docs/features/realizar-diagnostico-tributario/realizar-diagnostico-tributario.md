@@ -18,9 +18,12 @@ Permitir que usuários **(advogados, contadores ou departamentos jurídicos)** r
 
 ## 3. Permissões
 
-| Papel    | Acesso                                                                                                     |
-| -------- | ---------------------------------------------------------------------------------------------------------- |
-| **user** | Criar, editar, apagar e exportar **apenas** seus próprios diagnósticos (US-12, US-13, US-14, US-15, US-16) |
+| Papel          | Acesso                                                                                                          |
+| -------------- | --------------------------------------------------------------------------------------------------------------- |
+| **user/admin** | Realizar questionário (US-12)                                                                                   |
+| **user/admin** | Editar, apagar, visualizar e exportar **apenas** seus próprios diagnósticos (US-12, US-13, US-14, US-15, US-16) |
+
+OBS: Administrador não pode ver relatório dos usuários.
 
 ## 4. Modelo de Dados
 
@@ -29,7 +32,8 @@ Permitir que usuários **(advogados, contadores ou departamentos jurídicos)** r
 | Campo                     | Tipo                    | Regra / Observação       |
 | ------------------------- | ----------------------- | ------------------------ |
 | `id`                      | ObjectId                | PK (Mongo)               |
-| `clientName`              | string                  | obrigatório              |
+| `createdBy`               | ObjectId → User         | obrigatório              |
+| `clientName`              | string                  | obrigatório • máx 100    |
 | `questionResponses`       | array<QuestionResponse> | min 1 item               |
 | `createdAt` / `updatedAt` | datetime                | timestamps pelo Mongoose |
 
