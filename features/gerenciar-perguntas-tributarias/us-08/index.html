@@ -2150,11 +2150,11 @@
 <div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
     And abro o modal “Nova Pergunta”
     And preencho o campo Pergunta com “A empresa possui benefícios fiscais?”
-    And (opcionalmente) preencho Dica de resposta
-    And (opcional) seleciono 0 ou mais perguntas relacionadas ativas
+    And preencho Dica de resposta
+    And seleciono 0 ou mais perguntas relacionadas ativas
   When clico em “Criar Pergunta”
   Then vejo o toast “Pergunta criada com sucesso”
-    And a nova pergunta aparece no topo da lista com status Ativa
+    And a nova pergunta aparece no topo da lista de perguntas cadastradas
     And a operação completa em ≤ 2 segundos
 </code></pre></div>
 <ul>
