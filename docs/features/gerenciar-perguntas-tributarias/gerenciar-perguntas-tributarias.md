@@ -8,12 +8,12 @@ Permitir que o **Administrador** crie, edite e exclua perguntas jurídicas com r
 
 ## 2. Escopo → Epics e PBIs
 
-| Épico | Código US | PBI                                        |
-| ----- | --------- | ------------------------------------------ |
-| EP-04 | **US-08** | Criar pergunta jurídica                    |
-|       | **US-09** | Editar pergunta jurídica                   |
-|       | **US-10** | Excluir pergunta jurídica                  |
-|       | **US-11** | Visualizar perguntas jurídicas cadastradas |
+| Épico | Código US             | PBI                                        |
+| ----- | --------------------- | ------------------------------------------ |
+| EP-04 | [**US-08**](us-08.md) | Criar pergunta jurídica                    |
+|       | [**US-09**](us-09.md) | Editar pergunta jurídica                   |
+|       | [**US-10**](us-10.md) | Excluir pergunta jurídica                  |
+|       | [**US-11**](us-11.md) | Visualizar perguntas jurídicas cadastradas |
 
 ## 3. Permissões
 
@@ -23,20 +23,20 @@ Permitir que o **Administrador** crie, edite e exclua perguntas jurídicas com r
 
 ## 4. Modelo de Dados
 
-**Nome:** Question
+### Entidade: Question (Pergunta)
 
-| Campo                     | Tipo        | Regra / Observação                   |
-| ------------------------- | ----------- | ------------------------------------ |
-| `id`                      | UUID        | obrigatório, PK                      |
-| `label`                   | string      | obrigatório, único, máx 150          |
-| `tooltip`                 | string      | opcional, máx 500                    |
-| `isActive`                | boolean     | default: true                        |
-| `relatedQuestions`        | array<UUID> | Referencia ao ID de outras perguntas |
-| `createdAt` / `updatedAt` | datetime    | timestamps                           |
+| Campo                     | Tipo        | Regra / Observação                              |
+| ------------------------- | ----------- | ----------------------------------------------- |
+| `id`                      | ObjectId    | PK (Mongo)                                      |
+| `label`                   | string      | obrigatório • único • máx 150                   |
+| `tooltip`                 | string      | opcional • máx 500                              |
+| `isActive`                | boolean     | default: true                                   |
+| `relatedQuestions`        | array<UUID> | Referencia ao ID de outras perguntas (opcional) |
+| `createdAt` / `updatedAt` | datetime    | timestamps                                      |
 
 ## 5. Wireframes / Protótipos
 
-- **Protótipo:** [Link](https://excalidraw.com/#json=uzeZOcOtPKE5hVSiMwpbg,8IjQKNJVapnkd55dPgTC6g)
+- **Wireframe:** [Link](https://excalidraw.com/#json=uzeZOcOtPKE5hVSiMwpbg,8IjQKNJVapnkd55dPgTC6g)
 
 ## 6. Histórico de Revisões
 

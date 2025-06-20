@@ -81,11 +81,28 @@ nav:
     - Backlog do Produto: visao-produto/product-backlog.md
     - Features:
       - Feature 1: features/gerenciar-perguntas-tributarias/gerenciar-perguntas-tributarias.md
+      - Feature 2: features/gerenciar-teses-tributarias/gerenciar-teses-tributarias.md
+      - Feature 3: features/realizar-diagnostico-tributario/realizar-diagnostico-tributario.md
       - User Stories Refinadas:
+        - US 1: features/realizar-diagnostico-tributario/us-01.md
+        - US 2: features/realizar-diagnostico-tributario/us-02.md
+        - US 3: features/gerenciar-teses-tributarias/us-03.md
+        - US 4: features/gerenciar-teses-tributarias/us-04.md
+        - US 5: features/gerenciar-teses-tributarias/us-05.md
+        - US 6: features/gerenciar-teses-tributarias/us-06.md
+        - US 7: features/gerenciar-teses-tributarias/us-07.md
         - US 8: features/gerenciar-perguntas-tributarias/us-08.md
         - US 9: features/gerenciar-perguntas-tributarias/us-09.md
         - US 10: features/gerenciar-perguntas-tributarias/us-10.md
         - US 11: features/gerenciar-perguntas-tributarias/us-11.md
+        - US 12: features/realizar-diagnostico-tributario/us-12.md
+        - US 13: features/realizar-diagnostico-tributario/us-13.md
+        - US 14: features/realizar-diagnostico-tributario/us-14.md
+        - US 15: features/realizar-diagnostico-tributario/us-15.md
+        - US 16: features/realizar-diagnostico-tributario/us-16.md
+        - US 17: features/gerenciar-teses-tributarias/us-17.md
+        - US 18: features/gerenciar-teses-tributarias/us-18.md
+        - US 19: features/gerenciar-teses-tributarias/us-19.md
   - Guia de Contribuição:
     - Política de Branches: guia-contribuicao/politica-de-branches.md
     - Política de Commits: guia-contribuicao/politica-de-commits.md
