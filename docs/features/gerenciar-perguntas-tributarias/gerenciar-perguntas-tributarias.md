@@ -8,12 +8,12 @@ Permitir que o **Administrador** crie, edite e exclua perguntas jurídicas com r
 
 ## 2. Escopo → Epics e PBIs
 
-| Epic  | Código US / PBI | Descrição curta                            |
-| ----- | --------------- | ------------------------------------------ |
-| EP-04 | **US-08**       | Criar pergunta jurídica                    |
-|       | **US-09**       | Editar pergunta jurídica                   |
-|       | **US-10**       | Excluir pergunta jurídica                  |
-|       | **US-11**       | Visualizar perguntas jurídicas cadastradas |
+| Épico | Código US | PBI                                        |
+| ----- | --------- | ------------------------------------------ |
+| EP-04 | **US-08** | Criar pergunta jurídica                    |
+|       | **US-09** | Editar pergunta jurídica                   |
+|       | **US-10** | Excluir pergunta jurídica                  |
+|       | **US-11** | Visualizar perguntas jurídicas cadastradas |
 
 ## 3. Permissões
 
@@ -36,8 +36,7 @@ Permitir que o **Administrador** crie, edite e exclua perguntas jurídicas com r
 
 ## 5. Wireframes / Protótipos
 
-- **Figma:** _link_: [https://figma.com/file/XXX/perguntas](https://figma.com/file/XXX/perguntas)
-- **Captura rápida:** ver anexo `mock-perguntas.png`
+- **Protótipo:** [Link](https://excalidraw.com/#json=uzeZOcOtPKE5hVSiMwpbg,8IjQKNJVapnkd55dPgTC6g)
 
 ## 6. Histórico de Revisões
 
