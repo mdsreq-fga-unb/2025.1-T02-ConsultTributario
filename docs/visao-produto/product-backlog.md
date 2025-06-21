@@ -35,16 +35,16 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 
 ## 2 - Requisitos Não Funcionais
 
-| Código | Descrição                                                                                                       |
-| ------ | --------------------------------------------------------------------------------------------------------------- |
-| RNF01  | O sistema deve responder a ações do usuário (como cliques em botões, navegação entre telas ou envio de formulários) em até 2 segundos, em rede estável (ping ≤ 200ms, banda ≥ 10 Mbps), medido no navegador do cliente. |
-| RNF02  | A geração de relatórios em PDF, como os de teses aplicáveis, deve ser concluída em no máximo 5 segundos.                                      |
-| RNF03  | O sistema deve obrigatoriamente usar HTTPS em todas as comunicações.                                            |
-| RNF04  | As credenciais dos usuários devem ser protegidas com hash utilizando a biblioteca bcrypt do Node.js.            |
-| RNF05  | O sistema deve registrar logs contendo: ID do usuário (ou anônimo), IP de origem, endpoint acessado, data/hora, tipo de ação (login, edição, falha, erro), e o código de resposta da requisição.  |
-| RNF07  | Logs devem ser armazenados no banco de dados (MongoDB) com retenção mínima de 6 meses para fins de auditoria e diagnóstico.                                           |
-| RNF08  | Toda comunicação com APIs externas ( BrasilAPI, ReceitaWS ou InfoSimples) deve ocorrer via HTTPS para garantir a integridade e confidencialidade dos dados.                                                      |
-| RNF09  | Toda a interface textual do sistema (rótulos, mensagens de erro, botões e descrições) deve ser escrita em português correto e estar livre de erros gramaticais e ortográficos, além de evitar termos técnicos de TI como “API”, “payload”, “token” e similares.       |
+| Código | Descrição                                                                                                                                                                                                                                                       |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| RNF01  | O sistema deve responder a ações do usuário (como cliques em botões, navegação entre telas ou envio de formulários) em até 2 segundos, em rede estável (ping ≤ 200ms, banda ≥ 10 Mbps), medido no navegador do cliente.                                         |
+| RNF02  | A geração de relatórios em PDF, como os de teses aplicáveis, deve ser concluída em no máximo 5 segundos.                                                                                                                                                        |
+| RNF03  | O sistema deve obrigatoriamente usar HTTPS em todas as comunicações.                                                                                                                                                                                            |
+| RNF04  | As credenciais dos usuários devem ser protegidas com hash utilizando a biblioteca bcrypt do Node.js.                                                                                                                                                            |
+| RNF05  | O sistema deve registrar logs contendo: ID do usuário (ou anônimo), IP de origem, endpoint acessado, data/hora, tipo de ação (login, edição, falha, erro), e o código de resposta da requisição.                                                                |
+| RNF07  | Logs devem ser armazenados no banco de dados (MongoDB) com retenção mínima de 6 meses para fins de auditoria e diagnóstico.                                                                                                                                     |
+| RNF08  | Toda comunicação com APIs externas ( BrasilAPI, ReceitaWS ou InfoSimples) deve ocorrer via HTTPS para garantir a integridade e confidencialidade dos dados.                                                                                                     |
+| RNF09  | Toda a interface textual do sistema (rótulos, mensagens de erro, botões e descrições) deve ser escrita em português correto e estar livre de erros gramaticais e ortográficos, além de evitar termos técnicos de TI como “API”, “payload”, “token” e similares. |
 
 ## Histórias de Usuário
 
@@ -62,7 +62,7 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 
 - **US-04**: Editar tese tributária
 
-  _Como advogado, quero editar as teses tributárias já cadastradas, para manter as informações sempre atualizadas e corretas._
+  _Como advogado, quero editar as teses tributárias já cadastradas, para manter as teses sempre atualizadas e corretas._
 
 - **US-05**: Excluir tese tributária
 
