@@ -1354,11 +1354,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nao-refinada" class="md-nav__link">
+  <a href="#2-criterios-de-aceitacao" class="md-nav__link">
     <span class="md-ellipsis">
-      NÃO REFINADA
+      2. Critérios de Aceitação
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dependências
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-links-e-anexos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Links e Anexos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Links e Anexos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dor-e-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      DoR e DoD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2109,8 +2142,82 @@
 <h2 id="1-descricao">1. Descrição<a class="headerlink" href="#1-descricao" title="Permanent link">&para;</a></h2>
 <p><strong>Como</strong> administrador</p>
 <p><strong>Quero</strong> editar as teses tributárias já cadastradas</p>
-<p><strong>Para</strong> manter as informações sempre atualizadas e corretas</p>
-<h2 id="nao-refinada">NÃO REFINADA<a class="headerlink" href="#nao-refinada" title="Permanent link">&para;</a></h2>
+<p><strong>Para</strong> manter as teses sempre atualizadas e corretas</p>
+<h2 id="2-criterios-de-aceitacao">2. Critérios de Aceitação<a class="headerlink" href="#2-criterios-de-aceitacao" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Cenário 1 – Edição bem-sucedida</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em uma tese para expandir</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no botão “Editar”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">sou redirecionado para a página de editar tese com suas informações carregadas</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">altero o campo Resumo</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Salvar Alterações</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo toast &quot;</span><span class="s">Tese atualizada com sucesso</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">sou redirecionado para a biblioteca de teses</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a tese editada é atualizada na lista</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a operação completa em ≤ </span><span class="s">2</span><span class="nf"> segundos</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 2 – Título duplicado</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em uma tese para expandir</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no botão “Editar”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">sou redirecionado para a página de editar tese com suas informações carregadas</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">atualizo o título para um que já existe</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Salvar Alterações</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o campo título é destacado em vermelho</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">exibe &quot;</span><span class="s">Título já cadastrado</span><span class="nf">&quot;</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 3 – Campo obrigatório vazio</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em uma tese para expandir</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no botão “Editar”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">sou redirecionado para a página de editar tese com suas informações carregadas</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">deixo qualquer campo obrigatório (Título, Objetivo, Resumo,Período Recuperável, Valor Recuperável ou Tipo de Tributo) em branco</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Salvar Tese</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o(s) campo(s) são destacado(s) em vermelho</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">exibe &quot;</span><span class="s">Campo obrigatório</span><span class="nf">&quot;</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 4 – Limites de caracteres</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em uma tese para expandir</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no botão “Editar”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">sou redirecionado para a página de editar tese com suas informações carregadas</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">digito &gt;</span><span class="s">150</span><span class="nf"> caracteres no Título</span>
+<span class="nf">    Or &gt;</span><span class="s">1</span><span class="nf"> </span><span class="s">000</span><span class="nf"> caracteres no Objetivo</span>
+<span class="nf">    Or &gt;</span><span class="s">5</span><span class="nf"> </span><span class="s">000</span><span class="nf"> caracteres no Resumo</span>
+<span class="nf">    Or &gt;</span><span class="s">1</span><span class="nf"> </span><span class="s">000</span><span class="nf"> caracteres no Período Recuperável / Valor Recuperável</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o sistema impede novos caracteres</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 5 – Cancelar/sair da página</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em uma tese para expandir</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no botão “Editar”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">sou redirecionado para a página de editar tese com suas informações carregadas</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico em &quot;</span><span class="s">Cancelar</span><span class="nf">&quot; ou &quot;</span><span class="s">Voltar</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">sou redirecionado para a biblioteca de teses</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">nenhuma alteração feita é salva</span>
+</code></pre></div>
+<h2 id="3-dependencias">3. Dependências<a class="headerlink" href="#3-dependencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Schema <strong>TaxType</strong> criado no Mongoose (relação obrigatória com a Tese tributária).</li>
+</ul>
+<h2 id="4-links-e-anexos">4. Links e Anexos<a class="headerlink" href="#4-links-e-anexos" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Documento da Feature: <a href="../gerenciar-teses-tributarias/">Link</a></li>
+<li>Protótipo: <a href="">Link</a></li>
+</ul>
+<hr />
+<h3 id="dor-e-dod">DoR e DoD<a class="headerlink" href="#dor-e-dod" title="Permanent link">&para;</a></h3>
+<p><strong><a href="../../../visao-produto/dor-dod/">Link</a></strong></p>
 
 
 
