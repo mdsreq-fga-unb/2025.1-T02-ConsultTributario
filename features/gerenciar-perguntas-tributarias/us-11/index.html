@@ -2147,47 +2147,47 @@
 <ul>
 <li><strong>Cenário 1 – Listagem padrão</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And acesso a página &quot;Perguntas Jurídicas&quot;
-  Then vejo uma lista contendo as perguntas cadastradas
-    And, por padrão, estão listadas todas as perguntas Ativas
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página &quot;</span><span class="s">Perguntas Jurídicas</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo uma lista contendo as perguntas cadastradas</span>
+<span class="nf">    And, por padrão, estão listadas todas as perguntas Ativas</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 2 – Filtro por status</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And acesso a página &quot;Perguntas Jurídicas&quot;
-  When seleciono o filtro &quot;Inativas&quot;
-  Then a lista mostra somente perguntas cujo status = Inativa
-  When seleciono o filtro &quot;Todas&quot;
-  Then mostra todas as perguntas (Ativas e Inativas)
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página &quot;</span><span class="s">Perguntas Jurídicas</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">seleciono o filtro &quot;</span><span class="s">Inativas</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">a lista mostra somente perguntas cujo status = Inativa</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">seleciono o filtro &quot;</span><span class="s">Todas</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">mostra todas as perguntas (Ativas e Inativas)</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 3 – Ver informações de uma pergunta</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And acesso a página &quot;Perguntas Jurídicas&quot;
-  When clico em um pergunta cadastrada
-  Then ela se expande e mostra a Dica de Resposta se houver
-    And mostra as pergunta reslacionadas se houver
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página &quot;</span><span class="s">Perguntas Jurídicas</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico em um pergunta cadastrada</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">ela se expande e mostra a Dica de Resposta se houver</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">mostra as pergunta reslacionadas se houver</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 4 – Acesso rápido à edição</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And acesso a página &quot;Perguntas Jurídicas&quot;
-  When clico em um pergunta cadastrada
-    And ela se expande
-    And clico no ícone “Editar”
-  Then o modal “Editar Pergunta” abre pré-preenchido (US-09)
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página &quot;</span><span class="s">Perguntas Jurídicas</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico em um pergunta cadastrada</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">ela se expande</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no ícone “Editar”</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o modal “Editar Pergunta” abre pré-preenchido (US-</span><span class="s">09</span><span class="nf">)</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 5 – Acesso a criação de pergunta</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And acesso a página &quot;Perguntas Jurídicas&quot;
-  When clico no botão “Criar Pergunta”
-  Then o modal “Criar Pergunta” abre (US-08)
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página &quot;</span><span class="s">Perguntas Jurídicas</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico no botão “Criar Pergunta”</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o modal “Criar Pergunta” abre (US-</span><span class="s">08</span><span class="nf">)</span>
 </code></pre></div>
 <h2 id="3-dependencias">3. Dependências<a class="headerlink" href="#3-dependencias" title="Permanent link">&para;</a></h2>
 <ul>

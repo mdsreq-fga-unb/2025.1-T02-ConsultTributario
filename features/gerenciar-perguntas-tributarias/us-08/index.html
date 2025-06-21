@@ -2147,63 +2147,63 @@
 <ul>
 <li><strong>Cenário 1 – Cadastro bem-sucedido</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And abro o modal “Nova Pergunta”
-    And preencho o campo Pergunta com “A empresa possui benefícios fiscais?”
-    And preencho Dica de resposta
-    And seleciono 0 ou mais perguntas relacionadas ativas
-  When clico em “Criar Pergunta”
-  Then vejo o toast “Pergunta criada com sucesso”
-    And a nova pergunta aparece no topo da lista de perguntas cadastradas
-    And a operação completa em ≤ 2 segundos
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">abro o modal “Nova Pergunta”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">preencho o campo Pergunta com “A empresa possui benefícios fiscais?”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">preencho Dica de resposta</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">seleciono </span><span class="s">0</span><span class="nf"> ou mais perguntas relacionadas ativas</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico em “Criar Pergunta”</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo o toast “Pergunta criada com sucesso”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a nova pergunta aparece no topo da lista de perguntas cadastradas</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a operação completa em ≤ </span><span class="s">2</span><span class="nf"> segundos</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 2 – Campo obrigatório vazio</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And abro o modal “Nova Pergunta”
-  When deixo o campo Pergunta em branco e clico em “Criar Pergunta”
-  Then o sistema bloqueia o envio
-    And destaca o campo em vermelho
-    And exibe a mensagem “Pergunta é obrigatória”
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">abro o modal “Nova Pergunta”</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">deixo o campo Pergunta em branco e clico em “Criar Pergunta”</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o sistema bloqueia o envio</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">destaca o campo em vermelho</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">exibe a mensagem “Pergunta é obrigatória”</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 3 – Limite de caracteres</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And abro o modal “Nova Pergunta”
-  When tento digitar um texto maior que 150 caracteres no campo pergunta
-    Or tento digitar um texto maior que 500 caracteres no campo dica de resposta
-  Then o sistema impede novos caracteres
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">abro o modal “Nova Pergunta”</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">tento digitar um texto maior que </span><span class="s">150</span><span class="nf"> caracteres no campo pergunta</span>
+<span class="nf">    Or tento digitar um texto maior que </span><span class="s">500</span><span class="nf"> caracteres no campo dica de resposta</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o sistema impede novos caracteres</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 4 – Prevenção de duplicidade</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And abro o modal “Nova Pergunta”
-    And já existe pergunta “A empresa possui benefícios fiscais?”
-  When tento gravar outra com texto igual
-  Then o sistema bloqueia o envio
-    And recebo erro “Essa pergunta já existe”
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">abro o modal “Nova Pergunta”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">já existe pergunta “A empresa possui benefícios fiscais?”</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">tento gravar outra com texto igual</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o sistema bloqueia o envio</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">recebo erro “Essa pergunta já existe”</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 5 – Perguntas relacionadas só ativas</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And abro o modal “Nova Pergunta”
-    And existem perguntas ativas e inativas cadastradas
-  When abro a lista “Perguntas relacionadas”
-  Then somente perguntas com status Ativa aparecem
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">abro o modal “Nova Pergunta”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">existem perguntas ativas e inativas cadastradas</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">abro a lista “Perguntas relacionadas”</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">somente perguntas com status Ativa aparecem</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 6 – Cancelar/fechar modal</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And abro o modal “Nova Pergunta”
-    And estou no modal e preenchi campos
-  When clico em “Cancelar” ou ícone “×” ou fora do modal
-  Then o modal fecha
-    And nenhum dado é salvo
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">abro o modal “Nova Pergunta”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">estou no modal e preenchi campos</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico em “Cancelar” ou ícone “×” ou fora do modal</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o modal fecha</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">nenhum dado é salvo</span>
 </code></pre></div>
 <h2 id="3-dependencias">3. Dependências<a class="headerlink" href="#3-dependencias" title="Permanent link">&para;</a></h2>
 <ul>

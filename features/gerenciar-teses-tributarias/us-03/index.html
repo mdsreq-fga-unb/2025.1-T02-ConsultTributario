@@ -2159,43 +2159,43 @@
 <ul>
 <li><strong>Cenário 2 – Título duplicado</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And estou na página de cadastrar teses
-    And já existe a tese com o título &quot;ICMS sobre Energia Elétrica&quot;
-  When preencho os campos obrigatórios
-    And adiciono o mesmo título que já exite
-    And clico em &quot;Salvar Tese&quot;
-  Then recebo erro &quot;Título já cadastrado&quot;
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">estou na página de cadastrar teses</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">já existe a tese com o título &quot;</span><span class="s">ICMS sobre Energia Elétrica</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">preencho os campos obrigatórios</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">adiciono o mesmo título que já exite</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Salvar Tese</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">recebo erro &quot;</span><span class="s">Título já cadastrado</span><span class="nf">&quot;</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 3 – Campo obrigatório vazio</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And estou na página de cadastrar teses
-  When deixo qualquer campo obrigatório (Título, Objetivo, Resumo,Período Recuperável, Valor Recuperável ou Tipo de Tributo) em branco
-    And clico em &quot;Salvar Tese&quot;
-  Then o(s) campo(s) são destacado(s) em vermelho
-    And exibe &quot;Campo obrigatório&quot;
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">estou na página de cadastrar teses</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">deixo qualquer campo obrigatório (Título, Objetivo, Resumo,Período Recuperável, Valor Recuperável ou Tipo de Tributo) em branco</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Salvar Tese</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o(s) campo(s) são destacado(s) em vermelho</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">exibe &quot;</span><span class="s">Campo obrigatório</span><span class="nf">&quot;</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 4 – Limites de caracteres</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And estou na página de cadastrar teses
-  When digito &gt;150 caracteres no Título
-    Or &gt;1 000 caracteres no Objetivo
-    Or &gt;5 000 caracteres no Resumo
-    Or &gt;1 000 caracteres no Período Recuperável / Valor Recuperável
-  Then o sistema impede novos caracteres
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">estou na página de cadastrar teses</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">digito &gt;</span><span class="s">150</span><span class="nf"> caracteres no Título</span>
+<span class="nf">    Or &gt;</span><span class="s">1</span><span class="nf"> </span><span class="s">000</span><span class="nf"> caracteres no Objetivo</span>
+<span class="nf">    Or &gt;</span><span class="s">5</span><span class="nf"> </span><span class="s">000</span><span class="nf"> caracteres no Resumo</span>
+<span class="nf">    Or &gt;</span><span class="s">1</span><span class="nf"> </span><span class="s">000</span><span class="nf"> caracteres no Período Recuperável / Valor Recuperável</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o sistema impede novos caracteres</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 5 – Cancelar/sair da página</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And estou na página de cadastrar teses
-  When clico em &quot;Cancelar&quot; ou &quot;Voltar&quot;
-  Then sou redirecionado para a biblioteca de teses
-    And nenhum dado é salvo
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">estou na página de cadastrar teses</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico em &quot;</span><span class="s">Cancelar</span><span class="nf">&quot; ou &quot;</span><span class="s">Voltar</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">sou redirecionado para a biblioteca de teses</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">nenhum dado é salvo</span>
 </code></pre></div>
 <h2 id="3-dependencias">3. Dependências<a class="headerlink" href="#3-dependencias" title="Permanent link">&para;</a></h2>
 <ul>

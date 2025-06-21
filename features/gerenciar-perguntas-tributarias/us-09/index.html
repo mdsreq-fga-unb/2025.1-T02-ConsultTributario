@@ -2147,87 +2147,87 @@
 <ul>
 <li><strong>Cenário 1 – Edição bem-sucedida</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And clico em uma pergunta para expandi-la
-    And clico no ícone “Editar” da pergunta
-    And o modal “Editar Pergunta” é exibido com os campos pré-preenchidos
-  When altero o campo Pergunta para &quot;ICMS sobre Energia Elétrica&quot;
-    And ajusto a Dica de resposta
-    And seleciono 0 ou mais perguntas relacionadas ativas
-    And clico em &quot;Salvar alterações&quot;
-  Then vejo toast &quot;Pergunta atualizada com sucesso&quot;
-    And a pergunta aparece atualizada na lista
-    And a operação completa em ≤ 2 segundos
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em uma pergunta para expandi-la</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no ícone “Editar” da pergunta</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o modal “Editar Pergunta” é exibido com os campos pré-preenchidos</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">altero o campo Pergunta para &quot;</span><span class="s">ICMS sobre Energia Elétrica</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">ajusto a Dica de resposta</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">seleciono </span><span class="s">0</span><span class="nf"> ou mais perguntas relacionadas ativas</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Salvar alterações</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo toast &quot;</span><span class="s">Pergunta atualizada com sucesso</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a pergunta aparece atualizada na lista</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a operação completa em ≤ </span><span class="s">2</span><span class="nf"> segundos</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 2 – Campo Pergunta vazio</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And clico em uma pergunta para expandi-la
-    And clico no ícone “Editar” da pergunta
-    And o modal “Editar Pergunta” é exibido com os campos pré-preenchidos
-  When apago todo o texto do campo Pergunta
-    And clico em &quot;Salvar alterações&quot;
-  Then o sistema bloqueia o envio
-    And destaca o campo em vermelho
-    And exibe &quot;Pergunta é obrigatória&quot;
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em uma pergunta para expandi-la</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no ícone “Editar” da pergunta</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o modal “Editar Pergunta” é exibido com os campos pré-preenchidos</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">apago todo o texto do campo Pergunta</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Salvar alterações</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o sistema bloqueia o envio</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">destaca o campo em vermelho</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">exibe &quot;</span><span class="s">Pergunta é obrigatória</span><span class="nf">&quot;</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 3 – Duplicidade de título</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And clico em uma pergunta para expandi-la
-    And clico no ícone “Editar” da pergunta
-    And o modal “Editar Pergunta” é exibido com os campos pré-preenchidos
-    And já existe pergunta ativa &quot;ICMS sobre Energia Elétrica&quot;
-  When tento salvar a edição com esse mesmo título
-    And clico em &quot;Salvar alterações&quot;
-  Then recebo erro &quot;Essa pergunta já existe&quot;
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em uma pergunta para expandi-la</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no ícone “Editar” da pergunta</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o modal “Editar Pergunta” é exibido com os campos pré-preenchidos</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">já existe pergunta ativa &quot;</span><span class="s">ICMS sobre Energia Elétrica</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">tento salvar a edição com esse mesmo título</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Salvar alterações</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">recebo erro &quot;</span><span class="s">Essa pergunta já existe</span><span class="nf">&quot;</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 4 – Limites de caracteres</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And clico em uma pergunta para expandi-la
-    And clico no ícone “Editar” da pergunta
-    And o modal “Editar Pergunta” é exibido com os campos pré-preenchidos
-  When tento digitar mais de 150 caracteres no campo Pergunta
-    Or mais de 500 caracteres no campo Dica de resposta
-  Then o sistema impede novos caracteres
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em uma pergunta para expandi-la</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no ícone “Editar” da pergunta</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o modal “Editar Pergunta” é exibido com os campos pré-preenchidos</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">tento digitar mais de </span><span class="s">150</span><span class="nf"> caracteres no campo Pergunta</span>
+<span class="nf">    Or mais de </span><span class="s">500</span><span class="nf"> caracteres no campo Dica de resposta</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o sistema impede novos caracteres</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 5 – Alterar status para Inativa</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And clico em uma pergunta para expandi-la
-    And clico no ícone “Editar” da pergunta
-    And o modal “Editar Pergunta” é exibido com os campos pré-preenchidos
-  When marco status = Inativa e salvo
-    And clico em &quot;Salvar alterações&quot;
-  Then vejo toast &quot;Pergunta atualizada com sucesso&quot;
-    And a pergunta passa a ter status Inativa
-    And deixa de aparecer em novos questionários e na lista de perguntas relacionadas
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em uma pergunta para expandi-la</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no ícone “Editar” da pergunta</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o modal “Editar Pergunta” é exibido com os campos pré-preenchidos</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">marco status = Inativa e salvo</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Salvar alterações</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo toast &quot;</span><span class="s">Pergunta atualizada com sucesso</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a pergunta passa a ter status Inativa</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">deixa de aparecer em novos questionários e na lista de perguntas relacionadas</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 6 – Lista de perguntas relacionadas não inclui a própria pergunta</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And clico em uma pergunta para expandi-la
-    And clico no ícone “Editar” da pergunta
-    And o modal “Editar Pergunta” é exibido com os campos pré-preenchidos
-  When abro o campo &quot;Perguntas relacionadas&quot;
-  Then não vejo a pergunta que estou editando na lista
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em uma pergunta para expandi-la</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no ícone “Editar” da pergunta</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o modal “Editar Pergunta” é exibido com os campos pré-preenchidos</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">abro o campo &quot;</span><span class="s">Perguntas relacionadas</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">não vejo a pergunta que estou editando na lista</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 7 – Cancelar/fechar modal</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code>  Given estou logado como Administrador
-    And clico em uma pergunta para expandi-la
-    And clico no ícone “Editar” da pergunta
-    And o modal “Editar Pergunta” é exibido com os campos pré-preenchidos
-  When clico em &quot;Cancelar&quot; ou no ícone &quot;×&quot; ou fora do modal
-  Then o modal fecha
-    And nenhuma alteração é salva
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em uma pergunta para expandi-la</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no ícone “Editar” da pergunta</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o modal “Editar Pergunta” é exibido com os campos pré-preenchidos</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico em &quot;</span><span class="s">Cancelar</span><span class="nf">&quot; ou no ícone &quot;</span><span class="s">×</span><span class="nf">&quot; ou fora do modal</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o modal fecha</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">nenhuma alteração é salva</span>
 </code></pre></div>
 <h2 id="3-dependencias">3. Dependências<a class="headerlink" href="#3-dependencias" title="Permanent link">&para;</a></h2>
 <ul>
