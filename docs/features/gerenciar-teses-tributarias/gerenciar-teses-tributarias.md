@@ -10,14 +10,14 @@ Permitir que o **Administrador** crie, edite, exclua e categorize **teses tribut
 
 | Épico | Código US | PBI                                                   |
 | ----- | --------- | ----------------------------------------------------- |
-| EP-01 | **US-03** | Criar tese tributária                                 |
-|       | **US-04** | Editar tese tributária                                |
-|       | **US-05** | Excluir tese tributária                               |
-|       | **US-07** | Visualizar teses tributárias cadastradas              |
-|       | **US-06** | Criar categorias de teses tributárias                 |
-|       | **US-17** | Editar categoria de teses tributária                  |
-|       | **US-18** | Apagar categoria de teses tributária                  |
-|       | **US-19** | Visualizar categorias de teses tributária cadastradas |
+| EP-01 | [**US-03**](us-03.md) | Criar tese tributária                                 |
+|       | [**US-04**](us-04.md) | Editar tese tributária                                |
+|       | [**US-05**](us-05.md) | Excluir tese tributária                               |
+|       | [**US-07**](us-07.md) | Visualizar teses tributárias cadastradas              |
+|       | [**US-06**](us-06.md) | Criar categorias de teses tributárias                 |
+|       | [**US-17**](us-17.md) | Editar categoria de teses tributária                  |
+|       | [**US-18**](us-18.md) | Apagar categoria de teses tributária                  |
+|       | [**US-19**](us-19.md) | Visualizar categorias de teses tributária cadastradas |
 
 ## 3. Permissões
 
