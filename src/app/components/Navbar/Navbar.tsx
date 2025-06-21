@@ -32,6 +32,12 @@ const Navbar = () => {
           >
             Sobre
           </Link>
+          <Link
+            href='/categoria'
+            className='text-lg text-black font-medium hover:text-black-600 transition-colors'
+          >
+            Categoria
+          </Link>
         </div>
 
         <AuthNavigation />
