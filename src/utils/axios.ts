@@ -61,6 +61,13 @@ export default axiosInstance;
 
 // ----------------------------------------------------------------------
 
+export const swrConfig = {
+  errorRetryCount: 2,
+  errorRetryInterval: 10000,
+  revalidateOnFocus: false,
+  revalidateOnReconnect: true,
+};
+
 // Fetcher function for SWR
 export const fetcher = async (url: string) => {
   const response = await axiosInstance.get(url);
@@ -82,5 +89,28 @@ export const endpoints = {
     create: '/users',
     update: (id: string) => `/users/${id}`,
     delete: (id: string) => `/users/${id}`,
+  },
+  question: {
+    list: '/questions',
+    create: '/questions',
+    update: (id: string) => `/questions/${id}`,
+  },
+  teses: {
+    list: '/claims',
+    details: (id: string) => `/claims/${id}`,
+    create: '/claims',
+    update: (id: string) => `/claims/${id}`,
+  },
+  diagnosticos: {
+    list: '/diagnoses',
+    create: '/diagnoses',
+    detail: (id: string) => `/diagnoses/${id}`,
+    delete: (id: string) => `/diagnoses/${id}`,
+    recommendations: (id: string) => `/diagnoses/${id}/recommendations`,
+  },
+  taxTypes: {
+    list: '/tax-types',
+    create: '/tax-types',
+    update: (id: string) => `/tax-types/${id}`,
   },
 };

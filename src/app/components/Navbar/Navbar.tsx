@@ -33,6 +33,24 @@ const Navbar = () => {
             Sobre
           </Link>
           <Link
+            href='/perguntas'
+            className='text-lg text-black font-medium hover:text-black-600 transition-colors'
+          >
+            Perguntas
+          </Link>
+          <Link
+            href='/biblioteca-teses'
+            className='text-lg text-black font-medium hover:text-black-600 transition-colors'
+          >
+            Biblioteca de teses
+          </Link>
+          <Link
+            href='/diagnosticos'
+            className='text-lg text-black font-medium hover:text-black-600 transition-colors'
+          >
+            Diagnósticos
+          </Link>
+          <Link
             href='/categoria'
             className='text-lg text-black font-medium hover:text-black-600 transition-colors'
           >

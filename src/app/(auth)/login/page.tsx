@@ -197,12 +197,6 @@ const LoginPage = () => {
                     Lembrar-me
                   </span>
                 </label>
-                <a
-                  href='/forgot-password'
-                  className='text-sm text-blue-600 hover:text-blue-800 hover:underline font-medium transition-colors'
-                >
-                  Esqueceu a senha?
-                </a>
               </div>
 
               <Button
