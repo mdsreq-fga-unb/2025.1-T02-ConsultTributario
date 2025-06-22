@@ -7,6 +7,8 @@ import { ClaimsModule } from './claims/claims.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DiagnosesModule } from './diagnoses/diagnoses.module';
 import { TaxTypesModule } from './tax-types/tax-types.module';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 
 @Module({
   imports: [
@@ -27,6 +29,12 @@ import { TaxTypesModule } from './tax-types/tax-types.module';
     TaxTypesModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+  ],
 })
 export class AppModule {}
