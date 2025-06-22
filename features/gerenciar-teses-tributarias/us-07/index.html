@@ -2173,15 +2173,7 @@
 <span class="nf">     </span><span class="k">And </span><span class="nf">exibe: objetivo, resumo, período recuperável, valor recuperável, e pergunta relacionada (se houver)</span>
 </code></pre></div>
 <ul>
-<li><strong>Cenário 4 – Ocultação de teses inativas</strong></li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como usuário autenticado</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página “Biblioteca de Teses”</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">existem teses com status Inativa</span>
-<span class="nf">  </span><span class="k">Then </span><span class="nf">essas teses não aparecem na interface para o usuário</span>
-</code></pre></div>
-<ul>
-<li><strong>Cenário 5 – Busca dentro da biblioteca</strong></li>
+<li><strong>Cenário 4 – Busca dentro da biblioteca</strong></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como usuário autenticado</span>
 <span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página “Biblioteca de Teses”</span>
@@ -2190,7 +2182,7 @@
 <span class="nf">    </span><span class="k">And </span><span class="nf">as teses filtradas aparecem sem estarem agrupadas por categorias</span>
 </code></pre></div>
 <ul>
-<li><strong>Cenário 6 – Nenhum resultado encontrado</strong></li>
+<li><strong>Cenário 5 – Nenhum resultado encontrado</strong></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como usuário autenticado</span>
 <span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página “Biblioteca de Teses”</span>
@@ -2198,7 +2190,7 @@
 <span class="nf">  </span><span class="k">Then </span><span class="nf">vejo a mensagem &quot;</span><span class="s">Nenhuma tese encontrada</span><span class="nf">&quot;</span>
 </code></pre></div>
 <ul>
-<li><strong>Cenário 7 – Administrador vê botão "Editar"</strong></li>
+<li><strong>Cenário 6 – Administrador vê botão "Editar"</strong></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
 <span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página “Biblioteca de Teses”</span>
@@ -2209,7 +2201,7 @@
 <span class="nf">  </span><span class="k">Then </span><span class="nf">sou redirecionado para a página de edição desta tese (US-</span><span class="s">04</span><span class="nf">)</span>
 </code></pre></div>
 <ul>
-<li><strong>Cenário 8 – Administrador vê botão "Cadastrar Tese"</strong></li>
+<li><strong>Cenário 7 – Administrador vê botão "Cadastrar Tese"</strong></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
 <span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página “Biblioteca de Teses”</span>
