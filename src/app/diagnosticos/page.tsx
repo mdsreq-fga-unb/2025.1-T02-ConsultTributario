@@ -13,16 +13,36 @@ const DiagnosticoPage = () => {
     useGetDiagnoses();
 
   if (diagnosesLoading) {
-    return <LoadingDisplay mensagem='Carregando diagnósticos tributários...' />;
+    return (
+      <div className='container mx-auto px-4 py-8'>
+        <div className='flex justify-between items-center mb-8'>
+          <h1 className='text-3xl font-semibold text-gray-800'>Diagnósticos</h1>
+          <Button className='bg-[#0099ff] hover:bg-[#0077cc] text-white' disabled={true}>
+            <Plus className='h-4 w-4 mr-2' />
+            Novo Diagnóstico
+          </Button>
+        </div>
+        <LoadingDisplay mensagem='Carregando diagnósticos tributários...' />
+      </div>
+    );
   }
 
   if (diagnosesError) {
     return (
-      <ErrorDisplay
-        erro={diagnosesError}
-        titulo='Erro ao carregar diagnósticos'
-        tentarNovamente={refreshDiagnoses}
-      />
+      <div className='container mx-auto px-4 py-8'>
+        <div className='flex justify-between items-center mb-8'>
+          <h1 className='text-3xl font-semibold text-gray-800'>Diagnósticos</h1>
+          <Button className='bg-[#0099ff] hover:bg-[#0077cc] text-white' disabled={true}>
+            <Plus className='h-4 w-4 mr-2' />
+            Novo Diagnóstico
+          </Button>
+        </div>
+        <ErrorDisplay
+          erro={diagnosesError}
+          titulo='Erro ao carregar diagnósticos'
+          tentarNovamente={refreshDiagnoses}
+        />
+      </div>
     );
   }
 
@@ -30,12 +50,19 @@ const DiagnosticoPage = () => {
     <div className='container mx-auto px-4 py-8'>
       <div className='flex justify-between items-center mb-8'>
         <h1 className='text-3xl font-semibold text-gray-800'>Diagnósticos</h1>
-        <Link href='/diagnosticos/novo-diagnostico'>
-          <Button className='bg-[#0099ff] hover:bg-[#0077cc] text-white'>
-            <Plus className='h-5 w-5 mr-2' />
+        {diagnosesError || diagnosesLoading ? (
+          <Button className='bg-[#0099ff] hover:bg-[#0077cc] text-white' disabled={true}>
+            <Plus className='h-4 w-4 mr-2' />
             Novo Diagnóstico
           </Button>
-        </Link>
+        ) : (
+          <Link href='/diagnosticos/novo-diagnostico'>
+            <Button className='bg-[#0099ff] hover:bg-[#0077cc] text-white'>
+              <Plus className='h-4 w-4 mr-2' />
+              Novo Diagnóstico
+            </Button>
+          </Link>
+        )}
       </div>
 
       <div className='space-y-4'>

@@ -105,6 +105,31 @@ export const EditarTese = ({ id }: { id: string }) => {
       novosErros.recoverable_value = 'O valor recuperável deve ter no máximo 1000 caracteres';
     }
     setErros(novosErros);
+
+    if (formData.title.length > 150) {
+      novosErros.title = 'O título deve ter no máximo 150 caracteres';
+    }
+
+    if (formData.objective.length > 1000) {
+      novosErros.objective = 'O objetivo deve ter no máximo 1000 caracteres';
+    }
+
+    if (formData.summary.length > 5000) {
+      novosErros.summary = 'O resumo deve ter no máximo 5000 caracteres';
+    }
+
+    if (formData.recoverable_period.length > 1000) {
+      novosErros.recoverable_period = 'O período recuperável deve ter no máximo 1000 caracteres';
+    }
+
+    if (formData.recoverable_value.length > 1000) {
+      novosErros.recoverable_value = 'O valor recuperável deve ter no máximo 1000 caracteres';
+    }
+
+    if (!formData.taxType.trim()) {
+      novosErros.taxType = 'O tipo de imposto é obrigatório';
+    }
+
     return Object.keys(novosErros).length === 0;
   };
 
