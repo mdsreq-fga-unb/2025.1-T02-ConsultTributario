@@ -90,6 +90,31 @@ export const EditarTese = ({ id }: { id: string }) => {
     if (!formData.recoverable_value.trim())
       novosErros.recoverable_value = 'O valor recuperável é obrigatório';
     setErros(novosErros);
+
+    if (formData.title.length > 150) {
+      novosErros.title = 'O título deve ter no máximo 150 caracteres';
+    }
+
+    if (formData.objective.length > 1000) {
+      novosErros.objective = 'O objetivo deve ter no máximo 1000 caracteres';
+    }
+
+    if (formData.summary.length > 5000) {
+      novosErros.summary = 'O resumo deve ter no máximo 5000 caracteres';
+    }
+
+    if (formData.recoverable_period.length > 1000) {
+      novosErros.recoverable_period = 'O período recuperável deve ter no máximo 1000 caracteres';
+    }
+
+    if (formData.recoverable_value.length > 1000) {
+      novosErros.recoverable_value = 'O valor recuperável deve ter no máximo 1000 caracteres';
+    }
+
+    if (!formData.taxType.trim()) {
+      novosErros.taxType = 'O tipo de imposto é obrigatório';
+    }
+
     return Object.keys(novosErros).length === 0;
   };
 
@@ -150,8 +175,16 @@ export const EditarTese = ({ id }: { id: string }) => {
                 value={formData.title}
                 onChange={e => atualizarCampo('title', e.target.value)}
                 className={erros.title ? 'border-red-500' : ''}
+                maxLength={150}
               />
-              {erros.title && <p className='text-sm text-red-500'>{erros.title}</p>}
+              <div className='flex justify-between items-center'>
+                {erros.title && <p className='text-sm text-red-500'>{erros.title}</p>}
+                <p
+                  className={`text-sm ml-auto ${formData.title.length > 150 ? 'text-red-500' : 'text-gray-500'}`}
+                >
+                  {formData.title.length}/150
+                </p>
+              </div>
             </div>
             <div className='space-y-2'>
               <Label htmlFor='objective' className='text-gray-700 font-medium'>
@@ -163,8 +196,16 @@ export const EditarTese = ({ id }: { id: string }) => {
                 onChange={e => atualizarCampo('objective', e.target.value)}
                 className={`resize-none ${erros.objective ? 'border-red-500' : ''}`}
                 rows={4}
+                maxLength={1000}
               />
-              {erros.objective && <p className='text-sm text-red-500'>{erros.objective}</p>}
+              <div className='flex justify-between items-center'>
+                {erros.objective && <p className='text-sm text-red-500'>{erros.objective}</p>}
+                <p
+                  className={`text-sm ml-auto ${formData.objective.length > 1000 ? 'text-red-500' : 'text-gray-500'}`}
+                >
+                  {formData.objective.length}/1000
+                </p>
+              </div>
             </div>
             <div className='space-y-2'>
               <Label htmlFor='summary' className='text-gray-700 font-medium'>
@@ -176,8 +217,16 @@ export const EditarTese = ({ id }: { id: string }) => {
                 onChange={e => atualizarCampo('summary', e.target.value)}
                 className={`resize-none ${erros.summary ? 'border-red-500' : ''}`}
                 rows={6}
+                maxLength={5000}
               />
-              {erros.summary && <p className='text-sm text-red-500'>{erros.summary}</p>}
+              <div className='flex justify-between items-center'>
+                {erros.summary && <p className='text-sm text-red-500'>{erros.summary}</p>}
+                <p
+                  className={`text-sm ml-auto ${formData.summary.length > 5000 ? 'text-red-500' : 'text-gray-500'}`}
+                >
+                  {formData.summary.length}/5000
+                </p>
+              </div>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
               <div className='space-y-2'>
@@ -189,11 +238,19 @@ export const EditarTese = ({ id }: { id: string }) => {
                   value={formData.recoverable_period}
                   onChange={e => atualizarCampo('recoverable_period', e.target.value)}
                   className={`resize-none ${erros.recoverable_period ? 'border-red-500' : ''}`}
-                  rows={2}
+                  rows={4}
+                  maxLength={1000}
                 />
-                {erros.recoverable_period && (
-                  <p className='text-sm text-red-500'>{erros.recoverable_period}</p>
-                )}
+                <div className='flex justify-between items-center'>
+                  {erros.recoverable_period && (
+                    <p className='text-sm text-red-500'>{erros.recoverable_period}</p>
+                  )}
+                  <p
+                    className={`text-sm ml-auto ${formData.recoverable_period.length > 1000 ? 'text-red-500' : 'text-gray-500'}`}
+                  >
+                    {formData.recoverable_period.length}/1000
+                  </p>
+                </div>
               </div>
               <div className='space-y-2'>
                 <Label htmlFor='recoverable_value' className='text-gray-700 font-medium'>
@@ -204,11 +261,19 @@ export const EditarTese = ({ id }: { id: string }) => {
                   value={formData.recoverable_value}
                   onChange={e => atualizarCampo('recoverable_value', e.target.value)}
                   className={`resize-none ${erros.recoverable_value ? 'border-red-500' : ''}`}
-                  rows={2}
+                  rows={4}
+                  maxLength={1000}
                 />
-                {erros.recoverable_value && (
-                  <p className='text-sm text-red-500'>{erros.recoverable_value}</p>
-                )}
+                <div className='flex justify-between items-center'>
+                  {erros.recoverable_value && (
+                    <p className='text-sm text-red-500'>{erros.recoverable_value}</p>
+                  )}
+                  <p
+                    className={`text-sm ml-auto ${formData.recoverable_value.length > 1000 ? 'text-red-500' : 'text-gray-500'}`}
+                  >
+                    {formData.recoverable_value.length}/1000
+                  </p>
+                </div>
               </div>
             </div>
 
