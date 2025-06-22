@@ -1,27 +1,41 @@
+import { UsersService } from '@/users/users.service';
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { UserFromJwt } from '../models/UserFromJwt';
-import { UserPayload } from '../models/UserPayload';
+
+export interface JwtPayload {
+  sub: string;
+  email: string;
+  role: string;
+  iat?: number;
+  exp?: number;
+}
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor() {
-    if (!process.env.JWT_SECRET) {
-      throw new Error('JWT_SECRET environment variable is not defined');
-    }
+  constructor(
+    private configService: ConfigService,
+    private usersService: UsersService,
+  ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: process.env.JWT_SECRET,
+      secretOrKey: configService.get<string>('JWT_SECRET') || 'fallback-secret',
     });
   }
 
-  async validate(payload: UserPayload): Promise<UserFromJwt> {
+  async validate(payload: JwtPayload) {
+    const user = await this.usersService.findByEmail(payload.email);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
     return {
-      id: payload.sub,
-      email: payload.email,
-      name: payload.name,
+      id: user.id,
+      email: user.email,
+      role: user.role,
     };
   }
 }

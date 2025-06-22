@@ -13,6 +13,7 @@ Content-Type: application/json
 
 ### Find all claims
 GET http://localhost:8000/claims
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJzdWIiOiI2ODU4NmM4ZDc3ODdkMjM5ZTBjNDI1NjAiLCJpYXQiOjE3NTA2MjcxMTksImV4cCI6MTc1MDcxMzUxOX0.9lExZGqoHvrifvm14nJDuT2xDvAe3L8HVEEihlI5TOA
 
 ### Find claim by id
 GET http://localhost:8000/claims/683c8a990cf5910c84941f4d

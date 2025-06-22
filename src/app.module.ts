@@ -9,6 +9,8 @@ import { DiagnosesModule } from './diagnoses/diagnoses.module';
 import { TaxTypesModule } from './tax-types/tax-types.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -27,6 +29,8 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
     ClaimsModule,
     DiagnosesModule,
     TaxTypesModule,
+    AuthModule,
+    UsersModule
   ],
   controllers: [AppController],
   providers: [
