@@ -1400,9 +1400,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nao-refinada" class="md-nav__link">
+  <a href="#2-criterios-de-aceitacao" class="md-nav__link">
     <span class="md-ellipsis">
-      NÃO REFINADA
+      2. Critérios de Aceitação
     </span>
   </a>
   
@@ -2110,7 +2110,48 @@
 <p><strong>Como</strong> administrador</p>
 <p><strong>Quero</strong> criar novas categorias para agrupar teses tributárias</p>
 <p><strong>Para</strong> manter a base de dados organizada</p>
-<h2 id="nao-refinada">NÃO REFINADA<a class="headerlink" href="#nao-refinada" title="Permanent link">&para;</a></h2>
+<h2 id="2-criterios-de-aceitacao">2. Critérios de Aceitação<a class="headerlink" href="#2-criterios-de-aceitacao" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Cenário 1 – Cadastro bem-sucedido</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">estou na página de cadastrar categorias</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">preencho todos os campos obrigatórios</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Adicionar</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo o toast “Categoria cadastrada com sucesso”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">sou redirecionado para a tela de categoria</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a nova tese é categoria  a lista</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a operação completa em ≤ </span><span class="s">2</span><span class="nf"> segundos</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 2 – Campo obrigatório vazio</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">estou na página de cadastrar categorias</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">deixo qualquer campo obrigatório (Nome da categoria) em branco</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Adicionar</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o(s) campo(s) são destacado(s) em vermelho</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">exibe &quot;</span><span class="s">Nome da categoria é obrigatorio</span><span class="nf">&quot;</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 3 – Limites de caracteres</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">estou na página de cadastrar categorias</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">digito mais de </span><span class="s">50</span><span class="nf"> caracteres no campo &quot;</span><span class="s">Nome da categoria</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o sistema impede a digitação de novos caracteres</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o campo permanece com exatamente </span><span class="s">50</span><span class="nf"> caracteres</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">a operação completa em ≤ </span><span class="s">2</span><span class="nf"> segundos</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 4 – Cancelar/sair da página</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">estou na página de cadastrar categorias</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico em &quot;</span><span class="s">Cancelar</span><span class="nf">&quot; ou &quot;</span><span class="s">Voltar</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">sou redirecionado para a tela de categorias</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">nenhum dado é salvo</span>
+</code></pre></div>
 
 
 

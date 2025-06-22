@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#us-17-editar-categoria-de-teses-tributaria" class="md-skip">
+        <a href="#us-17-editar-categorias-de-teses-tributarias" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -1653,9 +1653,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nao-refinada" class="md-nav__link">
+  <a href="#2-criterios-de-aceitacao" class="md-nav__link">
     <span class="md-ellipsis">
-      NÃO REFINADA
+      2. Critérios de Aceitação
     </span>
   </a>
   
@@ -2104,13 +2104,55 @@
   
 
 
-<h1 id="us-17-editar-categoria-de-teses-tributaria">US-17: Editar categoria de teses tributária<a class="headerlink" href="#us-17-editar-categoria-de-teses-tributaria" title="Permanent link">&para;</a></h1>
+<h1 id="us-17-editar-categorias-de-teses-tributarias">US-17: Editar categorias de teses tributárias<a class="headerlink" href="#us-17-editar-categorias-de-teses-tributarias" title="Permanent link">&para;</a></h1>
 <hr />
 <h2 id="1-descricao">1. Descrição<a class="headerlink" href="#1-descricao" title="Permanent link">&para;</a></h2>
 <p><strong>Como</strong> administrador</p>
 <p><strong>Quero</strong> editar o nome de uma categoria de tese tributária</p>
-<p><strong>Para</strong> manter a organização da base de dados e corrigir erros ou padronizar nomenclaturas</p>
-<h2 id="nao-refinada">NÃO REFINADA<a class="headerlink" href="#nao-refinada" title="Permanent link">&para;</a></h2>
+<p><strong>Para</strong> manter a base de dados organizada e padronizada</p>
+<h2 id="2-criterios-de-aceitacao">2. Critérios de Aceitação<a class="headerlink" href="#2-criterios-de-aceitacao" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Cenário 1 – Edição bem-sucedida</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">estou na página de editar categorias</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">seleciono uma categoria existente</span>
+<span class="k">When </span><span class="nf">altero o nome da categoria</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Salvar</span><span class="nf">&quot;</span>
+<span class="k">Then </span><span class="nf">vejo o toast “Categoria editada com sucesso”</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">sou redirecionado para a tela de categorias</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">a categoria aparece atualizada na lista</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">a operação completa em ≤ </span><span class="s">2</span><span class="nf"> segundos</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 2 – Campo obrigatório vazio</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">estou na página de editar categorias</span>
+<span class="k">When </span><span class="nf">apago o conteúdo do campo &quot;</span><span class="s">Nome da categoria</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Salvar</span><span class="nf">&quot;</span>
+<span class="k">Then </span><span class="nf">o campo é destacado em vermelho</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">exibe a mensagem &quot;</span><span class="s">Nome da categoria é obrigatório</span><span class="nf">&quot;</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 3 – Limites de caracteres</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">estou na página de editar categorias</span>
+<span class="k">When </span><span class="nf">digito mais de </span><span class="s">50</span><span class="nf"> caracteres no campo &quot;</span><span class="s">Nome da categoria</span><span class="nf">&quot;</span>
+<span class="k">Then </span><span class="nf">o sistema impede a digitação de novos caracteres</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">o campo permanece com exatamente </span><span class="s">50</span><span class="nf"> caracteres</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">a operação completa em ≤ </span><span class="s">2</span><span class="nf"> segundos</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 4 – Cancelar/sair da página</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">estou na página de editar categorias</span>
+<span class="k">When </span><span class="nf">clico em &quot;</span><span class="s">Cancelar</span><span class="nf">&quot; ou &quot;</span><span class="s">Voltar</span><span class="nf">&quot;</span>
+<span class="k">Then </span><span class="nf">sou redirecionado para a tela de categorias</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">nenhuma alteração feita é salva</span>
+</code></pre></div>
 
 
 
