@@ -44,7 +44,6 @@
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
-    "pg": "^8.15.6",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },
@@ -91,9 +90,6 @@
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
-    },
-      "moduleNameMapper": {
-        "^src/(.*)$": "<rootDir>/$1"
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s"

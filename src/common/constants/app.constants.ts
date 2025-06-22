@@ -18,6 +18,9 @@ export const ERROR_MESSAGES = {
 
   // Tax type-specific errors
   TAX_TYPE_NAME_EXISTS: 'Tax type name already exists',
+
+  // User-specific errors
+  USER_EMAIL_EXISTS: 'User email already exists',
 } as const;
 
 export const VALIDATION_MESSAGES = {
