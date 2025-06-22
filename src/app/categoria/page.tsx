@@ -1,19 +1,9 @@
 'use client';
 
-import { Edit, Trash2, Plus } from 'lucide-react';
+import { Edit, Plus } from 'lucide-react';
 import { useState } from 'react';
 
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
+import { useGetTaxTypes, createTaxType, updateTaxType } from '@/api/taxType';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -36,60 +26,59 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { toast } from '@/hooks/use-toast';
+import { ITaxType } from '@/types/taxType';
 
-interface Categoria {
-  id: number;
-  name: string;
-}
-
-// Mudança 1: Mudou de function declaration para arrow function
 const Component = () => {
-  const [categorias, setCategorias] = useState<Categoria[]>([
-    { id: 1, name: 'Electronics' },
-    { id: 2, name: 'Clothing' },
-    { id: 3, name: 'Books' },
-  ]);
+  const { taxTypes, taxTypesLoading, taxTypesError, refreshTaxTypes } = useGetTaxTypes();
   const [newCategoriaName, setNewCategoriaName] = useState('');
-  const [editingCategoria, setEditingCategoria] = useState<Categoria | null>(null);
+  const [editingCategoria, setEditingCategoria] = useState<ITaxType | null>(null);
   const [editName, setEditName] = useState('');
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleAddCategoria = () => {
+  const handleAddCategoria = async () => {
     if (!newCategoriaName.trim()) {
       toast({
-        title: 'Error',
-        description: 'Category name is required',
+        title: 'Erro',
+        description: 'Nome da categoria é obrigatório',
         variant: 'destructive',
       });
       return;
     }
 
-    const newCategoria: Categoria = {
-      id: Math.max(...categorias.map(c => c.id), 0) + 1,
-      name: newCategoriaName.trim(),
-    };
-
-    setCategorias([...categorias, newCategoria]);
-    setNewCategoriaName('');
-    setIsAddDialogOpen(false);
-    toast({
-      title: 'Success',
-      description: 'Category added successfully',
-    });
+    setIsSubmitting(true);
+    try {
+      await createTaxType({ name: newCategoriaName.trim() });
+      await refreshTaxTypes();
+      setNewCategoriaName('');
+      setIsAddDialogOpen(false);
+      toast({
+        title: 'Sucesso',
+        description: 'Categoria criada com sucesso',
+      });
+    } catch (error: any) {
+      toast({
+        title: 'Erro',
+        description: error.message || 'Erro ao criar categoria',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleEditCategoria = (categoria: Categoria) => {
+  const handleEditCategoria = (categoria: ITaxType) => {
     setEditingCategoria(categoria);
     setEditName(categoria.name);
     setIsEditDialogOpen(true);
   };
 
-  const handleUpdateCategoria = () => {
+  const handleUpdateCategoria = async () => {
     if (!editName.trim()) {
       toast({
-        title: 'Error',
-        description: 'Category name is required',
+        title: 'Erro',
+        description: 'Nome da categoria é obrigatório',
         variant: 'destructive',
       });
       return;
@@ -97,25 +86,49 @@ const Component = () => {
 
     if (!editingCategoria) return;
 
-    setCategorias(
-      categorias.map(c => (c.id === editingCategoria.id ? { ...c, name: editName.trim() } : c))
-    );
-    setIsEditDialogOpen(false);
-    setEditingCategoria(null);
-    setEditName('');
-    toast({
-      title: 'Success',
-      description: 'Category updated successfully',
-    });
+    setIsSubmitting(true);
+    try {
+      await updateTaxType(editingCategoria._id, { name: editName.trim() });
+      await refreshTaxTypes();
+      setIsEditDialogOpen(false);
+      setEditingCategoria(null);
+      setEditName('');
+      toast({
+        title: 'Sucesso',
+        description: 'Categoria atualizada com sucesso',
+      });
+    } catch (error: any) {
+      toast({
+        title: 'Erro',
+        description: error.message || 'Erro ao atualizar categoria',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleDeleteCategoria = (id: number) => {
-    setCategorias(categorias.filter(c => c.id !== id));
-    toast({
-      title: 'Success',
-      description: 'Category deleted successfully',
-    });
-  };
+  if (taxTypesLoading) {
+    return (
+      <div className='container mx-auto p-6 max-w-4xl'>
+        <div className='flex items-center justify-center h-64'>
+          <div className='text-lg'>Carregando categorias...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (taxTypesError) {
+    return (
+      <div className='container mx-auto p-6 max-w-4xl'>
+        <div className='flex items-center justify-center h-64'>
+          <div className='text-lg text-red-600'>
+            Erro ao carregar categorias: {taxTypesError.message}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className='container mx-auto p-6 max-w-4xl'>
@@ -130,26 +143,27 @@ const Component = () => {
             </div>
             <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
               <DialogTrigger asChild>
-                <Button>
+                <Button disabled={isSubmitting}>
                   <Plus className='mr-2 h-4 w-4' />
                   Adicionar Categoria
                 </Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Add New Category</DialogTitle>
-                  <DialogDescription>Enter the name for the new category.</DialogDescription>
+                  <DialogTitle>Adicione uma nova categoria</DialogTitle>
+                  <DialogDescription>Coloque o nome da nova categoria.</DialogDescription>
                 </DialogHeader>
                 <div className='space-y-4 py-4'>
                   <div className='space-y-2'>
-                    <Label htmlFor='new-name'>Category Name</Label>
+                    <Label htmlFor='new-name'>Nome da Categoria</Label>
                     <Input
                       id='new-name'
                       value={newCategoriaName}
                       onChange={e => setNewCategoriaName(e.target.value)}
-                      placeholder='Enter category name'
+                      placeholder='Digite o nome da categoria'
+                      disabled={isSubmitting}
                       onKeyDown={e => {
-                        if (e.key === 'Enter') {
+                        if (e.key === 'Enter' && !isSubmitting) {
                           handleAddCategoria();
                         }
                       }}
@@ -157,10 +171,16 @@ const Component = () => {
                   </div>
                 </div>
                 <DialogFooter>
-                  <Button variant='outline' onClick={() => setIsAddDialogOpen(false)}>
-                    Cancel
+                  <Button
+                    variant='outline'
+                    onClick={() => setIsAddDialogOpen(false)}
+                    disabled={isSubmitting}
+                  >
+                    Cancelar
                   </Button>
-                  <Button onClick={handleAddCategoria}>Add Category</Button>
+                  <Button onClick={handleAddCategoria} disabled={isSubmitting}>
+                    {isSubmitting ? 'Criando...' : 'Adicionar'}
+                  </Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
@@ -173,58 +193,34 @@ const Component = () => {
                 <TableRow>
                   <TableHead className='w-[100px]'>ID</TableHead>
                   <TableHead>Nome</TableHead>
+                  <TableHead>Criado em</TableHead>
                   <TableHead className='text-right'>Ações</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {categorias.length === 0 ? (
+                {taxTypes.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={3} className='text-center py-8 text-muted-foreground'>
-                      No categories found. Add your first category to get started.
+                    <TableCell colSpan={4} className='text-center py-8 text-muted-foreground'>
+                      Nenhuma categoria encontrada. Adicione sua primeira categoria para começar.
                     </TableCell>
                   </TableRow>
                 ) : (
-                  categorias.map(categoria => (
-                    <TableRow key={categoria.id}>
-                      <TableCell className='font-medium'>{categoria.id}</TableCell>
+                  taxTypes.map((categoria: ITaxType) => (
+                    <TableRow key={categoria._id}>
+                      <TableCell className='font-medium'>{categoria._id.slice(-6)}</TableCell>
                       <TableCell>{categoria.name}</TableCell>
+                      <TableCell>
+                        {new Date(categoria.createdAt).toLocaleDateString('pt-BR')}
+                      </TableCell>
                       <TableCell className='text-right'>
-                        <div className='flex justify-end gap-2'>
-                          <Button
-                            variant='outline'
-                            size='sm'
-                            onClick={() => handleEditCategoria(categoria)}
-                          >
-                            <Edit className='h-4 w-4' />
-                          </Button>
-                          <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                              <Button variant='outline' size='sm'>
-                                <Trash2 className='h-4 w-4' />
-                              </Button>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                              <AlertDialogHeader>
-                                <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                                <AlertDialogDescription>
-                                  {/* Mudança 2: Escapou as aspas usando entidades HTML */}
-                                  This action cannot be undone. This will permanently delete the
-                                  category &quot;
-                                  {categoria.name}&quot;.
-                                </AlertDialogDescription>
-                              </AlertDialogHeader>
-                              <AlertDialogFooter>
-                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction
-                                  onClick={() => handleDeleteCategoria(categoria.id)}
-                                  className='bg-destructive text-destructive-foreground hover:bg-destructive/90'
-                                >
-                                  Delete
-                                </AlertDialogAction>
-                              </AlertDialogFooter>
-                            </AlertDialogContent>
-                          </AlertDialog>
-                        </div>
+                        <Button
+                          variant='outline'
+                          size='sm'
+                          onClick={() => handleEditCategoria(categoria)}
+                          disabled={isSubmitting}
+                        >
+                          <Edit className='h-4 w-4' />
+                        </Button>
                       </TableCell>
                     </TableRow>
                   ))
@@ -239,19 +235,20 @@ const Component = () => {
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Edit Category</DialogTitle>
-            <DialogDescription>Update the category name.</DialogDescription>
+            <DialogTitle>Editar Categoria</DialogTitle>
+            <DialogDescription>Atualize o nome da categoria.</DialogDescription>
           </DialogHeader>
           <div className='space-y-4 py-4'>
             <div className='space-y-2'>
-              <Label htmlFor='edit-name'>Category Name</Label>
+              <Label htmlFor='edit-name'>Nome da Categoria</Label>
               <Input
                 id='edit-name'
                 value={editName}
                 onChange={e => setEditName(e.target.value)}
-                placeholder='Enter category name'
+                placeholder='Digite o nome da categoria'
+                disabled={isSubmitting}
                 onKeyDown={e => {
-                  if (e.key === 'Enter') {
+                  if (e.key === 'Enter' && !isSubmitting) {
                     handleUpdateCategoria();
                   }
                 }}
@@ -259,10 +256,16 @@ const Component = () => {
             </div>
           </div>
           <DialogFooter>
-            <Button variant='outline' onClick={() => setIsEditDialogOpen(false)}>
-              Cancel
+            <Button
+              variant='outline'
+              onClick={() => setIsEditDialogOpen(false)}
+              disabled={isSubmitting}
+            >
+              Cancelar
             </Button>
-            <Button onClick={handleUpdateCategoria}>Update Category</Button>
+            <Button onClick={handleUpdateCategoria} disabled={isSubmitting}>
+              {isSubmitting ? 'Atualizando...' : 'Atualizar'}
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

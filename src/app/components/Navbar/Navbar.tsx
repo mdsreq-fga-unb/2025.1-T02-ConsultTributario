@@ -14,7 +14,7 @@ const Navbar = () => {
         </div>
 
         <div className='hidden md:flex space-x-8 text-black'>
-          <Link
+          {/* <Link
             href='/funcionalidades'
             className='text-lg text-black font-medium hover:text-black-600 transition-colors'
           >
@@ -31,7 +31,7 @@ const Navbar = () => {
             className='text-lg text-black font-medium hover:text-black-600 transition-colors'
           >
             Sobre
-          </Link>
+          </Link> */}
           <Link
             href='/perguntas'
             className='text-lg text-black font-medium hover:text-black-600 transition-colors'
