@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input';
 import { IClaim } from '@/types/claim';
 
 interface ListagemTesesProps {
-  teses: IClaim[];
+  teses?: IClaim[];
   carregando?: boolean;
   erro?: any;
   tentarNovamente?: () => void;
@@ -24,7 +24,7 @@ interface ListagemTesesProps {
 }
 
 export const ListagemTeses = ({
-  teses,
+  teses = [],
   carregando = false,
   erro,
   tentarNovamente,
@@ -54,6 +54,10 @@ export const ListagemTeses = ({
 
   // Filtra as teses baseado no termo de busca
   const tesesFiltradas = useMemo(() => {
+    if (!Array.isArray(teses)) {
+      return [];
+    }
+
     if (!termoBusca.trim()) {
       return teses;
     }
