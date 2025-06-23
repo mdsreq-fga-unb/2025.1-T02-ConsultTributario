@@ -7,7 +7,7 @@ import { useAuthContext } from '@/auth';
 // ----------------------------------------------------------------------
 
 export const AuthNavigation = () => {
-  const { user, authenticated, logout } = useAuthContext();
+  const { logout, authenticated } = useAuthContext();
 
   const handleLogout = async () => {
     try {
@@ -18,24 +18,12 @@ export const AuthNavigation = () => {
   };
 
   if (!authenticated) {
-    return (
-      <div className='flex items-center space-x-4'>
-        <Link href='/login' className='text-sm font-medium text-gray-700 hover:text-gray-900'>
-          Entrar
-        </Link>
-        <Link
-          href='/register'
-          className='inline-flex items-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500'
-        >
-          Criar conta
-        </Link>
-      </div>
-    );
+    return null;
   }
 
   return (
     <div className='flex items-center space-x-4'>
-      <Link href='/dashboard' className='text-sm font-medium text-gray-700 hover:text-gray-900'>
+      {/* <Link href='/dashboard' className='text-sm font-medium text-gray-700 hover:text-gray-900'>
         Dashboard
       </Link>
 
@@ -48,10 +36,9 @@ export const AuthNavigation = () => {
             Usuários
           </Link>
         </>
-      )}
+      )} */}
 
       <div className='flex items-center space-x-2'>
-        <span className='text-sm text-gray-600'>Olá, {user?.name}</span>
         <button
           onClick={handleLogout}
           className='text-sm font-medium text-red-600 hover:text-red-700'

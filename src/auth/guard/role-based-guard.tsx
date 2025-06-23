@@ -67,6 +67,5 @@ export const RoleBasedGuard = ({
       ) : null)
     );
   }
-
-  return { children };
+  return children;
 };
