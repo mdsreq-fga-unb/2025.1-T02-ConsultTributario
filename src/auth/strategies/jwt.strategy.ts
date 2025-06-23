@@ -31,24 +31,30 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: JwtPayload) {
-    if (!payload.sub || !payload.email) {
-      throw new UnauthorizedException(ERROR_MESSAGES.INVALID_TOKEN);
-    }
-
-    const user = await this.usersService.findByEmail(payload.email);
-
-    if (!user) {
-      throw new Error(ERROR_MESSAGES.USER_NOT_FOUND);
-    }
-
-    if (user.id !== payload.sub) {
+    if (!payload.sub || !payload.email || !payload.role) {
       throw new UnauthorizedException(ERROR_MESSAGES.INVALID_TOKEN);
     }
 
     return {
-      id: user.id,
-      email: user.email,
-      role: user.role,
+      id: payload.sub,
+      email: payload.email,
+      role: payload.role,
     };
+
+    // const user = await this.usersService.findByEmail(payload.email);
+
+    // if (!user) {
+    //   throw new Error(ERROR_MESSAGES.USER_NOT_FOUND);
+    // }
+
+    // if (user.id !== payload.sub) {
+    //   throw new UnauthorizedException(ERROR_MESSAGES.INVALID_TOKEN);
+    // }
+
+    // return {
+    //   id: user.id,
+    //   email: user.email,
+    //   role: user.role,
+    // };
   }
 }
