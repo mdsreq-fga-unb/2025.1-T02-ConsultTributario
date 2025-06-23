@@ -22,7 +22,7 @@ const LoginPage = () => {
 
     try {
       await login(formData.email, formData.password);
-      router.push('/dashboard');
+      router.replace('/biblioteca-teses');
     } catch (error) {
       console.error('Login error:', error);
       // Aqui você pode adicionar tratamento de erro (toast, etc.)
@@ -43,7 +43,7 @@ const LoginPage = () => {
       <div className='w-full max-w-md space-y-8'>
         <div>
           <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
-            Faça login em sua conta
+            Faça login
           </h2>
         </div>
         <form className='mt-8 space-y-6' onSubmit={handleSubmit}>

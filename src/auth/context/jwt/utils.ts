@@ -38,6 +38,22 @@ export function isValidToken(accessToken: string) {
   }
 }
 
+export function getUserFromToken(accessToken: string) {
+  try {
+    const decoded = jwtDecode(accessToken);
+    if (!decoded) return null;
+
+    return {
+      id: decoded.sub,
+      email: decoded.email,
+      role: decoded.role,
+    };
+  } catch (error) {
+    console.error('Error extracting user from token:', error);
+    return null;
+  }
+}
+
 export function tokenExpired(exp: number) {
   const currentTime = Date.now() / 1000;
   return exp < currentTime;

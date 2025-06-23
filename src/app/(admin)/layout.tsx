@@ -11,7 +11,7 @@ type Props = {
 const AdminLayout = ({ children }: Props) => {
   return (
     <AuthGuard>
-      <RoleBasedGuard hasContent roles={['admin', 'super_admin']}>
+      <RoleBasedGuard hasContent roles={['admin']}>
         <div className='min-h-screen bg-gray-50'>
           <div className='border-b border-gray-200 bg-white'>
             <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>

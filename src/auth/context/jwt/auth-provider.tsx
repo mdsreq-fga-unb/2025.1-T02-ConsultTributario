@@ -1,12 +1,13 @@
 'use client';
 
+import Cookies from 'js-cookie';
 import { useCallback, useEffect, useMemo, useReducer } from 'react';
 
 import { IAuthResponse, ILoginRequest, IRegisterRequest, IUser } from '../../../types/auth';
 import axios, { endpoints } from '../../../utils/axios';
 
 import { AuthContext } from './auth-context';
-import { isValidToken, setSession } from './utils';
+import { isValidToken, setSession, getUserFromToken } from './utils';
 
 // ----------------------------------------------------------------------
 
@@ -84,22 +85,34 @@ type Props = {
 
 export const AuthProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
   const checkAuthenticated = useCallback(async () => {
     try {
-      const accessToken = sessionStorage.getItem('accessToken');
+      const accessToken = sessionStorage.getItem('accessToken') || Cookies.get('accessToken');
 
       if (accessToken && isValidToken(accessToken)) {
         setSession(accessToken);
 
-        const response = await axios.get<IUser>(endpoints.auth.me);
+        // Tentar extrair dados do usuário do token primeiro
+        const userFromToken = getUserFromToken(accessToken);
 
-        dispatch({
-          type: Types.INITIAL,
-          payload: {
-            user: response.data,
-          },
-        });
+        if (userFromToken) {
+          dispatch({
+            type: Types.INITIAL,
+            payload: {
+              user: userFromToken,
+            },
+          });
+        } else {
+          // Se não conseguir extrair do token, fazer chamada para API
+          const response = await axios.get<IUser>(endpoints.auth.me);
+
+          dispatch({
+            type: Types.INITIAL,
+            payload: {
+              user: response.data,
+            },
+          });
+        }
       } else {
         dispatch({
           type: Types.INITIAL,
@@ -121,9 +134,7 @@ export const AuthProvider = ({ children }: Props) => {
 
   useEffect(() => {
     checkAuthenticated();
-  }, [checkAuthenticated]);
-
-  // LOGIN
+  }, [checkAuthenticated]); // LOGIN
   const login = useCallback(async (email: string, password: string) => {
     const data: ILoginRequest = {
       email,
@@ -132,32 +143,60 @@ export const AuthProvider = ({ children }: Props) => {
 
     const response = await axios.post<IAuthResponse>(endpoints.auth.login, data);
 
-    const { accessToken, refreshToken, user } = response.data;
+    const { access_token, refresh_token } = response.data;
 
-    setSession(accessToken, refreshToken);
+    setSession(access_token, refresh_token);
 
-    dispatch({
-      type: Types.LOGIN,
-      payload: {
-        user,
-      },
-    });
-  }, []);
+    // Extrair dados do usuário do token
+    const userFromToken = getUserFromToken(access_token);
 
-  // REGISTER
+    if (userFromToken) {
+      dispatch({
+        type: Types.LOGIN,
+        payload: {
+          user: userFromToken,
+        },
+      });
+    } else {
+      // Fallback: buscar dados do usuário da API
+      const userResponse = await axios.get<IUser>(endpoints.auth.me);
+
+      dispatch({
+        type: Types.LOGIN,
+        payload: {
+          user: userResponse.data,
+        },
+      });
+    }
+  }, []); // REGISTER
   const register = useCallback(async (registerData: IRegisterRequest) => {
     const response = await axios.post<IAuthResponse>(endpoints.auth.register, registerData);
 
-    const { accessToken, refreshToken, user } = response.data;
+    const { access_token, refresh_token } = response.data;
 
-    setSession(accessToken, refreshToken);
+    setSession(access_token, refresh_token);
 
-    dispatch({
-      type: Types.REGISTER,
-      payload: {
-        user,
-      },
-    });
+    // Extrair dados do usuário do token
+    const userFromToken = getUserFromToken(access_token);
+
+    if (userFromToken) {
+      dispatch({
+        type: Types.REGISTER,
+        payload: {
+          user: userFromToken,
+        },
+      });
+    } else {
+      // Fallback: buscar dados do usuário da API
+      const userResponse = await axios.get<IUser>(endpoints.auth.me);
+
+      dispatch({
+        type: Types.REGISTER,
+        payload: {
+          user: userResponse.data,
+        },
+      });
+    }
   }, []);
 
   // LOGOUT
@@ -182,7 +221,6 @@ export const AuthProvider = ({ children }: Props) => {
       user: state.user,
       loading: state.loading,
       authenticated: state.authenticated,
-      //
       login,
       register,
       logout,

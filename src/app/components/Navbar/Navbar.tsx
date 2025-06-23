@@ -8,9 +8,7 @@ const Navbar = () => {
     <div className='w-full bg-white shadow-md border-b border-black-200'>
       <nav className='container mx-auto px-4 py-4 flex justify-between items-center'>
         <div className='flex items-center'>
-          <Link href={'/'}>
-            <h1 className='text-2xl font-bold text-black-600'>Consult Tributário</h1>
-          </Link>
+          <h1 className='text-2xl font-bold text-black-600'>Consult Tributário</h1>
         </div>
 
         <div className='hidden md:flex space-x-8 text-black'>
@@ -52,7 +50,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <AuthNavigation />
+        {/* <AuthNavigation /> */}
       </nav>
     </div>
   );
