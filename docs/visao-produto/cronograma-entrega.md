@@ -6,6 +6,8 @@
 | 1.0    | 21/04/2025 | Versão inicial                             | Vinicius Vieira |
 | 1.1    | 06/05/2025 | Refinamento de sprints e inclusão de Gantt | Vinicius Vieira |
 | 1.2    | 26/05/2025 | Atualizações de datas e mudanças nas sprints | Daniel Ferreira Nunes |
+| 1.3    | 23/06/2025 | Mudança | Daniel Ferreira Nunes |
+
 
 
 ---
@@ -46,13 +48,17 @@ gantt
 
 | Sprint | Período       | Objetivo Principal                                                            | Entregas Chave                                                            | Validação do Cliente                         |
 | ------ | ------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------- |
-| **1**  | 22/04 → 05/05 | Planejamento & Setup (backlog DEEP, arquitetura inicial, critérios DoR / DoD) | Backlog priorizado, repositórios configurados, pipeline CI/CD básico      | Reunião de alinhamento, aprovação do backlog |
-| **2**  | 06/05 → 19/05 | Criação do protótipo no Figma e iniciação da estrutura basica do backend e frontend               | Endpoint `/questions`, seed com 15 teses, fluxo ponta‑a‑ponta funcionando | Demonstração funcional ao cliente            |
-| **3**  | 20/05 → 02/06 | Criação de uma das perguntas no front e no backend e implementação de busca por CNPJ | Geração de PDF preliminar, testes de usabilidade com 3 usuários‑alvo      | Feedback sobre formato dos relatórios        |
-| **4**  | 03/06 → 16/06 | Geração de relatório com as questões selecionadas                             | Histórico v1, RBAC mínimo, criptografia at‑rest                           | Checagem de segurança e rastreabilidade      |
-| **5**  | 17/06 → 30/06 | Integração Completa & UX Final                                                | Pact tests, design system aplicado em todas as telas                      | Teste de aceite de interface                 |
-| **6**  | 01/07 → 14/07 | Testes & Conformidade LGPD                                                    | Cobertura ≥ 80%, DPIA LGPD, plano de mitigação                           | Aprovação de conformidade preliminar         |
-| **7**  | 15/07 → 24/07 | Go‑Live Assistido                                                             | Treinamento, monitoramento inicial, aceite formal                         | Assinatura de aceite                         |
+### Cronograma de Entregas Atualizado
+
+| Sprint | Período       | Objetivo Principal                  | Entregas Chave                                                                                                                 | Validação do Cliente                                             |
+| :----- | :------------ | :---------------------------------- | :----------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------- |
+| **1** | 22/04 → 05/05 | Planejamento & Setup                | Backlog priorizado (DEEP), arquitetura inicial definida, protótipo de tarefas, repositórios e pipeline CI/CD configurados.          | Reunião de alinhamento, aprovação do backlog.                    |
+| **2** | 06/05 → 19/05 | Estruturação e Prototipação         | Estrutura básica do projeto (Frontend/Backend), protótipo de alta fidelidade no Figma para guiar o desenvolvimento.                 | Demonstração do protótipo e da estrutura.                        |
+| **3** | 20/05 → 02/06 | Autenticação e Gestão de Teses      | **1.** Implementação de Login/Registro (RNF04). <br> **2.** CRUD de Teses: US-03, US-04, US-07. <br> **3.** Visualização de Teses: US-07.                                        | Validação do fluxo de autenticação e gerenciamento de teses.     |
+| **4** | 03/06 → 16/06 | Gestão de Perguntas Jurídicas       | **1.** CRUD de Perguntas: US-08, US-09, US-11.                                                                               | Revisão e validação das funcionalidades de gerenciamento de perguntas. |
+| **5** | 17/06 → 30/06 | Consulta de CNPJ e Categorias       | **1.** Busca por CNPJ (US-01, RNF08). <br> **2.** Gestão de Categorias: US-06, US-19. <br>  <br> **3.** Geração preliminar do relatório (US-14, RNF02). | Demonstração da consulta de CNPJ, categorias e rascunho do relatório. |
+| **6** | 01/07 → 14/07 | Questionário e Testes               | **1.** Questionário de diagnóstico (US-12). <br> **2.** Implementação de testes de qualidade e conformidade (LGPD, RNF05, RNF07). | Validação do questionário de diagnóstico e plano de testes.      |
+| **7** | 15/07 → 24/07 | Go-Live Assistido e Deploy Final    | **1.** Entrega final da aplicação. <br> **2.** Treinamento ao cliente e monitoramento inicial do ambiente de produção.             | Assinatura do termo de aceite e homologação do software.         |
 
 ??? note "Riscos Conhecidos"
 \* Mudanças na legislação tributária
