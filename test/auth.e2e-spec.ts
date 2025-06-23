@@ -1,13 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication, ValidationPipe } from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
 import * as request from 'supertest';
-import { App } from 'supertest/types';
 import { AppModule } from './../src/app.module';
 import { AuthHelper, createAuthHelper, TestUser } from './auth-helper';
 import { clearDatabase, startMemoryServer, stopMemoryServer } from './mongodb-memory';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 
-describe('AppController (e2e)', () => {
+describe('AuthController (e2e)', () => {
   let app: NestFastifyApplication;
   let authHelper: AuthHelper;
   let adminUser: TestUser;
@@ -46,11 +45,39 @@ describe('AppController (e2e)', () => {
     regularUser = users.regularUser;
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .set('Authorization', `Bearer ${regularUser.accessToken}`)
-      .expect(200)
-      .expect('Hello World!');
+  it('/auth/register (POST)', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/auth/register')
+      .send({
+        email: 'any_email@gmail.com',
+        password: 'any_password',
+      })
+      .expect(201);
+
+    const { access_token } = response.body;
+
+    await request(app.getHttpServer()).get('/tax-types').set('Authorization', `Bearer ${access_token}`).expect(200);
+  });
+
+  it('/auth/login (POST)', async () => {
+    await request(app.getHttpServer())
+      .post('/auth/register')
+      .send({
+        email: 'any_email@gmail.com',
+        password: 'any_password',
+      })
+      .expect(201);
+
+    const response = await request(app.getHttpServer())
+      .post('/auth/login')
+      .send({
+        email: 'any_email@gmail.com',
+        password: 'any_password',
+      })
+      .expect(201);
+
+    const { access_token } = response.body;
+
+    await request(app.getHttpServer()).get('/tax-types').set('Authorization', `Bearer ${access_token}`).expect(200);
   });
 });

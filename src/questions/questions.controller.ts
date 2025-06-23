@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, UseGuards } from '@nestjs/common';
 import { QuestionsService } from './questions.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
@@ -6,6 +6,9 @@ import { Serialize } from '../common/interceptors/serialize.interceptor';
 import { QuestionDto } from './dto/question.dto';
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { MongoIdValidationPipe } from '@common/pipes/mongo-id-validation.pipe';
+import { RolesGuard } from '@/auth/guards/roles.guard';
+import { Roles } from '@/auth/decorators/roles.decorator';
+import { UserRole } from '@/users/schemas/user.schema';
 
 @Serialize(QuestionDto)
 @Controller('questions')
@@ -13,6 +16,8 @@ export class QuestionsController {
   constructor(private readonly questionsService: QuestionsService) {}
 
   @Post()
+  @UseGuards(RolesGuard)
+  @Roles(UserRole.ADMIN)
   @ApiOperation({ summary: 'Cria uma nova pergunta' })
   @ApiBody({ type: CreateQuestionDto })
   @ApiResponse({ status: 201, description: 'Pergunta criada com sucesso' })
@@ -29,6 +34,8 @@ export class QuestionsController {
   }
 
   @Patch(':id')
+  @UseGuards(RolesGuard)
+  @Roles(UserRole.ADMIN)
   @ApiOperation({ summary: 'Atualiza uma pergunta existente' })
   @ApiBody({ type: UpdateQuestionDto })
   @ApiResponse({ status: 200, description: 'Pergunta atualizada com sucesso' })

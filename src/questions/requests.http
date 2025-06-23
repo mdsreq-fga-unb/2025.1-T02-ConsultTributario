@@ -1,23 +1,21 @@
 ### Create question
 POST http://localhost:8000/questions
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJzdWIiOiI2ODU4NmM4ZDc3ODdkMjM5ZTBjNDI1NjAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTA2NDc1MzcsImV4cCI6MTc1MDczMzkzN30.J_S7MAwYLJvGhRZ1CM7trd70s57je0D9LU7fRMXKwbc
 Content-Type: application/json
 
 {
-  "label": "Pergunta 5",
+  "label": "Pergunta 55",
   "tooltip": "Dica para a pergunta 5",
-  "relatedQuestions": [
-    "684462032c52eefcf8e30b85"  
-  ]
+  "relatedQuestions": []
 }
 
 ### Find all questions
 GET http://localhost:8000/questions
-
-### Find question by id
-GET http://localhost:8000/questions/68365d10ed8b809ccb0c60e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXIyQGV4YW1wbGUuY29tIiwic3ViIjoiNjg1ODZkMTI1MWU4NmFjZTY4ZWIzYjgwIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NTA2NDc4MTAsImV4cCI6MTc1MDczNDIxMH0.NUfdrUuFFF4Amqo70IpI1b2cz05q-x-bYe8LscOR8pM
 
 ### Update question
-PATCH http://localhost:8000/questions/68365d10ed8b809ccb0c60e1
+PATCH http://localhost:8000/questions/683c6de111fb31187f89798f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJzdWIiOiI2ODU4NmM4ZDc3ODdkMjM5ZTBjNDI1NjAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTA2NDc1MzcsImV4cCI6MTc1MDczMzkzN30.J_S7MAwYLJvGhRZ1CM7trd70s57je0D9LU7fRMXKwbc
 Content-Type: application/json
 
 {
