@@ -1,8 +1,10 @@
 ### Get all tax types
 GET http://localhost:8000/tax-types
+Authorization: Bearer your_access_token_here
 
 ### Create a new tax type
 POST http://localhost:8000/tax-types
+Authorization: Bearer your_access_token_here
 Content-Type: application/json
 
 {
@@ -11,6 +13,7 @@ Content-Type: application/json
 
 ### Update an existing tax type
 PATCH http://localhost:8000/tax-types/684f4a67a7d074f2e52d7593
+Authorization: Bearer your_access_token_here
 Content-Type: application/json
 
 {
