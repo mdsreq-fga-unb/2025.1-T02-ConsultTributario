@@ -21,6 +21,8 @@ export const ERROR_MESSAGES = {
 
   // User-specific errors
   USER_EMAIL_EXISTS: 'User email already exists',
+  USER_NOT_FOUND: 'User not found',
+  INVALID_TOKEN: 'Invalid or expired token',
 } as const;
 
 export const VALIDATION_MESSAGES = {
