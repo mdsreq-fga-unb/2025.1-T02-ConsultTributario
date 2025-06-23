@@ -37,12 +37,20 @@ const Navbar = () => {
           {authenticated && (
             <>
               {isAdmin() && (
-                <Link
-                  href='/perguntas'
-                  className='text-lg text-black font-medium hover:text-black-600 transition-colors'
-                >
-                  Perguntas
-                </Link>
+                <div className='space-x-8'>
+                  <Link
+                    href='/perguntas'
+                    className='text-lg text-black font-medium hover:text-black-600 transition-colors'
+                  >
+                    Perguntas
+                  </Link>
+                  <Link
+                    href='/categoria'
+                    className='text-lg text-black font-medium hover:text-black-600 transition-colors'
+                  >
+                    Categorias
+                  </Link>
+                </div>
               )}
               <Link
                 href='/biblioteca-teses'
