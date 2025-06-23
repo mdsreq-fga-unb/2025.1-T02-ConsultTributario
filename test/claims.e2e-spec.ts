@@ -4,9 +4,13 @@ import { AppModule } from '../src/app.module';
 import * as request from 'supertest';
 import { startMemoryServer, stopMemoryServer, clearDatabase } from './mongodb-memory';
 import { ValidationPipe } from '@nestjs/common';
+import { AuthHelper, createAuthHelper, TestUser } from './auth-helper';
 
 describe('Questions E2E', () => {
   let app: NestFastifyApplication;
+  let authHelper: AuthHelper;
+  let adminUser: TestUser;
+  let regularUser: TestUser;
 
   beforeAll(async () => {
     await startMemoryServer();
@@ -34,6 +38,11 @@ describe('Questions E2E', () => {
     await app.init();
     await app.getHttpAdapter().getInstance().ready();
     await clearDatabase();
+
+    authHelper = createAuthHelper(app);
+    const users = await authHelper.createTestUsers();
+    adminUser = users.adminUser;
+    regularUser = users.regularUser;
   });
 
   describe('/claims (POST)', () => {
@@ -43,36 +52,49 @@ describe('Questions E2E', () => {
 
     beforeEach(async () => {
       await clearDatabase();
-      let response = await request(app.getHttpServer()).post('/questions').send({
-        label: 'any_label 2',
-        tooltip: 'any_tooltip',
-        relatedQuestions: [],
-      });
+      let response = await request(app.getHttpServer())
+        .post('/questions')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .send({
+          label: 'any_label 2',
+          tooltip: 'any_tooltip',
+          relatedQuestions: [],
+        });
 
       existingQuestionIdActive = response.body._id;
 
-      response = await request(app.getHttpServer()).post('/questions').send({
-        label: 'any_label',
-        tooltip: 'any_tooltip',
-        relatedQuestions: [],
-      });
+      response = await request(app.getHttpServer())
+        .post('/questions')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .send({
+          label: 'any_label',
+          tooltip: 'any_tooltip',
+          relatedQuestions: [],
+        });
 
       existingQuestionIdNotActive = response.body._id;
 
-      response = await request(app.getHttpServer()).post('/tax-types').send({
-        name: 'any_name',
-      });
+      response = await request(app.getHttpServer())
+        .post('/tax-types')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .send({
+          name: 'any_name',
+        });
 
       taxTypeId = response.body._id;
 
-      await request(app.getHttpServer()).patch(`/questions/${existingQuestionIdNotActive}`).send({
-        isActive: false,
-      });
+      await request(app.getHttpServer())
+        .patch(`/questions/${existingQuestionIdNotActive}`)
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .send({
+          isActive: false,
+        });
     });
 
     it('should create a claim with valid data', async () => {
       const res = await request(app.getHttpServer())
         .post('/claims')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Claim',
           objective: 'Objective for claim',
@@ -96,6 +118,7 @@ describe('Questions E2E', () => {
     it('should return 400 if invalid data is provided', async () => {
       await request(app.getHttpServer())
         .post('/claims')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Claim 7',
           summary: 'Summary for claim 1',
@@ -106,7 +129,7 @@ describe('Questions E2E', () => {
     });
 
     it('should return 400 if title already exists', async () => {
-      await request(app.getHttpServer()).post('/claims').send({
+      await request(app.getHttpServer()).post('/claims').set('Authorization', `Bearer ${adminUser.accessToken}`).send({
         title: 'Claim',
         summary: 'Summary for claim 1',
         recoverable_period: '12 months',
@@ -116,6 +139,7 @@ describe('Questions E2E', () => {
 
       await request(app.getHttpServer())
         .post('/claims')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Claim',
           summary: 'Summary for claim 1',
@@ -129,6 +153,7 @@ describe('Questions E2E', () => {
     it('should return 400 if relatedQuestions contains invalid ObjectId', async () => {
       await request(app.getHttpServer())
         .post('/claims')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Claim',
           summary: 'Summary for claim 1',
@@ -143,6 +168,7 @@ describe('Questions E2E', () => {
     it('should return 201 if relatedQuestions contains valid ObjectId', async () => {
       await request(app.getHttpServer())
         .post('/claims')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Claim',
           objective: 'Objective for claim',
@@ -158,6 +184,7 @@ describe('Questions E2E', () => {
     it('should return 400 if relatedQuestion is not active', async () => {
       await request(app.getHttpServer())
         .post('/claims')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Claim',
           objective: 'Objective for claim',
@@ -172,6 +199,7 @@ describe('Questions E2E', () => {
     it('should return 400 if invalid taxType is provided', async () => {
       await request(app.getHttpServer())
         .post('/claims')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Claim',
           objective: 'Objective for claim',
@@ -189,21 +217,28 @@ describe('Questions E2E', () => {
 
     beforeEach(async () => {
       await clearDatabase();
-      const response = await request(app.getHttpServer()).post('/tax-types').send({
-        name: 'any_name',
-      });
+      const response = await request(app.getHttpServer())
+        .post('/tax-types')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .send({
+          name: 'any_name',
+        });
 
       taxTypeId = response.body._id;
     });
 
     it('should return an empty array when no claims exist', async () => {
-      const res = await request(app.getHttpServer()).get('/claims').expect(200);
+      const res = await request(app.getHttpServer())
+        .get('/claims')
+        .set('Authorization', `Bearer ${regularUser.accessToken}`)
+        .expect(200);
       expect(res.body).toEqual([]);
     });
 
     it('should return all claims', async () => {
       await request(app.getHttpServer())
         .post('/claims')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Claim 1',
           objective: 'Objective for claim 1',
@@ -216,6 +251,7 @@ describe('Questions E2E', () => {
 
       await request(app.getHttpServer())
         .post('/claims')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Claim 2',
           objective: 'Objective for claim 2',
@@ -226,7 +262,10 @@ describe('Questions E2E', () => {
         })
         .expect(201);
 
-      const res = await request(app.getHttpServer()).get('/claims').expect(200);
+      const res = await request(app.getHttpServer())
+        .get('/claims')
+        .set('Authorization', `Bearer ${regularUser.accessToken}`)
+        .expect(200);
 
       expect(res.body.length).toBe(2);
       expect(res.body[0].title).toBe('Claim 1');
@@ -238,9 +277,12 @@ describe('Questions E2E', () => {
 
     beforeEach(async () => {
       await clearDatabase();
-      const response = await request(app.getHttpServer()).post('/tax-types').send({
-        name: 'any_name',
-      });
+      const response = await request(app.getHttpServer())
+        .post('/tax-types')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .send({
+          name: 'any_name',
+        });
 
       taxTypeId = response.body._id;
     });
@@ -248,6 +290,7 @@ describe('Questions E2E', () => {
     it('should return a claim by ID', async () => {
       const createRes = await request(app.getHttpServer())
         .post('/claims')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Claim 1',
           objective: 'Objective for claim 1',
@@ -260,14 +303,20 @@ describe('Questions E2E', () => {
 
       const claimId = createRes.body._id;
 
-      const res = await request(app.getHttpServer()).get(`/claims/${claimId}`).expect(200);
+      const res = await request(app.getHttpServer())
+        .get(`/claims/${claimId}`)
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .expect(200);
 
       expect(res.body._id).toBe(claimId);
       expect(res.body.title).toBe('Claim 1');
     });
 
     it('should return 400 if claim does not exist', async () => {
-      await request(app.getHttpServer()).get('/claims/invalid-id').expect(400);
+      await request(app.getHttpServer())
+        .get('/claims/invalid-id')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .expect(400);
     });
   });
 
@@ -279,40 +328,55 @@ describe('Questions E2E', () => {
 
     beforeEach(async () => {
       await clearDatabase();
-      let response = await request(app.getHttpServer()).post('/questions').send({
-        label: 'any_label',
-        tooltip: 'any_tooltip',
-        relatedQuestions: [],
-      });
+      let response = await request(app.getHttpServer())
+        .post('/questions')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .send({
+          label: 'any_label',
+          tooltip: 'any_tooltip',
+          relatedQuestions: [],
+        });
 
       existingQuestionIdActive = response.body._id;
 
-      response = await request(app.getHttpServer()).post('/questions').send({
-        label: 'any_label 2',
-        tooltip: 'any_tooltip',
-        relatedQuestions: [],
-      });
+      response = await request(app.getHttpServer())
+        .post('/questions')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .send({
+          label: 'any_label 2',
+          tooltip: 'any_tooltip',
+          relatedQuestions: [],
+        });
 
       existingQuestionIdNotActive = response.body._id;
 
-      response = await request(app.getHttpServer()).post('/tax-types').send({
-        name: 'any_name',
-      });
+      response = await request(app.getHttpServer())
+        .post('/tax-types')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .send({
+          name: 'any_name',
+        });
 
       taxTypeId = response.body._id;
 
-      await request(app.getHttpServer()).patch(`/questions/${existingQuestionIdNotActive}`).send({
-        isActive: false,
-      });
+      await request(app.getHttpServer())
+        .patch(`/questions/${existingQuestionIdNotActive}`)
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .send({
+          isActive: false,
+        });
 
-      response = await request(app.getHttpServer()).post('/claims').send({
-        title: 'Claim 1',
-        objective: 'Objective for claim 1',
-        summary: 'Summary for claim 1',
-        recoverable_period: '12 months',
-        recoverable_value: '1000',
-        taxType: taxTypeId,
-      });
+      response = await request(app.getHttpServer())
+        .post('/claims')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .send({
+          title: 'Claim 1',
+          objective: 'Objective for claim 1',
+          summary: 'Summary for claim 1',
+          recoverable_period: '12 months',
+          recoverable_value: '1000',
+          taxType: taxTypeId,
+        });
 
       claimId = response.body._id;
     });
@@ -320,6 +384,7 @@ describe('Questions E2E', () => {
     it('should update a claim with valid data', async () => {
       const res = await request(app.getHttpServer())
         .patch(`/claims/${claimId}`)
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Updated Claim 1',
           objective: 'Updated objective for claim 1',
@@ -340,6 +405,7 @@ describe('Questions E2E', () => {
     it('should return 400 if invalid data is provided', async () => {
       await request(app.getHttpServer())
         .patch(`/claims/${claimId}`)
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: '',
           summary: '',
@@ -351,12 +417,16 @@ describe('Questions E2E', () => {
     });
 
     it('should return 400 if claim does not exist', async () => {
-      await request(app.getHttpServer()).patch('/claims/invalid-id').expect(400);
+      await request(app.getHttpServer())
+        .patch('/claims/invalid-id')
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
+        .expect(400);
     });
 
     it('should return 400 if relatedQuestion contains invalid ObjectId', async () => {
       await request(app.getHttpServer())
         .patch(`/claims/${claimId}`)
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Updated Claim 1',
           summary: 'Updated summary for claim 1',
@@ -371,6 +441,7 @@ describe('Questions E2E', () => {
     it('should return 200 if relatedQuestion contains valid ObjectId', async () => {
       await request(app.getHttpServer())
         .patch(`/claims/${claimId}`)
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Updated Claim 1',
           summary: 'Updated summary for claim 1',
@@ -384,6 +455,7 @@ describe('Questions E2E', () => {
     it('should return 400 if relatedQuestion is not active', async () => {
       await request(app.getHttpServer())
         .patch(`/claims/${claimId}`)
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Updated Claim 1',
           summary: 'Updated summary for claim 1',
@@ -397,6 +469,7 @@ describe('Questions E2E', () => {
     it('should return 400 if invalid taxType is provided', async () => {
       await request(app.getHttpServer())
         .patch(`/claims/${claimId}`)
+        .set('Authorization', `Bearer ${adminUser.accessToken}`)
         .send({
           title: 'Updated Claim 1',
           summary: 'Updated summary for claim 1',
