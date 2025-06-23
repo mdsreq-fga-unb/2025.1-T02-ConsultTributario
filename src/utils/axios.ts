@@ -84,11 +84,11 @@ export const endpoints = {
     refresh: '/auth/refresh',
   },
   user: {
-    list: '/users',
-    details: (id: string) => `/users/${id}`,
-    create: '/users',
-    update: (id: string) => `/users/${id}`,
-    delete: (id: string) => `/users/${id}`,
+    //list: '/users',
+    //details: (id: string) => `/users/${id}`,
+    //create: '/users',
+    //update: (id: string) => `/users/${id}`,
+    //delete: (id: string) => `/users/${id}`,
   },
   question: {
     list: '/questions',

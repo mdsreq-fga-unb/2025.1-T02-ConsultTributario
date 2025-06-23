@@ -19,7 +19,7 @@ export const GuestGuard = ({ children }: Props) => {
   const check = () => {
     if (!loading) {
       if (authenticated) {
-        router.replace('/');
+        router.replace('/biblioteca-teses');
       } else {
         setChecked(true);
       }

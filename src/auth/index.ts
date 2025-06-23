@@ -5,6 +5,7 @@ export { AuthConsumer } from './context/jwt/auth-consumer';
 
 // Hooks
 export { useAuthContext } from './hooks/use-auth-context';
+export { useRolePermission } from './hooks/use-role-permission';
 
 // Guards
 export { AuthGuard } from './guard/auth-guard';

@@ -11,7 +11,7 @@ type Props = {
 const ProtectedLayout = ({ children }: Props) => {
   return (
     <AuthGuard>
-      <div className='min-h-screen bg-gray-50'>{children}</div>
+      <div className='min-h-screen'>{children}</div>
     </AuthGuard>
   );
 };

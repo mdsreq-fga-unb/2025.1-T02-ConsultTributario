@@ -1,11 +1,11 @@
 export interface IUser {
   id: string;
   email: string;
-  name: string;
   role: string;
-  avatar?: string;
-  isEmailVerified: boolean;
 }
+
+// Definir tipos de roles disponíveis
+export type UserRole = 'admin' | 'user';
 
 export interface IAuthState {
   user: IUser | null;
@@ -19,16 +19,14 @@ export interface ILoginRequest {
 }
 
 export interface IRegisterRequest {
-  name: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
 export interface IAuthResponse {
-  user: IUser;
-  accessToken: string;
-  refreshToken?: string;
+  access_token: string;
+  refresh_token?: string;
 }
 
 export interface IAuthContextValue extends IAuthState {

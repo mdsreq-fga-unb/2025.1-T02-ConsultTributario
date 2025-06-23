@@ -31,6 +31,7 @@ export const AuthGuard = ({ children }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authenticated, loading]);
 
+  // Mostra loading enquanto verifica autenticação
   if (loading) {
     return (
       <div className='flex h-screen items-center justify-center'>
@@ -39,6 +40,12 @@ export const AuthGuard = ({ children }: Props) => {
     );
   }
 
+  // Se não estiver autenticado, não renderiza nada (vai redirecionar)
+  if (!authenticated) {
+    return null;
+  }
+
+  // Só renderiza os children se estiver autenticado E verificado
   if (!checked) {
     return null;
   }
