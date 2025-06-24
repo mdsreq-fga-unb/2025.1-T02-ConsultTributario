@@ -185,7 +185,7 @@ const LoginPage = () => {
                 )}
               </div>
 
-              <div className='flex items-center justify-between pt-2'>
+              {/* <div className='flex items-center justify-between pt-2'>
                 <label className='flex items-center space-x-2 cursor-pointer group'>
                   <input
                     type='checkbox'
@@ -195,7 +195,7 @@ const LoginPage = () => {
                     Lembrar-me
                   </span>
                 </label>
-              </div>
+              </div> */}
 
               <Button
                 type='submit'
