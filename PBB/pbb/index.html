@@ -1,0 +1,2699 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação oficial do projeto ConsultTributário (Grupo 07 - UnB)">
+      
+      
+        <meta name="author" content="Grupo 07 - Engenharia de Requisitos - UnB">
+      
+      
+        <link rel="canonical" href="https://mdsreq-fga-unb.github.io/2025.1-T02-ConsultTributario/PBB/pbb/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/logo/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+    
+    
+      
+        <title>Pbb - ConsultTributário - Grupo 07</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="ConsultTributário - Grupo 07" class="md-header__button md-logo" aria-label="ConsultTributário - Grupo 07" data-md-component="logo">
+      
+  <img src="../../assets/logo/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ConsultTributário - Grupo 07
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pbb
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Mudar para modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Mudar para modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ConsultTributario
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../visao-produto/cenario-atual/introducao-negocio/" class="md-tabs__link">
+          
+  
+  
+  Visão do Produto
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../visao-produto/product-backlog/" class="md-tabs__link">
+          
+  
+  
+  Backlog do Produto
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../guia-contribuicao/politica-de-branches/" class="md-tabs__link">
+          
+  
+  
+  Guia de Contribuição
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../apresentacoes/apresentacao-1/" class="md-tabs__link">
+          
+  
+  
+  Apresentações
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../prototipo/versao1/" class="md-tabs__link">
+          
+  
+  
+  Protótipo no Figma
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../USM/usm/" class="md-tabs__link">
+          
+  
+  
+  User Story Mapping
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ConsultTributário - Grupo 07" class="md-nav__button md-logo" aria-label="ConsultTributário - Grupo 07" data-md-component="logo">
+      
+  <img src="../../assets/logo/logo.png" alt="logo">
+
+    </a>
+    ConsultTributário - Grupo 07
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mdsreq-fga-unb/2025.1-T02-ConsultTributario" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ConsultTributario
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Início
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Visão do Produto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Visão do Produto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cenário Atual
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Cenário Atual
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/cenario-atual/introducao-negocio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introdução ao Negócio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/cenario-atual/oportunidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Identificação da Oportunidade
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/cenario-atual/desafios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Desafios do Projeto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/cenario-atual/segmentacao-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Segmentação de Clientes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Solução Proposta
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Solução Proposta
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/solucao-proposta/objetivos-produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Objetivos do Produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/solucao-proposta/caracteristicas-solucao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Características da Solução
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/solucao-proposta/tecnologias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tecnologias
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/solucao-proposta/pesquisa-mercado/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pesquisa de Mercado
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/solucao-proposta/analise-viabilidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Análise de Viabilidade
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/solucao-proposta/impacto-solucao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Impacto da Solução
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/estrategias-engenharia-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Estratégias de Engenharia de Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/engenharia-requisitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Engenharia de Requisitos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/cronograma-entrega/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cronograma de Entregas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/interacao-equipe-cliente/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interação Equipe e Cliente
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/licoes-aprendidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lições Aprendidas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/dor-dod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DoR e DoD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/product-backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backlog do Produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Backlog do Produto
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Backlog do Produto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../visao-produto/product-backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backlog do Produto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Features
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Features
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-perguntas-tributarias/gerenciar-perguntas-tributarias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Feature 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-teses-tributarias/gerenciar-teses-tributarias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Feature 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/realizar-diagnostico-tributario/realizar-diagnostico-tributario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Feature 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    User Stories Refinadas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            User Stories Refinadas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/realizar-diagnostico-tributario/us-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/realizar-diagnostico-tributario/us-02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-teses-tributarias/us-03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-teses-tributarias/us-04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-teses-tributarias/us-05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-teses-tributarias/us-06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-teses-tributarias/us-07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-perguntas-tributarias/us-08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 8
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-perguntas-tributarias/us-09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 9
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-perguntas-tributarias/us-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-perguntas-tributarias/us-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 11
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/realizar-diagnostico-tributario/us-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 12
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/realizar-diagnostico-tributario/us-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 13
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/realizar-diagnostico-tributario/us-14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 14
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/realizar-diagnostico-tributario/us-15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 15
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/realizar-diagnostico-tributario/us-16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 16
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-teses-tributarias/us-17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 17
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-teses-tributarias/us-18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 18
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/gerenciar-teses-tributarias/us-19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    US 19
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Guia de Contribuição
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Guia de Contribuição
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia-contribuicao/politica-de-branches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Política de Branches
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guia-contribuicao/politica-de-commits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Política de Commits
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Apresentações
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Apresentações
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacoes/apresentacao-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacoes/apresentacao-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../apresentacoes/apresentacao-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apresentação 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Protótipo no Figma
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Protótipo no Figma
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prototipo/versao1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Versão 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    User Story Mapping
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            User Story Mapping
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../USM/usm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ComunEventos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Pbb</h1>
+
+<p><strong>PBB – HealthNet</strong></p>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Versão</th>
+<th>Descrição</th>
+<th>Autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>23/06/25</td>
+<td>1.0</td>
+<td>Criação do Documento</td>
+<td>Rafael Schadt e Diogo Ferreira</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Problemas</strong></p>
+<ul>
+<li>Falta de um sistema unificado para gestão de dados de pacientes.  </li>
+<li>Sistemas desatualizados e incompatíveis entre as unidades.  </li>
+<li>Dificuldade de acesso a prontuários completos e atualizados.  </li>
+<li>Risco elevado de erros médicos por falta de informação.  </li>
+<li>Agendamento de consultas ineficiente e descentralizado.  </li>
+<li>Controle de medicamentos manual e propenso a erros.  </li>
+<li>Falta de verificação automática de interações medicamentosas.  </li>
+<li>Dependência excessiva de processos manuais e papelada.  </li>
+<li>Dificuldade em cumprir regulamentações de proteção de dados.</li>
+</ul>
+<p><strong>Expectativas</strong></p>
+<ul>
+<li>Centralizar e unificar os dados dos pacientes.  </li>
+<li>Ter acesso imediato e confiável ao histórico completo do paciente.  </li>
+<li>Otimizar e unificar o sistema de agendamento de consultas.  </li>
+<li>Tornar o processo de dispensa de medicamentos mais seguro e à prova de erros.  </li>
+<li>Oferecer um portal para que os pacientes acessem suas informações.  </li>
+<li>Ter uma solução tecnológica robusta, segura e escalável.  </li>
+<li>Garantir a conformidade com as regulamentações de saúde.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">ID</th>
+<th>PBIs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>Criar uma conta e fazer login de forma segura no portal</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>Visualizar o histórico de consultas.</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>Visualizar e descarregar os resultados de exames.</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>Visualizar as prescrições ativas e o histórico de medicação.</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>Preencher formulários de pré-consulta online.</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td>Receber lembretes de medicação através de notificações.</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td>Atualizar as informações pessoais</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td>Visualizar a agenda de múltiplos médicos.</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td>Marcar uma nova consulta para um paciente</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td>Cancelar ou reagendar uma consulta existente</td>
+</tr>
+<tr>
+<td style="text-align: center;">11</td>
+<td>Bloquear horários na agenda de um médico</td>
+</tr>
+<tr>
+<td style="text-align: center;">12</td>
+<td>Solicitar o cancelamento de uma consulta</td>
+</tr>
+<tr>
+<td style="text-align: center;">13</td>
+<td>Visualizar os horários disponíveis de um médico</td>
+</tr>
+<tr>
+<td style="text-align: center;">14</td>
+<td>Solicitar um agendamento através do portal.</td>
+</tr>
+<tr>
+<td style="text-align: center;">15</td>
+<td>Cadastrar paciente no sistema unificado</td>
+</tr>
+<tr>
+<td style="text-align: center;">16</td>
+<td>Procurar por um paciente existente</td>
+</tr>
+<tr>
+<td style="text-align: center;">17</td>
+<td>Visualizar o histórico completo de consultas, tratamentos e diagnósticos de um paciente</td>
+</tr>
+<tr>
+<td style="text-align: center;">18</td>
+<td>Adicionar notas clínicas a uma consulta</td>
+</tr>
+<tr>
+<td style="text-align: center;">19</td>
+<td>Anexar resultados de exames ao prontuário do paciente</td>
+</tr>
+<tr>
+<td style="text-align: center;">20</td>
+<td>Alertar sobre possíveis interações medicamentosas ou alergias do paciente</td>
+</tr>
+<tr>
+<td style="text-align: center;">21</td>
+<td>Procurar por um medicamento numa base de dados</td>
+</tr>
+<tr>
+<td style="text-align: center;">22</td>
+<td>Gerar uma prescrição digital</td>
+</tr>
+<tr>
+<td style="text-align: center;">23</td>
+<td>Visualizar o histórico de medicamentos já dispensados em um paciente</td>
+</tr>
+<tr>
+<td style="text-align: center;">24</td>
+<td>Dar baixa de um medicamento no estoque</td>
+</tr>
+<tr>
+<td style="text-align: center;">25</td>
+<td>Receber as prescrições digitais emitidas pelos médicos</td>
+</tr>
+<tr>
+<td style="text-align: center;">26</td>
+<td>Gerir os perfis de acesso dos utilizadores.</td>
+</tr>
+<tr>
+<td style="text-align: center;">27</td>
+<td>Receber alertas automáticos sobre tentativas de acesso suspeitas</td>
+</tr>
+<tr>
+<td style="text-align: center;">28</td>
+<td>Visualizar logs de acesso</td>
+</tr>
+<tr>
+<td style="text-align: center;">29</td>
+<td>Visualizar o tempo de atividade e o desempenho do sistema</td>
+</tr>
+<tr>
+<td style="text-align: center;">30</td>
+<td>Gerar relatórios sobre os tempos médios de espera nas clínicas</td>
+</tr>
+<tr>
+<td style="text-align: center;">31</td>
+<td>Visualizar estatísticas de uso do sistema</td>
+</tr>
+<tr>
+<td style="text-align: center;">32</td>
+<td>Gerar relatórios de conformidade</td>
+</tr>
+</tbody>
+</table>
+<p>Personas e User Stories:</p>
+<p>Sra. Clara, a Paciente:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Código US</th>
+<th style="text-align: center;">Código PBI</th>
+<th>User Story</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">US01</td>
+<td style="text-align: center;">01</td>
+<td>Eu, como paciente, quero criar uma conta e fazer login de forma segura no portal, para que eu possa acessar meus dados, serviços e funcionalidades.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US02</td>
+<td style="text-align: center;">02</td>
+<td>Eu, como paciente, quero visualizar o meu histórico de consultas passadas e futuras, para que eu possa acompanhar meus atendimentos e organizar minha agenda de saúde.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US03</td>
+<td style="text-align: center;">03</td>
+<td>Eu, como paciente, quero visualizar e descarregar os meus resultados de exames assim que forem liberados, para que eu possa acompanhar minha saúde de forma prática.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US04</td>
+<td style="text-align: center;">04</td>
+<td>Eu, como paciente, quero visualizar as minhas prescrições ativas e o meu histórico de medicação, para que eu possa acompanhar meu tratamento e evitar erros no uso dos medicamentos.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US05</td>
+<td style="text-align: center;">05</td>
+<td>Eu, como paciente, quero poder preencher formulários de pré-consulta online para adiantar o atendimento.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US06</td>
+<td style="text-align: center;">06</td>
+<td>Eu, como paciente, quero receber lembretes de medicação através de notificações no portal ou por e-mail, para que eu não esqueça de tomar meus medicamentos nos horários corretos.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US07</td>
+<td style="text-align: center;">07</td>
+<td>Eu, como paciente, quero atualizar as minhas informações pessoais (endereço, contato), para que meus dados estejam sempre corretos para comunicação e atendimento.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US08</td>
+<td style="text-align: center;">12</td>
+<td>Eu, como paciente, quero poder solicitar o cancelamento de uma consulta através do portal com pelo menos 24h de antecedência, para que eu possa liberar o horário e reagendar se necessário.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US09</td>
+<td style="text-align: center;">13</td>
+<td>Eu, como paciente, quero visualizar os horários disponíveis de um médico, para que eu possa agendar minha consulta no melhor horário para mim.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US10</td>
+<td style="text-align: center;">14</td>
+<td>Eu, como paciente, quero solicitar um agendamento através do portal, para que eu possa marcar uma consulta de forma rápida e prática, sem precisar ir até a unidade.</td>
+</tr>
+</tbody>
+</table>
+<p>Sr. Roberto, o Diretor de TI:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Código US</th>
+<th style="text-align: center;">Código PBI</th>
+<th>User Story</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">US11</td>
+<td style="text-align: center;">26</td>
+<td>Eu, como Diretor de TI, quero poder gerir os perfis de acesso dos usuários, para que eu possa definir as suas permissões e garantir a segurança e o funcionamento adequado do sistema.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US12</td>
+<td style="text-align: center;">27</td>
+<td>Eu, como Diretor de TI, quero receber alertas automáticos sobre tentativas de acesso, para que eu possa agir rapidamente e garantir a segurança e a continuidade dos serviços.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US13</td>
+<td style="text-align: center;">28</td>
+<td>Eu, como Diretor de TI, quero visualizar logs de acesso para auditoria de segurança, com filtros por utilizador e data, para que eu possa monitorar atividades suspeitas e assegurar a conformidade com as políticas de segurança.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US14</td>
+<td style="text-align: center;">29</td>
+<td>Eu, como Diretor de TI, quero um painel com o tempo de atividade e o desempenho do sistema em tempo real, para que eu possa monitorar a estabilidade, prevenir falhas e garantir um serviço de qualidade.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US15</td>
+<td style="text-align: center;">30</td>
+<td>Eu, como Diretor de TI, quero gerar relatórios sobre os tempos médios de espera nas clínicas, para que eu possa identificar gargalos operacionais e propor melhorias nos processos.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US16</td>
+<td style="text-align: center;">31</td>
+<td>Eu, como Diretor de TI, quero ver estatísticas de uso do sistema, para que eu possa acompanhar a utilização e apoiar a tomada de decisões estratégicas</td>
+</tr>
+<tr>
+<td style="text-align: center;">US17</td>
+<td style="text-align: center;">32</td>
+<td>Eu, como Diretor de TI, quero gerar relatórios de conformidade com as regulamentações de proteção de dados de forma automatizada, para que eu possa garantir que o sistema esteja sempre alinhado às exigências legais.</td>
+</tr>
+</tbody>
+</table>
+<p>Lívia, a Farmacêutica:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Código US</th>
+<th style="text-align: center;">Código PBI</th>
+<th>User Story</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">US18</td>
+<td style="text-align: center;">20</td>
+<td>Eu, como farmacêutico, quero que o sistema me alerte sobre possíveis interações medicamentosas ou alergias do paciente ao aviar uma receita, para que eu possa garantir a segurança do paciente e evitar riscos à sua saúde.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US19</td>
+<td style="text-align: center;">25</td>
+<td>Eu, como farmacêutico, quero receber as prescrições digitais emitidas pelos médicos em tempo real numa fila de trabalho organizada, para que eu possa atender os pacientes de forma ágil, segura e eficiente.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US20</td>
+<td style="text-align: center;">23</td>
+<td>Eu, como farmacêutico, quero visualizar o histórico de medicamentos já dispensados para um paciente, para que eu possa orientá-lo melhor e evitar erros ou duplicidade de tratamentos.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US21</td>
+<td style="text-align: center;">24</td>
+<td>Eu, como farmacêutico, quero dar baixa de um medicamento no estoque automaticamente ao dispensá-lo para um paciente, para que eu possa manter o controle de estoque atualizado e evitar falta de produtos.</td>
+</tr>
+</tbody>
+</table>
+<p>Maria, a Recepcionista:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Código US</th>
+<th style="text-align: center;">Código PBI</th>
+<th>User Story</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">US22</td>
+<td style="text-align: center;">15</td>
+<td>Eu, como recepcionista, quero cadastrar um novo paciente no sistema unificado, para que eu possa centralizar as informações e agilizar os processos de atendimento.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US23</td>
+<td style="text-align: center;">16</td>
+<td>Eu, como recepcionista, quero procurar por um paciente existente usando nome ou documento, para que eu possa acessar rapidamente seu registro e prestar um atendimento mais eficiente.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US24</td>
+<td style="text-align: center;">18</td>
+<td>Eu, como recepcionista, quero adicionar notas clínicas a uma consulta, para que as informações relevantes fiquem registradas e auxiliem no atendimento pelos profissionais de saúde.</td>
+</tr>
+</tbody>
+</table>
+<p>Rafael, o Coordenador de Agendamento:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">US25</th>
+<th style="text-align: center;">8</th>
+<th style="text-align: left;">Eu, como coordenador de agendamento, quero visualizar a agenda de múltiplos médicos ao mesmo tempo, para que eu possa evitar conflitos e encontrar os melhores horários disponíveis.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">US26</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: left;">Eu, como coordenador de agendamento, quero marcar uma nova consulta para um paciente, selecionando o médico, a data e a hora, para que eu possa garantir um agendamento correto e organizado.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US27</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: left;">Eu, como coordenador de agendamento, quero cancelar ou reagendar uma consulta existente, e que o sistema notifique o paciente automaticamente, para que eu possa manter a comunicação clara e evitar ausências ou confusões.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US28</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: left;">Eu, como coordenador de agendamento, quero poder bloquear horários na agenda de um médico (como férias ou congressos), para que eu evite marcações indevidas nesses períodos.</td>
+</tr>
+</tbody>
+</table>
+<p>Dr. João, o Médico Clínico Geral:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">US29</th>
+<th style="text-align: center;">17</th>
+<th style="text-align: left;">Eu, como clínico geral, quero visualizar o histórico completo de consultas, tratamentos e diagnósticos de um paciente, para que eu possa tomar decisões informadas e oferecer um atendimento mais seguro e eficiente.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">US30</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: left;">Eu, como clínico geral, quero anexar novos resultados de exames (PDFs, imagens) ao prontuário do paciente, para que essas informações fiquem centralizadas e acessíveis durante o acompanhamento.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US31</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: left;">Eu, como clínico geral, quero procurar por um medicamento numa base de dados para adicioná-lo a uma prescrição, com informações de dosagem, para que eu possa prescrever de forma correta, segura e rápida.</td>
+</tr>
+<tr>
+<td style="text-align: center;">US32</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: left;">Eu, como clínico geral, quero gerar uma prescrição digital e associá-la à consulta do paciente, para que eu elimine o uso de papel e facilite o acesso da farmácia e do paciente à medicação prescrita.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critérios de Aceitação:</strong></p>
+<p>US06 – Eu, como paciente, quero receber lembretes de medicação através de notificações no portal ou por e-mail, para que eu não esqueça de tomar meus medicamentos nos horários corretos.</p>
+<p>·        O paciente deve conseguir cadastrar horários específicos para cada medicamento.</p>
+<p>·        O sistema deve enviar notificações com no mínimo 5 minutos de antecedência.</p>
+<p>·        O paciente pode escolher receber por e-mail, no portal ou ambos.</p>
+<p>·        Se o e-mail estiver incorreto (sem “@” ou domínio), o sistema não permite salvar.</p>
+<p>US07 – Eu, como paciente, quero atualizar as minhas informações pessoais (endereço, contato), para que meus dados estejam sempre corretos para comunicação e atendimento.</p>
+<p>·        Deve ser possível editar: endereço, telefone e e-mail.</p>
+<p>·        O campo telefone deve ter entre <strong>10 e 11 dígitos numéricos</strong>, sem letras.</p>
+<p>·        E-mail deve ser validado no formato <strong>“exemplo@dominio.com”</strong>.</p>
+<p>·        CPF e nome não podem ser alterados.</p>
+<p>·        Após a atualização, uma mensagem de confirmação é exibida.</p>
+<p>US08 – Eu, como paciente, quero poder solicitar o cancelamento de uma consulta através do portal com pelo menos 24h de antecedência, para que eu possa liberar o horário e reagendar se necessário.</p>
+<p>·        O sistema deve bloquear o botão de cancelamento se faltar menos de <strong>24 horas</strong> para a consulta.</p>
+<p>·        Deve solicitar confirmação antes de cancelar.</p>
+<p>·        Ao cancelar, o sistema libera o horário na agenda e envia notificação ao paciente e ao médico.</p>
+<p>US09 – Eu, como paciente, quero visualizar os horários disponíveis de um médico, para que eu possa agendar minha consulta no melhor horário para mim</p>
+<p>·        Mostrar os próximos 30 dias corridos.</p>
+<p>·        Só exibir horários não ocupados nem bloqueados.</p>
+<p>·        Permitir filtro por médico e por data específica.</p>
+<p>·        Cada horário deve exibir data, hora e especialidade do médico.</p>
+<p>US10 – Eu, como paciente, quero solicitar um agendamento através do portal, para que eu possa marcar uma consulta de forma rápida e prática, sem precisar ir até a unidade.</p>
+<p>·        O paciente deve escolher: médico, data e horário.</p>
+<p>·        O sistema não permite agendar para horários indisponíveis.</p>
+<p>·        Após agendar, o paciente recebe confirmação na tela e por e-mail.</p>
+<p>·        Não permite agendar para datas passadas.</p>
+<p>US11 – Eu, como Diretor de TI, quero poder gerir os perfis de acesso dos usuários, para que eu possa definir as suas permissões e garantir a segurança e o funcionamento adequado do sistema.</p>
+<p>·        Deve ser possível criar, editar e remover perfis como médico, recepcionista, farmacêutico, TI.</p>
+<p>·        Cada perfil possui permissões predefinidas e customizáveis.</p>
+<p>·        Alterações são registradas em log (usuário, data, ação).</p>
+<p>·        Nome do perfil deve ter entre 3 e 30 caracteres.</p>
+<p>US12 – Eu, como Diretor de TI, quero receber alertas automáticos sobre tentativas de acesso, para que eu possa agir rapidamente e garantir a segurança e a continuidade dos serviços.</p>
+<p>·        Dispara alerta se houver mais de 5 tentativas de login falhas seguidas no mesmo usuário.</p>
+<p>·        Dispara alerta se houver login de um IP não usual.</p>
+<p>·        Alertas enviados por e-mail e exibidos no painel de TI.</p>
+<p>·        Mensagem do alerta deve conter: usuário, IP, horário e descrição do evento.</p>
+<p>US13 – Eu, como Diretor de TI, quero visualizar logs de acesso para auditoria de segurança, com filtros por utilizador e data, para que eu possa monitorar atividades suspeitas e assegurar a conformidade com as políticas de segurança.</p>
+<p>·        Logs exibem: usuário, data/hora, ação e IP.</p>
+<p>·        Filtro por período (máximo 90 dias retroativos), usuário e tipo de ação.</p>
+<p>·        Logs não podem ser editados nem apagados.</p>
+<p>·        Exportação dos logs em formato .CSV e .PDF.</p>
+<p>US14 – Eu, como Diretor de TI, quero um painel com o tempo de atividade e o desempenho do sistema em tempo real, para que eu possa monitorar a estabilidade, prevenir falhas e garantir um serviço de qualidade.</p>
+<p>·        O painel deve exibir: uptime (%), uso de CPU, memória e disco, atualizados a cada 60 segundos.</p>
+<p>·        Aviso se uptime ficar abaixo de 99,5%.</p>
+<p>·        Alertas visuais (vermelho, amarelo, verde) para status crítico, alerta e normal.</p>
+<p>US18 – Eu, como farmacêutico, quero que o sistema me alerte sobre possíveis interações medicamentosas ou alergias do paciente ao aviar uma receita, para que eu possa garantir a segurança do paciente e evitar riscos à sua saúde.</p>
+<p>·        O sistema cruza dados da prescrição com alergias e histórico do paciente.</p>
+<p>·        Exibe alerta caso haja interação grave ou risco de alergia.</p>
+<p>·        O alerta deve conter: nome dos medicamentos, tipo de risco e recomendação.</p>
+<p>·        Bloqueia a dispensação até que o farmacêutico confirme ciência do alerta.</p>
+<p>US19 – Eu, como farmacêutico, quero receber as prescrições digitais emitidas pelos médicos em tempo real numa fila de trabalho organizada, para que eu possa atender os pacientes de forma ágil, segura e eficiente.</p>
+<p>·        Prescrições aparecem em fila ordenada por hora de emissão.</p>
+<p>·        Fila mostra: nome do paciente, médico, data, status (pendente, entregue).</p>
+<p>·        Prescrições urgentes aparecem no topo da fila com destaque visual (vermelho).</p>
+<p>·        Permitir buscar na fila por nome ou CPF.</p>
+<p>US20 – Eu, como farmacêutico, quero visualizar o histórico de medicamentos já dispensados para um paciente, para que eu possa orientá-lo melhor e evitar erros ou duplicidade de tratamentos.</p>
+<p>·        Histórico deve exibir os últimos 12 meses de dispensações.</p>
+<p>·        Mostrar: nome do medicamento, data, quantidade e médico prescritor.</p>
+<p>·        Permitir busca por nome do medicamento ou data.</p>
+<p>US23 – Eu, como recepcionista, quero procurar por um paciente existente usando nome ou documento, para que eu possa acessar rapidamente seu registro e prestar um atendimento mais eficiente.</p>
+<p>·        Permite busca por nome completo, parte do nome ou CPF.</p>
+<p>·        CPF deve conter 11 dígitos válidos (com verificação de dígito).</p>
+<p>·        Retorna lista com: nome completo, CPF, data de nascimento e contato.</p>
+<p>·        Busca tolerante a erros com até 2 caracteres divergentes (ex.: "Mariah" retorna "Maria").</p>
+<p>US29 – Eu, como clínico geral, quero visualizar o histórico completo de consultas, tratamentos e diagnósticos de um paciente, para que eu possa tomar decisões informadas e oferecer um atendimento mais seguro e eficiente.</p>
+<p>·        Exibe: consultas, diagnósticos, tratamentos, exames e prescrições, ordenados por data.</p>
+<p>·        Acesso permitido apenas a médicos vinculados ao paciente.</p>
+<p>·        Permitir filtrar por tipo (ex.: só exames ou só diagnósticos).</p>
+<p>US30 – Eu, como clínico geral, quero anexar novos resultados de exames (PDFs, imagens) ao prontuário do paciente, para que essas informações fiquem centralizadas e acessíveis durante o acompanhamento.</p>
+<p>·        Arquivos permitidos: PDF, JPG, PNG com limite de 10MB por arquivo.</p>
+<p>·        É possível adicionar título e descrição ao anexo.</p>
+<p>·        O anexo aparece imediatamente no prontuário após salvar.</p>
+<p>US31 – Eu, como clínico geral, quero procurar por um medicamento numa base de dados para adicioná-lo a uma prescrição, com informações de dosagem, para que eu possa prescrever de forma correta, segura e rápida.</p>
+<p>·        Permite busca por nome comercial ou princípio ativo.</p>
+<p>·        Campo de dosagem aceita somente valores numéricos de 1 a 1000 mg/ml/g.</p>
+<p>·        A busca retorna: nome, apresentação, dosagem disponível e restrições.</p>
+<p><strong>BDD’s:</strong></p>
+<p>US06 – Eu, como paciente, quero receber lembretes de medicação através de notificações no portal ou por e-mail, para que eu não esqueça de tomar meus medicamentos nos horários corretos.</p>
+<p><strong>Cenário 1:</strong> Agendar lembrete com sucesso<br />
+<strong>Dado que</strong> o paciente acessa o módulo de lembretes de medicação,<br />
+<strong>Quando ele</strong> cadastra um lembrete para o medicamento "Amoxicilina" às 08:00, com opção de envio por e-mail,<br />
+<strong>Então o</strong> sistema deve salvar o lembrete,<br />
+<strong>E enviar</strong> uma notificação com no mínimo 5 minutos de antecedência.</p>
+<p><strong>Cenário 2:</strong> Cadastro de lembrete com e-mail inválido<br />
+<strong>Dado que</strong> o paciente preenche o campo e-mail com "joaogmail.com",<br />
+<strong>Quando</strong> tenta salvar o lembrete,<br />
+<strong>Então</strong> o sistema deve exibir a mensagem "E-mail inválido",<br />
+<strong>E não</strong> permite salvar o lembrete.</p>
+<p>US07 – Eu, como paciente, quero atualizar as minhas informações pessoais (endereço, contato), para que meus dados estejam sempre corretos para comunicação e atendimento.</p>
+<p><strong>Cenário 1:</strong> Atualizar telefone com sucesso<br />
+<strong>Dado que</strong> o paciente acessa seus dados pessoais,<br />
+<strong>Quando</strong> insere o telefone "61987654321" (11 dígitos válidos) e salva,<br />
+<strong>Então</strong> o sistema deve atualizar o telefone,<br />
+<strong>E exibir</strong> a mensagem "Dados atualizados com sucesso".</p>
+<p><strong>Cenário 2:</strong> Erro ao inserir telefone inválido<br />
+<strong>Dado que</strong> o paciente insere o telefone "1234" (menos de 10 dígitos),<br />
+<strong>Quando</strong> tenta salvar,<br />
+<strong>Então</strong> o sistema deve exibir a mensagem "Telefone inválido, insira DDD + número",<br />
+<strong>E não</strong> salva a alteração.</p>
+<p>US08 – Eu, como paciente, quero poder solicitar o cancelamento de uma consulta através do portal com pelo menos 24h de antecedência, para que eu possa liberar o horário e reagendar se necessário.</p>
+<p><strong>Cenário 1</strong>: Cancelamento permitido<br />
+<strong>Dado que</strong> falta mais de 24 horas para a consulta,<br />
+<strong>Quando</strong> o paciente clica em "Cancelar Consulta",<br />
+<strong>Então o</strong> sistema deve confirmar o cancelamento,<br />
+<strong>E enviar</strong> uma notificação de cancelamento para paciente e médico.</p>
+<p><strong>Cenário 2:</strong> Cancelamento não permitido (menos de 24h)<br />
+<strong>Dado que</strong> falta menos de 24 horas para a consulta,<br />
+<strong>Quando o</strong> paciente tenta cancelar,<br />
+<strong>Então</strong> o sistema deve exibir a mensagem "Cancelamento não permitido. Consulte a clínica para suporte.",<br />
+<strong>E não</strong> processar o cancelamento.</p>
+<p>US10 – Eu, como paciente, quero solicitar um agendamento através do portal, para que eu possa marcar uma consulta de forma rápida e prática, sem precisar ir até a unidade.</p>
+<p><strong>Cenário 1:</strong> Agendar consulta com sucesso<br />
+<strong>Dado que</strong> o paciente seleciona o médico "Dra. Ana", o dia "25/06/2025" e horário "10:00", disponível,<br />
+<strong>Quando</strong> clica em "Confirmar Agendamento",<br />
+<strong>Então</strong> o sistema deve registrar a consulta,<br />
+<strong>E enviar</strong> confirmação por e-mail e na tela.</p>
+<p><strong>Cenário 2</strong>: Tentativa de agendamento em horário indisponível<br />
+<strong>Dado que</strong> o paciente seleciona o médico "Dr. João", dia "25/06/2025" e horário "10:00", que já está ocupado,<br />
+<strong>Quando tenta</strong> confirmar,<br />
+<strong>Então</strong> o sistema deve exibir a mensagem "Horário indisponível. Selecione outro horário.",<br />
+<strong>E não</strong> finaliza o agendamento.</p>
+<p>US11 – Eu, como Diretor de TI, quero poder gerir os perfis de acesso dos usuários, para que eu possa definir as suas permissões e garantir a segurança e o funcionamento adequado do sistema.</p>
+<p><strong>Cenário 1</strong>: Criar novo perfil com sucesso<br />
+<strong>Dado que</strong> o Diretor de TI preenche o campo "Nome do Perfil" com "Fisioterapeuta",<br />
+<strong>Quando</strong> clica em "Salvar",<br />
+<strong>Então</strong> o sistema deve criar o perfil,<br />
+<strong>E exibir</strong> a mensagem "Perfil criado com sucesso".</p>
+<p><strong>Cenário 2</strong>: Nome de perfil fora do limite de caracteres<br />
+<strong>Dado que</strong> o Diretor de TI preenche o nome do perfil com "Su" (apenas 2 caracteres),<br />
+<strong>Quando</strong> tenta salvar,<br />
+<strong>Então o</strong> sistema deve exibir "O nome do perfil deve ter entre 3 e 30 caracteres",<br />
+<strong>E não</strong> permite salvar.</p>
+<p>US12 – Eu, como Diretor de TI, quero receber alertas automáticos sobre tentativas de acesso, para que eu possa agir rapidamente e garantir a segurança e a continuidade dos serviços.</p>
+<p><strong>Cenário 1</strong>: Disparo de alerta por tentativas de login incorreto<br />
+<strong>Dado que</strong> um usuário realiza 5 tentativas consecutivas de login incorreto,<br />
+<strong>Quando insere</strong> a senha errada pela quinta vez,<br />
+<strong>Então o sistema</strong> deve enviar um alerta para o e-mail do Diretor de TI</p>
+<p><strong>E exibir</strong> no painel:<br />
+ "Tentativas de acesso suspeitas detectadas para usuário joao@example.com às 14:00 de IP 192.168.0.1".</p>
+<p><strong>Cenário 2</strong>: Login a partir de IP não usual<br />
+<strong>Dado que</strong> o usuário normalmente acessa do IP "192.168.0.1",<br />
+<strong>Quando</strong> realiza login a partir do IP "10.0.0.5",<br />
+<strong>Então</strong> o sistema deve gerar um alerta no painel e e-mail do TI:<br />
+ "Login de IP não usual detectado para usuário maria@example.com às 15:00".</p>
+<p>US18 – Eu, como farmacêutico, quero que o sistema me alerte sobre possíveis interações medicamentosas ou alergias do paciente ao aviar uma receita, para que eu possa garantir a segurança do paciente e evitar riscos à sua saúde.</p>
+<p><strong>Cenário 1</strong>: Alerta de interação medicamentosa detectada<br />
+<strong>Dado que</strong> o farmacêutico recebe uma prescrição contendo os medicamentos "Warfarina" e "Aspirina",<br />
+<strong>Quando</strong> tenta processar a dispensação,<br />
+<strong>Então</strong> o sistema exibe:<br />
+ "Atenção: Interação grave entre Warfarina e Aspirina (risco de sangramento). Confirme para prosseguir.",<br />
+<strong>E exige</strong> confirmação antes de liberar os medicamentos.</p>
+<p><strong>Cenário 2:</strong> Alerta de alergia detectado<br />
+<strong>Dado que</strong> o paciente tem alergia registrada a "Penicilina",<br />
+<strong>Quando</strong> o farmacêutico tenta aviar uma prescrição contendo "Amoxicilina",<br />
+<strong>Então</strong> o sistema deve exibir:<br />
+ "Atenção: Paciente possui alergia à Penicilina. Dispensação bloqueada até revisão.",<br />
+<strong>E impedir</strong> a dispensação até confirmação.</p>
+<p>US30 – Eu, como clínico geral, quero anexar novos resultados de exames (PDFs, imagens) ao prontuário do paciente, para que essas informações fiquem centralizadas e acessíveis durante o acompanhamento.</p>
+<p><strong>Cenário 1:</strong> Anexar exame com sucesso<br />
+<strong>Dado que</strong> o médico seleciona um arquivo "ExameSangue.pdf" com tamanho de 4MB,<br />
+<strong>Quando</strong> preenche o campo descrição com "Exame de sangue – Junho 2025" e clica em "Anexar",<br />
+<strong>Então</strong> o sistema deve salvar o anexo,<br />
+<strong>E exibir</strong> a mensagem "Anexo salvo com sucesso" no prontuário do paciente.</p>
+<p><strong>Cenário 2:</strong> Erro ao anexar arquivo acima do limite permitido<br />
+<strong>Dado que</strong> o médico tenta anexar um arquivo "ImagemResonancia.png" com 12MB,<br />
+<strong>Quando</strong> clica em "Anexar",<br />
+<strong>Então</strong> o sistema deve exibir a mensagem "Arquivo excede o limite de 10MB. Selecione um arquivo menor.",<br />
+<strong>E não</strong> permite anexar.</p>
+<iframe width="768" height="432" src="https://miro.com/app/board/uXjVIoN-pIw=/?share_link_id=407449174051" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.sections", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "navigation.top"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
