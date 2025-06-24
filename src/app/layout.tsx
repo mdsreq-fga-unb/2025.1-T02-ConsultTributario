@@ -2,9 +2,9 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { SWRConfig } from 'swr';
 
-import Footer from '@/app/components/Footer/Footer';
-import Navbar from '@/app/components/Navbar/Navbar';
 import { AuthProvider } from '@/auth';
+import { ConditionalFooter } from '@/components/navigation/conditional-footer';
+import { ConditionalNavbar } from '@/components/navigation/conditional-navbar';
 import { Toaster } from '@/components/ui/toaster';
 import { swrConfig } from '@/utils/axios';
 
@@ -20,9 +20,9 @@ const RootLayout = ({
       <SWRConfig value={{ ...swrConfig }}>
         <body className={`${inter.className} flex flex-col min-h-screen`}>
           <AuthProvider>
-            <Navbar />
+            <ConditionalNavbar />
             <main className='flex-grow'>{children}</main>
-            <Footer />
+            <ConditionalFooter />
             <Toaster />
           </AuthProvider>
         </body>
