@@ -44,6 +44,10 @@ Navegue pela documentação do projeto:
 
 ### Apresentações
 - [Apresentação 1](apresentacoes/apresentacao-1.md)
+- [Apresentação 2](apresentacoes/apresentacao-2.md)
+- [Apresentação 3](apresentacoes/apresentacao-3.md)
+
+
 
 ### Guia de Contribuição
 - [Política de Commits](guia-contribuicao/politica-de-commits.md)
