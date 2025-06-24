@@ -58,19 +58,19 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 
 - **US-03**: Criar tese tributária
 
-  _Como advogado, quero cadastrar novas teses tributárias no sistema, para ampliar a base de conhecimento jurídico da plataforma._
+  _Como administrador, quero cadastrar novas teses tributárias no sistema, para ampliar a base de conhecimento jurídico da plataforma._
 
 - **US-04**: Editar tese tributária
 
-  _Como advogado, quero editar as teses tributárias já cadastradas, para manter as teses sempre atualizadas e corretas._
+  _Como administrador, quero editar as teses tributárias já cadastradas, para manter as teses sempre atualizadas e corretas._
 
 - **US-05**: Excluir tese tributária
 
-  _Como advogado, quero excluir uma tese tributária do sistema, para remover conteúdos desatualizados ou incorretos._
+  _Como administrador, quero excluir uma tese tributária do sistema, para remover conteúdos desatualizados ou incorretos._
 
 - **US-06**: Criar categorias de teses tributárias
 
-  _Como advogado, quero criar novas categorias para agrupar teses tributárias, para manter a base de dados organizada._
+  _Como administrador, quero criar novas categorias para agrupar teses tributárias, para manter a base de dados organizada._
 
 - **US-07**: Visualizar teses tributárias cadastradas
 
@@ -78,19 +78,19 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 
 - **US-08**: Criar pergunta jurídica
 
-  _Como advogado, quero cadastrar novas perguntas jurídicas com as únicas alternativas “sim”, “não sei” e “não”, para usá-las nos questionários e relacioná-las a teses._
+  _Como administrador, quero cadastrar novas perguntas jurídicas com as únicas alternativas “sim”, “não sei” e “não”, para usá-las nos questionários e relacioná-las a teses._
 
 - **US-09**: Editar pergunta jurídica
 
-  _Como advogado, quero editar perguntas jurídicas já cadastradas, para ajustar seu conteúdo conforme necessário._
+  _Como administrador, quero editar perguntas jurídicas já cadastradas, para ajustar seu conteúdo conforme necessário._
 
 - **US-10**: Excluir pergunta jurídica
 
-  _Como advogado, quero excluir perguntas jurídicas do sistema, para remover aquelas que não são mais úteis ou estão desatualizadas._
+  _Como administrador, quero excluir perguntas jurídicas do sistema, para remover aquelas que não são mais úteis ou estão desatualizadas._
 
 - **US-11**: Visualizar perguntas jurídicas cadastradas
 
-  _Como advogado, quero visualizar todas as perguntas jurídicas cadastradas, para ver as perguntas que irão aparecer no questionário de diagnóstico._
+  _Como administrador, quero visualizar todas as perguntas jurídicas cadastradas, para ver as perguntas que irão aparecer no questionário de diagnóstico._
 
 - **US-12**: Realizar questionário de diagnóstico tributário
 
@@ -114,15 +114,15 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 
 - **US-17**: Editar categoria de teses tributária
 
-  _Como advogado, quero editar o nome de uma categoria de tese tributária, para manter a organização da base de dados e corrigir erros ou padronizar nomenclaturas._
+  _Como administrador, quero editar o nome de uma categoria de tese tributária, para manter a organização da base de dados e corrigir erros ou padronizar nomenclaturas._
 
 - **US-18**: Apagar categoria de teses tributária
 
-  _Como advogado, quero poder apagar uma categoria de tese tributária, para remover agrupamentos que não fazem mais sentido ou foram criados incorretamente._
+  _Como administrador, quero poder apagar uma categoria de tese tributária, para remover agrupamentos que não fazem mais sentido ou foram criados incorretamente._
 
 - **US-19**: Visualizar categorias de teses tributária cadastradas
 
-  _Como advogado, quero visualizar uma lista com todas as categorias de teses tributárias cadastradas no sistema, para entender como as teses estão organizadas e facilitar a navegação e o filtro por temas._
+  _Como administrador, quero visualizar uma lista com todas as categorias de teses tributárias cadastradas no sistema, para entender como as teses estão organizadas e facilitar a navegação e o filtro por temas._
 
 ## Épicos
 
@@ -136,24 +136,24 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | Código US | Código RF | Épico Relacionado |
 | --------- | --------- | ----------------- |
 | US-01     | RF01      | EP-03             |
-| US-02     | RF03      | EP-03             |
-| US-03     | RF04      | EP-01             |
-| US-04     | RF05      | EP-01             |
-| US-05     | RF06      | EP-01             |
-| US-06     | RF07      | EP-01             |
-| US-07     | RF09      | EP-01             |
-| US-17     | RF18      | EP-01             |
-| US-18     | RF19      | EP-01             |
-| US-19     | RF20      | EP-01             |
-| US-08     | RF10      | EP-02             |
-| US-09     | RF08      | EP-02             |
-| US-10     | RF03      | EP-02             |
-| US-11     | RF12      | EP-02             |
-| US-12     | RF13      | EP-04             |
-| US-13     | RF14      | EP-04             |
-| US-14     | RF15      | EP-04             |
-| US-15     | RF16      | EP-04             |
-| US-16     | RF17      | EP-04             |
+| US-02     | RF02      | EP-03             |
+| US-03     | RF03      | EP-01             |
+| US-04     | RF04      | EP-01             |
+| US-05     | RF05      | EP-01             |
+| US-06     | RF06      | EP-01             |
+| US-07     | RF07      | EP-01             |
+| US-17     | RF17      | EP-01             |
+| US-18     | RF18      | EP-01             |
+| US-19     | RF19      | EP-01             |
+| US-08     | RF08      | EP-02             |
+| US-09     | RF09      | EP-02             |
+| US-10     | RF10      | EP-02             |
+| US-11     | RF11      | EP-02             |
+| US-12     | RF12      | EP-04             |
+| US-13     | RF13      | EP-04             |
+| US-14     | RF14      | EP-04             |
+| US-15     | RF15      | EP-04             |
+| US-16     | RF16      | EP-04             |
 
 ## Priorização do Backlog
 
