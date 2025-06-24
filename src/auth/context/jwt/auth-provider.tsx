@@ -134,7 +134,9 @@ export const AuthProvider = ({ children }: Props) => {
 
   useEffect(() => {
     checkAuthenticated();
-  }, [checkAuthenticated]); // LOGIN
+  }, [checkAuthenticated]);
+
+  // LOGIN
   const login = useCallback(async (email: string, password: string) => {
     const data: ILoginRequest = {
       email,
@@ -168,7 +170,9 @@ export const AuthProvider = ({ children }: Props) => {
         },
       });
     }
-  }, []); // REGISTER
+  }, []);
+
+  // REGISTER
   const register = useCallback(async (registerData: IRegisterRequest) => {
     const response = await axios.post<IAuthResponse>(endpoints.auth.register, registerData);
 
@@ -202,7 +206,7 @@ export const AuthProvider = ({ children }: Props) => {
   // LOGOUT
   const logout = useCallback(async () => {
     try {
-      await axios.post(endpoints.auth.logout);
+      // await axios.post(endpoints.auth.logout);
     } catch (error) {
       console.error('Error during logout:', error);
     } finally {
