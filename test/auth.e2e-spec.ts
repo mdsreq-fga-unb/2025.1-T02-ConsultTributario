@@ -51,6 +51,7 @@ describe('AuthController (e2e)', () => {
       .send({
         email: 'any_email@gmail.com',
         password: 'any_password',
+        passwordConfirmation: 'any_password',
       })
       .expect(201);
 
@@ -65,6 +66,7 @@ describe('AuthController (e2e)', () => {
       .send({
         email: 'any_email@gmail.com',
         password: 'any_password',
+        passwordConfirmation: 'any_password',
       })
       .expect(201);
 
