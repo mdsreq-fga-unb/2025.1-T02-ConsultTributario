@@ -59,5 +59,6 @@ Navegue pela documentação do projeto:
 ### User Story Mapping
 - [User Story Mapping(ComunEventos)](USM/usm.md)
 
+### Product Backlog Building
+- [Product Backlog Building](PBB/pbb.md)
 
----
