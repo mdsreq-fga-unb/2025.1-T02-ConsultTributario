@@ -1,8 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
-import { CreateUserDto } from '../users/dto/create-user.dto';
 import { JwtService } from '@nestjs/jwt';
-import { LoginDto } from './dto/auth.dto';
+import { CreateUserDto, LoginDto } from './dto/auth.dto';
+import { ERROR_MESSAGES } from '@/common/constants/app.constants';
 
 @Injectable()
 export class AuthService {
@@ -12,6 +12,10 @@ export class AuthService {
   ) {}
 
   async register(createUserDto: CreateUserDto) {
+    if (createUserDto.password !== createUserDto.passwordConfirmation) {
+      throw new BadRequestException(ERROR_MESSAGES.PASSWORDS_MISMATCH);
+    }
+
     const user = await this.userService.create(createUserDto);
     return this.login({ email: user.email, password: createUserDto.password });
   }

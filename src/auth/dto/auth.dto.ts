@@ -13,14 +13,21 @@ export class CreateUserDto {
   @MinLength(8)
   @MaxLength(128)
   password: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(128)
+  passwordConfirmation: string;
 }
 
 export class LoginDto {
   @IsEmail()
   @IsNotEmpty()
+  @MaxLength(255)
   email: string;
 
   @IsString()
   @IsNotEmpty()
+  @MaxLength(128)
   password: string;
 }

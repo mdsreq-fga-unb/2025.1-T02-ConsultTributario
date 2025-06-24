@@ -1,10 +1,10 @@
 import { ConflictException, Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './schemas/user.schema';
 import { Model } from 'mongoose';
 import { ERROR_MESSAGES } from '@/common/constants/app.constants';
+import { CreateUserDto } from '@/auth/dto/auth.dto';
 
 @Injectable()
 export class UsersService {
