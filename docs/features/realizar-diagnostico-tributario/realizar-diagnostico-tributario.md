@@ -15,6 +15,8 @@ Permitir que usuários **(advogados, contadores ou departamentos jurídicos)** r
 |       | [**US-14**](us-14.md) | Visualizar relatório de teses tributárias aplicáveis        |
 |       | [**US-15**](us-15.md) | Apagar questionário de diagnóstico já preenchido            |
 |       | [**US-16**](us-16.md) | Exportar relatório de teses aplicáveis em PDF               |
+| EP-03 | [**US-01**](us-01.md) | Consultar dados públicos de uma empresa a partir do CNPJ    |
+|       | [**US-02**](us-02.md) | Editar dados retornados do CNPJ                             |
 
 ## 3. Permissões
 

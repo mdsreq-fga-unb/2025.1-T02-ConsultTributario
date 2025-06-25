@@ -46,6 +46,10 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | RNF08  | Toda comunicação com APIs externas ( BrasilAPI, ReceitaWS ou InfoSimples) deve ocorrer via HTTPS para garantir a integridade e confidencialidade dos dados.                                                                                                     |
 | RNF09  | Toda a interface textual do sistema (rótulos, mensagens de erro, botões e descrições) deve ser escrita em português correto e estar livre de erros gramaticais e ortográficos, além de evitar termos técnicos de TI como “API”, “payload”, “token” e similares. |
 
+## PBB do projeto
+
+<iframe width="768" height="432" src="https://miro.com/app/board/uXjVInJRteE=/?share_link_id=980762385937" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
+
 ## Histórias de Usuário
 
 - **US-01**: Consultar dados públicos de uma empresa a partir do CNPJ
