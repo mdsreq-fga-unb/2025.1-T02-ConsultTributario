@@ -98,7 +98,7 @@ export async function updateDiagnosis(
   diagnosisId: string,
   diagnosisData: Partial<IUpdateDiagnosis>
 ) {
-  const response = await axios.patch(endpoints.diagnosticos.detail(diagnosisId), diagnosisData);
+  const response = await axios.put(endpoints.diagnosticos.detail(diagnosisId), diagnosisData);
   return response.data;
 }
 

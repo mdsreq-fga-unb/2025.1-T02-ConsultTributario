@@ -5,7 +5,14 @@ import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import { useGetClaimRecommendations, deleteDiagnosis, useGetDiagnoses } from '@/api/diagnoses';
+import {
+  useGetClaimRecommendations,
+  deleteDiagnosis,
+  useGetDiagnoses,
+  updateDiagnosis,
+  useGetDiagnosis,
+} from '@/api/diagnoses';
+import { useGetQuestions } from '@/api/question';
 import { ListagemTeses } from '@/components/teses/listagem-teses';
 import {
   AlertDialog,
@@ -19,7 +26,22 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from '@/components/ui/dialog';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { useToast } from '@/components/ui/use-toast';
+import { IQuestionResponse } from '@/types/diagnoses';
 
 const DiagnosisDetailsPage = () => {
   const params = useParams();
@@ -28,9 +50,14 @@ const DiagnosisDetailsPage = () => {
   const diagnosisId = params.id as string;
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   const { recommendations, recommendationsLoading, recommendationsError, refreshRecommendations } =
     useGetClaimRecommendations(diagnosisId);
+
+  const { diagnosis, diagnosisLoading, refreshDiagnosis } = useGetDiagnosis(diagnosisId);
+  const { questions = [], questionsLoading } = useGetQuestions();
 
   const { refreshDiagnoses } = useGetDiagnoses();
 
@@ -59,6 +86,58 @@ const DiagnosisDetailsPage = () => {
     } finally {
       setIsDeleting(false);
       setShowDeleteDialog(false);
+    }
+  };
+
+  // Estado local para edição
+  const [editedClientName, setEditedClientName] = useState('');
+  const [editedResponses, setEditedResponses] = useState<IQuestionResponse[]>([]);
+
+  // Preenche os estados locais ao abrir o modal
+  const startEdit = () => {
+    if (diagnosis) {
+      setEditedClientName(diagnosis.clientName);
+      setEditedResponses(diagnosis.questionResponses.map(qr => ({ ...qr })));
+      setIsEditing(true);
+    }
+  };
+
+  const cancelEdit = () => {
+    setIsEditing(false);
+  };
+
+  // Atualiza resposta de uma pergunta
+  const handleAnswerChange = (questionId: string, answer: string) => {
+    setEditedResponses(resps =>
+      resps.map(qr => (qr.questionId === questionId ? { ...qr, answer } : qr))
+    );
+  };
+
+  // Salva alterações
+  const handleSaveEdit = async () => {
+    setIsSaving(true);
+    try {
+      await updateDiagnosis(diagnosisId, {
+        clientName: editedClientName,
+        questionResponses: editedResponses,
+      });
+      await refreshDiagnosis();
+      await refreshDiagnoses();
+      await refreshRecommendations();
+      toast({
+        title: 'Diagnóstico atualizado',
+        description: 'As respostas foram salvas e as teses atualizadas.',
+        variant: 'success',
+      });
+      setIsEditing(false);
+    } catch (error) {
+      toast({
+        title: 'Erro ao salvar',
+        description: 'Não foi possível salvar as alterações.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -100,15 +179,27 @@ const DiagnosisDetailsPage = () => {
           </Link>
           <h1 className='text-3xl font-semibold text-gray-800'>Teses Recomendadas</h1>
         </div>
-        <Button
-          variant='outline'
-          size='sm'
-          onClick={() => setShowDeleteDialog(true)}
-          className='text-red-600 border-red-200 hover:bg-red-50 hover:border-red-300'
-        >
-          <Trash2 className='h-4 w-4 mr-2' />
-          Excluir Diagnóstico
-        </Button>
+        <div className='flex gap-2'>
+          {!isEditing && (
+            <Button
+              variant='outline'
+              size='sm'
+              onClick={startEdit}
+              className='text-blue-600 border-blue-200 hover:bg-blue-50 hover:border-blue-300'
+            >
+              Editar Diagnóstico
+            </Button>
+          )}
+          <Button
+            variant='outline'
+            size='sm'
+            onClick={() => setShowDeleteDialog(true)}
+            className='text-red-600 border-red-200 hover:bg-red-50 hover:border-red-300'
+          >
+            <Trash2 className='h-4 w-4 mr-2' />
+            Excluir Diagnóstico
+          </Button>
+        </div>
       </div>
       {/* Client Information */}
       <Card className='mb-6'>
@@ -122,9 +213,17 @@ const DiagnosisDetailsPage = () => {
           <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
             <div>
               <label className='text-sm font-medium text-gray-600'>Nome do Cliente</label>
-              <p className='text-lg font-semibold text-gray-800'>
-                {recommendations.diagnosis.clientName}
-              </p>
+              {isEditing ? (
+                <input
+                  className='w-full border rounded px-2 py-1 mt-1'
+                  value={editedClientName}
+                  onChange={e => setEditedClientName(e.target.value)}
+                />
+              ) : (
+                <p className='text-lg font-semibold text-gray-800'>
+                  {recommendations.diagnosis.clientName}
+                </p>
+              )}
             </div>
             <div>
               <label className='text-sm font-medium text-gray-600'>Data de Criação</label>
@@ -134,7 +233,65 @@ const DiagnosisDetailsPage = () => {
             </div>
           </div>
         </CardContent>
-      </Card>{' '}
+      </Card>
+      {/* Perguntas e respostas */}
+      <Card className='mb-6'>
+        <CardHeader>
+          <CardTitle className='text-lg'>Respostas das Perguntas</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {isEditing ? (
+            <div className='space-y-4'>
+              {questionsLoading ? (
+                <div>Carregando perguntas...</div>
+              ) : (
+                questions.map(q => {
+                  const resp = editedResponses.find(r => r.questionId === q._id) || { answer: '' };
+                  return (
+                    <div key={q._id} className='mb-2'>
+                      <div className='font-semibold'>{q.label}</div>
+                      <Select
+                        value={resp.answer}
+                        onValueChange={val => handleAnswerChange(q._id, val)}
+                      >
+                        <SelectTrigger className='w-full'>
+                          <SelectValue placeholder='Selecione uma resposta' />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value='yes'>Sim</SelectItem>
+                          <SelectItem value='no'>Não</SelectItem>
+                          <SelectItem value='dont_know'>Não sei</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  );
+                })
+              )}
+            </div>
+          ) : (
+            <div className='space-y-2'>
+              {questionsLoading ? (
+                <div>Carregando perguntas...</div>
+              ) : (
+                questions.map(q => {
+                  const resp = diagnosis?.questionResponses.find(r => r.questionId === q._id);
+                  return (
+                    <div key={q._id} className='mb-2'>
+                      <div className='font-semibold'>{q.label}</div>
+                      <div className='text-gray-700'>
+                        {resp?.answer === 'yes' && 'Sim'}
+                        {resp?.answer === 'no' && 'Não'}
+                        {resp?.answer === 'dont_know' && 'Não sei'}
+                        {!resp && <span className='text-gray-400'>Não respondida</span>}
+                      </div>
+                    </div>
+                  );
+                })
+              )}
+            </div>
+          )}
+        </CardContent>
+      </Card>
       {/* Teses Recomendadas */}
       <ListagemTeses
         teses={recommendations?.recommendedClaims || []}
@@ -146,6 +303,17 @@ const DiagnosisDetailsPage = () => {
         titulo='Teses Recomendadas'
         descricao={`Foram encontrada(s) ${recommendations?.recommendedClaims.length || 0} oportunidades(s) para este diagnóstico.`}
       />
+      {/* Ações de edição */}
+      {isEditing && (
+        <div className='flex gap-2 justify-end mt-6'>
+          <Button variant='outline' onClick={cancelEdit} disabled={isSaving}>
+            Cancelar
+          </Button>
+          <Button onClick={handleSaveEdit} disabled={isSaving} className='bg-blue-600 text-white'>
+            {isSaving ? 'Salvando...' : 'Salvar Alterações'}
+          </Button>
+        </div>
+      )}
       {/* Dialog de Confirmação de Exclusão */}
       <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
         <AlertDialogContent>
