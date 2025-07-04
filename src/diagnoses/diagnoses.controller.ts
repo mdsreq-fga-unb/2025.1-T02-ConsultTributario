@@ -1,10 +1,11 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { DiagnosesService } from './diagnoses.service';
 import { CreateDiagnosisDto } from './dto/create-diagnosis.dto';
 import { MongoIdValidationPipe } from '@/common/pipes/mongo-id-validation.pipe';
 import { Serialize } from '@/common/interceptors/serialize.interceptor';
 import { DiagnosisDto, DiagnosisDtoWithoutQuestionResponses } from './dto/diagnosis.dto';
 import { ClaimRecommendationResponseDto } from './dto/claim-recommendation.dto';
+import { UpdateDiagnosisDto } from './dto/update-diagnosis.dto';
 
 @Controller('diagnoses')
 export class DiagnosesController {
@@ -37,5 +38,14 @@ export class DiagnosesController {
   @Delete(':id')
   async delete(@Param('id', MongoIdValidationPipe) id: string) {
     return this.diagnosesService.delete(id);
+  }
+
+  @Put(':id')
+  @Serialize(DiagnosisDto)
+  async update(
+    @Param('id', MongoIdValidationPipe) id: string,
+    @Body() updateDiagnosisDto: UpdateDiagnosisDto,
+  ) {
+    return this.diagnosesService.update(id, updateDiagnosisDto);
   }
 }

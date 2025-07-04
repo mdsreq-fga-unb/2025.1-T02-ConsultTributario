@@ -14,10 +14,12 @@ const diagnosisModelMock = {
     }),
   }),
   findById: jest.fn().mockReturnValue({
+    exec: jest.fn(),
     populate: jest.fn().mockReturnValue({
       exec: jest.fn(),
     }),
   }),
+  update: jest.fn(),
   findOne: jest.fn(),
   findByIdAndUpdate: jest.fn(),
   updateMany: jest.fn().mockReturnValue({

@@ -3,6 +3,7 @@ import { AnswerType, Diagnosis } from './schema/diagnosis.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateDiagnosisDto } from './dto/create-diagnosis.dto';
+import { UpdateDiagnosisDto } from './dto/update-diagnosis.dto';
 import { QuestionsService } from '@/questions/questions.service';
 import { ERROR_MESSAGES } from '@common/constants/app.constants';
 import { ClaimsService } from '@/claims/claims.service';
@@ -68,5 +69,28 @@ export class DiagnosesService implements IDiagnosesService {
     if (result.deletedCount === 0) {
       throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
     }
+  }
+
+  async update(id: string, updateDiagnosisDto: UpdateDiagnosisDto): Promise<Diagnosis> {
+    const questionIds = updateDiagnosisDto.questionResponses?.map((q) => q.questionId) || [];
+    if (questionIds.length > 0) {
+      const existingQuestions = await this.questionService.findByIdsActive(questionIds);
+      if (existingQuestions.length !== questionIds.length) {
+        throw new BadRequestException(ERROR_MESSAGES.INVALID_RELATED_QUESTIONS);
+      }
+    }
+    const updated = await this.diagnosisModel.findByIdAndUpdate(
+      id,
+      {
+        $set: {
+          ...updateDiagnosisDto,
+        },
+      },
+      { new: true },
+    ).exec();
+    if (!updated) {
+      throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
+    }
+    return updated;
   }
 }
