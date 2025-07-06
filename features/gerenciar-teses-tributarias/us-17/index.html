@@ -1661,6 +1661,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#3-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dependências
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-links-e-anexos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Links e Anexos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Links e Anexos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dor-e-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      DoR e DoD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2135,47 +2168,71 @@
 <p><strong>Para</strong> manter a base de dados organizada e padronizada</p>
 <h2 id="2-criterios-de-aceitacao">2. Critérios de Aceitação<a class="headerlink" href="#2-criterios-de-aceitacao" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Cenário 1 – Edição bem-sucedida</strong></li>
+<li><strong>Cenário 1 – Abertura do modal de edição</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">estou na página de editar categorias</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">seleciono uma categoria existente</span>
-<span class="k">When </span><span class="nf">altero o nome da categoria</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Salvar</span><span class="nf">&quot;</span>
-<span class="k">Then </span><span class="nf">vejo o toast “Categoria editada com sucesso”</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">sou redirecionado para a tela de categorias</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">a categoria aparece atualizada na lista</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">a operação completa em ≤ </span><span class="s">2</span><span class="nf"> segundos</span>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">acesso a tela “Tipos de Impostos”</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico no botão de edição ao lado de uma categoria</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o modal “Editar Imposto” é exibido</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o campo “Nome do Imposto” está preenchido com o valor atual</span>
 </code></pre></div>
 <ul>
-<li><strong>Cenário 2 – Campo obrigatório vazio</strong></li>
+<li><strong>Cenário 2 – Edição bem-sucedida</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">estou na página de editar categorias</span>
-<span class="k">When </span><span class="nf">apago o conteúdo do campo &quot;</span><span class="s">Nome da categoria</span><span class="nf">&quot;</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Salvar</span><span class="nf">&quot;</span>
-<span class="k">Then </span><span class="nf">o campo é destacado em vermelho</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">exibe a mensagem &quot;</span><span class="s">Nome da categoria é obrigatório</span><span class="nf">&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">o modal “Editar Imposto” está aberto</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">altero o nome do imposto para um novo valor válido</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em “Atualizar”</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo toast “Imposto atualizada com sucesso”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o modal é fechado</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o novo nome é atualizado na tabela</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o campo “Atualizado em” é atualizado com a data/hora atual</span>
 </code></pre></div>
 <ul>
-<li><strong>Cenário 3 – Limites de caracteres</strong></li>
+<li><strong>Cenário 3 – Campo obrigatório vazio</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">estou na página de editar categorias</span>
-<span class="k">When </span><span class="nf">digito mais de </span><span class="s">50</span><span class="nf"> caracteres no campo &quot;</span><span class="s">Nome da categoria</span><span class="nf">&quot;</span>
-<span class="k">Then </span><span class="nf">o sistema impede a digitação de novos caracteres</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">o campo permanece com exatamente </span><span class="s">50</span><span class="nf"> caracteres</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">a operação completa em ≤ </span><span class="s">2</span><span class="nf"> segundos</span>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">o modal “Editar Imposto” está aberto</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">apago todo o conteúdo do campo “Nome do Imposto”</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em “Salvar”</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o campo é destacado em vermelho</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">vejo a mensagem “Nome do imposto é obrigatório”</span>
 </code></pre></div>
 <ul>
-<li><strong>Cenário 4 – Cancelar/sair da página</strong></li>
+<li><strong>Cenário 4 – Nome duplicado</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">Given </span><span class="nf">estou logado como Administrador</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">estou na página de editar categorias</span>
-<span class="k">When </span><span class="nf">clico em &quot;</span><span class="s">Cancelar</span><span class="nf">&quot; ou &quot;</span><span class="s">Voltar</span><span class="nf">&quot;</span>
-<span class="k">Then </span><span class="nf">sou redirecionado para a tela de categorias</span>
-<span class="nf">  </span><span class="k">And </span><span class="nf">nenhuma alteração feita é salva</span>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">já existe um imposto chamada “ICMS”</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">tento salvar outro imposto com o mesmo nome</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o campo é destacado em vermelho</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">vejo a mensagem “Já existe uma imposto com este nome”</span>
 </code></pre></div>
+<ul>
+<li><strong>Cenário 5 – Limite de caracteres</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">o modal “Editar Imposto” está aberto</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">tento digitar mais de </span><span class="s">30</span><span class="nf"> caracteres</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o sistema impede a digitação</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o campo mantém no máximo </span><span class="s">30</span><span class="nf"> caracteres</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 6 – Cancelar/sair da página</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">o modal “Editar Imposto” está aberto</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico em “Cancelar” ou no ícone “×”</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o modal é fechado</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">nenhuma alteração é salva</span>
+</code></pre></div>
+<h2 id="3-dependencias">3. Dependências<a class="headerlink" href="#3-dependencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Deve haver uma implementação parcial da US-19. Sendo necessár
+io pelo menos uma lista com as categorias salvas e um botão de edição.</li>
+</ul>
+<h2 id="4-links-e-anexos">4. Links e Anexos<a class="headerlink" href="#4-links-e-anexos" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Documento da Feature: <a href="../gerenciar-teses-tributarias/">Link</a></li>
+<li>Protótipo: <a href="https://excalidraw.com/#json=C7kHBp8JA0h6ET1vAS8-_,0uFdCU10Q35LT0H7Wpe2bg">Link</a></li>
+</ul>
+<hr />
+<h3 id="dor-e-dod">DoR e DoD<a class="headerlink" href="#dor-e-dod" title="Permanent link">&para;</a></h3>
+<p><strong><a href="../../../visao-produto/dor-dod/">Link</a></strong></p>
 
 
 
