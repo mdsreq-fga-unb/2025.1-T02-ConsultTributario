@@ -2205,7 +2205,15 @@
 <span class="nf">    </span><span class="k">And </span><span class="nf">vejo a mensagem “Já existe uma imposto com este nome”</span>
 </code></pre></div>
 <ul>
-<li><strong>Cenário 5 – Limite de caracteres</strong></li>
+<li><strong>Cenário 5 – Bloqueio do botão de atualizar</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">o campo “Nome do Imposto” está preenchido com o valor atual</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">não realizo nenhuma alteração nele</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">tento atualizar o imposto</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o botão “Atualizar“ está desativado</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 6 – Limite de caracteres</strong></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">o modal “Editar Imposto” está aberto</span>
 <span class="nf">  </span><span class="k">When </span><span class="nf">tento digitar mais de </span><span class="s">30</span><span class="nf"> caracteres</span>
@@ -2213,7 +2221,7 @@
 <span class="nf">    </span><span class="k">And </span><span class="nf">o campo mantém no máximo </span><span class="s">30</span><span class="nf"> caracteres</span>
 </code></pre></div>
 <ul>
-<li><strong>Cenário 6 – Cancelar/sair da página</strong></li>
+<li><strong>Cenário 7 – Cancelar/sair da página</strong></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">o modal “Editar Imposto” está aberto</span>
 <span class="nf">  </span><span class="k">When </span><span class="nf">clico em “Cancelar” ou no ícone “×”</span>
@@ -2222,8 +2230,7 @@
 </code></pre></div>
 <h2 id="3-dependencias">3. Dependências<a class="headerlink" href="#3-dependencias" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Deve haver uma implementação parcial da US-19. Sendo necessár
-io pelo menos uma lista com as categorias salvas e um botão de edição.</li>
+<li>Deve haver uma implementação parcial da US-19. Sendo necessário pelo menos uma lista com as categorias salvas e um botão de edição.</li>
 </ul>
 <h2 id="4-links-e-anexos">4. Links e Anexos<a class="headerlink" href="#4-links-e-anexos" title="Permanent link">&para;</a></h2>
 <ul>
