@@ -45,7 +45,7 @@ const Navbar = () => {
                     Perguntas
                   </Link>
                   <Link
-                    href='/categoria'
+                    href='/categorias'
                     className='text-lg text-black font-medium hover:text-black-600 transition-colors'
                   >
                     Categorias
