@@ -19,12 +19,11 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/components/ui/use-toast';
+import { toast } from '@/hooks/use-toast';
 import { ICreateClaim } from '@/types/claim';
 
 export const CadastrarTese = () => {
   const router = useRouter();
-  const { toast } = useToast();
   const { claims: tesesExistentes } = useGetClaims();
   const { taxTypes, taxTypesLoading } = useGetTaxTypes();
 

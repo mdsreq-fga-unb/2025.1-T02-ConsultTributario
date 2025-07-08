@@ -8,7 +8,7 @@ import { CriarPerguntaDialog } from '@/components/perguntas/criar-pergunta-dialo
 import { EditarPerguntaDialog } from '@/components/perguntas/editar-pergunta-dialog';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
+import { toast } from '@/hooks/use-toast';
 import { IQuestion, IQuestionCreate, IQuestionUpdate } from '@/types/question';
 
 import { ErrorDisplay, LoadingDisplay } from '../errors';
@@ -16,7 +16,6 @@ import { ErrorDisplay, LoadingDisplay } from '../errors';
 export const PerguntasJuridicas = () => {
   // Estado para controlar qual pergunta está expandida
   const [expandida, setExpandida] = useState<string | null>(null);
-  const { toast } = useToast();
 
   // Estados para controlar os diálogos
   const [criarDialogAberto, setCriarDialogAberto] = useState(false);

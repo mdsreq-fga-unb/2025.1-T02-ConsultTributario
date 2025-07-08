@@ -19,12 +19,11 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/components/ui/use-toast';
+import { toast } from '@/hooks/use-toast';
 import { IClaim, ICreateClaim } from '@/types/claim';
 
 export const EditarTese = ({ id }: { id: string }) => {
   const router = useRouter();
-  const { toast } = useToast();
   const { claims: teses, claimsLoading } = useGetClaims();
   const { questions: perguntas, questionsLoading: carregandoPerguntas } = useGetQuestions();
   const [formData, setFormData] = useState<ICreateClaim | null>(null);
