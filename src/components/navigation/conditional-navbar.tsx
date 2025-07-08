@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 
-import Navbar from '@/app/components/Navbar/Navbar';
+import Navbar from '@/components/Navbar/Navbar';
 
 export const ConditionalNavbar = () => {
   const pathname = usePathname();
