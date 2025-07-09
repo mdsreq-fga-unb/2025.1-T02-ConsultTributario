@@ -6,7 +6,8 @@ import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { useGetClaimRecommendations, deleteDiagnosis, useGetDiagnoses } from '@/api/diagnoses';
-import { ListagemTeses } from '@/components/teses/listagem-teses';
+import { LoadingDisplay } from '@/components/errors';
+import { ListagemTeses } from '@/components/teses/listagem-teses-categorizada';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -63,11 +64,7 @@ const DiagnosisDetailsPage = () => {
   };
 
   if (recommendationsLoading) {
-    return (
-      <div className='container mx-auto px-4 py-8'>
-        <div className='text-center text-gray-500'>Carregando diagnóstico...</div>
-      </div>
-    );
+    return <LoadingDisplay mensagem='Carregando relátorio...' />;
   }
 
   if (recommendationsError || !recommendations) {
