@@ -1285,11 +1285,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nao-refinada" class="md-nav__link">
+  <a href="#2-criterios-de-aceitacao" class="md-nav__link">
     <span class="md-ellipsis">
-      NÃO REFINADA
+      2. Critérios de Aceitação
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Dependências
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-links-e-anexos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Links e Anexos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Links e Anexos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dor-e-dod" class="md-nav__link">
+    <span class="md-ellipsis">
+      DoR e DoD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2133,7 +2166,76 @@
 <p><strong>Como</strong> usuário</p>
 <p><strong>Quero</strong> visualizar os dados públicos de uma empresa após inserir seu número de CNPJ</p>
 <p><strong>Para</strong> entender melhor o perfil e a situação cadastral da empresa consultada</p>
-<h2 id="nao-refinada">NÃO REFINADA<a class="headerlink" href="#nao-refinada" title="Permanent link">&para;</a></h2>
+<h2 id="2-criterios-de-aceitacao">2. Critérios de Aceitação<a class="headerlink" href="#2-criterios-de-aceitacao" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Cenário 1 – Abrir janela para adinicionar CNPJ da consulta</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como usuário</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página &quot;</span><span class="s">Diagnósticos</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">vejo uma lista dos meus relatórios feitos</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em um item da lista de diagnósticos</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">sou redirecionado para a página &quot;</span><span class="s">Teses Recomendadas</span><span class="nf">&quot; daquele diagnóstico</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico no botão &quot;</span><span class="s">Buscar mais dados</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">uma janela/modal abre</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">vejo o campo &quot;</span><span class="s">Adicione o CNPJ da empresa</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">os botões &quot;</span><span class="s">Consultar</span><span class="nf">&quot; e &quot;</span><span class="s">Cancelar</span><span class="nf">&quot;</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 2 – Consulta realizada com sucesso</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou com a janela/modal de adcionar CNPJ aberta</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">adiciono um CNPJ válido</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Consultar</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">a janela/modal fecha</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">as informções do diagnóstico (US-</span><span class="s">14</span><span class="nf">) são atualizadas, mostrando agora: razão social, nome fantasia, natureza jurídica, situação cadastral, data de abertura, UF e município</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 3 – CNPJ inválido</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou com a janela/modal de adcionar CNPJ aberta</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">digito um CNPJ com formato inválido</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Consultar</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo uma mensagem de erro &quot;</span><span class="s">CNPJ inválido</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o campo &quot;</span><span class="s">CNPJ</span><span class="nf">&quot; é destacado em vermelho</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 4 – Campo CNPJ vazio</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou com a janela/modal de adcionar CNPJ aberta</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">não digito nada no campo de CNPJ</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Consultar</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo uma mensagem de erro &quot;</span><span class="s">CNPJ inválido</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o campo &quot;</span><span class="s">CNPJ</span><span class="nf">&quot; é destacado em vermelho</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 5 – CNPJ não encontrado</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou com a janela/modal de adcionar CNPJ aberta</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">insiro um CNPJ válido que não retorna dados da fonte</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Consultar</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo a mensagem &quot;</span><span class="s">Empresa não encontrada ou sem dados disponíveis</span><span class="nf">&quot;</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 6 – Limpeza de dados anteriores</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou com a janela/modal de adcionar CNPJ aberta</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">já realizei uma consulta ateriormente</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">digito um novo CNPJ e clico em &quot;</span><span class="s">Consultar</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">os dados da consulta anterior são limpos</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">apenas os dados da nova consultada são exibidos</span>
+</code></pre></div>
+<h2 id="3-dependencias">3. Dependências<a class="headerlink" href="#3-dependencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Nenhuma</li>
+</ul>
+<h2 id="4-links-e-anexos">4. Links e Anexos<a class="headerlink" href="#4-links-e-anexos" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Documento da Feature: <a href="gerenciar-teses-tributarias.md">Link</a></li>
+<li>Protótipo: <a href="">Link</a></li>
+</ul>
+<hr />
+<h3 id="dor-e-dod">DoR e DoD<a class="headerlink" href="#dor-e-dod" title="Permanent link">&para;</a></h3>
+<p><strong><a href="../../../visao-produto/dor-dod/">Link</a></strong></p>
 
 
 
