@@ -2174,7 +2174,7 @@
 <span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página &quot;</span><span class="s">Diagnósticos</span><span class="nf">&quot;</span>
 <span class="nf">    </span><span class="k">And </span><span class="nf">vejo uma lista dos meus relatórios feitos</span>
 <span class="nf">  </span><span class="k">When </span><span class="nf">clico em um item da lista de diagnósticos</span>
-<span class="nf">  </span><span class="k">Then </span><span class="nf">sou redirecionado para a página &quot;</span><span class="s">Teses Recomendadas</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">sou redirecionado para a página &quot;</span><span class="s">Teses Recomendadas</span><span class="nf">&quot; daquele diagnóstico</span>
 <span class="nf">    </span><span class="k">And </span><span class="nf">vejo as informações do diagnóstico (nome do cliente, data de criação)</span>
 <span class="nf">    </span><span class="k">And </span><span class="nf">vejo uma lista com as teses aplicáveis para aquele diagnóstico</span>
 </code></pre></div>
@@ -2201,11 +2201,11 @@
 <span class="nf">    </span><span class="k">And </span><span class="nf">o grupo se expande</span>
 <span class="nf">  </span><span class="k">When </span><span class="nf">clico em uma tese listada</span>
 <span class="nf">  </span><span class="k">Then </span><span class="nf">a tese se expande</span>
-<span class="nf">     </span><span class="k">And </span><span class="nf">exibe: objetivo, resumo, período recuperável, valor recuperável, e pergunta relacionada (se houver)</span>
+<span class="nf">     </span><span class="k">And </span><span class="nf">exibe: objetivo, resumo, período recuperável, valor recuperável, e pergunta relacionada</span>
 </code></pre></div>
 <h2 id="3-dependencias">3. Dependências<a class="headerlink" href="#3-dependencias" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Endpoint: <code>GET /questions/active</code> para retornas perguntas ativas</li>
+<li>Nenhuma</li>
 </ul>
 <h2 id="4-links-e-anexos">4. Links e Anexos<a class="headerlink" href="#4-links-e-anexos" title="Permanent link">&para;</a></h2>
 <ul>
