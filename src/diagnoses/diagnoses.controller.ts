@@ -39,4 +39,9 @@ export class DiagnosesController {
   async delete(@Param('id', MongoIdValidationPipe) id: string, @CurrentUser('id') userId: string) {
     return this.diagnosesService.delete(id, userId);
   }
+
+  @Get('cnpj/:cnpj')
+  async getCnpjData(@Param('cnpj') cnpj: string) {
+    return this.diagnosesService.fetchCnpjData(cnpj);
+  }
 }
