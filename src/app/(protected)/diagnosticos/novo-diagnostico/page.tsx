@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState, useMemo, useEffect } from 'react';
 
 import { createDiagnosis } from '@/api/diagnoses';
-import { useGetQuestions } from '@/api/question';
+import { useGetActiveQuestions, useGetQuestions } from '@/api/question';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -25,7 +25,7 @@ interface RespostasDiagnostico {
 const NovoDiagnostico = () => {
   const router = useRouter();
   const { toast } = useToast();
-  const { questions: perguntas, questionsLoading } = useGetQuestions();
+  const { questions: perguntas, questionsLoading } = useGetActiveQuestions();
   const [respostas, setRespostas] = useState<RespostasDiagnostico>({});
   const [clientName, setClientName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,9 +36,6 @@ const NovoDiagnostico = () => {
   const paginas = useMemo(() => {
     // Função para verificar se uma pergunta deve ser visível baseada nas suas dependências
     const perguntaDeveSerVisivel = (pergunta: IQuestion): boolean => {
-      // Se a pergunta não está ativa, não mostra
-      if (!pergunta.isActive) return false;
-
       // Se a pergunta não tem perguntas relacionadas, mostra
       if (pergunta.relatedQuestions.length === 0) return true;
 

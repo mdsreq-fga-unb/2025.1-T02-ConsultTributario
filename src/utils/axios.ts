@@ -92,6 +92,7 @@ export const endpoints = {
   },
   question: {
     list: '/questions',
+    listActive: '/questions/active',
     create: '/questions',
     update: (id: string) => `/questions/${id}`,
   },
