@@ -7,6 +7,7 @@ import { useState, useMemo, useEffect } from 'react';
 
 import { createDiagnosis } from '@/api/diagnoses';
 import { useGetActiveQuestions, useGetQuestions } from '@/api/question';
+import { LoadingDisplay } from '@/components/errors';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -244,11 +245,7 @@ const NovoDiagnostico = () => {
   };
 
   if (questionsLoading) {
-    return (
-      <div className='container mx-auto px-4 py-8'>
-        <div className='text-center text-gray-500'>Carregando perguntas...</div>
-      </div>
-    );
+    return <LoadingDisplay mensagem='Carregando questionário...' />;
   }
 
   if (historicoPerguntas.length === 0) {
