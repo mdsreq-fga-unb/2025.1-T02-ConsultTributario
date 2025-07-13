@@ -14,7 +14,7 @@ export interface QuestionResponse {
 
 @Schema({ timestamps: true })
 export class Diagnosis extends Document {
-  @Prop({ required: true })
+  @Prop({ required: true, maxlength: 100 })
   clientName: string;
 
   @Prop({
