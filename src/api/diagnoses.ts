@@ -106,3 +106,22 @@ export async function deleteDiagnosis(diagnosisId: string) {
   const response = await axios.delete(endpoints.diagnosticos.detail(diagnosisId));
   return response.data;
 }
+
+export async function getDiagnosisByCnpj(cnpj: string) {
+  try {
+    const response = await axios.get(endpoints.diagnosticos.cnpj(cnpj));
+    return response.data;
+  } catch (error: any) {
+    const customError = {
+      response: {
+        status: error.response?.status || 500,
+        data: {
+          message: error.response?.data?.message || error.message || 'Erro desconhecido',
+        },
+      },
+      message: error.response?.data?.message || error.message || 'Erro desconhecido',
+    };
+
+    throw customError;
+  }
+}

@@ -33,7 +33,6 @@ const Navbar = () => {
         </div>
 
         <div className='hidden md:flex space-x-8 text-black'>
-          {/* Links disponíveis para usuários autenticados */}
           {authenticated && (
             <>
               {isAdmin() && (

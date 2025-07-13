@@ -104,6 +104,7 @@ export const endpoints = {
   diagnosticos: {
     list: '/diagnoses',
     create: '/diagnoses',
+    cnpj: (cnpj: string) => `/diagnoses/cnpj/${cnpj}`,
     detail: (id: string) => `/diagnoses/${id}`,
     delete: (id: string) => `/diagnoses/${id}`,
     recommendations: (id: string) => `/diagnoses/${id}/recommendations`,
