@@ -8,6 +8,8 @@ import { ERROR_MESSAGES } from '@common/constants/app.constants';
 import { ClaimsService } from '@/claims/claims.service';
 import { IDiagnosesService } from '@/shared/interfaces/diagnosis.interface';
 import { ClaimRecommendationResponseDto } from './dto/claim-recommendation.dto';
+import { HttpService } from '@nestjs/axios'
+import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class DiagnosesService implements IDiagnosesService {
@@ -15,6 +17,7 @@ export class DiagnosesService implements IDiagnosesService {
     @InjectModel(Diagnosis.name) private diagnosisModel: Model<Diagnosis>,
     private readonly questionService: QuestionsService,
     private readonly claimService: ClaimsService,
+    private readonly httpService: HttpService, 
   ) {}
 
   async create(diagnosis: CreateDiagnosisDto): Promise<Diagnosis> {
@@ -67,6 +70,26 @@ export class DiagnosesService implements IDiagnosesService {
     const result = await this.diagnosisModel.deleteOne({ _id: id }).exec();
     if (result.deletedCount === 0) {
       throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
+    }
+  }
+
+  async fetchCnpjData(cnpj: string): Promise<any> {
+    try {
+      const response = await firstValueFrom(this.httpService.get(`https://brasilapi.com.br/api/cnpj/v1/${cnpj}`)); 
+      const data = response.data; 
+
+      return {
+        razao_social: data.razao_social, 
+        nome_fantasia: data.nome_fantasia, 
+        naturaza_juridica: data.natureza_juridica, 
+        situacao_cadastral: data.situacao_cadastral, 
+        data_abertura: data.data_inicio_atividade, 
+        uf: data.uf, 
+        municipio: data.municipio
+      };
+      
+    } catch (error) { 
+      throw new BadRequestException('Falha ao buscar dados do CNPJ');
     }
   }
 }
