@@ -17,7 +17,7 @@ export class DiagnosesService implements IDiagnosesService {
     private readonly claimService: ClaimsService,
   ) {}
 
-  async create(diagnosis: CreateDiagnosisDto): Promise<Diagnosis> {
+  async create(diagnosis: CreateDiagnosisDto, userId: string): Promise<Diagnosis> {
     const questionIds = diagnosis.questionResponses.map((q) => q.questionId);
 
     const existingQuestions = await this.questionService.findByIdsActive(questionIds);
@@ -27,25 +27,29 @@ export class DiagnosesService implements IDiagnosesService {
 
     const createdDiagnosis = new this.diagnosisModel({
       ...diagnosis,
+      createdBy: userId,
       questions: questionIds,
     });
     return createdDiagnosis.save();
   }
 
-  async findAll(): Promise<Diagnosis[]> {
-    return this.diagnosisModel.find().exec();
+  async findAll(userId: string): Promise<Diagnosis[]> {
+    return this.diagnosisModel.find({ createdBy: userId }).exec();
   }
 
-  async findById(id: string): Promise<Diagnosis> {
+  async findById(id: string, userId: string): Promise<Diagnosis> {
     const diagnosis = await this.diagnosisModel.findById(id).exec();
     if (!diagnosis) {
       throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
     }
+    if (diagnosis.createdBy.toString() !== userId) {
+      throw new BadRequestException(ERROR_MESSAGES.UNAUTHORIZED_ACCESS);
+    }
     return diagnosis;
   }
 
-  async getRecommendations(id: string): Promise<ClaimRecommendationResponseDto> {
-    const diagnosis = await this.findById(id);
+  async getRecommendations(id: string, userId: string): Promise<ClaimRecommendationResponseDto> {
+    const diagnosis = await this.findById(id, userId);
     if (!diagnosis) {
       throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
     }
@@ -60,10 +64,10 @@ export class DiagnosesService implements IDiagnosesService {
       diagnosis,
       relevantAnswersCount: relevantQuestions.length,
       recommendedClaims,
-    } as ClaimRecommendationResponseDto;
+    } as unknown as ClaimRecommendationResponseDto;
   }
 
-  async delete(id: string): Promise<void> {
+  async delete(id: string, userId: string): Promise<void> {
     const result = await this.diagnosisModel.deleteOne({ _id: id }).exec();
     if (result.deletedCount === 0) {
       throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);

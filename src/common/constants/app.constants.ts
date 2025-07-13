@@ -23,6 +23,7 @@ export const ERROR_MESSAGES = {
   USER_EMAIL_EXISTS: 'User email already exists',
   USER_NOT_FOUND: 'User not found',
   INVALID_TOKEN: 'Invalid or expired token',
+  UNAUTHORIZED_ACCESS: 'Unauthorized access to this resource',
 
   PASSWORDS_MISMATCH: 'Passwords do not match',
 } as const;

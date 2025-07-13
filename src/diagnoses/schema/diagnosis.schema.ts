@@ -19,6 +19,13 @@ export class Diagnosis extends Document {
 
   @Prop({
     required: true,
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'User',
+  })
+  createdBy: MongooseSchema.Types.ObjectId;
+
+  @Prop({
+    required: true,
     type: [
       {
         _id: false,
