@@ -36,7 +36,7 @@ Permitir que o **Administrador** crie, edite e exclua perguntas jurídicas com r
 
 ## 5. Wireframes / Protótipos
 
-- **Wireframe:** [Link](https://excalidraw.com/#json=uzeZOcOtPKE5hVSiMwpbg,8IjQKNJVapnkd55dPgTC6g)
+- **Wireframe:** [Link](https://excalidraw.com/#json=LkYX1e1dw8MtXymp-2k0p,r0G29EMl_SToYzwA0q2aFA)
 
 ## 6. Histórico de Revisões
 

@@ -48,7 +48,7 @@ OBS: Administrador não pode ver relatório dos usuários.
 
 ## 5. Wireframes / Protótipos
 
-- **Wireframes:** [Link]()
+- **Wireframes:** [Link](https://excalidraw.com/#json=LkYX1e1dw8MtXymp-2k0p,r0G29EMl_SToYzwA0q2aFA)
 
 ## 6. Histórico de Revisões
 

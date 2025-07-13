@@ -52,7 +52,7 @@ Permitir que o **Administrador** crie, edite, exclua e categorize **teses tribut
 
 ## 5. Wireframes / Protótipos
 
-- **Wireframe:** [Link]()
+- **Wireframe:** [Link](https://excalidraw.com/#json=LkYX1e1dw8MtXymp-2k0p,r0G29EMl_SToYzwA0q2aFA)
 
 ## 6. Histórico de Revisões
 
