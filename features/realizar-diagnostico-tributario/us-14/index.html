@@ -2175,8 +2175,10 @@
 <span class="nf">    </span><span class="k">And </span><span class="nf">vejo uma lista dos meus relatórios feitos</span>
 <span class="nf">  </span><span class="k">When </span><span class="nf">clico em um item da lista de diagnósticos</span>
 <span class="nf">  </span><span class="k">Then </span><span class="nf">sou redirecionado para a página &quot;</span><span class="s">Teses Recomendadas</span><span class="nf">&quot; daquele diagnóstico</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">vejo as informações do diagnóstico (nome do cliente, data de criação)</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">vejo as informações do diagnóstico (nome do cliente, data de realização)</span>
 <span class="nf">    </span><span class="k">And </span><span class="nf">vejo uma lista com as teses aplicáveis para aquele diagnóstico</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">já houve um busca pelo CNPJ (US-</span><span class="s">01</span><span class="nf">)</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">também sera mostrado (razão social, nome fantasia, natureza jurídica, situação cadastral, data de abertura, UF e município)</span>
 </code></pre></div>
 <ul>
 <li><strong>Cenário 2 – Exibir teses aplicáveis</strong></li>
