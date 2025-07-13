@@ -142,6 +142,7 @@ const DiagnosisDetailsPage = () => {
         mensagemVazia='Nenhuma tese recomendada encontrada.'
         titulo='Teses Recomendadas'
         descricao={`Foram encontrada(s) ${recommendations?.recommendedClaims.length || 0} oportunidades(s) para este diagnóstico.`}
+        mostrarBarraPesquisa={false}
       />
       {/* Dialog de Confirmação de Exclusão */}
       <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
