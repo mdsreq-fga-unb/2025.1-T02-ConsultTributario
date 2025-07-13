@@ -5,7 +5,7 @@ import { SWRConfig } from 'swr';
 import { AuthProvider } from '@/auth';
 import { ConditionalFooter } from '@/components/navigation/conditional-footer';
 import { ConditionalNavbar } from '@/components/navigation/conditional-navbar';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '@/components/ui/sonner';
 import { swrConfig } from '@/utils/axios';
 
 const inter = Inter({ subsets: ['latin'] });
