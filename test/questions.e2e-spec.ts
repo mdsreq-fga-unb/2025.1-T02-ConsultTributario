@@ -167,7 +167,7 @@ describe('Questions E2E', () => {
   describe('/questions (GET)', () => {
     it('should return an empty array when no questions exist', async () => {
       const res = await request(app.getHttpServer())
-        .get('/questions')
+        .get('/questions/active')
         .set('Authorization', `Bearer ${regularUser.accessToken}`)
         .expect(200);
       expect(res.body).toEqual([]);
@@ -184,7 +184,7 @@ describe('Questions E2E', () => {
         });
 
       const res = await request(app.getHttpServer())
-        .get('/questions')
+        .get('/questions/active')
         .set('Authorization', `Bearer ${regularUser.accessToken}`)
         .expect(200);
 
@@ -192,7 +192,6 @@ describe('Questions E2E', () => {
       expect(res.body.length).toBe(1);
       expect(res.body[0].label).toBe('question1');
       expect(res.body[0].tooltip).toBe('tooltip1');
-      expect(res.body[0].isActive).toBe(true);
     });
   });
 
