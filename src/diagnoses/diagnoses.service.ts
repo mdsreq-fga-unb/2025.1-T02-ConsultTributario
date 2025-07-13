@@ -68,9 +68,15 @@ export class DiagnosesService implements IDiagnosesService {
   }
 
   async delete(id: string, userId: string): Promise<void> {
-    const result = await this.diagnosisModel.deleteOne({ _id: id }).exec();
-    if (result.deletedCount === 0) {
+    const diagnosis = await this.diagnosisModel.findById(id).exec();
+    if (!diagnosis) {
       throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
     }
+
+    if (diagnosis.createdBy.toString() !== userId) {
+      throw new BadRequestException(ERROR_MESSAGES.UNAUTHORIZED_ACCESS);
+    }
+
+    await this.diagnosisModel.deleteOne({ _id: id }).exec();
   }
 }
