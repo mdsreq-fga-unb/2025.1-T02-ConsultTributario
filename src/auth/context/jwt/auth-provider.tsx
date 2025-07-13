@@ -176,31 +176,9 @@ export const AuthProvider = ({ children }: Props) => {
   const register = useCallback(async (registerData: IRegisterRequest) => {
     const response = await axios.post<IAuthResponse>(endpoints.auth.register, registerData);
 
-    const { access_token, refresh_token } = response.data;
+    const { access_token } = response.data;
 
-    setSession(access_token, refresh_token);
-
-    // Extrair dados do usuário do token
-    const userFromToken = getUserFromToken(access_token);
-
-    if (userFromToken) {
-      dispatch({
-        type: Types.REGISTER,
-        payload: {
-          user: userFromToken,
-        },
-      });
-    } else {
-      // Fallback: buscar dados do usuário da API
-      const userResponse = await axios.get<IUser>(endpoints.auth.me);
-
-      dispatch({
-        type: Types.REGISTER,
-        payload: {
-          user: userResponse.data,
-        },
-      });
-    }
+    setSession(access_token);
   }, []);
 
   // LOGOUT

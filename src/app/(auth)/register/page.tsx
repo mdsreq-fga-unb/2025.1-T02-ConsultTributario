@@ -23,30 +23,19 @@ const RegisterPage = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState('');
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
     password: '',
-    confirmPassword: '',
+    passwordConfirmation: '',
   });
   const [fieldErrors, setFieldErrors] = useState({
-    name: '',
     email: '',
     password: '',
-    confirmPassword: '',
+    passwordConfirmation: '',
   });
 
   const validateForm = () => {
-    const errors = { name: '', email: '', password: '', confirmPassword: '' };
+    const errors = { name: '', email: '', password: '', passwordConfirmation: '' };
     let isValid = true;
-
-    // Name validation
-    if (!formData.name.trim()) {
-      errors.name = 'Nome é obrigatório';
-      isValid = false;
-    } else if (formData.name.trim().length < 2) {
-      errors.name = 'Nome deve ter pelo menos 2 caracteres';
-      isValid = false;
-    }
 
     // Email validation
     if (!formData.email) {
@@ -70,11 +59,11 @@ const RegisterPage = () => {
     }
 
     // Confirm password validation
-    if (!formData.confirmPassword) {
-      errors.confirmPassword = 'Confirmação de senha é obrigatória';
+    if (!formData.passwordConfirmation) {
+      errors.passwordConfirmation = 'Confirmação de senha é obrigatória';
       isValid = false;
-    } else if (formData.password !== formData.confirmPassword) {
-      errors.confirmPassword = 'As senhas não coincidem';
+    } else if (formData.password !== formData.passwordConfirmation) {
+      errors.passwordConfirmation = 'As senhas não coincidem';
       isValid = false;
     }
 
@@ -122,12 +111,14 @@ const RegisterPage = () => {
 
     try {
       await register(formData as IRegisterRequest);
-      router.push('/dashboard');
     } catch (error: any) {
       console.error('Register error:', error);
       setError(error?.message || 'Erro ao criar conta. Tente novamente.');
     } finally {
       setLoading(false);
+      if (!error) {
+        router.push('/biblioteca-teses');
+      }
     }
   };
 
@@ -178,35 +169,6 @@ const RegisterPage = () => {
             )}
 
             <form onSubmit={handleSubmit} className='space-y-5'>
-              <div className='space-y-2'>
-                <Label htmlFor='name' className='text-sm font-semibold text-slate-700'>
-                  Nome completo
-                </Label>
-                <div className='relative'>
-                  <User className='absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5' />
-                  <Input
-                    id='name'
-                    name='name'
-                    type='text'
-                    autoComplete='name'
-                    placeholder='Seu nome'
-                    value={formData.name}
-                    onChange={handleChange}
-                    className={`pl-11 h-12 text-base ${
-                      fieldErrors.name
-                        ? 'border-red-300 focus-visible:ring-red-500 bg-red-50'
-                        : 'border-slate-200 focus-visible:ring-blue-500'
-                    }`}
-                  />
-                </div>
-                {fieldErrors.name && (
-                  <p className='text-sm text-red-600 mt-1 flex items-center gap-1'>
-                    <AlertCircle className='h-3 w-3' />
-                    {fieldErrors.name}
-                  </p>
-                )}
-              </div>
-
               <div className='space-y-2'>
                 <Label htmlFor='email' className='text-sm font-semibold text-slate-700'>
                   Email
@@ -279,25 +241,27 @@ const RegisterPage = () => {
                 <div className='relative'>
                   <Lock className='absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 h-5 w-5' />
                   <Input
-                    id='confirmPassword'
-                    name='confirmPassword'
+                    id='passwordConfirmation'
+                    name='passwordConfirmation'
                     type={showConfirmPassword ? 'text' : 'password'}
                     autoComplete='new-password'
                     placeholder='••••••••'
-                    value={formData.confirmPassword}
+                    value={formData.passwordConfirmation}
                     onChange={handleChange}
                     className={`pl-11 pr-11 h-12 text-base ${
-                      fieldErrors.confirmPassword
+                      fieldErrors.passwordConfirmation
                         ? 'border-red-300 focus-visible:ring-red-500 bg-red-50'
-                        : formData.confirmPassword && formData.password === formData.confirmPassword
+                        : formData.passwordConfirmation &&
+                            formData.password === formData.passwordConfirmation
                           ? 'border-green-300 focus-visible:ring-green-500 bg-green-50'
                           : 'border-slate-200 focus-visible:ring-blue-500'
                     }`}
                   />
                   <div className='absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-1'>
-                    {formData.confirmPassword && formData.password === formData.confirmPassword && (
-                      <Check className='h-4 w-4 text-green-500' />
-                    )}
+                    {formData.passwordConfirmation &&
+                      formData.password === formData.passwordConfirmation && (
+                        <Check className='h-4 w-4 text-green-500' />
+                      )}
                     <button
                       type='button'
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -311,10 +275,10 @@ const RegisterPage = () => {
                     </button>
                   </div>
                 </div>
-                {fieldErrors.confirmPassword && (
+                {fieldErrors.passwordConfirmation && (
                   <p className='text-sm text-red-600 mt-1 flex items-center gap-1'>
                     <AlertCircle className='h-3 w-3' />
-                    {fieldErrors.confirmPassword}
+                    {fieldErrors.passwordConfirmation}
                   </p>
                 )}
               </div>

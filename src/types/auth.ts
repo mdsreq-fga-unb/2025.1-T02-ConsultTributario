@@ -21,7 +21,7 @@ export interface ILoginRequest {
 export interface IRegisterRequest {
   email: string;
   password: string;
-  confirmPassword: string;
+  passwordConfirmation: string;
 }
 
 export interface IAuthResponse {
