@@ -2228,6 +2228,22 @@
 <span class="nf">  </span><span class="k">When </span><span class="nf">tento acessar &quot;</span><span class="s">/diagnosticos/novo-diagnostico/</span><span class="nf">&quot;</span>
 <span class="nf">  </span><span class="k">Then </span><span class="nf">sou redirecionado para a tela de login</span>
 </code></pre></div>
+<ul>
+<li><strong>Cenário 7 – Exibir perguntas com base nas perguntas relacionadas respondidas</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como usuário  </span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página &quot;</span><span class="s">Diagnósticos</span><span class="nf">&quot;  </span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Novo Diagnóstico</span><span class="nf">&quot;  </span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">estou respondendo o questionário  </span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">existem perguntas com perguntas relacionadas configuradas</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">marco como &quot;</span><span class="s">Sim</span><span class="nf">&quot; ou &quot;</span><span class="s">Não sei</span><span class="nf">&quot; as perguntas que são relacionadas  </span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o botão para próxima página aparece  </span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico no botão de próxima página</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">são exibidas apenas as perguntas cujas perguntas relacionadas foram marcadas como &quot;</span><span class="s">Sim</span><span class="nf">&quot; ou &quot;</span><span class="s">Não sei</span><span class="nf">&quot;  </span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">essas novas perguntas também respeitam a mesma lógica para exibição condicional</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">não houver mais perguntas a serem exibidas com base nas perguntas relacionadas</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o botão &quot;</span><span class="s">Enviar Diagnóstico</span><span class="nf">&quot; aparece</span>
+</code></pre></div>
 <h2 id="3-dependencias">3. Dependências<a class="headerlink" href="#3-dependencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Endpoint: <code>GET /questions/active</code> para retornas perguntas ativas</li>
