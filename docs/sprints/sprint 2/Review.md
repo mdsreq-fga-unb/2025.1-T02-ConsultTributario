@@ -28,7 +28,7 @@ Revisar o que foi entregue e validar com o cliente.
 | Título                                                       | Responsável            |
 | ------------------------------------------------------------ | ---------------------- |
 | Criar protótipo Excalidraw Feito                             | Daniel, Rafael, Paulo  |
-| Projeto Next.js base com roteamento inicial                  | Vinícios               |
+| Projeto Next.js base com roteamento inicial                  | Vinícius               |
 | Ambiente do NestJS configurado e pronto para desemvolvimento | Diogo                  |
 | Backlog atualizado e priorizado (MoSCoW)                     | Artur Krauspenhar (PO) |
 
@@ -38,9 +38,9 @@ O cliente não participou da reunião então não conseguimos um feedback.
 
 ## Atividades Debitadas
 
-_Nenhuma atividade ficou em débito_
+_Nenhuma atividade ficou em débito._
 
 
 ### Gravação da Reunião
 
-_Reunião não gravada_
+_Reunião não gravada._

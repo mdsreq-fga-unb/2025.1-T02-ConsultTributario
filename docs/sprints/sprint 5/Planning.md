@@ -16,7 +16,7 @@
 
 Definir o Sprint Goal e atribuir as tarefas prioritárias.
 
-**Sprint Goal:** Entregar CRUD de Categorias ligado às Teses e sistema básico de login.
+**Sprint Goal:** Entregar CRUD de Categorias ligado às Teses, e sistema básico de login.
 
 ## Pautas da Reunião
 
@@ -39,4 +39,4 @@ Definir o Sprint Goal e atribuir as tarefas prioritárias.
 
 ## Gravação da Reunião:
 
-_Reunião não Gravada_
+_Reunião não gravada._

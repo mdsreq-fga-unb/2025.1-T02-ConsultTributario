@@ -14,7 +14,7 @@
 
 ## Objetivo da Reunião:
 
-A reunião tem como objetivo revisar o que foi feito e validar com o cliente.
+A reunião teve como objetivo revisar o que foi feito e validar com o cliente.
 
 ## Pautas da Reunião:
 
@@ -28,17 +28,17 @@ A reunião tem como objetivo revisar o que foi feito e validar com o cliente.
 | ----------------------------------------- | ------------------------- |
 | Definir Visão do Produto com Stakeholders | Artur Krauspenhar, Rafael |
 | Estruturar Git Pages                      | Paulo                     |
-| Configurar CI/CD inicial                  | Diogo, Vinícios           |
+| Configurar CI/CD inicial                  | Diogo, Vinícius           |
 | Priorizar backlog (MoSCoW)                | Todos                     |
 | Iniciar Protótipo wireframe               | Daniel                    |
 
 ## Feadback do cliente
 
-Foi enviadao o documento de visão de produto a cliente e o feedback recebido foi a respeito dos valores que eram gastos com softwares externos, que não estavam de acordo com os documnetados.
+Foi enviado o documento de visão de produto ao cliente e o feedback recebido foi a respeito dos valores que eram gastos com softwares externos, que não estavam de acordo com os documentados.
 
 ## Atividades debitadas
 
-_Nenhuma atividade ficou em débito_
+_Nenhuma atividade ficou em débito._
 
 ## Gravação da Reunião:
 

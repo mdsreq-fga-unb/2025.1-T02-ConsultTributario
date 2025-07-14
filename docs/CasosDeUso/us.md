@@ -1,3 +1,9 @@
+## Especificações de Casos de Uso
+
+- [Consultar Serviços de Saúde](epecA.md)
+
+---
+
 # Diagrama de Casos de Uso
 
 ## Introdução

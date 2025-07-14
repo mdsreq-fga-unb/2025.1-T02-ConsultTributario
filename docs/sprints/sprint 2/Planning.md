@@ -32,10 +32,10 @@ Definir o Sprint Goal e atribuir as tarefas prioritárias.
 | Título                                     | Responsável            |
 | ------------------------------------------ | ---------------------- |
 | Criar protótipo Excalidraw                 | Daniel, Rafael, Paulo  |
-| Configurar projeto Next.js base            | Vinícios               |
+| Configurar projeto Next.js base            | Vinícius               |
 | Configurar NestJS backend                  | Diogo                  |
 | Atualizar backlog com feedback do Sprint 1 | Artur Krauspenhar (PO) |
 
 ## Gravação da Reunião:
 
-_Reunião não Gravada_
+_Reunião não gravada._

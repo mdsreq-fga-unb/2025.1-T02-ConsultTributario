@@ -14,11 +14,11 @@
 
 ## O que Funcionou Bem 🙌
 
-- Planning Poker ajudor a estimar melhor as tarefas.
+- Planning Poker ajudou a estimar melhor as tarefas.
 
 ## O que Não Funcionou ⚠️
 
-- O Vinícios saiu da matéria no meio da sprint.
+- O Vinícius saiu da matéria no meio da sprint.
 
 ## Ideias de Melhoria 💡
 
@@ -30,4 +30,4 @@
 
 ## Gravação da Reunião
 
-_Reunião não gravada_
+_Reunião não gravada._
