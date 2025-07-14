@@ -2190,16 +2190,7 @@
 <span class="nf">    </span><span class="k">And </span><span class="nf">as informções do diagnóstico (US-</span><span class="s">14</span><span class="nf">) são atualizadas, mostrando agora: razão social, nome fantasia, natureza jurídica, situação cadastral, data de abertura, UF e município</span>
 </code></pre></div>
 <ul>
-<li><strong>Cenário 3 – CNPJ inválido</strong></li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou com a janela/modal de adcionar CNPJ aberta</span>
-<span class="nf">  </span><span class="k">When </span><span class="nf">digito um CNPJ com formato inválido</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Consultar</span><span class="nf">&quot;</span>
-<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo uma mensagem de erro &quot;</span><span class="s">CNPJ inválido</span><span class="nf">&quot;</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">o campo &quot;</span><span class="s">CNPJ</span><span class="nf">&quot; é destacado em vermelho</span>
-</code></pre></div>
-<ul>
-<li><strong>Cenário 4 – Campo CNPJ vazio</strong></li>
+<li><strong>Cenário 3 – Campo CNPJ vazio</strong></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou com a janela/modal de adcionar CNPJ aberta</span>
 <span class="nf">  </span><span class="k">When </span><span class="nf">não digito nada no campo de CNPJ</span>
@@ -2208,21 +2199,32 @@
 <span class="nf">    </span><span class="k">And </span><span class="nf">o campo &quot;</span><span class="s">CNPJ</span><span class="nf">&quot; é destacado em vermelho</span>
 </code></pre></div>
 <ul>
-<li><strong>Cenário 5 – CNPJ não encontrado</strong></li>
+<li><strong>Cenário 4 – CNPJ não encontrado</strong></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou com a janela/modal de adcionar CNPJ aberta</span>
 <span class="nf">  </span><span class="k">When </span><span class="nf">insiro um CNPJ válido que não retorna dados da fonte</span>
 <span class="nf">    </span><span class="k">And </span><span class="nf">clico em &quot;</span><span class="s">Consultar</span><span class="nf">&quot;</span>
-<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo a mensagem &quot;</span><span class="s">Empresa não encontrada ou sem dados disponíveis</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo a mensagem &quot;</span><span class="s">Erro interno ao consultar CNPJ, Verifique se o CNPJ está correto</span><span class="nf">&quot;</span>
 </code></pre></div>
 <ul>
-<li><strong>Cenário 6 – Limpeza de dados anteriores</strong></li>
+<li><strong>Cenário 5 – Limpeza de dados anteriores</strong></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou com a janela/modal de adcionar CNPJ aberta</span>
 <span class="nf">    </span><span class="k">And </span><span class="nf">já realizei uma consulta ateriormente</span>
 <span class="nf">  </span><span class="k">When </span><span class="nf">digito um novo CNPJ e clico em &quot;</span><span class="s">Consultar</span><span class="nf">&quot;</span>
 <span class="nf">  </span><span class="k">Then </span><span class="nf">os dados da consulta anterior são limpos</span>
 <span class="nf">    </span><span class="k">And </span><span class="nf">apenas os dados da nova consultada são exibidos</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 6 – Atualizar página após consulta</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou na página &quot;</span><span class="s">Teses Recomendadas</span><span class="nf">&quot; de um diagnóstico</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">já realizei uma consulta de CNPJ anteriormente</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">os dados da empresa estão sendo exibidos</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">atualizo/recarrego a página (F</span><span class="s">5</span><span class="nf"> ou Ctrl+R)</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">os dados da consulta CNPJ desaparecem</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">volto ao estado inicial sem dados de empresa</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">preciso consultar o CNPJ novamente para ver os dados</span>
 </code></pre></div>
 <h2 id="3-dependencias">3. Dependências<a class="headerlink" href="#3-dependencias" title="Permanent link">&para;</a></h2>
 <ul>
