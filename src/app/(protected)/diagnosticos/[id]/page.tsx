@@ -281,7 +281,7 @@ const DiagnosisDetailsPage = () => {
         tentarNovamente={refreshRecommendations}
         linkEditar={id => `/biblioteca-teses/editar-tese/${id}`}
         mensagemVazia='Nenhuma tese recomendada encontrada.'
-        titulo='Teses Recomendadas'
+        titulo='Teses Aplicaveis'
         descricao={`Foram encontrada(s) ${recommendations?.recommendedClaims.length || 0} oportunidades(s) para este diagnóstico.`}
         mostrarBarraPesquisa={false}
       />
