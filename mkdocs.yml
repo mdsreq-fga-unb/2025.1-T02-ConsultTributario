@@ -124,3 +124,5 @@ nav:
     - Versão 1: prototipo/versao1.md
   - User Story Mapping:
     - ComunEventos: USM/usm.md
+  - Caso de uso:
+    - ConnectCare: CasosDeUsos/uc.md
