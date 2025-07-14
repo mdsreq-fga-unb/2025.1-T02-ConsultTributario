@@ -97,6 +97,14 @@ nav:
       - Planning: sprints/sprint 4/Planning.md
       - Review: sprints/sprint 4/Review.md
       - Retrospective: sprints/sprint 4/Retrospective.md
+    - Sprint 5:
+      - Planning: sprints/sprint 5/Planning.md
+      - Review: sprints/sprint 5/Review.md
+      - Retrospective: sprints/sprint 5/Retrospective.md
+    - Sprint 6:
+      - Planning: sprints/sprint 6/Planning.md
+      - Review: sprints/sprint 6/Review.md
+      - Retrospective: sprints/sprint 6/Retrospective.md
     - Features:
       - Feature 1: features/gerenciar-perguntas-tributarias/gerenciar-perguntas-tributarias.md
       - Feature 2: features/gerenciar-teses-tributarias/gerenciar-teses-tributarias.md
