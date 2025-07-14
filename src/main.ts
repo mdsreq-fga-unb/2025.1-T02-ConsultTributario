@@ -1,5 +1,4 @@
-import multiPart from '@fastify/multipart';
-import { HttpException, ValidationPipe, VersioningType } from '@nestjs/common';
+import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, type NestFastifyApplication } from '@nestjs/platform-fastify';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -8,8 +7,6 @@ import { HttpExceptionFilter } from './util/http-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter({ bodyLimit: 104857600 }));
-
-  await app.register(multiPart);
 
   app.enableVersioning({
     type: VersioningType.URI,
