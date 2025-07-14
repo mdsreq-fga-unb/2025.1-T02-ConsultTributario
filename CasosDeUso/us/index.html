@@ -12,7 +12,7 @@
         <meta name="author" content="Grupo 07 - Engenharia de Requisitos - UnB">
       
       
-        <link rel="canonical" href="https://mdsreq-fga-unb.github.io/2025.1-T02-ConsultTributario/guia-contribuicao/processo-verificacao-validacao/">
+        <link rel="canonical" href="https://mdsreq-fga-unb.github.io/2025.1-T02-ConsultTributario/CasosDeUso/us/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>Processo de Verificação e Validação (V&V) - ConsultTributário - Grupo 07</title>
+        <title>Diagrama de Casos de Uso - ConsultTributário - Grupo 07</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#processo-de-verificacao-e-validacao-vv" class="md-skip">
+        <a href="#diagrama-de-casos-de-uso" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Processo de Verificação e Validação (V&amp;V)
+              Diagrama de Casos de Uso
             
           </span>
         </div>
@@ -1742,7 +1742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../politica-de-branches/" class="md-nav__link">
+      <a href="../../guia-contribuicao/politica-de-branches/" class="md-nav__link">
         
   
   
@@ -1765,7 +1765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../politica-de-commits/" class="md-nav__link">
+      <a href="../../guia-contribuicao/politica-de-commits/" class="md-nav__link">
         
   
   
@@ -2125,319 +2125,38 @@
   
 
 
-<h1 id="processo-de-verificacao-e-validacao-vv">Processo de Verificação e Validação (V&amp;V)<a class="headerlink" href="#processo-de-verificacao-e-validacao-vv" title="Permanent link">&para;</a></h1>
-<table>
-<thead>
-<tr>
-<th>Versão</th>
-<th>Data</th>
-<th>Descrição</th>
-<th>Autor</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1.0</td>
-<td>27/04/2025</td>
-<td>Versão inicial do documento</td>
-<td><a href="https://github.com/viniciusvieira00">Vinicius Vieira</a></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="1-introducao">1. Introdução<a class="headerlink" href="#1-introducao" title="Permanent link">&para;</a></h2>
-<p>O Processo de Verificação e Validação (V&amp;V) do projeto <strong>ConsultTributario</strong> estabelece práticas e procedimentos sistemáticos para garantir que o software desenvolvido esteja em conformidade com os requisitos especificados e atenda às necessidades dos usuários. Este documento detalha as atividades, responsabilidades e critérios relacionados ao V&amp;V, servindo como referência para toda a equipe de desenvolvimento.</p>
-<h2 id="2-definicoes-fundamentais">2. Definições Fundamentais<a class="headerlink" href="#2-definicoes-fundamentais" title="Permanent link">&para;</a></h2>
-<h3 id="21-verificacao">2.1 Verificação<a class="headerlink" href="#21-verificacao" title="Permanent link">&para;</a></h3>
-<p>A <strong>verificação</strong> responde à pergunta: "<strong>Estamos construindo o produto corretamente?</strong>"</p>
-<p>Refere-se ao conjunto de atividades que garantem que o software implementa uma função específica corretamente. É o processo de avaliação de artefatos (documentos, código, testes) para determinar se atendem às especificações.</p>
-<h3 id="22-validacao">2.2 Validação<a class="headerlink" href="#22-validacao" title="Permanent link">&para;</a></h3>
-<p>A <strong>validação</strong> responde à pergunta: "<strong>Estamos construindo o produto correto?</strong>"</p>
-<p>Refere-se ao conjunto de atividades que garantem que o software construído atende aos requisitos do usuário. É o processo de avaliar o sistema para determinar se ele satisfaz as necessidades e expectativas das partes interessadas.</p>
-<h2 id="3-processo-de-vv-no-ciclo-de-desenvolvimento">3. Processo de V&amp;V no Ciclo de Desenvolvimento<a class="headerlink" href="#3-processo-de-vv-no-ciclo-de-desenvolvimento" title="Permanent link">&para;</a></h2>
-<h3 id="31-diagrama-do-processo">3.1 Diagrama do Processo<a class="headerlink" href="#31-diagrama-do-processo" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>Requisitos → Projeto → Implementação → Testes → Implantação
-    ↑         ↑          ↑              ↑           ↑
-    |         |          |              |           |
-Verificação Verificação Verificação  Verificação Verificação
-Validação   Validação   Validação    Validação   Validação
-</code></pre></div>
-<h3 id="32-atividades-por-fase">3.2 Atividades por Fase<a class="headerlink" href="#32-atividades-por-fase" title="Permanent link">&para;</a></h3>
-<h4 id="321-fase-de-requisitos">3.2.1 Fase de Requisitos<a class="headerlink" href="#321-fase-de-requisitos" title="Permanent link">&para;</a></h4>
-<p><strong>Verificação</strong>:
-- Revisão de requisitos para consistência e completude
-- Análise de rastreabilidade
-- Verificação de conformidade com padrões e regulamentações tributárias</p>
-<p><strong>Validação</strong>:
-- Validação com partes interessadas
-- Prototipagem para validação de requisitos
-- Revisão de requisitos por especialistas do domínio tributário</p>
-<h4 id="322-fase-de-projeto">3.2.2 Fase de Projeto<a class="headerlink" href="#322-fase-de-projeto" title="Permanent link">&para;</a></h4>
-<p><strong>Verificação</strong>:
-- Revisão de design
-- Análise estática da arquitetura
-- Verificação de conformidade com padrões de projeto</p>
-<p><strong>Validação</strong>:
-- Avaliação da arquitetura em relação aos requisitos não-funcionais
-- Revisões técnicas com especialistas
-- Prototipagem de interface</p>
-<h4 id="323-fase-de-implementacao">3.2.3 Fase de Implementação<a class="headerlink" href="#323-fase-de-implementacao" title="Permanent link">&para;</a></h4>
-<p><strong>Verificação</strong>:
-- Análise estática de código
-- Revisão de código por pares
-- Verificação de conformidade com padrões de codificação</p>
-<p><strong>Validação</strong>:
-- Testes unitários
-- Testes de integração
-- Verificação de cobertura de código</p>
-<h4 id="324-fase-de-testes">3.2.4 Fase de Testes<a class="headerlink" href="#324-fase-de-testes" title="Permanent link">&para;</a></h4>
-<p><strong>Verificação</strong>:
-- Verificação dos casos de teste
-- Revisão dos resultados dos testes
-- Análise de cobertura de requisitos</p>
-<p><strong>Validação</strong>:
-- Testes de sistema
-- Testes de aceitação
-- Testes de usuário
-- Testes de regressão</p>
-<h4 id="325-fase-de-implantacao">3.2.5 Fase de Implantação<a class="headerlink" href="#325-fase-de-implantacao" title="Permanent link">&para;</a></h4>
-<p><strong>Verificação</strong>:
-- Verificação da integridade do build
-- Verificação da configuração do ambiente
-- Análise de segurança</p>
-<p><strong>Validação</strong>:
-- Testes em ambiente de homologação
-- Validação final com usuários
-- Testes de aceitação operacional</p>
-<h2 id="4-tecnicas-e-metodos-de-vv">4. Técnicas e Métodos de V&amp;V<a class="headerlink" href="#4-tecnicas-e-metodos-de-vv" title="Permanent link">&para;</a></h2>
-<h3 id="41-tecnicas-de-verificacao">4.1 Técnicas de Verificação<a class="headerlink" href="#41-tecnicas-de-verificacao" title="Permanent link">&para;</a></h3>
-<h4 id="411-analise-estatica">4.1.1 Análise Estática<a class="headerlink" href="#411-analise-estatica" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Revisões</strong>: Inspeções formais, walkthrough, revisão técnica</li>
-<li><strong>Análise de Código</strong>: Linters, análise de complexidade, detecção de vulnerabilidades</li>
-<li><strong>Verificação Formal</strong>: Para componentes críticos relacionados a cálculos tributários</li>
-</ul>
-<h4 id="412-analise-dinamica">4.1.2 Análise Dinâmica<a class="headerlink" href="#412-analise-dinamica" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Testes Unitários</strong>: Verificação de componentes isolados</li>
-<li><strong>Testes de Integração</strong>: Verificação da interação entre componentes</li>
-<li><strong>Testes de Desempenho</strong>: Análise de tempos de resposta e recursos</li>
-<li><strong>Testes de Segurança</strong>: Identificação de vulnerabilidades</li>
-</ul>
-<h3 id="42-tecnicas-de-validacao">4.2 Técnicas de Validação<a class="headerlink" href="#42-tecnicas-de-validacao" title="Permanent link">&para;</a></h3>
-<h4 id="421-validacao-de-requisitos">4.2.1 Validação de Requisitos<a class="headerlink" href="#421-validacao-de-requisitos" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Prototipagem</strong>: Avaliação de interfaces e fluxos de trabalho</li>
-<li><strong>Revisão por Stakeholders</strong>: Feedback dos usuários e especialistas em tributação</li>
-<li><strong>Análise de Casos de Uso</strong>: Simulação de cenários reais</li>
-</ul>
-<h4 id="422-validacao-de-sistema">4.2.2 Validação de Sistema<a class="headerlink" href="#422-validacao-de-sistema" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Testes Funcionais</strong>: Verificação do comportamento do sistema</li>
-<li><strong>Testes de Aceitação</strong>: Validação dos critérios de aceitação</li>
-<li><strong>Testes de Usabilidade</strong>: Avaliação da experiência do usuário</li>
-<li><strong>Testes de Conformidade</strong>: Validação contra regulamentações tributárias</li>
-</ul>
-<h2 id="5-metricas-e-criterios-de-vv">5. Métricas e Critérios de V&amp;V<a class="headerlink" href="#5-metricas-e-criterios-de-vv" title="Permanent link">&para;</a></h2>
-<h3 id="51-metricas-de-verificacao">5.1 Métricas de Verificação<a class="headerlink" href="#51-metricas-de-verificacao" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Métrica</th>
-<th>Descrição</th>
-<th>Meta</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cobertura de Código</td>
-<td>Percentual de código executado durante testes</td>
-<td>≥ 80%</td>
-</tr>
-<tr>
-<td>Densidade de Defeitos</td>
-<td>Número de defeitos por KLOC</td>
-<td>&lt; 5</td>
-</tr>
-<tr>
-<td>Complexidade Ciclomática</td>
-<td>Complexidade do código</td>
-<td>≤ 10</td>
-</tr>
-<tr>
-<td>Violações de Padrão</td>
-<td>Número de violações de padrão de código</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Dívida Técnica</td>
-<td>Tempo estimado para corrigir problemas</td>
-<td>&lt; 5%</td>
-</tr>
-</tbody>
-</table>
-<h3 id="52-metricas-de-validacao">5.2 Métricas de Validação<a class="headerlink" href="#52-metricas-de-validacao" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Métrica</th>
-<th>Descrição</th>
-<th>Meta</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Satisfação do Usuário</td>
-<td>Avaliação do usuário (1-5)</td>
-<td>≥ 4</td>
-</tr>
-<tr>
-<td>Cobertura de Requisitos</td>
-<td>Percentual de requisitos validados</td>
-<td>100%</td>
-</tr>
-<tr>
-<td>Taxa de Sucesso</td>
-<td>Percentual de operações concluídas com sucesso</td>
-<td>≥ 95%</td>
-</tr>
-<tr>
-<td>Precisão</td>
-<td>Exatidão dos cálculos tributários</td>
-<td>100%</td>
-</tr>
-<tr>
-<td>Tempo de Resposta</td>
-<td>Tempo médio de resposta do sistema</td>
-<td>≤ 2s</td>
-</tr>
-</tbody>
-</table>
-<h3 id="53-criterios-de-aceitacao">5.3 Critérios de Aceitação<a class="headerlink" href="#53-criterios-de-aceitacao" title="Permanent link">&para;</a></h3>
-<p>Para que uma alteração seja considerada verificada e validada, os seguintes critérios devem ser atendidos:</p>
+<h1 id="diagrama-de-casos-de-uso">Diagrama de Casos de Uso<a class="headerlink" href="#diagrama-de-casos-de-uso" title="Permanent link">&para;</a></h1>
+<h2 id="introducao">Introdução<a class="headerlink" href="#introducao" title="Permanent link">&para;</a></h2>
+<p>No contexto do aplicativo <strong>Connect Care</strong>, a técnica de casos de uso foi utilizada como um facilitador no desenvolvimento do software. A modelagem de casos de uso é uma ferramenta fundamental na engenharia de software que permite identificar e documentar as funcionalidades do sistema sob a perspectiva dos usuários.</p>
+<h2 id="metodologia">Metodologia<a class="headerlink" href="#metodologia" title="Permanent link">&para;</a></h2>
+<p>Para o desenvolvimento dos casos de uso, seguimos os seguintes passos:</p>
 <ol>
-<li><strong>Critérios de Verificação</strong>:</li>
-<li>Todos os testes automatizados passam</li>
-<li>Cobertura de código ≥ 80%</li>
-<li>Sem violações críticas nos linters</li>
+<li><strong>Identificação dos atores</strong>: Foram identificados os seguintes atores principais:</li>
+<li>Paciente</li>
+<li>Agente comunitário</li>
+<li>Administrador </li>
+<li>Organizações parceira</li>
 <li>
-<p>Revisão de código aprovada por pelo menos 2 revisores</p>
+<p>Profissional de saúde</p>
 </li>
 <li>
-<p><strong>Critérios de Validação</strong>:</p>
+<p><strong>Mapeamento dos Casos de Uso</strong>: Realizado a partir de verificação com a equipe de desenvolvimento</p>
 </li>
-<li>Todos os critérios de aceitação atendidos</li>
-<li>Testes de aceitação aprovados</li>
-<li>Sem desvios em relação à legislação tributária aplicável</li>
-<li>Validação pelo Product Owner/stakeholders</li>
+<li>
+<p><strong>Desenvolvimento do diagrama</strong>: Elaborado seguindo o padrão UML (Unified Modeling Language)</p>
+</li>
+<li>
+<p><strong>Inclusão das relações</strong>: Adicionadas relações de inclusão e extensão entre os casos de uso</p>
+</li>
+<li>
+<p><strong>Revisão e análise</strong>: Validação final do diagrama com a equipe</p>
+</li>
 </ol>
-<h2 id="6-integracao-com-o-processo-de-pull-request">6. Integração com o Processo de Pull Request<a class="headerlink" href="#6-integracao-com-o-processo-de-pull-request" title="Permanent link">&para;</a></h2>
-<p>O processo de V&amp;V está diretamente integrado ao fluxo de trabalho de Pull Requests, conforme indicado no template PR. </p>
-<h3 id="61-checklist-de-vv-no-pr-template">6.1 Checklist de V&amp;V no PR Template<a class="headerlink" href="#61-checklist-de-vv-no-pr-template" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">- [ ]</span> O código segue os padrões de estilo definidos no projeto.
-<span class="k">- [ ]</span> Foram adicionados testes unitários e/ou de integração relevantes.
-<span class="k">- [ ]</span> A cobertura de testes permanece acima de 80%.
-<span class="k">- [ ]</span> Documentação atualizada conforme necessário.
-<span class="k">- [ ]</span> Todos os requisitos afetados foram atualizados na matriz de rastreabilidade.
-<span class="k">- [ ]</span> As alterações foram validadas conforme o plano de Verificação &amp; Validação (V&amp;V).
-</code></pre></div>
-<h3 id="62-responsabilidades">6.2 Responsabilidades<a class="headerlink" href="#62-responsabilidades" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Autor do PR</strong>: Executar verificações iniciais e validações</li>
-<li><strong>Revisores</strong>: Verificar a conformidade com os critérios de V&amp;V</li>
-<li><strong>QA</strong>: Validar requisitos funcionais e não-funcionais</li>
-<li><strong>Product Owner</strong>: Validar atendimento às necessidades do negócio</li>
-</ul>
-<h3 id="63-evidencias-de-vv">6.3 Evidências de V&amp;V<a class="headerlink" href="#63-evidencias-de-vv" title="Permanent link">&para;</a></h3>
-<p>Para cada PR, o desenvolvedor deve fornecer evidências de que o processo de V&amp;V foi seguido:</p>
-<ol>
-<li><strong>Resultados dos Testes</strong>: Capturas de tela ou logs dos testes executados</li>
-<li><strong>Relatório de Cobertura</strong>: Evidência da cobertura de código</li>
-<li><strong>Checklist Completo</strong>: Todos os itens do checklist de V&amp;V marcados</li>
-<li><strong>Documentação Atualizada</strong>: Referências à documentação atualizada</li>
-</ol>
-<h2 id="7-ferramentas-de-suporte-ao-vv">7. Ferramentas de Suporte ao V&amp;V<a class="headerlink" href="#7-ferramentas-de-suporte-ao-vv" title="Permanent link">&para;</a></h2>
-<h3 id="71-ferramentas-de-verificacao">7.1 Ferramentas de Verificação<a class="headerlink" href="#71-ferramentas-de-verificacao" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Categoria</th>
-<th>Ferramentas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Análise Estática</td>
-<td>ESLint, TypeScript</td>
-</tr>
-<tr>
-<td>Testes Unitários</td>
-<td>Jest</td>
-</tr>
-<tr>
-<td>Testes de Integração</td>
-<td>Supertest, Cypress</td>
-</tr>
-<tr>
-<td>Cobertura de Código</td>
-<td>Jest Coverage</td>
-</tr>
-<tr>
-<td>CI/CD</td>
-<td>GitHub Actions</td>
-</tr>
-</tbody>
-</table>
-<h3 id="72-ferramentas-de-validacao">7.2 Ferramentas de Validação<a class="headerlink" href="#72-ferramentas-de-validacao" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Categoria</th>
-<th>Ferramentas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Testes de Aceitação</td>
-<td>Cucumber</td>
-</tr>
-<tr>
-<td>Testes de UI</td>
-<td>Cypress</td>
-</tr>
-<tr>
-<td>Testes de Desempenho</td>
-<td>JMeter</td>
-</tr>
-<tr>
-<td>Gestão de Requisitos</td>
-<td>GitHub Issues, Matriz de Rastreabilidade</td>
-</tr>
-</tbody>
-</table>
-<h2 id="8-tratamento-de-nao-conformidades">8. Tratamento de Não-Conformidades<a class="headerlink" href="#8-tratamento-de-nao-conformidades" title="Permanent link">&para;</a></h2>
-<p>Quando problemas são identificados durante o processo de V&amp;V:</p>
-<ol>
-<li><strong>Registro</strong>: Documentar o problema no sistema de rastreamento (GitHub Issues)</li>
-<li><strong>Classificação</strong>: Categorizar por severidade e impacto</li>
-<li><strong>Análise</strong>: Determinar causa raiz e impacto</li>
-<li><strong>Correção</strong>: Implementar solução seguindo o processo normal de desenvolvimento</li>
-<li><strong>Verificação</strong>: Retestar para confirmar que o problema foi resolvido</li>
-<li><strong>Prevenção</strong>: Atualizar processos para evitar problemas similares no futuro</li>
-</ol>
-<hr />
-<h2 id="9-referencias">9. Referências<a class="headerlink" href="#9-referencias" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>[1] ISO/IEC/IEEE 29119 - Software and Systems Engineering - Software Testing<br />
-Disponível em: <a href="https://www.iso.org/standard/79428.html">https://www.iso.org/standard/79428.html</a><br />
-Acesso em: 27/04/2025</p>
-<p>[2] IEEE Standard 1012-2016 - IEEE Standard for System, Software, and Hardware Verification and Validation<br />
-Disponível em: <a href="https://standards.ieee.org/standard/1012-2016.html">https://standards.ieee.org/standard/1012-2016.html</a><br />
-Acesso em: 27/04/2025</p>
-<p>[3] SWEBOK v3.0 - Guide to the Software Engineering Body of Knowledge<br />
-Disponível em: <a href="https://www.computer.org/education/bodies-of-knowledge/software-engineering">https://www.computer.org/education/bodies-of-knowledge/software-engineering</a><br />
-Acesso em: 27/04/2025 </p>
-</blockquote>
+<h2 id="diagrama-de-casos-de-uso_1">Diagrama de Casos de Uso<a class="headerlink" href="#diagrama-de-casos-de-uso_1" title="Permanent link">&para;</a></h2>
+<p>O diagrama a seguir apresenta a modelagem dos casos de uso para o <strong>Connect Care</strong>:</p>
+<p><img alt="Diagrama de Casos de Uso - ConnectCare" src="../../assets/images/DiagramaCannect.png" /></p>
+<h2 id="consideracoes">Considerações<a class="headerlink" href="#consideracoes" title="Permanent link">&para;</a></h2>
+<p>O diagrama de casos de uso serve como uma ferramenta de comunicação entre stakeholders e desenvolvedores, fornecendo uma visão clara das funcionalidades do sistema e das interações entre os diferentes atores envolvidos.</p>
 
 
 
