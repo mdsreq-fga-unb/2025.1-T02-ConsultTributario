@@ -26,6 +26,31 @@ export function useGetQuestions() {
   );
 }
 
+export function useGetActiveQuestions() {
+  const { data, isLoading, error, mutate, isValidating } = useSWR(
+    endpoints.question.listActive,
+    fetcher
+  );
+
+  const isConnectionError =
+    error?.code === 'ERR_NETWORK' || error?.message?.includes('ERR_CONNECTION_REFUSED');
+
+  if (isConnectionError) {
+    error.message = 'Erro de conexão. Verifique sua internet ou tente novamente mais tarde.';
+  }
+  return useMemo(
+    () => ({
+      questions: (data as IQuestion[]) || [],
+      questionsLoading: isLoading || isValidating,
+      questionsError: error,
+      questionsEmpty: !isValidating && !isLoading && !data?.length,
+      questionsValidating: isValidating,
+      refreshQuestions: mutate,
+    }),
+    [data, isLoading, error, mutate, isValidating]
+  );
+}
+
 export async function createQuestion(questionData: IQuestionCreate) {
   const response = await axios.post(endpoints.question.create, questionData);
   return response.data;

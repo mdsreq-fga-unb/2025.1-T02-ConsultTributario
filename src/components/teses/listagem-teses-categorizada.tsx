@@ -21,6 +21,7 @@ interface ListagemTesesProps {
   mensagemVazia?: string;
   titulo?: string;
   descricao?: string;
+  mostrarBarraPesquisa?: boolean;
 }
 
 export const ListagemTeses = ({
@@ -33,6 +34,7 @@ export const ListagemTeses = ({
   mensagemVazia = 'Nenhuma tese encontrada.',
   titulo,
   descricao,
+  mostrarBarraPesquisa = true,
 }: ListagemTesesProps) => {
   const { taxTypes, taxTypesLoading, taxTypesError } = useGetTaxTypes();
   const [tiposExpandidos, setTiposExpandidos] = useState<string[]>([]);
@@ -138,29 +140,31 @@ export const ListagemTeses = ({
       {descricao && <p className='text-sm text-gray-600 mb-6'>{descricao}</p>}
 
       {/* Barra de pesquisa */}
-      <div className='mb-6'>
-        <div className='relative max-w-md'>
-          <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400' />
-          <Input
-            type='text'
-            placeholder='Buscar teses por título...'
-            value={termoBusca}
-            onChange={e => setTermoBusca(e.target.value)}
-            className='pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent'
-          />
-        </div>{' '}
-        {termoBusca && (
-          <p className='text-sm text-gray-600 mt-2'>
-            {tesesFiltradas.length}{' '}
-            {tesesFiltradas.length === 1 ? 'resultado encontrado' : 'resultados encontrados'} para
-            &quot;
-            {termoBusca}&quot;
-          </p>
-        )}
-      </div>
+      {mostrarBarraPesquisa && (
+        <div className='mb-6'>
+          <div className='relative max-w-md'>
+            <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400' />
+            <Input
+              type='text'
+              placeholder='Buscar teses por título...'
+              value={termoBusca}
+              onChange={e => setTermoBusca(e.target.value)}
+              className='pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+            />
+          </div>{' '}
+          {termoBusca && (
+            <p className='text-sm text-gray-600 mt-2'>
+              {tesesFiltradas.length}{' '}
+              {tesesFiltradas.length === 1 ? 'resultado encontrado' : 'resultados encontrados'} para
+              &quot;
+              {termoBusca}&quot;
+            </p>
+          )}
+        </div>
+      )}
 
       {/* Conteúdo baseado na busca */}
-      {termoBusca.trim() ? ( // Exibição de resultados filtrados sem agrupamento
+      {termoBusca.trim() && mostrarBarraPesquisa ? ( // Exibição de resultados filtrados sem agrupamento
         <div className='space-y-3'>
           {tesesFiltradas.length === 0 ? (
             <div></div>

@@ -11,7 +11,6 @@ const Navbar = () => {
   const { isAdmin } = useRolePermission();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Se ainda está carregando, pode mostrar uma navbar básica ou um skeleton
   if (loading) {
     return (
       <div className='w-full bg-white shadow-md border-b border-black-200'>
@@ -33,7 +32,6 @@ const Navbar = () => {
         </div>
 
         <div className='hidden md:flex space-x-8 text-black'>
-          {/* Links disponíveis para usuários autenticados */}
           {authenticated && (
             <>
               {isAdmin() && (

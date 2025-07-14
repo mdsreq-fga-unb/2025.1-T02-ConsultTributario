@@ -6,7 +6,8 @@ import { useRouter } from 'next/navigation';
 import { useState, useMemo, useEffect } from 'react';
 
 import { createDiagnosis } from '@/api/diagnoses';
-import { useGetQuestions } from '@/api/question';
+import { useGetActiveQuestions, useGetQuestions } from '@/api/question';
+import { LoadingDisplay } from '@/components/errors';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -25,20 +26,19 @@ interface RespostasDiagnostico {
 const NovoDiagnostico = () => {
   const router = useRouter();
   const { toast } = useToast();
-  const { questions: perguntas, questionsLoading } = useGetQuestions();
+  const { questions: perguntas, questionsLoading } = useGetActiveQuestions();
   const [respostas, setRespostas] = useState<RespostasDiagnostico>({});
   const [clientName, setClientName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [paginaAtual, setPaginaAtual] = useState(0);
   const [historicoPerguntas, setHistoricoPerguntas] = useState<IQuestion[][]>([]);
+  const [clientNameError, setClientNameError] = useState('');
+  const [questionsError, setQuestionsError] = useState('');
 
   // Calcula as páginas dinamicamente baseado nas dependências
   const paginas = useMemo(() => {
     // Função para verificar se uma pergunta deve ser visível baseada nas suas dependências
     const perguntaDeveSerVisivel = (pergunta: IQuestion): boolean => {
-      // Se a pergunta não está ativa, não mostra
-      if (!pergunta.isActive) return false;
-
       // Se a pergunta não tem perguntas relacionadas, mostra
       if (pergunta.relatedQuestions.length === 0) return true;
 
@@ -130,6 +130,11 @@ const NovoDiagnostico = () => {
   const isUltimaPagina = !podeIrProximaPagina && !existemMaisPerguntasPotenciais;
 
   const handleResposta = (perguntaId: string, resposta: Resposta) => {
+    // Limpar erro de perguntas ao responder
+    if (questionsError) {
+      setQuestionsError('');
+    }
+
     setRespostas(prev => {
       const novasRespostas = {
         ...prev,
@@ -167,6 +172,14 @@ const NovoDiagnostico = () => {
     });
   };
 
+  const handleClientNameChange = (value: string) => {
+    setClientName(value);
+    // Limpar erro do nome do cliente ao digitar
+    if (clientNameError) {
+      setClientNameError('');
+    }
+  };
+
   const proximaPagina = () => {
     if (podeIrProximaPagina) {
       setPaginaAtual(prev => prev + 1);
@@ -197,21 +210,28 @@ const NovoDiagnostico = () => {
   };
 
   const enviarDiagnostico = async () => {
+    // Limpar erros anteriores
+    setClientNameError('');
+    setQuestionsError('');
+
+    let hasErrors = false;
+
+    // Validar nome do cliente
     if (!clientName.trim()) {
-      toast({
-        title: 'Erro',
-        description: 'Por favor, informe o nome do cliente.',
-        variant: 'destructive',
-      });
-      return;
+      setClientNameError('O campo nome do cliente é obrigatório');
+      hasErrors = true;
     }
 
-    if (Object.keys(respostas).length === 0) {
-      toast({
-        title: 'Erro',
-        description: 'Por favor, responda pelo menos uma pergunta.',
-        variant: 'destructive',
-      });
+    // Validar se todas as perguntas visíveis foram respondidas
+    const todasPerguntasVisiveis = historicoPerguntas.flat();
+    const perguntasSemResposta = todasPerguntasVisiveis.filter(p => !respostas[p._id]);
+
+    if (perguntasSemResposta.length > 0) {
+      setQuestionsError('Preencha todas as perguntas para enviar o diagnóstico');
+      hasErrors = true;
+    }
+
+    if (hasErrors) {
       return;
     }
 
@@ -247,11 +267,7 @@ const NovoDiagnostico = () => {
   };
 
   if (questionsLoading) {
-    return (
-      <div className='container mx-auto px-4 py-8'>
-        <div className='text-center text-gray-500'>Carregando perguntas...</div>
-      </div>
-    );
+    return <LoadingDisplay mensagem='Carregando questionário...' />;
   }
 
   if (historicoPerguntas.length === 0) {
@@ -289,10 +305,19 @@ const NovoDiagnostico = () => {
           <Input
             type='text'
             placeholder='Digite o nome do cliente'
-            className='w-full mb-4'
+            className={`w-full mb-1 ${clientNameError ? 'border-red-500 focus:border-red-500' : ''}`}
             value={clientName}
-            onChange={e => setClientName(e.target.value)}
+            onChange={e => handleClientNameChange(e.target.value)}
+            maxLength={100}
           />
+          <div className='flex justify-between items-center'>
+            {clientNameError && <p className='text-sm text-red-500'>{clientNameError}</p>}
+            <p
+              className={`text-sm ml-auto ${clientName.length > 100 ? 'text-red-500' : 'text-gray-500'}`}
+            >
+              {clientName.length}/100
+            </p>
+          </div>
         </CardHeader>
         <CardContent className='space-y-6'>
           {perguntasPaginaAtual.map((pergunta: IQuestion) => (
@@ -334,6 +359,12 @@ const NovoDiagnostico = () => {
           ))}
         </CardContent>
 
+        {questionsError && (
+          <div className='mx-4 mb-4'>
+            <p className='text-red-500 text-sm'>{questionsError}</p>
+          </div>
+        )}
+
         <div className='m-4 flex justify-between items-center'>
           <div className='flex gap-2'>
             {paginaAtual !== 0 && (
@@ -361,11 +392,7 @@ const NovoDiagnostico = () => {
           {isUltimaPagina && (
             <Button
               onClick={enviarDiagnostico}
-              disabled={
-                perguntasPaginaAtual.some(p => !respostas[p._id]) ||
-                !clientName.trim() ||
-                isSubmitting
-              }
+              disabled={isSubmitting}
               className='bg-green-600 hover:bg-green-700'
             >
               {isSubmitting ? 'Enviando...' : 'Enviar Diagnóstico'}

@@ -92,6 +92,7 @@ export const endpoints = {
   },
   question: {
     list: '/questions',
+    listActive: '/questions/active',
     create: '/questions',
     update: (id: string) => `/questions/${id}`,
   },
@@ -104,6 +105,7 @@ export const endpoints = {
   diagnosticos: {
     list: '/diagnoses',
     create: '/diagnoses',
+    cnpj: (cnpj: string) => `/diagnoses/cnpj/${cnpj}`,
     detail: (id: string) => `/diagnoses/${id}`,
     delete: (id: string) => `/diagnoses/${id}`,
     recommendations: (id: string) => `/diagnoses/${id}/recommendations`,
