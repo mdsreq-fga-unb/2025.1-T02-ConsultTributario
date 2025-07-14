@@ -305,7 +305,8 @@ const DiagnosisDetailsPage = () => {
                 value={cnpj}
                 onChange={handleCnpjChange}
                 maxLength={18}
-                className={`font-mono ${cnpjError ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : ''}`}
+                error={!!cnpjError}
+                className={'font-mono'}
               />
               {cnpjError && <p className='text-sm text-red-600'>{cnpjError}</p>}
             </div>

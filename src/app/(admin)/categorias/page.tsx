@@ -252,7 +252,7 @@ const Component = () => {
                         }
                       }}
                       maxLength={30}
-                      className={newCategoriaNameError ? 'border-red-500' : ''}
+                      error={!!newCategoriaNameError}
                     />
                     <div className='flex justify-between items-center'>
                       {newCategoriaNameError && (
@@ -399,7 +399,7 @@ const Component = () => {
                     handleUpdateCategoria();
                   }
                 }}
-                className={editNameError ? 'border-red-500' : ''}
+                error={!!editNameError}
                 maxLength={30}
               />
               <div className='flex justify-between items-center'>

@@ -124,7 +124,7 @@ export const CriarPerguntaDialog = ({
                 if (e.target.value.trim()) setErro('');
               }}
               placeholder='Digite a pergunta'
-              className={erro ? 'border-red-500' : ''}
+              error={!!erro}
               maxLength={150}
             />
             <div className='flex justify-between items-center'>

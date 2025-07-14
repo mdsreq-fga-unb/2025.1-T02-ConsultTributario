@@ -192,7 +192,7 @@ export const CadastrarTese = () => {
                 value={formData.title}
                 onChange={e => atualizarCampo('title', e.target.value)}
                 placeholder='Digite o título da tese'
-                className={erros.title ? 'border-red-500' : ''}
+                error={!!erros.title}
                 maxLength={150}
               />
               <div className='flex justify-between items-center'>
@@ -215,7 +215,8 @@ export const CadastrarTese = () => {
                 value={formData.objective}
                 onChange={e => atualizarCampo('objective', e.target.value)}
                 placeholder='Descreva o objetivo da tese'
-                className={`resize-none ${erros.objective ? 'border-red-500' : ''}`}
+                className={'resize-none'}
+                error={!!erros.objective}
                 rows={4}
                 maxLength={1000}
               />
@@ -239,7 +240,8 @@ export const CadastrarTese = () => {
                 value={formData.summary}
                 onChange={e => atualizarCampo('summary', e.target.value)}
                 placeholder='Digite um resumo da tese'
-                className={`resize-none ${erros.summary ? 'border-red-500' : ''}`}
+                className={'resize-none'}
+                error={!!erros.summary}
                 rows={6}
                 maxLength={5000}
               />
@@ -264,7 +266,8 @@ export const CadastrarTese = () => {
                   value={formData.recoverable_period}
                   onChange={e => atualizarCampo('recoverable_period', e.target.value)}
                   placeholder='Ex: 12 meses, 5 anos'
-                  className={`resize-none ${erros.recoverable_period ? 'border-red-500' : ''}`}
+                  className={'resize-none'}
+                  error={!!erros.recoverable_period}
                   rows={4}
                   maxLength={1000}
                 />
@@ -289,7 +292,8 @@ export const CadastrarTese = () => {
                   value={formData.recoverable_value}
                   onChange={e => atualizarCampo('recoverable_value', e.target.value)}
                   placeholder='Ex: R$ 10.000,00'
-                  className={`resize-none ${erros.recoverable_value ? 'border-red-500' : ''}`}
+                  className={'resize-none'}
+                  error={!!erros.recoverable_value}
                   rows={4}
                   maxLength={1000}
                 />

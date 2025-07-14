@@ -312,6 +312,7 @@ const NovoDiagnostico = () => {
             className={`w-full mb-1 ${clientNameError ? 'border-red-500 focus:border-red-500' : ''}`}
             value={clientName}
             onChange={e => handleClientNameChange(e.target.value)}
+            error={!!clientNameError}
             maxLength={100}
           />
           <div className='flex justify-between items-center'>
