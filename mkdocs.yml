@@ -142,4 +142,5 @@ nav:
     - ComunEventos: USM/usm.md
   - Caso de uso:
     - ConnectCare: CasosDeUso/us.md
-    - Consultar Serviços de Saúde: CasosDeUso/epecA.md
+      - Consultar Serviços de Saúde: CasosDeUso/epecA.md
+      - Responder usuários da plataforma: CasosDeUso/specD.md
