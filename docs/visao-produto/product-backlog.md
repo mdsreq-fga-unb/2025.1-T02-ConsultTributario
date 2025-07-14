@@ -32,6 +32,7 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | RF17   | Editar categoria de teses tributária                        |
 | RF18   | Apagar categoria de teses tributária                        |
 | RF19   | Visualizar categorias de teses tributária cadastradas       |
+| RF20   | Realizar login                                              |
 
 ## 2 - Requisitos Não Funcionais
 
@@ -128,6 +129,10 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 
   _Como administrador, quero visualizar uma lista com todas as categorias de teses tributárias cadastradas no sistema, para entender como as teses estão organizadas e facilitar a navegação e o filtro por temas._
 
+- **US-20**: Realizar Login
+
+  _Como usuário, quero fazer login com e-mail e senha, para acessar o sistema._
+
 ## Épicos
 
 | Código | Título do Épico                         |
@@ -136,6 +141,7 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | EP-02  | Gerenciamento de Perguntas              |
 | EP-03  | Gerenciamento de CNPJ                   |
 | EP-04  | Gerenciamento de Diagnóstico Tributário |
+| EP-05  | Autenticação e Controle de Acesso       |
 
 | Código US | Código RF | Épico Relacionado |
 | --------- | --------- | ----------------- |
@@ -158,6 +164,7 @@ O backlog de produto é uma lista dinâmica e priorizada que contém todos os re
 | US-14     | RF14      | EP-04             |
 | US-15     | RF15      | EP-04             |
 | US-16     | RF16      | EP-04             |
+| US-20     | RF20      | EP-05             |
 
 ## Priorização do Backlog
 
@@ -192,6 +199,7 @@ A definição do MVP (Produto Mínimo Viável) foi realizada a partir da combina
 | US-09     | Editar pergunta jurídica                                    | Must       | 3            | X   |
 | US-12     | Realizar questionário de diagnóstico tributário             | Must       | 5            | X   |
 | US-11     | Visualizar perguntas jurídicas cadastradas                  | Must       | 2            | X   |
+| US-20     | Realizar Login                                              | Must       | 5            | X   |
 | US-15     | Apagar questionário de diagnóstico já preenchido            | Should     | 2            | X   |
 | US-06     | Criar categorias de teses tributárias                       | Should     | 2            | X   |
 | US-19     | Visualizar categorias de teses tributária cadastradas       | Should     | 2            | X   |
