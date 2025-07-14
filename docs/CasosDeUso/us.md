@@ -1,6 +1,7 @@
 ## Especificações de Casos de Uso
 
 - [Consultar Serviços de Saúde](epecA.md)
+- [Responder usuários da plataforma](specD.md)
 
 ---
 
