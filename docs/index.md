@@ -65,4 +65,5 @@ Navegue pela documentação do projeto:
 ### Casos de uso
 - [Caso de uso(ConnectCare)](CasosDeUso/us.md)
   - [Consultar Serviços de Saúde](CasosDeUso/epecA.md)
+  - [Responder usuários da plataforma](CasosDeUso/specD.md)
 
