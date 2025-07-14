@@ -1,6 +1,5 @@
-import { IsNotEmpty, IsString, IsArray, IsEnum, ValidateNested, IsMongoId } from 'class-validator';
+import { IsNotEmpty, IsString, IsArray, IsEnum, ValidateNested, IsMongoId, MaxLength } from 'class-validator';
 import { Type } from 'class-transformer';
-import { ApiProperty } from '@nestjs/swagger';
 import { AnswerType } from '../schema/diagnosis.schema';
 
 export class QuestionResponseDto {
@@ -16,6 +15,7 @@ export class QuestionResponseDto {
 export class CreateDiagnosisDto {
   @IsString()
   @IsNotEmpty()
+  @MaxLength(100)
   clientName: string;
 
   @IsArray()

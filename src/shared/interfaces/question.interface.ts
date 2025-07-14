@@ -7,4 +7,5 @@ export interface IQuestionService {
   findAll(): Promise<Question[]>;
   findById(id: string): Promise<Question>;
   update(id: string, data: UpdateQuestionDto): Promise<Question>;
+  findAllActive(): Promise<Question[]>;
 }

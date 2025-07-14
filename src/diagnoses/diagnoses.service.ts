@@ -8,6 +8,8 @@ import { ERROR_MESSAGES } from '@common/constants/app.constants';
 import { ClaimsService } from '@/claims/claims.service';
 import { IDiagnosesService } from '@/shared/interfaces/diagnosis.interface';
 import { ClaimRecommendationResponseDto } from './dto/claim-recommendation.dto';
+import { HttpService } from '@nestjs/axios';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class DiagnosesService implements IDiagnosesService {
@@ -15,9 +17,10 @@ export class DiagnosesService implements IDiagnosesService {
     @InjectModel(Diagnosis.name) private diagnosisModel: Model<Diagnosis>,
     private readonly questionService: QuestionsService,
     private readonly claimService: ClaimsService,
+    private readonly httpService: HttpService,
   ) {}
 
-  async create(diagnosis: CreateDiagnosisDto): Promise<Diagnosis> {
+  async create(diagnosis: CreateDiagnosisDto, userId: string): Promise<Diagnosis> {
     const questionIds = diagnosis.questionResponses.map((q) => q.questionId);
 
     const existingQuestions = await this.questionService.findByIdsActive(questionIds);
@@ -27,25 +30,29 @@ export class DiagnosesService implements IDiagnosesService {
 
     const createdDiagnosis = new this.diagnosisModel({
       ...diagnosis,
+      createdBy: userId,
       questions: questionIds,
     });
     return createdDiagnosis.save();
   }
 
-  async findAll(): Promise<Diagnosis[]> {
-    return this.diagnosisModel.find().exec();
+  async findAll(userId: string): Promise<Diagnosis[]> {
+    return this.diagnosisModel.find({ createdBy: userId }).exec();
   }
 
-  async findById(id: string): Promise<Diagnosis> {
+  async findById(id: string, userId: string): Promise<Diagnosis> {
     const diagnosis = await this.diagnosisModel.findById(id).exec();
     if (!diagnosis) {
       throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
     }
+    if (diagnosis.createdBy.toString() !== userId) {
+      throw new BadRequestException(ERROR_MESSAGES.UNAUTHORIZED_ACCESS);
+    }
     return diagnosis;
   }
 
-  async getRecommendations(id: string): Promise<ClaimRecommendationResponseDto> {
-    const diagnosis = await this.findById(id);
+  async getRecommendations(id: string, userId: string): Promise<ClaimRecommendationResponseDto> {
+    const diagnosis = await this.findById(id, userId);
     if (!diagnosis) {
       throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
     }
@@ -60,13 +67,38 @@ export class DiagnosesService implements IDiagnosesService {
       diagnosis,
       relevantAnswersCount: relevantQuestions.length,
       recommendedClaims,
-    } as ClaimRecommendationResponseDto;
+    } as unknown as ClaimRecommendationResponseDto;
   }
 
-  async delete(id: string): Promise<void> {
-    const result = await this.diagnosisModel.deleteOne({ _id: id }).exec();
-    if (result.deletedCount === 0) {
+  async delete(id: string, userId: string): Promise<void> {
+    const diagnosis = await this.diagnosisModel.findById(id).exec();
+    if (!diagnosis) {
       throw new NotFoundException(ERROR_MESSAGES.ENTITY_NOT_FOUND);
+    }
+
+    if (diagnosis.createdBy.toString() !== userId) {
+      throw new BadRequestException(ERROR_MESSAGES.UNAUTHORIZED_ACCESS);
+    }
+
+    await this.diagnosisModel.deleteOne({ _id: id }).exec();
+  }
+
+  async fetchCnpjData(cnpj: string): Promise<any> {
+    try {
+      const response = await firstValueFrom(this.httpService.get(`https://brasilapi.com.br/api/cnpj/v1/${cnpj}`));
+      const data = response.data;
+
+      return {
+        razao_social: data.razao_social,
+        nome_fantasia: data.nome_fantasia,
+        naturaza_juridica: data.natureza_juridica,
+        situacao_cadastral: data.situacao_cadastral,
+        data_abertura: data.data_inicio_atividade,
+        uf: data.uf,
+        municipio: data.municipio,
+      };
+    } catch (error) {
+      throw new BadRequestException('Falha ao buscar dados do CNPJ');
     }
   }
 }

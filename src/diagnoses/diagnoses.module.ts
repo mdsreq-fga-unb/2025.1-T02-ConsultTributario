@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { DiagnosesService } from './diagnoses.service';
 import { DiagnosesController } from './diagnoses.controller';
 import { QuestionsModule } from '@/questions/questions.module';
@@ -11,6 +12,7 @@ import { ClaimsModule } from '@/claims/claims.module';
     MongooseModule.forFeature([{ name: Diagnosis.name, schema: DiagnosisSchema }]),
     QuestionsModule,
     ClaimsModule,
+    HttpModule,
   ],
   controllers: [DiagnosesController],
   providers: [DiagnosesService],

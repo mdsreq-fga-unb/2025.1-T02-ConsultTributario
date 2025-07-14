@@ -83,4 +83,8 @@ export class QuestionsService implements IQuestionService {
 
     return updatedQuestion;
   }
+
+  async findAllActive(): Promise<Question[]> {
+    return await this.questionModel.find({ isActive: true }).populate('relatedQuestions').exec();
+  }
 }

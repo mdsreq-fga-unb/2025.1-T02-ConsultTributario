@@ -16,6 +16,10 @@ export class DiagnosisDto extends BaseTimestampDto {
   clientName: string;
 
   @Expose()
+  @Transform(({ obj }) => obj.createdBy.toString())
+  createdBy: string;
+
+  @Expose()
   @Type(() => QuestionResponseDto)
   questionResponses: QuestionResponseDto[];
 }
@@ -23,4 +27,8 @@ export class DiagnosisDto extends BaseTimestampDto {
 export class DiagnosisDtoWithoutQuestionResponses extends BaseTimestampDto {
   @Expose()
   clientName: string;
+
+  @Expose()
+  @Transform(({ obj }) => obj.createdBy.toString())
+  createdBy: string;
 }

@@ -4,6 +4,7 @@ import { getModelToken } from '@nestjs/mongoose';
 import { Diagnosis } from './schema/diagnosis.schema';
 import { QuestionsService } from '@/questions/questions.service';
 import { ClaimsService } from '@/claims/claims.service';
+import { HttpService } from '@nestjs/axios';
 
 const diagnosisModelMock = {
   create: jest.fn(),
@@ -36,6 +37,13 @@ const claimServiceMock = {
   findOne: jest.fn().mockResolvedValue({ _id: 'relatedQuestionId' }),
 };
 
+const httpServiceMock = {
+  get: jest.fn(),
+  post: jest.fn(),
+  put: jest.fn(),
+  delete: jest.fn(),
+};
+
 describe('DiagnosesService', () => {
   let service: DiagnosesService;
 
@@ -54,6 +62,10 @@ describe('DiagnosesService', () => {
         {
           provide: ClaimsService,
           useValue: claimServiceMock,
+        },
+        {
+          provide: HttpService,
+          useValue: httpServiceMock,
         },
       ],
     }).compile();

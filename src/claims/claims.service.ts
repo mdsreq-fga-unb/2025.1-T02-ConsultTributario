@@ -85,7 +85,7 @@ export class ClaimsService implements IClaimService {
   async findByRelatedQuestions(questionIds: string[]): Promise<Claim[]> {
     return this.claimModel
       .find({ relatedQuestion: { $in: questionIds } })
-      .populate('relatedQuestion')
+      .populate('relatedQuestion taxType')
       .exec();
   }
 }

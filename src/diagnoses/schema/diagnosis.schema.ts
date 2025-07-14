@@ -14,8 +14,15 @@ export interface QuestionResponse {
 
 @Schema({ timestamps: true })
 export class Diagnosis extends Document {
-  @Prop({ required: true })
+  @Prop({ required: true, maxlength: 100 })
   clientName: string;
+
+  @Prop({
+    required: true,
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'User',
+  })
+  createdBy: MongooseSchema.Types.ObjectId;
 
   @Prop({
     required: true,
