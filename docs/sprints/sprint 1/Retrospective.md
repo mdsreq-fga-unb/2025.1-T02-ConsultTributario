@@ -18,7 +18,7 @@
 
 ## O que Não Funcionou ⚠️
 
-- A falta de experiência dos menbros do grupo com as tecnologias escolhidas difucultou o inicio do repositório.
+- A falta de experiência dos membros do grupo com as tecnologias escolhidas difucultou o inicio do repositório.
 - Difícil contato com cliente durante sprint.
 
 ## Ideias de Melhoria 💡
@@ -26,10 +26,10 @@
 | Ideia                                                 | Benefício                        | Viabilidade |
 | ----------------------------------------------------- | -------------------------------- | ----------- |
 | Criar grupo de WhatsApp c/ cliente p/ dúvidas rápidas | Feedback contínuo                | Alta        |
-| Treinamento dos dosemvolvedores em Nest e Next        | Maior fluidez no desenvolvimento | Média       |
+| Treinamento dos desenvolvedores em NestJS e NextJS        | Maior fluidez no desenvolvimento | Média       |
 
-> **Conclusão:** Sprint 1 atingiu 100 % do Sprint Goal. Backlog inicial priorizado, preparando terreno para desemvolvimento e entregas parciais nas próximas iterações.
+> **Conclusão:** Sprint 1 atingiu 100% do Sprint Goal. Backlog inicial priorizado, preparando terreno para desenvolvimento e entregas parciais nas próximas iterações.
 
 ## Gravação da Reunião:
 
-_Reunião não Gravada_
+_Reunião não gravada._

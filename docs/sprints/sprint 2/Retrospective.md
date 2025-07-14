@@ -14,7 +14,7 @@
 
 ## O que Funcionou Bem 🙌
 
-- Grupo no WhatsApp com o cliente acelerou esclarecimentos.
+- Grupo no WhatsApp com o cliente facilitou esclarecimentos.
 - Treinamento de NestJs e NextJs ajudou no processo de setup do projeto.
 
 ## O que Não Funcionou ⚠️
@@ -31,4 +31,4 @@
 
 ## Gravação da Reunião
 
-_Reunião não gravada_
+_Reunião não gravada._

@@ -14,18 +14,18 @@
 
 ## O que Funcionou Bem 🙌
 
-_Nenhuma observação_
+_Nenhuma observação._
 
 ## O que Não Funcionou ⚠️
 
-- Implemetar o sistema de autenticação no meio do projeto deu muito trabalho.
+- Implementar o sistema de autenticação no meio do projeto deu muito trabalho.
 
 ## Ideias de Melhoria 💡
 
-_Nenhuma observação_
+_Nenhuma observação._
 
 > **Conclusão:** Sprint 5 atingiu o Sprint Goal; CRUD de Categorias funcional e entregue. Próximo passo é concluir MVP com busca de CNPJ, questionário e relatório.
 
 ## Gravação da Reunião
 
-_Reunião não gravada_
+_Reunião não gravada._

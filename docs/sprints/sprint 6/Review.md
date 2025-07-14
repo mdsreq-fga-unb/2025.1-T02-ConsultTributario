@@ -40,8 +40,8 @@ Será feita ainda uma reunião no dia 14/07 para validação final do MVP.
 
 ## Atividades Debitadas
 
-[US‑01](../../features/realizar-diagnostico-tributario/us-01.md) não foi finalizada, falatando ainda a persistencia dos dados do CNPJ no baco de dados.
+[US‑01](../../features/realizar-diagnostico-tributario/us-01.md) não foi finalizada, faltando ainda a persistência dos dados do CNPJ no banco de dados.
 
 ### Gravação da Reunião
 
-_Reunião não gravada_
+_Reunião não gravada._
