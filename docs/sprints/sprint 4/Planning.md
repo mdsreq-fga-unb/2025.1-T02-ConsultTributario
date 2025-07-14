@@ -30,11 +30,11 @@ Definir o Sprint Goal e atribuir as tarefas prioritárias.
 
 ## Sprint Backlog Selecionado
 
-| História                                               | Título                                     | SP (Planning Poker) |
-| ------------------------------------------------------ | ------------------------------------------ | ------------------- |
-| [US‑08](features/gerenciar-teses-tributarias/us-08.md) | Criar pergunta jurídica                    | 5                   |
-| [US‑09](features/gerenciar-teses-tributarias/us-09.md) | Editar pergunta jurídica                   | 3                   |
-| [US‑11](features/gerenciar-teses-tributarias/us-11.md) | Visualizar perguntas jurídicas cadastradas | 2                   |
+| História                                                         | Título                                     | SP (Planning Poker) |
+| ---------------------------------------------------------------- | ------------------------------------------ | ------------------- |
+| [US‑08](../../features/gerenciar-perguntas-tributarias/us-08.md) | Criar pergunta jurídica                    | 5                   |
+| [US‑09](features/gerenciar-perguntas-tributarias/us-09.md)       | Editar pergunta jurídica                   | 3                   |
+| [US‑11](features/gerenciar-perguntas-tributarias/us-11.md)       | Visualizar perguntas jurídicas cadastradas | 2                   |
 
 | Tarefas                                 | Descrição                                                                               | Responsável       |
 | --------------------------------------- | --------------------------------------------------------------------------------------- | ----------------- |

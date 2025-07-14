@@ -30,11 +30,11 @@ Definir o Sprint Goal e atribuir as tarefas prioritárias.
 
 ## Sprint Backlog Selecionado
 
-| História                                               | Título                                   | SP (Planning Poker) |
-| ------------------------------------------------------ | ---------------------------------------- | ------------------- |
-| [US‑03](features/gerenciar-teses-tributarias/us-03.md) | Criar tese tributária                    | 8                   |
-| [US‑04](features/gerenciar-teses-tributarias/us-04.md) | Editar tese tributária                   | 3                   |
-| [US‑07](features/gerenciar-teses-tributarias/us-07.md) | Visualizar teses tributárias cadastradas | 5                   |
+| História                                                     | Título                                   | SP (Planning Poker) |
+| ------------------------------------------------------------ | ---------------------------------------- | ------------------- |
+| [US‑03](../../features/gerenciar-teses-tributarias/us-03.md) | Criar tese tributária                    | 8                   |
+| [US‑04](../../features/gerenciar-teses-tributarias/us-04.md) | Editar tese tributária                   | 3                   |
+| [US‑07](../../features/gerenciar-teses-tributarias/us-07.md) | Visualizar teses tributárias cadastradas | 5                   |
 
 ## Gravação da Reunião:
 
