@@ -32,7 +32,9 @@ Revisar o que foi entregue e discutir feedback do cliente.
 | [US‑12](../../features/realizar-diagnostico-tributario/us-12.md) | Realizar questionário de diagnóstico tributário          | ✅  |
 | [US‑15](../../features/realizar-diagnostico-tributario/us-15.md) | Apagar questionário de diagnóstico já preenchido         | ✅  |
 
-**Total de pontos:** ~16
+**Total de pontos:** 12
+
+**Total de pontos (esperado):** 20
 
 ## Feedback do Cliente
 

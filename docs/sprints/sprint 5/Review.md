@@ -32,7 +32,7 @@ Revisar o que foi entregue e discutir feedback do cliente.
 | [US‑19](../../features/gerenciar-teses-tributarias/us-19.md) | Visualizar categorias de teses tributária cadastradas | ✅  |
 | [US‑20](../../features/gerenciar-teses-tributarias/us-20.md) | Visualizar perguntas jurídicas cadastradas            | ✅  |
 
-**Total de pontos:** 18
+**Total de pontos:** 15
 
 ## Feedback do Cliente
 
