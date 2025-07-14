@@ -90,11 +90,3 @@ Este caso de uso detalha como o **Administrador do Sistema** gerencia as dúvida
 ---
 
 ## 9. Informações Adicionais
-
-- [x] ~~Referências~~
-- [x] ~~Regra de negócio mais abrangente~~
-- [x] ~~Regra de negócio de validação~~
-- [x] ~~Empresa volta para um passo e não para uma página~~
-- [x] ~~Regra de negócio de visualização~~
-- [x] ~~Regra de negócio de edição~~
-- [x] ~~Dizer onde pontos de extensão podem ser estendidos~~
