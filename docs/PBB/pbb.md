@@ -482,16 +482,16 @@ US30 – Eu, como clínico geral, quero anexar novos resultados de exames (PDFs,
 ### PRINTS EVIDENCIA
 --- 
 
-![PBB 1](../assets/images/PBB1.png)
+![PBB 1](../assets/images/PBB-DEVER.png)
 
-![PBB 2](../assets/images/PBB2.png)
+![PBB 2](../assets/images/PBB-DEVER2.png)
 
-![PBB 3](../assets/images/PBB3.png)
+![PBB 3](../assets/images/PBB-DEVER3.png)
 
-![PBB 4](../assets/images/PBB4.png)
+![PBB 4](../assets/images/PBB-DEVER4.png)
 
-![PBB 5](../assets/images/PBB5.png)
+![PBB 5](../assets/images/PBB-DEVER5.png)
 
-![PBB 6](../assets/images/PBB6.png)
+![PBB 6](../assets/images/PBB-DEVER6.png)
 
 <iframe width="768" height="432" src="https://miro.com/app/board/uXjVIoN-pIw=/?share_link_id=407449174051" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
