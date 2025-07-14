@@ -12,14 +12,16 @@ theme:
   logo: assets/logo/logo.png
   favicon: assets/logo/logo.png
   features:
-    - navigation.tabs
-    - navigation.expand
-    - navigation.sections
     - toc.integrate
     - search.highlight
     - search.suggest
     - content.code.annotate
     - navigation.top
+    - content.tabs.link
+    - header.autohide
+    - navigation.instant
+    - navigation.tracking
+
   palette:
     # Modo claro
     - media: "(prefers-color-scheme: light)"
