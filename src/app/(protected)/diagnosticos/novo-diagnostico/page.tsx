@@ -267,7 +267,11 @@ const NovoDiagnostico = () => {
   };
 
   if (questionsLoading) {
-    return <LoadingDisplay mensagem='Carregando questionário...' />;
+    return (
+      <div className='container mx-auto px-4 py-8'>
+        <LoadingDisplay mensagem='Carregando questionário...' />
+      </div>
+    );
   }
 
   if (historicoPerguntas.length === 0) {

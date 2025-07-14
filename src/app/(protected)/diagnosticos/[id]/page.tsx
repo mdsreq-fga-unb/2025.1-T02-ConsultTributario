@@ -13,7 +13,7 @@ import {
   useGetDiagnoses,
   getDiagnosisByCnpj,
 } from '@/api/diagnoses';
-import { LoadingDisplay } from '@/components/errors';
+import { ErrorDisplay, LoadingDisplay } from '@/components/errors';
 import { ListagemTeses } from '@/components/teses/listagem-teses-categorizada';
 import {
   AlertDialog,
@@ -155,24 +155,21 @@ const DiagnosisDetailsPage = () => {
   };
 
   if (recommendationsLoading) {
-    return <LoadingDisplay mensagem='Carregando relátorio...' />;
+    return (
+      <div className='container mx-auto px-4 py-8'>
+        <LoadingDisplay mensagem='Carregando relátorio...' />
+      </div>
+    );
   }
 
   if (recommendationsError || !recommendations) {
     return (
       <div className='container mx-auto px-4 py-8'>
-        <div className='text-center text-red-500'>
-          {recommendationsError
-            ? 'Erro ao carregar recomendações'
-            : 'Recomendações não encontradas'}
-        </div>
-        <div className='text-center mt-4'>
-          <Link href='/diagnosticos'>
-            <Button variant='ghost' size='icon' className='hover:bg-gray-100 text-gray-800'>
-              <ArrowLeft className='h-5 w-5' />
-            </Button>
-          </Link>
-        </div>
+        <ErrorDisplay
+          erro={recommendationsError}
+          titulo='Erro ao carregar diagnósticos'
+          tentarNovamente={refreshRecommendations}
+        />
       </div>
     );
   }
