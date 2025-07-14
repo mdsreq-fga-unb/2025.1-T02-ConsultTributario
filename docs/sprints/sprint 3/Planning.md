@@ -12,13 +12,13 @@
 | Participantes            | Desenvolvedores           |
 | Membros Presentes - Devs | Todos estavam presentes   |
 
-### Objetivo da Reunião
+## Objetivo da Reunião
 
 Definir o Sprint Goal e atribuir as tarefas prioritárias.
 
 **Sprint Goal:** Realizar a primeira entraga parcial, já em um servidor para o cliente testar.
 
-### Pautas da Reunião
+## Pautas da Reunião
 
 | #   | Pauta                             |
 | --- | --------------------------------- |
@@ -28,7 +28,7 @@ Definir o Sprint Goal e atribuir as tarefas prioritárias.
 | 4   | Riscos, dependências e capacidade |
 | 5   | Atribuição de atividades          |
 
-### Sprint Backlog Selecionado
+## Sprint Backlog Selecionado
 
 | História                                               | Título                                   | SP (Planning Poker) |
 | ------------------------------------------------------ | ---------------------------------------- | ------------------- |

@@ -25,7 +25,7 @@ Revisar o que foi entregue e validar com o cliente.
 
 ## Atividades Finalizadas
 
-| História                                               | Demonstração                             | DoD |
+| História                                               | Título                                   | DoD |
 | ------------------------------------------------------ | ---------------------------------------- | --- |
 | [US‑03](features/gerenciar-teses-tributarias/us-03.md) | Criar tese tributária                    | ✅  |
 | [US‑04](features/gerenciar-teses-tributarias/us-04.md) | Editar tese tributária                   | ✅  |

@@ -12,13 +12,13 @@
 | Participantes            | Desenvolvedores           |
 | Membros Presentes - Devs | Todos estavam presentes   |
 
-### Objetivo da Reunião
+## Objetivo da Reunião
 
 Definir o Sprint Goal e atribuir as tarefas prioritárias.
 
 **Sprint Goal:** Publicar protótipo wireframe e refinar backlog conforme feedback do cliente.
 
-### Pautas da Reunião
+## Pautas da Reunião
 
 | Nº  | Pauta                                     |
 | --- | ----------------------------------------- |
@@ -27,7 +27,7 @@ Definir o Sprint Goal e atribuir as tarefas prioritárias.
 | 3   | Planejamento do protótipo                 |
 | 4   | Atribuição de atividades                  |
 
-### Atividades Novas
+## Atividades Novas
 
 | Título                                     | Responsável            |
 | ------------------------------------------ | ---------------------- |
