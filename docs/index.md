@@ -62,3 +62,6 @@ Navegue pela documentação do projeto:
 ### Product Backlog Building
 - [Product Backlog Building](PBB/pbb.md)
 
+### Casos de uso
+- [Caso de uso(ConnectCare)](CasosDeUsos/uc.md)
+
