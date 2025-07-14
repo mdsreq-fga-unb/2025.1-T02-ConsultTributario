@@ -39,4 +39,4 @@ Definir o Sprint Goal e atribuir as tarefas prioritárias.
 
 ## Gravação da Reunião:
 
-_Reunião não Gravada_
+_Reunião não gravada._

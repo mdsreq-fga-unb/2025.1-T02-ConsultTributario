@@ -14,7 +14,7 @@
 
 ## Objetivo da Reunião:
 
-A reunião tem como objetivo definir o sprint goal e atribuir as tarefas.
+A reunião teve como objetivo definir o sprint goal e atribuir as tarefas.
 
 **Sprint Goal:** Criar a fundação do projeto para nas sprints seguinte a equipe poder iniciar o desenvolvimento.
 
@@ -32,10 +32,10 @@ A reunião tem como objetivo definir o sprint goal e atribuir as tarefas.
 | ----------------------------------------- | ------------------------- |
 | Definir Visão do Produto com Stakeholders | Artur Krauspenhar, Rafael |
 | Estruturar Git Pages                      | Paulo                     |
-| Configurar CI/CD inicial                  | Diogo, Vinícios           |
+| Configurar CI/CD inicial                  | Diogo, Vinícius           |
 | Priorizar backlog (MoSCoW)                | Todos                     |
 | Iniciar Protótipo wireframe               | Daniel                    |
 
 ## Gravação da Reunião:
 
-_Reunião não Gravada_
+_Reunião não gravada._

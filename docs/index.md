@@ -63,5 +63,6 @@ Navegue pela documentação do projeto:
 - [Product Backlog Building](PBB/pbb.md)
 
 ### Casos de uso
-- [Caso de uso(ConnectCare)](CasosDeUsos/uc.md)
+- [Caso de uso(ConnectCare)](CasosDeUso/us.md)
+  - [Consultar Serviços de Saúde](CasosDeUso/epecA.md)
 

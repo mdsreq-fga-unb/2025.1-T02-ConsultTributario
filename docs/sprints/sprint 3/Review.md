@@ -39,8 +39,8 @@ O cliente não participou da reunião então não conseguimos um feedback.
 
 ## Atividades Debitadas
 
-_Nenhuma atividade ficou em débito_
+_Nenhuma atividade ficou em débito._
 
 ### Gravação da Reunião
 
-_Reunião não gravada_
+_Reunião não gravada._

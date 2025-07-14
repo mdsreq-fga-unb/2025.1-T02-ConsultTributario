@@ -14,19 +14,19 @@
 
 ## O que Funcionou Bem 🙌
 
-_Nenhuma observação_
+_Nenhuma observação._
 
 ## O que Não Funcionou ⚠️
 
-- Muitas Histórias complexas para apenas uma sprint.
-- Falta de organização
+- Muitas histórias complexas para apenas uma sprint.
+- Falta de organização.
 
 ## Ideias de Melhoria 💡
 
-_Nenhuma observação_
+_Nenhuma observação._
 
 > **Conclusão:** Sprint 6 concluiu o MVP com integração de CNPJ, questionário e relatório. O produto está pronto para Go‑Live assistido na Sprint 7. Foco agora em performance, rebimento de feedbacks.
 
 ## Gravação da Reunião
 
-_Reunião não gravada_
+_Reunião não gravada._

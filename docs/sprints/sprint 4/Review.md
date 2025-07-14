@@ -35,12 +35,12 @@ Revisar o que foi entregue e discutir feedback do cliente.
 
 ## Feedback do Cliente
 
-Foi feita uma reunião com o cliente no dia 14/06 e ele validou tudo que estava pendente. Aprovando tudo que foi desnvolvido até agora.
+Foi feita uma reunião com o cliente no dia 14/06 e ele validou tudo que estava pendente, aprovando tudo que foi desenvolvido até agora.
 
 ## Atividades Debitadas
 
-_Nenhuma atividade ficou em débito_
+_Nenhuma atividade ficou em débito._
 
 ### Gravação da Reunião
 
-_Reunião não gravada_
+_Reunião não gravada._

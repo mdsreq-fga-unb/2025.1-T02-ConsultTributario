@@ -1,3 +1,10 @@
+## Especificações de Casos de Uso
+
+- [Consultar Serviços de Saúde](epecA.md)
+- [Responder usuários da plataforma](specD.md)
+
+---
+
 # Diagrama de Casos de Uso
 
 ## Introdução
@@ -27,7 +34,7 @@ Para o desenvolvimento dos casos de uso, seguimos os seguintes passos:
 
 O diagrama a seguir apresenta a modelagem dos casos de uso para o **Connect Care**:
 
-![Diagrama de Casos de Uso - ConnectCare](../../assets/images/DiagramaCannect.png)
+![Diagrama Casos de Uso - ConnectCare](../assets/images/DiagramaCannect.png) 
 
 ## Considerações
 

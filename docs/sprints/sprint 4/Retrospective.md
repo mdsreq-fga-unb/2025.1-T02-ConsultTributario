@@ -19,14 +19,14 @@
 
 ## O que Não Funcionou ⚠️
 
-_Nenhuma observação_
+_Nenhuma observação._
 
 ## Ideias de Melhoria 💡
 
-_Nenhuma observação_
+_Nenhuma observação._
 
 > **Conclusão:** Sprint 4 cumpriu o Sprint Goal entregando gestão de perguntas jurídica e interface intuitiva. Próxima sprint focará em categorias e sistema de autenticação.
 
 ## Gravação da Reunião
 
-_Reunião não gravada_
+_Reunião não gravada._

@@ -36,12 +36,12 @@ Revisar o que foi entregue e discutir feedback do cliente.
 
 ## Feedback do Cliente
 
-Foi feita uma reunião com o cliente no dia 28/06 e ele validou as História.
+Foi feita uma reunião com o cliente no dia 28/06 e ele validou as Histórias.
 
 ## Atividades Debitadas
 
-_Nenhuma atividade ficou em débito_
+_Nenhuma atividade ficou em débito._
 
 ### Gravação da Reunião
 
-_Reunião não gravada_
+_Reunião não gravada._
