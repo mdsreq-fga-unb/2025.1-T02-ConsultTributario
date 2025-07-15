@@ -146,5 +146,6 @@ nav:
     - Consultar Serviços de Saúde: CasosDeUso/epecA.md
     - Responder usuários da plataforma: CasosDeUso/specD.md
     - Consultar Serviços de Saúde: CasosDeUso/epecA.md
+    - Registrar Visita Domiciliar: CasosDeUso/specDi.md
   - Acesso à solução:
     - Link e usuários: acessoAoSite/acesso.md
