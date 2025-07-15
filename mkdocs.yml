@@ -137,8 +137,8 @@ nav:
     - Apresentação 3: apresentacoes/apresentacao-3.md
     - Apresentação 4: apresentacoes/apresentacao-4.md
     - Apresentação Cliente: apresentacoes/apresentacao-cliente.md
-  - Protótipo no Figma:
-    - Versão 1: prototipo/versao1.md
+  - Protótipo:
+    - Wireframe: prototipo/wireframe.md
   - User Story Mapping:
     - ComunEventos: USM/usm.md
   - Caso de uso:
@@ -148,4 +148,6 @@ nav:
     - Consultar Serviços de Saúde: CasosDeUso/epecA.md
     - Registrar Visita Domiciliar: CasosDeUso/specDi.md
   - Acesso à solução:
-    - Link e usuários: acessoAoSite/acesso.md
+    - Link do site e acessos: acessoAoSite/acesso.md
+    - Trello: acessoAoSite/trello.md
+
