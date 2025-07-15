@@ -58,7 +58,6 @@ extra:
     - icon: fontawesome/brands/github
 
 nav:
-  - Início: index.md
   - Visão do Produto:
     - Cenário Atual: 
       - Introdução ao Negócio: visao-produto/cenario-atual/introducao-negocio.md
@@ -142,6 +141,8 @@ nav:
     - Wireframe: prototipo/wireframe.md
   - User Story Mapping:
     - ComunEventos: USM/usm.md
+  - Product Backlog Building:
+    - HealthNet: PBB/pbb.md
   - Caso de uso:
     - ConnectCare: CasosDeUso/us.md
     - Consultar Serviços de Saúde: CasosDeUso/epecA.md
