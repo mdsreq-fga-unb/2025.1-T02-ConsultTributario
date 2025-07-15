@@ -131,7 +131,7 @@ nav:
         - US 18: features/gerenciar-teses-tributarias/us-18.md
         - US 19: features/gerenciar-teses-tributarias/us-19.md
         - US 20: features/autenticacao-e-controle-de-acesso/us-20.md
-    - Testes Unitários: features/testeUnitario/evidencia-de-testes.md
+    - Testes Unitários: testeUnitario/evidencia-de-testes.md
   - Apresentações:
     - Apresentação 1: apresentacoes/apresentacao-1.md
     - Apresentação 2: apresentacoes/apresentacao-2.md
