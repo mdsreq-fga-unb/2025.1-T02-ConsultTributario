@@ -49,7 +49,6 @@ Navegue pela documentação do projeto:
 - [Apresentação 4](apresentacoes/apresentacao-4.md)
 - [Validação Cliente](apresentacoes/apresentacao-cliente.md)
 
-
 ### Guia de Contribuição
 - [Política de Commits](guia-contribuicao/politica-de-commits.md)
 - [Política de Branches](guia-contribuicao/politica-de-branches.md)
@@ -69,4 +68,5 @@ Navegue pela documentação do projeto:
   - [Responder usuários da plataforma](CasosDeUso/specD.md)
   - [Gerenciar eventos de saúde](CasosDeUso/specP.md)
   - [Registrar Visita Domiciliar](CasosDeUso/specDi.md)
+  - [Criar Perfil Profissional](CasosDeUso/specR.md)
 
