@@ -46,7 +46,8 @@ Navegue pela documentação do projeto:
 - [Apresentação 1](apresentacoes/apresentacao-1.md)
 - [Apresentação 2](apresentacoes/apresentacao-2.md)
 - [Apresentação 3](apresentacoes/apresentacao-3.md)
-
+- [Apresentação 4](apresentacoes/apresentacao-4.md)
+- [Validação Cliente](apresentacoes/apresentacao-cliente.md)
 
 
 ### Guia de Contribuição
