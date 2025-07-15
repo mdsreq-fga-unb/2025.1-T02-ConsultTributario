@@ -2880,17 +2880,38 @@
 <p><strong>Para</strong> acessar o sistema</p>
 <h2 id="2-criterios-de-aceitacao">2. Critérios de Aceitação<a class="headerlink" href="#2-criterios-de-aceitacao" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Cenário 1 – Abrir janela para adinicionar CNPJ da consulta</strong></li>
+<li><strong>Cenário 1 – Login bem-sucedido</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou logado como usuário</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">acesso a página &quot;</span><span class="s">Diagnósticos</span><span class="nf">&quot;</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">vejo uma lista dos meus relatórios feitos</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">clico em um item da lista de diagnósticos</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">sou redirecionado para a página &quot;</span><span class="s">Teses Recomendadas</span><span class="nf">&quot; daquele diagnóstico</span>
-<span class="nf">  </span><span class="k">When </span><span class="nf">clico no botão &quot;</span><span class="s">Buscar mais dados</span><span class="nf">&quot;</span>
-<span class="nf">  </span><span class="k">Then </span><span class="nf">uma janela/modal abre</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">vejo o campo &quot;</span><span class="s">Adicione o CNPJ da empresa</span><span class="nf">&quot;</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">os botões &quot;</span><span class="s">Consultar</span><span class="nf">&quot; e &quot;</span><span class="s">Cancelar</span><span class="nf">&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou na tela de login</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">preencho o campo &quot;</span><span class="s">E-mail</span><span class="nf">&quot; com um e-mail válido</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">preencho o campo &quot;</span><span class="s">Senha</span><span class="nf">&quot; com a senha correta</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no botão &quot;</span><span class="s">Entrar</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">sou redirecionado para a biblioteca de teses</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 2 – Campos obrigatórios vazios</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou na tela de login</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">clico no botão &quot;</span><span class="s">Entrar</span><span class="nf">&quot; sem preencher os campos obrigatórios</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">os campos vazios são destacados em vermelho</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">vejo as mensagens &quot;</span><span class="s">E-mail é obrigatório</span><span class="nf">&quot; e/ou &quot;</span><span class="s">Senha é obrigatória</span><span class="nf">&quot;</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 3 – E-mail com formato inválido</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou na tela de login</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">digito um texto no campo &quot;</span><span class="s">E-mail</span><span class="nf">&quot; que não tem formato de e-mail</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">vejo a mensagem &quot;</span><span class="s">E-mail inválido</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">o campo &quot;</span><span class="s">E-mail</span><span class="nf">&quot; é destacado em vermelho</span>
+</code></pre></div>
+<ul>
+<li><strong>Cenário 4 – Login mal-sucedido</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nf">  </span><span class="k">Given </span><span class="nf">estou na tela de login</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">preencho o campo &quot;</span><span class="s">E-mail</span><span class="nf">&quot; com um e-mail válido</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">preencho o campo &quot;</span><span class="s">Senha</span><span class="nf">&quot; com a senha incorreta</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">clico no botão &quot;</span><span class="s">Entrar</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">o sistema não permite o login</span>
 </code></pre></div>
 <h2 id="3-dependencias">3. Dependências<a class="headerlink" href="#3-dependencias" title="Permanent link">&para;</a></h2>
 <ul>
