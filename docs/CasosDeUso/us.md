@@ -4,6 +4,7 @@
 - [Responder usuários da plataforma](specD.md)
 - [Gerenciar eventos de saúde](specP.md)
 - [Registrar Visita Domiciliar](specDi.md)
+- [Criar perfil profissional](specR.md)
 
 ---
 

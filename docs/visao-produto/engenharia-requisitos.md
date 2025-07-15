@@ -65,3 +65,14 @@
 |                                     | Análise e Consenso        | Priorização dos Requisitos                                         | Priorização MoSCoW, Mapeamento de Valor                                              | Requisitos priorizados para atender às necessidades estratégicas da próxima release         |
 |                                     | Declaração                | Registro dos Requisitos                                            | Épicos e User Stories                                                                | User stories claramente definidas e vinculadas aos objetivos da próxima release             |
 |                                     | Organização e Atualização | Revisão do Backlog                                                 | Revisão do Backlog da Release, DEEP                                                  | Backlog da release atualizado e preparado para o início da próxima fase                     |
+
+
+## Prints Evidência
+
+![Elicitação e Descoberta](../assets/images/stakeholder.png)
+
+
+![Verificação e Validação](../assets/images/dorDOD.png)
+
+
+![Análise e Consenso](../assets/images/must.png)
