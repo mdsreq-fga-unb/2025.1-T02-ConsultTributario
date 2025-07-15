@@ -109,6 +109,7 @@ nav:
       - Feature 1: features/gerenciar-perguntas-tributarias/gerenciar-perguntas-tributarias.md
       - Feature 2: features/gerenciar-teses-tributarias/gerenciar-teses-tributarias.md
       - Feature 3: features/realizar-diagnostico-tributario/realizar-diagnostico-tributario.md
+      - Feature 4: features/autenticacao-e-controle-de-acesso/autenticacao-e-controle-de-acesso.md
       - User Stories Refinadas:
         - US 1: features/realizar-diagnostico-tributario/us-01.md
         - US 2: features/realizar-diagnostico-tributario/us-02.md
@@ -129,19 +130,21 @@ nav:
         - US 17: features/gerenciar-teses-tributarias/us-17.md
         - US 18: features/gerenciar-teses-tributarias/us-18.md
         - US 19: features/gerenciar-teses-tributarias/us-19.md
-  - Guia de Contribuição:
-    - Política de Branches: guia-contribuicao/politica-de-branches.md
-    - Política de Commits: guia-contribuicao/politica-de-commits.md
+        - US 20: features/autenticacao-e-controle-de-acesso/us-20.md
   - Apresentações:
     - Apresentação 1: apresentacoes/apresentacao-1.md
     - Apresentação 2: apresentacoes/apresentacao-2.md
     - Apresentação 3: apresentacoes/apresentacao-3.md
     - Apresentação 4: apresentacoes/apresentacao-4.md
+    - Apresentação Cliente: apresentacoes/apresentacao-cliente.md
   - Protótipo no Figma:
     - Versão 1: prototipo/versao1.md
   - User Story Mapping:
     - ComunEventos: USM/usm.md
   - Caso de uso:
     - ConnectCare: CasosDeUso/us.md
-      - Consultar Serviços de Saúde: CasosDeUso/epecA.md
-      - Responder usuários da plataforma: CasosDeUso/specD.md
+    - Consultar Serviços de Saúde: CasosDeUso/epecA.md
+    - Responder usuários da plataforma: CasosDeUso/specD.md
+    - Consultar Serviços de Saúde: CasosDeUso/epecA.md
+  - Acesso à solução:
+    - Link e usuários: acessoAoSite/acesso.md
