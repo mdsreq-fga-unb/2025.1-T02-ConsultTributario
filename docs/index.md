@@ -67,4 +67,6 @@ Navegue pela documentação do projeto:
 - [Caso de uso(ConnectCare)](CasosDeUso/us.md)
   - [Consultar Serviços de Saúde](CasosDeUso/epecA.md)
   - [Responder usuários da plataforma](CasosDeUso/specD.md)
+  - [Gerenciar eventos de saúde](CasosDeUso/specP.md)
+  - [Registrar Visita Domiciliar](CasosDeUso/specDi.md)
 
