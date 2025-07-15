@@ -46,7 +46,8 @@ Navegue pela documentação do projeto:
 - [Apresentação 1](apresentacoes/apresentacao-1.md)
 - [Apresentação 2](apresentacoes/apresentacao-2.md)
 - [Apresentação 3](apresentacoes/apresentacao-3.md)
-
+- [Apresentação 4](apresentacoes/apresentacao-4.md)
+- [Validação Cliente](apresentacoes/apresentacao-cliente.md)
 
 
 ### Guia de Contribuição
@@ -66,4 +67,6 @@ Navegue pela documentação do projeto:
 - [Caso de uso(ConnectCare)](CasosDeUso/us.md)
   - [Consultar Serviços de Saúde](CasosDeUso/epecA.md)
   - [Responder usuários da plataforma](CasosDeUso/specD.md)
+  - [Gerenciar eventos de saúde](CasosDeUso/specP.md)
+  - [Registrar Visita Domiciliar](CasosDeUso/specDi.md)
 
