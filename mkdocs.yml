@@ -148,8 +148,10 @@ nav:
     - Responder usuários da plataforma: CasosDeUso/specD.md
     - Consultar Serviços de Saúde: CasosDeUso/epecA.md
     - Registrar Visita Domiciliar: CasosDeUso/specDi.md
+    - Criar Perfil Profissional: CasosDeUso/specR.md
   - Acesso à solução:
     - Link do site e acessos: acessoAoSite/acesso.md
     - Trello: acessoAoSite/trello.md
     - Canvas do PBB: acessoAoSite/CanvasPBB.md
+    - Link da apresentação final: acessoAoSite/apresentacaoFinal.md
 
